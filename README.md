@@ -4,13 +4,14 @@
 ### Needs work on modularization and structure of the config
 ### So far only tailored to my notebook (Nvidia)
 ---
+
 ## Window Manager 
 
 Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Config was mainly just copy-pasted from my Arch install and has random leftover some stuff in it that did not make it into my NixOS install yet.
 
 ## "Nixus" Editor
 
-Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for package management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading integrated with [tmux](https://github.com/tmux/tmux).
+Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for package and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading integrated with [tmux](https://github.com/tmux/tmux).
 
 ## Secret Provisioning
 
