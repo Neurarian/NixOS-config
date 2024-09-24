@@ -2,11 +2,11 @@
 # My NixOS config
 ### Actively working on improving and expanding functionality
 ### Needs work on modularization and structure of the config
-### So far only talored to my notebook (Nvidia)
+### So far only tailored to my notebook (Nvidia)
 ---
 ## Window Manager 
 
-Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem.
+Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Config was mainly just copy-pasted from my Arch install and has random leftover some stuff in it that did not make it into my NixOS install yet.
 
 ## "Nixus" Editor
 
