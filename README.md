@@ -2,7 +2,7 @@
 # My NixOS config
 ### Actively working on improving and expanding functionality
 ### Needs work on modularization and structure of the config
-### So far only talored to my notebook (Nvidia)
+### So far only tailored to my notebook (Nvidia)
 ---
 ## Window Manager 
 
