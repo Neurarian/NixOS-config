@@ -1,0 +1,147 @@
+{
+  "nodes": {
+    "nixCats": {
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1726523552,
+        "narHash": "sha256-RqOJeQlX2+H5j+RdFzTc7QSf4/qK4Oe01KpE2713Cws=",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "rev": "2b455dab0eee7484ce7c956dccda0a7c2111c18b",
+        "type": "github"
+      },
+      "original": {
+        "dir": "nix",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1726871744,
+        "narHash": "sha256-V5LpfdHyQkUF7RfOaDPrZDP+oqz88lTJrMT1+stXNwo=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a1d92660c6b3b7c26fb883500a80ea9d33321be2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-care-cmp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726153673,
+        "narHash": "sha256-tRZdGMxkmI9uWf9AjctiQPjKcEFAfkCHhhxz4D2x7EE=",
+        "owner": "max397574",
+        "repo": "care-cmp",
+        "rev": "72cbb457e2ff246fd672d524270effe46f92ce4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "max397574",
+        "repo": "care-cmp",
+        "type": "github"
+      }
+    },
+    "plugins-care-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726510764,
+        "narHash": "sha256-W5dNXdTgwSNW8O6dR5SSsk444H0NDFpA2rbNOnPB4sw=",
+        "owner": "max397574",
+        "repo": "care.nvim",
+        "rev": "800741c255939c0f345239662ec268557ac3eefa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "max397574",
+        "repo": "care.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-friendly-snippets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727061933,
+        "narHash": "sha256-yTsuV5unoujY0mhLINssYYBWCeefe+nJaxQHJKm7hlk=",
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "rev": "00ba9dd3df89509f95437b8d595553707c46d5ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "type": "github"
+      }
+    },
+    "plugins-fzy-lua-native": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686234741,
+        "narHash": "sha256-Ja4xNGruETSU1nq+r+hkJiFpnMbmL9m2JIKC6gHFGf4=",
+        "owner": "romgrk",
+        "repo": "fzy-lua-native",
+        "rev": "820f745b7c442176bcc243e8f38ef4b985febfaf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "romgrk",
+        "repo": "fzy-lua-native",
+        "type": "github"
+      }
+    },
+    "plugins-lz-n": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726969934,
+        "narHash": "sha256-QHv/dJndEunrga/jE5ypoqLf1DK40j9wX6rbnZGiK6M=",
+        "owner": "nvim-neorocks",
+        "repo": "lz.n",
+        "rev": "1328e16a4be33307ef8fa0c50c32cd38239d74a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neorocks",
+        "repo": "lz.n",
+        "type": "github"
+      }
+    },
+    "plugins-telescope-luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717879659,
+        "narHash": "sha256-jzLzucF2rAa3nkHE5n4g2StkSUjMOMK93JCH/g09DQY=",
+        "owner": "benfowler",
+        "repo": "telescope-luasnip.nvim",
+        "rev": "11668478677de360dea45cf2b090d34f21b8ae07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benfowler",
+        "repo": "telescope-luasnip.nvim",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixCats": "nixCats",
+        "nixpkgs": "nixpkgs",
+        "plugins-care-cmp": "plugins-care-cmp",
+        "plugins-care-nvim": "plugins-care-nvim",
+        "plugins-friendly-snippets": "plugins-friendly-snippets",
+        "plugins-fzy-lua-native": "plugins-fzy-lua-native",
+        "plugins-lz-n": "plugins-lz-n",
+        "plugins-telescope-luasnip": "plugins-telescope-luasnip"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
