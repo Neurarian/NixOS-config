@@ -24,6 +24,10 @@
     ./sops.nix
     ./nvidia.nix
   ];
+  
+  # Test notebook graphics module
+
+  graphics_erazer.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
