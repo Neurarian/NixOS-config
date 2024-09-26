@@ -11,7 +11,7 @@ Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosys
 
 ## "Nixus" Editor
 
-Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for package and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading integrated with [tmux](https://github.com/tmux/tmux).
+Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for package and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
 
 ## Secret Provisioning
 
