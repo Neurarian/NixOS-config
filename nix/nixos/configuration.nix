@@ -1,7 +1,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   # Enable weekly garbage collection
@@ -69,14 +69,13 @@
     let
       tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
       session = "${pkgs.hyprland}/bin/Hyprland";
-      username = "Liqyid";
     in
     {
       enable = true;
       settings = {
         initial_session = {
           command = "${session}";
-          user = "${username}";
+          user = "${user}";
         };
         default_session = {
           command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time -cmd ${session}";
@@ -101,7 +100,7 @@
         connection = {
           id = config.sops.secrets."wifi/home/ssid".path;
           interface-name = "wlp110s0";
-          permissions = "user:Liqyid:;";
+          permissions = "user:${user}:;";
           timestamp = "1725477527";
           type = "wifi";
           uuid = config.sops.secrets."wifi/home/uuid".path;
@@ -182,7 +181,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.Liqyid = {
+  users.users.${user}= {
     isNormalUser = true;
     extraGroups = [
       "wheel"

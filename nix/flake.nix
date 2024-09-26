@@ -55,11 +55,16 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      user = "Liqyid";
     in
     {
       nixosConfigurations = {
         NixOS = lib.nixosSystem {
           inherit system;
+
+          specialArgs = {
+            inherit inputs user;
+          };
           modules = [
             inputs.disko.nixosModules.disko
             inputs.catppuccin.nixosModules.catppuccin
@@ -75,7 +80,7 @@
           inherit pkgs;
 
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs user;
           };
 
           modules = [

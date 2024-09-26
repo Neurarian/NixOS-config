@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ...}: {
+{
+  config,
+  lib,
+  ...
+}:
+{
 
   options = {
     graphics_erazer.enable = lib.mkEnableOption "enable notebook graphics module";
@@ -6,7 +11,7 @@
 
   config = lib.mkIf config.graphics_erazer.enable {
 
-      # Enable OpenGL
+    # Enable OpenGL
     hardware.graphics = {
       enable = true;
     };

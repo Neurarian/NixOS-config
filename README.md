@@ -33,8 +33,6 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 <details>
   <summary>show planned</summary>
 
-  - troubleshoot sops secrets not working on reboot! (btrfs subvolumes holding keys -> set to neededForBoot?)
-  - create $user variable in flake and inherit
   - setup bluetooth
   - [YouTube Music](https://github.com/th-ch/youtube-music)
   - [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
