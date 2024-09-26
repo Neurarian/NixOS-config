@@ -37,6 +37,7 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
   - setup bluetooth
   - [YouTube Music](https://github.com/th-ch/youtube-music)
   - [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
+  - add [hyprspace](https://github.com/KZDKM/Hyprspace)
   - ags widgets
   - write config in pure nix
   - switch to [Wezterm](https://github.com/wez/wezterm)?
