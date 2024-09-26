@@ -15,7 +15,8 @@
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [
-                 "umask=0077" "defaults"
+                  "umask=0077"
+                  "defaults"
                 ];
               };
             };
@@ -24,7 +25,7 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                settings.allowDiscards  = true;
+                settings.allowDiscards = true;
                 passwordFile = "/tmp/secret.key"; # Interactive
                 content = {
                   type = "btrfs";
@@ -32,15 +33,24 @@
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = [ "compress=zstd" "noatime" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = [ "compress=zstd" "noatime" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [ "compress=zstd" "noatime" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
@@ -54,28 +64,31 @@
         };
       };
       data = {
-	type = "disk";
-	device = "/dev/sda";
-	content = {
-	  type = "gpt";
-	  partitions = {
-	    luks = {
-	      size = "100%";
-	      content = {
-		type = "luks";
-		name = "crypted2";
-		settings.allowDiscards  = true;
-		passwordFile = "/tmp/secret.key"; # Interactive
-		content = {
-		  type = "btrfs";
-		  extraArgs = [ "-f" ];
-		  mountpoint = "/data";
-		  mountOptions = [ "compress=zstd" "noatime" ];
-		};
-	      };
-	    };
-	  };
-	};
+        type = "disk";
+        device = "/dev/sda";
+        content = {
+          type = "gpt";
+          partitions = {
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "crypted2";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key"; # Interactive
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  mountpoint = "/data";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+              };
+            };
+          };
+        };
       };
     };
   };

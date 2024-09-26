@@ -27,6 +27,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
     plymouth = {
       enable = true;
       font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
@@ -79,22 +80,27 @@
         };
       };
     };
-
+  
   networking.hostName = "NixOS"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Sops encrypted wifi creds
+  sops.secrets."wifi/home/ssid" = { };
+  sops.secrets."wifi/home/uuid" = { };
+  sops.secrets."wifi/home/psk" = { };
 
   networking.networkmanager = {
     enable = true; # Easiest to use and most distros use this by default.
     ensureProfiles.profiles = {
       ChArian_Inet = {
         connection = {
-          id = "ChArian_Inet";
+          id = config.sops.secrets."wifi/home/ssid".path;
           interface-name = "wlp110s0";
           permissions = "user:Liqyid:;";
           timestamp = "1725477527";
           type = "wifi";
-          uuid = "ed7418bc-47e5-44e9-a955-9b1f8978215e";
+          uuid = config.sops.secrets."wifi/home/uuid".path;
         };
         ipv4 = {
           method = "auto";
@@ -106,11 +112,11 @@
         proxy = { };
         wifi = {
           mode = "infrastructure";
-          ssid = "ChArian_Inet";
+          ssid = config.sops.secrets."wifi/home/ssid".path;
         };
         wifi-security = {
           key-mgmt = "wpa-psk";
-          psk = config.sops.secrets."passwords/wifi/ChArian_Inet".path;
+          psk = config.sops.secrets."wifi/home/psk".path;
         };
       };
     };
