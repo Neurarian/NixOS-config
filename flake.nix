@@ -26,7 +26,7 @@
     };
 
     nixCats = {
-      url = "path:/home/Liqyid/.dotfiles/.config/nvim";
+      url = "path:./home/terminal/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -76,7 +76,7 @@
         };
       };
       homeConfigurations = {
-        Liqyid = home-manager.lib.homeManagerConfiguration {
+        ${user} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           extraSpecialArgs = {

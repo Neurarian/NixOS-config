@@ -44,11 +44,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1727382869,
-        "narHash": "sha256-PizaiC9NAsJwl16zGXfARakiZllu5FxblefANceGL/g=",
+        "lastModified": 1727384901,
+        "narHash": "sha256-DqSnl0mQK3yilyYdnhjuQE++QV+Ek+ZIkjZMLGK1x4U=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "f450258e02c582d1a44a812c7960b3f24c9b8f55",
+        "rev": "793a8c30a084db38d0162677450b2509db89675c",
         "type": "gitlab"
       },
       "original": {
@@ -108,13 +108,13 @@
         "plugins-telescope-luasnip": "plugins-telescope-luasnip"
       },
       "locked": {
-        "lastModified": 1727211159,
+        "lastModified": 1,
         "narHash": "sha256-/BSXkhcIrqGKr9tX2WjPw5Oxf3IATaAY3M5VZuJQw3Q=",
-        "path": "/home/Liqyid/.dotfiles/.config/nvim",
+        "path": "./home/terminal/nvim",
         "type": "path"
       },
       "original": {
-        "path": "/home/Liqyid/.dotfiles/.config/nvim",
+        "path": "./home/terminal/nvim",
         "type": "path"
       }
     },
