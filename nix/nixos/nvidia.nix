@@ -1,29 +1,36 @@
-{ config, pkgs, ...}: {
+{ config, lib, pkgs, ...}: {
 
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
+  options = {
+    graphics_erazer.enable = lib.mkEnableOption "enable notebook graphics module";
   };
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  config = lib.mkIf config.graphics_erazer.enable {
 
-  hardware.nvidia = {
+      # Enable OpenGL
+    hardware.graphics = {
+      enable = true;
+    };
 
-    # Modesetting is required.
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # Load nvidia driver for Xorg and Wayland
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia = {
+
+      # Modesetting is required.
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
+    hardware.nvidia.prime = {
+      # Hybrid Graphics configuration.
+      sync.enable = true;
+      intelBusId = "PCI:0:0:2";
+      nvidiaBusId = "PCI:0:1:0";
+    };
+
   };
-
-  hardware.nvidia.prime = {
-    # Hybrid Graphics configuration.
-    sync.enable = true;
-    intelBusId = "PCI:0:0:2";
-    nvidiaBusId = "PCI:0:1:0";
-  };
-
 }
