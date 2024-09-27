@@ -7,7 +7,7 @@
   };
 
   imports = [
-    ./.
+    ./common
   ];
 
 }

@@ -50,10 +50,10 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = [ "$HOME/.dotfiles/nix/home/gui/wallpaper" ];
+      preload = [ "${builtins.toString ./wallpaper}" ];
 
       wallpaper = [
-        "eDP-1, $HOME/.dotfiles/nix/home/gui/wallpaper"
+        "eDP-1, ${builtins.toString ./wallpaper}"
       ];
     };
   };
@@ -121,7 +121,7 @@
         # USER AVATAR
         {
           monitor = "";
-          path = "$HOME/.dotfiles/nix/home/gui/.face";
+          path = "${builtins.toString ./.face}";
           size = 350;
           border_color = "rgb(24, 25, 38)";
           rounding = -1;

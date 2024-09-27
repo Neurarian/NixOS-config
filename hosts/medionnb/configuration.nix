@@ -1,7 +1,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, user, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 
 {
   # Enable weekly garbage collection
@@ -20,11 +25,10 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./global-env-vars.nix
-    ./sops.nix
-    ./nvidia.nix
+    ../common/core/default.nix
+    ../common/optional/nvidia.nix
   ];
-  
+
   # Test notebook graphics module
 
   graphics_erazer.enable = true;
@@ -83,15 +87,21 @@
         };
       };
     };
-  
+
   networking.hostName = "NixOS"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Sops encrypted wifi creds
-  sops.secrets."wifi/home/ssid" = { };
-  sops.secrets."wifi/home/uuid" = { };
-  sops.secrets."wifi/home/psk" = { };
+  sops.secrets =
+    let
+      home = "wifi/home/";
+    in
+    {
+      "${home}ssid" = { };
+      "${home}uuid" = { };
+      "${home}psk" = { };
+    };
 
   networking.networkmanager = {
     enable = true; # Easiest to use and most distros use this by default.
@@ -181,7 +191,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user}= {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [
       "wheel"

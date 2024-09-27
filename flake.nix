@@ -69,9 +69,8 @@
             inputs.disko.nixosModules.disko
             inputs.catppuccin.nixosModules.catppuccin
             inputs.sops-nix.nixosModules.sops
-            ./nixos/disk-config.nix
-            ./nixos/configuration.nix
-            #inputs.nixvim.nixosModules.nixvim
+            ./hosts/medionnb
+            ./hosts/medionnb
           ];
         };
       };
@@ -84,10 +83,9 @@
           };
 
           modules = [
-            ./home/home.nix
+            ./home/Liqyid/medionnb.nix
             inputs.catppuccin.homeManagerModules.catppuccin
             inputs.nixCats.homeModule
-            #inputs.nixvim.homeManagerModules.nixvim
           ];
         };
       };
