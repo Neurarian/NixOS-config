@@ -26,7 +26,7 @@
     };
 
     nixCats = {
-      url = "path:./home/terminal/nvim";
+      url = "path:./home/Liqyid/common/core/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

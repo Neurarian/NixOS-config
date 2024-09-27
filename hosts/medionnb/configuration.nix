@@ -135,6 +135,12 @@
     };
   };
 
+  hardware.bluetooth.enable = true;
+
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+  };
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -214,17 +220,10 @@
     lshw
     home-manager
     ags
-    wl-clipboard
     fastfetch
-    stow
-    pywal
     wireplumber
     wget
     polkit_gnome
-    # nvim requirements
-    gcc
-    unzip
-    gnumake
     ripgrep
   ];
   fonts.packages = with pkgs; [

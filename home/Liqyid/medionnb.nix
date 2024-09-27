@@ -1,4 +1,5 @@
-{user,...}:{
+{ user, ... }:
+{
 
   home = {
     username = "${user}";
@@ -9,5 +10,6 @@
   imports = [
     ./common
   ];
-
+  discord.enable = true;
+  overskride.enable = true;
 }

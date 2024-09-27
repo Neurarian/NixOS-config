@@ -177,6 +177,7 @@
               python311Packages.pylatexenc
               harper
               markdownlint-cli
+              mdformat
             ];
             rust = [
               rust-analyzer

@@ -4,7 +4,7 @@
     settings = {
       logo = {
         padding = {
-          top = 1;
+          top = 2;
           right = 2;
         };
       };
@@ -53,6 +53,10 @@
         {
           type = "gamepad";
           key = "  ";
+        }
+        {
+          type = "battery";
+          key = "  ";
         }
         {
           type = "custom";

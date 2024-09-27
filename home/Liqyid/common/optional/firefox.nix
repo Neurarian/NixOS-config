@@ -78,7 +78,7 @@
               definedAliases = [ "@nw" ];
             };
             "Searx" = {
-              urls = [{ template = "https://searx.tiekoetter.com/"; }];
+              urls = [{ template = "https://searx.tiekoetter.com/search?q={searchTerms}"; }];
               iconUpdateURL = "https://nixos.wiki/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000; # every day
               definedAliases = [ "@searx" ];
