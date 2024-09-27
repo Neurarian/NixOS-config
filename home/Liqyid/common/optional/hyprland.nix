@@ -177,7 +177,6 @@
   wayland.windowManager.hyprland = {
     enable = true; # enable Hyprland
     systemd.enable = true;
-    # catppuccin.enable = true;
     extraConfig = ''
 
       # This is an example Hyprland config file.
@@ -198,8 +197,8 @@
       #
       windowrule = workspace 2, youtube-music
       windowrule = workspace 4, firefox
-      windowrule = idleinhibit fullscreen, qutebrowser
-      windowrule = workspace 5, steam
+      windowrule = idleinhibit fullscreen, firefox
+      windowrulev2 = workspace 5 silent, class:steam
       #windowrule = nofocus, steam
       windowrule = workspace 6 silent, discord
       #windowrule = workspace 6, 
@@ -262,7 +261,7 @@
           # col.inactive_border = rgba(595959aa)
           #no_cursor_warps = true
 
-          layout = master
+          layout = dwindle 
 
           # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
           allow_tearing = false

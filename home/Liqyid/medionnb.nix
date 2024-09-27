@@ -12,4 +12,5 @@
   ];
   discord.enable = true;
   overskride.enable = true;
+  ytmusic.enable = true;
 }

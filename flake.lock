@@ -109,7 +109,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-/BSXkhcIrqGKr9tX2WjPw5Oxf3IATaAY3M5VZuJQw3Q=",
+        "narHash": "sha256-JrR8KAVGbrbH3/NZXlFl/Tik0s3HuxslquckKaMdSYA=",
         "path": "./home/Liqyid/common/core/nvim",
         "type": "path"
       },
