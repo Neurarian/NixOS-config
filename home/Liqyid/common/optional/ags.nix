@@ -52,6 +52,7 @@ in
         ]))
       ];
 
+# TODO: use home.activation or find some other way to create the necessary dirs for gradience color gen
       /* file = {
         "ags-state-colormode-file" = {
           target = ".local/state/ags/user/colormode.txt";
