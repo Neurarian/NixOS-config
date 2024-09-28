@@ -1,10 +1,8 @@
 # My NixOS config
 
-### Actively working on improving and expanding functionality
-
-### Needs work on modularization and structure of the config
-
-### So far only tailored to my notebook (Nvidia)
+Actively working on improving and expanding functionality.
+Needs work on modularization and structure of the config.
+So far only tailored to my notebook (Nvidia).
 
 ______________________________________________________________________
 
