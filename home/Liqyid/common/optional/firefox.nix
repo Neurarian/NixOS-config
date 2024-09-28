@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 {
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
@@ -12,7 +12,7 @@
         id = 0;
         name = "default";
         isDefault = true;
-        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+        extensions = with inputs.firefox-addons.packages."${system}"; [
           ublock-origin
           privacy-badger
           i-dont-care-about-cookies

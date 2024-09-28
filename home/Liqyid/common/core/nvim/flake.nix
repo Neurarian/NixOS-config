@@ -207,6 +207,13 @@
               cmake
               cmake-format
             ];
+            javascript = [
+              eslint
+              typescript
+              typescript-language-server
+              prettierd
+
+            ];
           };
 
           # This is for plugins that will load at startup without using packadd:
@@ -364,6 +371,7 @@
               rust = true;
               nix = true;
               C = true;
+              javascript = true;
 
               test = true;
 

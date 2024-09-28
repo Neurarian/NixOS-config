@@ -6,5 +6,6 @@
     ./tmux.nix
     ./fastfetch.nix
     ./nixum.nix
+    ./gtk.nix
   ];
 }

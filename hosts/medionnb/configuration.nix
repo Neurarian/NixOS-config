@@ -216,13 +216,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     pciutils
+    home-manager
     age
     lshw
-    home-manager
-    ags
     fastfetch
     wireplumber
     wget
+    wl-clipboard
     polkit_gnome
     ripgrep
   ];

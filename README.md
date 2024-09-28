@@ -28,13 +28,14 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 - custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
 - Steam
 - Discord
+- [YouTube Music](https://github.com/th-ch/youtube-music)
 
 </details>
 
 <details>
   <summary>show planned</summary>
 
-- [YouTube Music](https://github.com/th-ch/youtube-music)
+- configure mpd
 - [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
 - add [hyprspace](https://github.com/KZDKM/Hyprspace)
 - ags widgets

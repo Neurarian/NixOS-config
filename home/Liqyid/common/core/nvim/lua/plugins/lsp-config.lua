@@ -94,7 +94,7 @@ servers.nixd = {
   },
 }
 servers.bashls = {}
--- tsserver = {},
+servers.ts_ls = {}
 servers.lua_ls = {
   -- cmd = {...},
   -- filetypes = { ...},

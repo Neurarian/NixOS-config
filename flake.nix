@@ -35,12 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #inputs.nur.url = github:nix-community/NUR;
-
-    #nixvim = {
-    #url = "github:nix-community/nixvim";
-    #inputs.nixpkgs.follows = "nixpkgs"; 
-    #};
 
   };
 
@@ -70,7 +69,6 @@
             inputs.catppuccin.nixosModules.catppuccin
             inputs.sops-nix.nixosModules.sops
             ./hosts/medionnb
-            ./hosts/medionnb
           ];
         };
       };
@@ -79,11 +77,12 @@
           inherit pkgs;
 
           extraSpecialArgs = {
-            inherit inputs user;
+            inherit inputs user system;
           };
 
           modules = [
             ./home/Liqyid/medionnb.nix
+            inputs.ags.homeManagerModules.default
             inputs.catppuccin.homeManagerModules.catppuccin
             inputs.nixCats.homeModule
           ];

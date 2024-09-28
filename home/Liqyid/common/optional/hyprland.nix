@@ -9,39 +9,9 @@
     wlogout
     glib
     libnotify
+    pywal
+    ydotool
   ];
-
-  services.mako = {
-    enable = true;
-    # catppuccin.enable = true;
-    sort = "-time";
-    layer = "overlay";
-    width = 300;
-    height = 110;
-    borderSize = 2;
-    borderRadius = 15;
-    icons = true;
-    maxIconSize = 64;
-    defaultTimeout = 5000;
-    ignoreTimeout = true;
-    font = "Jetbrains Mono Nerd Font 14";
-    extraConfig = ''
-
-      #[urgency=low]
-      #border-color=#cccccc
-
-      #[urgency=normal]
-      #border-color=#d08770
-
-      [urgency=high]
-      border-color=#bf616a
-      default-timeout=0
-
-      [category=mpd]
-      default-timeout=2000
-      group-by=category
-    '';
-  };
 
   services.hyprpaper = {
     enable = true;
@@ -187,7 +157,6 @@
       # Please note not all available settings / options are set here.
 
       # For a full list, see the wiki
-      exec-once = ags
       exec-once = hyprpaper & ~/scripts/wallpaper_g910.sh
       # See https://wiki.hyprland.org/Configuring/Monitors/
 
@@ -212,7 +181,7 @@
       exec-once = mako & polkit-agent-helper-1 & systemctl start --user polkit-gnome-authentication-agent-1 & ydotoold
       exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
       exec-once = wl-paste --watch cliphist store
-      exec-once = ~/scripts/updatewal-swww.sh
+      # exec-once = ~/scripts/updatewal-swww.sh
       exec-once = [workspace 1 silent] kitty -e tmux
       exec-once = [workspace 2 silent] youtube-music
       exec-once = [workspace 4 silent] firefox
@@ -362,7 +331,7 @@
       bind = $mainMod CTRL, Q, exec, wlogout
       bind = $mainMod, S, exec, localsend
       bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
-      bind = $mainMod SHIFT, W, exec, ~/scripts/wal.sh && ~/scripts/wallpaper_g910.sh
+      bind = $mainMod SHIFT, W, exec, wal_init && wal_set
       bind = $mainMod CTRL, RETURN, exec, ~/scripts/applauncher.sh
       bind = $mainMod CTRL, F, exec, ~/scripts/filemanager.sh
       bind = $mainMod CTRL, C, exec, ~/scripts/cliphist.sh
