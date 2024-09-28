@@ -26,6 +26,7 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 - [zsh](https://www.zsh.org/)
 - [kitty](https://github.com/kovidgoyal/kitty)
 - custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
+- [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
 - Steam
 - Discord
 - [YouTube Music](https://github.com/th-ch/youtube-music)
@@ -35,11 +36,8 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 <details>
   <summary>show planned</summary>
 
-- configure mpd
-- [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
 - add [hyprspace](https://github.com/KZDKM/Hyprspace)
 - ags widgets
-- write nix wrappers for nvim lua
 - switch to [Wezterm](https://github.com/wez/wezterm)?
 
 </details>
