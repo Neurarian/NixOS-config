@@ -6,13 +6,9 @@ So far only tailored to my notebook (Nvidia).
 
 ______________________________________________________________________
 
-## Window Manager
-
 Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Config was mainly just copy-pasted from my Arch install and has random leftover some stuff in it that did not make it into my NixOS install yet.
 
-## "Nixus" Editor
-
-Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for package and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
+Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
 
 Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-nix)
 
@@ -24,7 +20,7 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 - [zsh](https://www.zsh.org/)
 - [kitty](https://github.com/kovidgoyal/kitty)
 - custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
-- [custom](https://github.com/Neurarian/ags-bar) [ags](https://github.com/Aylur/ags) bar
+- [custom](https://github.com/fufexan/dotfiles) [ags](https://github.com/Aylur/ags) bar
 - Steam
 - Discord
 - [YouTube Music](https://github.com/th-ch/youtube-music)
