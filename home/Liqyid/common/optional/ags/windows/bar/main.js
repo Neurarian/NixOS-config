@@ -7,6 +7,7 @@ import Tray from "./modules/tray.js";
 import Workspaces from "./modules/workspaces.js";
 import CpuWidget from "./modules/cpu.js";
 import RamWidget from "./modules/ram.js";
+import Battery from "./modules/battery.js";
 import Separator from "./modules/separator.js";
 
 
@@ -19,6 +20,7 @@ const SystemInfo = () =>
       children: [
         Net(),
         Bluetooth(),
+        Battery(),
       ],
     }),
   })

@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  user,
   ...
 }:
 
@@ -29,7 +30,7 @@ let
   dependencies = requiredDeps ++ guiDeps;
 
 in
-# cfg = config.programs.ags;
+
 {
   options = {
     ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
@@ -75,7 +76,7 @@ in
 
     programs.ags = {
       enable = true;
-      # configDir = ./ags;
+      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags; 
       extraPackages = dependencies;
       systemd.enable = true;
     };

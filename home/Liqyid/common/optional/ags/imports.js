@@ -9,6 +9,8 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 // Services
 import Audio from "resource:///com/github/Aylur/ags/service/audio.js";
 import Bluetooth from "resource:///com/github/Aylur/ags/service/bluetooth.js";
+import PowerProfiles from "resource:///com/github/Aylur/ags/service/powerprofiles.js";
+import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Mpris from "resource:///com/github/Aylur/ags/service/mpris.js";
 import Network from "resource:///com/github/Aylur/ags/service/network.js";
@@ -21,6 +23,8 @@ export {
   App,
   Audio,
   Bluetooth,
+  PowerProfiles,
+  Battery,
   GLib,
   Hyprland,
   Icons,

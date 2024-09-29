@@ -20,10 +20,10 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = [ "${builtins.toString ./wallpaper}" ];
+      preload = [ "$HOME/.cache/current_wallpaper.jpg" ];
 
       wallpaper = [
-        "eDP-1, ${builtins.toString ./wallpaper}"
+        "eDP-1, $HOME/.cache/current_wallpaper.jpg"
       ];
     };
   };
@@ -178,10 +178,9 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       # Execute your favorite apps at launch
-      exec-once = mako & polkit-agent-helper-1 & systemctl start --user polkit-gnome-authentication-agent-1 & ydotoold
+      exec-once = ydotoold
       exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
       exec-once = wl-paste --watch cliphist store
-      # exec-once = ~/scripts/updatewal-swww.sh
       exec-once = [workspace 1 silent] kitty -e tmux
       exec-once = [workspace 2 silent] youtube-music
       exec-once = [workspace 4 silent] firefox

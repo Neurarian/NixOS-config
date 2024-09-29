@@ -25,8 +25,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../common/core/default.nix
-    ../common/optional/nvidia.nix
+    ../common/core
+    ../common/optional
+
   ];
 
   # Test notebook graphics module
@@ -141,6 +142,12 @@
     enable = true;
     powertop.enable = true;
   };
+
+  services = {
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
