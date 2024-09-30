@@ -2,6 +2,8 @@
 {
   imports = [
     ./nvidia.nix
+    ./localsend.nix
+    ./services
   ];
-  graphics_erazer.enable = lib.mkDefault false;
+  localsend.enable = lib.mkDefault false;
 }

@@ -29,6 +29,8 @@ let
 
   dependencies = requiredDeps ++ guiDeps;
 
+  cfg = config.programs.ags;
+
 in
 
 {
@@ -38,9 +40,9 @@ in
 
   config = lib.mkIf config.ags.enable {
 
+    # packages for gradience color generation handled outside of service
     home = {
       packages = with pkgs; [
-        dart-sass
         gradience
         (pkgs.python3.withPackages (python-pkgs: [
           python-pkgs.setuptools-scm
@@ -53,8 +55,12 @@ in
         ]))
       ];
 
-# TODO: use home.activation or find some other way to create the necessary dirs for gradience color gen
-      /* file = {
+      activation = {
+        makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          run mkdir -p "$XDG_STATE_HOME/ags/scss"
+        '';
+      };
+      file = {
         "ags-state-colormode-file" = {
           target = ".local/state/ags/user/colormode.txt";
           text = ''
@@ -63,22 +69,27 @@ in
             vibrant
           '';
         };
-        "ags-state-scss-file" = {
-          target = ".local/state/ags/scss/_material.scss";
-          text = ''
-            dark
-            opaque
-            vibrant
-          '';
-        };
-      };*/
-    }; 
+      };
+    };
 
     programs.ags = {
       enable = true;
-      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags; 
-      extraPackages = dependencies;
-      systemd.enable = true;
+      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags;
+    };
+    systemd.user.services.ags = {
+      Unit = {
+        Description = "Aylur's Gtk Shell";
+        PartOf = [
+          "tray.target"
+          "graphical-session.target"
+        ];
+      };
+      Service = {
+        Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
+        ExecStart = "${cfg.package}/bin/ags";
+        Restart = "on-failure";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
     };
   };
 }

@@ -32,7 +32,9 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 
 - add [hyprspace](https://github.com/KZDKM/Hyprspace)
 - ags widgets
+- overhaul ags colorscheme generation
 - switch to [Wezterm](https://github.com/wez/wezterm)?
+- add fuzzel
 
 </details>
 

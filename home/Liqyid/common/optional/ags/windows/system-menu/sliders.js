@@ -1,4 +1,5 @@
-import { App, Audio, Utils, Widget } from "../../imports.js";
+import { App, Audio, Icons, Utils, Widget } from "../../imports.js";
+import Brightness from "../../services/brightness.js";
 import { audioIcon } from "../../utils/audio.js";
 
 const Slider = (args) =>
@@ -30,7 +31,7 @@ const vol = () => {
       icon: "",
       action: () => {
         App.toggleWindow("system-menu");
-        Utils.execAsync("pavucontrol");
+        Utils.execAsync("pwvucontrol");
       },
       setup: (self) =>
         self
@@ -44,6 +45,18 @@ const vol = () => {
   };
 };
 
+const brightness = () => {
+  return {
+    name: "brightness",
+    icon: {
+      icon: Icons.brightness,
+    },
+    slider: {
+      setup: (self) => self.bind("value", Brightness, "screen-value"),
+      onChange: ({ value }) => Brightness.screenValue = value,
+    },
+  };
+};
 
 export default () =>
   Widget.Box({
@@ -57,6 +70,7 @@ export default () =>
         Audio.disconnect(connID);
         self.children = [
           Slider(vol()),
+          Slider(brightness()),
         ];
       });
     },

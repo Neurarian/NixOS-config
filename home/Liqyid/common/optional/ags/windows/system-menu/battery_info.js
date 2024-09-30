@@ -16,7 +16,7 @@ const BatteryPercent = () =>
       "label",
       Battery,
       "percent",
-      (percent) => `${percent}%`,
+      (percent) => ` ${percent}% `,
     );
 
 const BatteryTime = () =>

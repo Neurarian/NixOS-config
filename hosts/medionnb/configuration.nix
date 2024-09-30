@@ -67,6 +67,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 0;
+      grub.configurationLimit = 42;
     };
   };
 
@@ -147,6 +148,7 @@
     power-profiles-daemon.enable = true;
     upower.enable = true;
   };
+  backlight.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -166,6 +168,7 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  localsend.enable = true;
   programs.steam.enable = true;
   security.pam.services.hyprlock = { };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -210,6 +213,7 @@
       "wheel"
       "input"
       "networkmanager"
+      "video"
     ]; # Enable ‘sudo’ for the user.
     #   packages = with pkgs; [
     #     firefox
@@ -228,6 +232,7 @@
     lshw
     fastfetch
     wireplumber
+    pwvucontrol
     wget
     wl-clipboard
     polkit_gnome
