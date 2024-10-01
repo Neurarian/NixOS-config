@@ -9,7 +9,7 @@
     localsend.enable = lib.mkEnableOption "enable localsend file transfer";
   };
 
-  config = lib.mkIf config.graphics_erazer.enable {
+  config = lib.mkIf config.localsend.enable {
 
     programs.localsend = {
       enable = true;

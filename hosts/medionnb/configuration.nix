@@ -2,7 +2,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
-  config,
   pkgs,
   user,
   ...
@@ -13,7 +12,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly;";
-    options = "--delete-older-than 10d";
+    options = "--delete-older-than 7d";
   };
 
   # Enable Flakes
@@ -29,126 +28,6 @@
     ../common/optional
 
   ];
-
-  # Test notebook graphics module
-
-  graphics_erazer.enable = true;
-
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
-    plymouth = {
-      enable = true;
-      font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-      themePackages = [ pkgs.catppuccin-plymouth ];
-      theme = "catppuccin-macchiato";
-    };
-
-    # Enable "Silent Boot"
-    consoleLogLevel = 0;
-    initrd = {
-      verbose = false;
-      systemd.enable = true;
-    };
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "plymouth.use-simpledrm"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = 0;
-      grub.configurationLimit = 42;
-    };
-  };
-
-  services.greetd =
-    let
-      tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-      session = "${pkgs.hyprland}/bin/Hyprland";
-    in
-    {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = "${session}";
-          user = "${user}";
-        };
-        default_session = {
-          command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time -cmd ${session}";
-          user = "greeter";
-        };
-      };
-    };
-
-  networking.hostName = "NixOS"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Sops encrypted wifi creds
-  sops.secrets =
-    let
-      home = "wifi/home/";
-    in
-    {
-      "${home}ssid" = { };
-      "${home}uuid" = { };
-      "${home}psk" = { };
-    };
-
-  networking.networkmanager = {
-    enable = true; # Easiest to use and most distros use this by default.
-    ensureProfiles.profiles = {
-      ChArian_Inet = {
-        connection = {
-          id = config.sops.secrets."wifi/home/ssid".path;
-          interface-name = "wlp110s0";
-          permissions = "user:${user}:;";
-          timestamp = "1725477527";
-          type = "wifi";
-          uuid = config.sops.secrets."wifi/home/uuid".path;
-        };
-        ipv4 = {
-          method = "auto";
-        };
-        ipv6 = {
-          addr-gen-mode = "default";
-          method = "auto";
-        };
-        proxy = { };
-        wifi = {
-          mode = "infrastructure";
-          ssid = config.sops.secrets."wifi/home/ssid".path;
-        };
-        wifi-security = {
-          key-mgmt = "wpa-psk";
-          psk = config.sops.secrets."wifi/home/psk".path;
-        };
-      };
-    };
-  };
-
-  hardware.bluetooth.enable = true;
-
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-  };
-
-  services = {
-    power-profiles-daemon.enable = true;
-    upower.enable = true;
-  };
-  backlight.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -168,26 +47,19 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  # Notebook specific modules
+  graphics_erazer.enable = true;
+  powermanagement.enable = true;
+
+  hardware.bluetooth.enable = true;
+  # FOSS Airdrop alternative
   localsend.enable = true;
   programs.steam.enable = true;
   security.pam.services.hyprlock = { };
+  # Wayland support for chromium and electron apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # Doesn't help with firefox not using wl
-  /*
-    xdg = {
-      portal = {
-        enable = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-wlr
-          xdg-desktop-portal-gtk
-        ];
-      };
-    };
-  */
-
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  zsh.enable = true;
+  security.polkit.enable = true;
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -230,7 +102,6 @@
     home-manager
     age
     lshw
-    fastfetch
     wireplumber
     pwvucontrol
     wget
@@ -249,22 +120,6 @@
       ];
     })
   ];
-  security.polkit.enable = true;
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
