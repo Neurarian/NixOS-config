@@ -3,10 +3,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      fnix = "cd ~/.dotfiles/nix/";
       update = "nix flake update";
-      rebuild = "sudo nixos-rebuild switch --flake . && home-manager switch --flake .";
-      upgrade = "fnix && update && rebuild";
+      rebuild = "nh os switch --ask && nh home switch --ask";
+      upgrade = "cd ~/.dotfiles/nix && update && rebuild";
       ls = "eza --icons=always";
       cd = "z";
       c = "clear";
@@ -25,59 +24,59 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initExtra = ''
-      	fastfetch 
-      	bindkey '^y' autosuggest-accept
-      	bindkey '^e' autosuggest-execute
+      fastfetch 
+      bindkey '^y' autosuggest-accept
+      bindkey '^e' autosuggest-execute
 
-      	# ---- FZF -----
-      	
-      	# Set up fzf key bindings and fuzzy completion
-      	eval "$(fzf --zsh)"
+      # ---- FZF -----
 
-      	export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-      	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-      	export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+      # Set up fzf key bindings and fuzzy completion
+      eval "$(fzf --zsh)"
 
-      	# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-      	# - The first argument to the function ($1) is the base path to start traversal
-      	# - See the source code (completion.{bash,zsh}) for the details.
-      	_fzf_compgen_path() {
-      	  fd --hidden --exclude .git . "$1"
-      	}
+      export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+      export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-      	# Use fd to generate the list for directory completion
-      	_fzf_compgen_dir() {
-      	  fd --type=d --hidden --exclude .git . "$1"
-      	}
+      # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+      # - The first argument to the function ($1) is the base path to start traversal
+      # - See the source code (completion.{bash,zsh}) for the details.
+      _fzf_compgen_path() {
+        fd --hidden --exclude .git . "$1"
+      }
 
-      	source fzf-git
+      # Use fd to generate the list for directory completion
+      _fzf_compgen_dir() {
+        fd --type=d --hidden --exclude .git . "$1"
+      }
 
-      	show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+      source fzf-git
 
-      	export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-      	export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+      show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
-      	# Advanced customization of fzf options via _fzf_comprun function
-      	# - The first argument to the function is the name of the command.
-      	# - You should make sure to pass the rest of the arguments to fzf.
-      	_fzf_comprun() {
-      	  local command=$1
-      	  shift
+      export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+      export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-      	  case "$command" in
-      	    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-      	    export|unset) fzf --preview "eval 'echo \''${}'"         "$@" ;;
-      	    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-      	    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-      	  esac
-      	}
-      	
-      	# ---- Zoxide (better cd) ----
-      	eval "$(zoxide init zsh)"
+      # Advanced customization of fzf options via _fzf_comprun function
+      # - The first argument to the function is the name of the command.
+      # - You should make sure to pass the rest of the arguments to fzf.
+      _fzf_comprun() {
+        local command=$1
+        shift
 
-      	# thefuck alias
-      	eval $(thefuck --alias)
-      	eval $(thefuck --alias fk)
+        case "$command" in
+          cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+          export|unset) fzf --preview "eval 'echo \''${}'"         "$@" ;;
+          ssh)          fzf --preview 'dig {}'                   "$@" ;;
+          *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+        esac
+      }
+
+      # ---- Zoxide (better cd) ----
+      eval "$(zoxide init zsh)"
+
+      # thefuck alias
+      eval $(thefuck --alias)
+      eval $(thefuck --alias fk)
     '';
     loginExtra = ''[[ "$(tty)" == /dev/tty1 ]] && hyprwrapper '';
   };

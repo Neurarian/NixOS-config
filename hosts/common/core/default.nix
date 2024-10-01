@@ -4,5 +4,6 @@
     ./sops.nix
     ./boot.nix
     ./networking.nix
+    ./nix-helper.nix
   ];
 }
