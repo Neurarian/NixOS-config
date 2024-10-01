@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   home.packages = with pkgs; [
     hyprpaper
@@ -146,6 +146,10 @@
 
   wayland.windowManager.hyprland = {
     enable = true; # enable Hyprland
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    plugins = [
+    inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    ];
     systemd.enable = true;
     extraConfig = ''
 
