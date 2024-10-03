@@ -146,9 +146,10 @@
 
   wayland.windowManager.hyprland = {
     enable = true; # enable Hyprland
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     plugins = [
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
     systemd.enable = true;
     extraConfig = ''
@@ -303,6 +304,15 @@
           mouse_move_enables_dpms = true
           key_press_enables_dpms = true
       }
+
+      plugin {
+        overview {
+          workspaceActiveBorder = $accent
+          workspaceInactiveBorder = rgba(595959aa)
+          workspaceBorderSize = 2
+        }
+      }
+
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
       device {
@@ -323,10 +333,8 @@
 
       bind = $mainMod, Return, exec, kitty
       bind = ALT, space, killactive,
-      bind = CONTROL, Space, togglefloating,
       bind = $mainMod, D, exec, wofi --show run
       bind = $mainMod, Q, pseudo, # dwindle
-      bind = ALT, J, togglesplit, # dwindle
       bind = $mainMod, F, fullscreen,
       bind = $mainMod, B, exec, firefox
       bind = $mainMod, Y, exec, youtube-music
@@ -385,30 +393,14 @@
       bind = CONTROL_ALT, right, workspace, m+1
       bind = CONTROL_ALT, left, workspace, m-1
 
-      # lock
-      bind = CONTROL_ALT, L, exec, swaylock
-
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
 
-      #bind = SUPER,Print,exec,knip
-      bind = Super,Print,exec,~/.local/bin/grim-screenshot
-      bind = SHIFT,Print,exec,~/.local/bin/grim-screenshot screen
-
-      bind = ALT, F, exec, ~/lua/wm-keymap.lua f
-      bind = ALT, B, exec, ~/lua/wm-keymap.lua b
-      bind = ALT, C, exec, clipman pick -t wofi && wtype -M ctrl v -m ctrl
-      bind = ALT, M, exec, movies
-      bind = ALT,I,exec, /usr/bin/sh ~/PhpStorm/bin/phpstorm.sh & hyprctl dispatch workspace 3
-      bind = ALT, T, exec, ~/lua/wm-keymap.lua t
-      bind = $mainMod, E, exec, kitty --class="nvim" -e "nvim"
-      #bind = $mainMod, S, exec, syncthingtray --webui & hyprctl dispatch workspace 7
-      bind = $mainMod, T, exec, kitty --class="task-floating" -t 'taskwarrior' -o window.opacity=1 -e "taskwarrior-tui"
-      #bind = $mainMod, P, exec, pull-dotfiles
+      bind = $mainMod, E, exec, kitty --class="nixus" -e "nixus"
+      bind = CONTROL, Space, togglefloating,
+      bind = ALT, J, togglesplit, # dwindle
       #bind = $mainMod, M, exec, ~/.config/hyprland/menu.sh
-      # Mod+` ssh connect in the alacritty window
-      #bind = $mainMod, Grave, exec, ~/ssh.py 'alacritty -e zsh -c'
 
       # mouse side buttons
       bind=,mouse:275,exec,wl-copy $(wl-paste -p) # copy selected text
@@ -437,18 +429,9 @@
       bind=,Return,submap,reset
       submap=reset
 
-      # vpn mode
-      bind=ALT,V,exec,hyprctl dispatch submap vpn; notify-send -t 2500 -c vpn -i /usr/share/icons/breeze-dark/apps/48/alienarena.svg -a 'VPN' $'\n1 - wireguard NL\n\n2 - Openvpn US\n\n0 - Disable VPN'
-      submap=vpn
-      bind =, 1, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 1
-      bind =, 2, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 2
-      bind =, 3, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 3
-      bind =, 4, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 4
-      bind =, 5, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 5
-      bind =, 0, exec, hyprctl dispatch submap reset ; ~/lua/vpn.lua 0
-      bind=,escape,submap,reset
-      bind=,Return,submap,reset
-      submap=reset
+      # plugins
+      bind = $mainMod, W, exec, hyprctl dispatch overview:toggle
+
     '';
-  };
+};
 }
