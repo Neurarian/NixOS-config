@@ -25,10 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-plugins = {
+    /* hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
-    };
+    }; */
 
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";

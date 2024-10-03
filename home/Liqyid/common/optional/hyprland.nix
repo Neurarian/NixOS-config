@@ -4,13 +4,7 @@
     hyprpaper
     hyprcursor
     catppuccin-cursors.macchiatoDark
-    gnome-control-center
-    mission-center
     wlogout
-    glib
-    libnotify
-    pywal
-    ydotool
   ];
 
   services.hyprpaper = {
@@ -149,7 +143,8 @@
     package = inputs.hyprland.packages.${pkgs.system}.default;
     plugins = [
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    pkgs.hyprlandPlugins.hyprexpo
+    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo #override {stdenv = pkgs.gcc14Stdenv;}
     ];
     systemd.enable = true;
     extraConfig = ''
@@ -311,6 +306,17 @@
           workspaceInactiveBorder = rgba(595959aa)
           workspaceBorderSize = 2
         }
+        hyprexpo {
+          columns = 1
+          gap_size = 2
+          bg_col = rgb(111111)
+          workspace_method = center current # [center/first] [workspace] e.g. first 1 or center m+1
+
+          enable_gesture = true # laptop touchpad
+          gesture_fingers = 3  # 3 or 4
+          gesture_distance = 300 # how far is the "max"
+          gesture_positive = true # positive = swipe down. Negative = swipe up.
+    }
       }
 
       # Example per-device config
@@ -430,7 +436,7 @@
       submap=reset
 
       # plugins
-      bind = $mainMod, W, exec, hyprctl dispatch overview:toggle
+      bind = $mainMod, W, overview:toggle
 
     '';
 };
