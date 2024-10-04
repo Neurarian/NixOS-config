@@ -189,17 +189,10 @@
       # Execute your favorite apps at launch
       exec-once = wal_init && wal_set
       exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
+      exec-once = ydotoold
       exec-once = wl-paste --watch cliphist store
       exec-once = [workspace 1 silent] kitty -e tmux
-      exec-once = [workspace 2 silent] youtube-music
-      exec-once = [workspace 4 silent] firefox
-      exec-once = [workspace 5 silent] steam
-      exec-once = [workspace 6 silent] discord
       exec-once = [workspace 2 silent] kitty -e vis
-      #exec-once = [workspace 7 silent] 
-      #exec-once = [workspace 8 silent] 
-      #exec-once = [workspace 9 silent] 
-      #exec-once = [workspace 10 silent] 
 
       env = XCURSOR_THEME,catppuccin-macchiato-dark-cursors
       env = XCURSOR_SIZE,24
@@ -310,6 +303,7 @@
           workspaceActiveBorder = $activeBorder
           workspaceInactiveBorder = $inactiveBorder
           workspaceBorderSize = 2
+
         }
         hyprexpo {
           columns = 1
@@ -321,7 +315,7 @@
           gesture_fingers = 3  # 3 or 4
           gesture_distance = 300 # how far is the "max"
           gesture_positive = true # positive = swipe down. Negative = swipe up.
-    }
+        }
       }
 
       # Example per-device config
@@ -344,14 +338,16 @@
 
       bind = $mainMod, Return, exec, kitty
       bind = ALT, space, killactive,
-      bind = $mainMod, D, exec, fuzzel
+      bind = $mainMod, A, exec, fuzzel
       bind = $mainMod, Q, pseudo, # dwindle
       bind = $mainMod, F, fullscreen,
       bind = $mainMod, B, exec, firefox
       bind = $mainMod, Y, exec, youtube-music
+      bind = $mainMod, S, exec, steam
+      bind = $mainMod, D, exec, discord
       bind = $mainMod, C, exec, coolercontrol
+      bind = $mainMod, L, exec, localsend_app
       bind = $mainMod CTRL, Q, exec, wlogout
-      bind = $mainMod, S, exec, localsend_app
       bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
       bind = $mainMod SHIFT, W, exec, wal_init && wal_set
       bind = $mainMod CTRL, RETURN, exec, ~/scripts/applauncher.sh

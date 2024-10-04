@@ -30,4 +30,5 @@
   power_monitor.enable = true;
   polkit_gnome.enable = true;
   fuzzel.enable = true;
+  wlogout.enable = true;
 }

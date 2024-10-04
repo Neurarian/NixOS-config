@@ -6,10 +6,16 @@ let
     runtimeInputs = with pkgs; [ pywal ];
 
     text = ''
-      	    #!/bin/bash
-      wal -q  -i ~/Pictures/wallpaper/
+      #!/bin/bash
+      if [ ! -d ~/Pictures/wallpapers/ ]; then
+	
+      wal -q  -i ${builtins.toString ./../optional/wallpaper}
 
-      exit
+      else
+
+      wal -q  -i ~/Pictures/wallpapers/
+
+      fi
     '';
   };
 in

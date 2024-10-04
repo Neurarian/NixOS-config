@@ -55,6 +55,7 @@ in
         ]))
       ];
 
+      # Ensure presence of colorgen dir and file
       activation = {
         makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           run mkdir -p "$XDG_STATE_HOME/ags/scss"
@@ -74,7 +75,7 @@ in
 
     programs.ags = {
       enable = true;
-      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags;
+      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags_notebook;
     };
     systemd.user.services.ags = {
       Unit = {

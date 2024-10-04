@@ -94,6 +94,7 @@
           "browser.search.order.1" = "Searx";
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
           "browser.newtabpage.activity-stream.default.sites" = false;
+          "browser.newtabpage.blocked" = ''{"4gPpjkxgZzXPVtuEoAL9Ig==":1,"26UbzFJ7qT9/4DhodHKA1Q==":1,"eV8/WsSLxHadrTL1gAxhug==":1,"gLv0ja2RYVgxKdp0I5qwvA==":1,"T9nJot5PurhJSy8n038xGA==":1,"afooYCodMAvS/moZ8M8x6g==":1}'';
           "geo.provider.use_geoclue" = false;
           "extensions.getAddons.showPane" = false;
           "extensions.htmlaboutaddons.recommendations.enabled" = false;
