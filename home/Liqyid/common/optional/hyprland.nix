@@ -172,7 +172,7 @@
       # Window-Rules
       #}
 
-      windowrulev2 = bordercolor $pinnedWindowBase $pinnedWindowGrad,pinned:1
+      windowrulev2 = bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1
       windowrule = workspace 2, youtube-music
       windowrule = workspace 4, firefox
       windowrule = idleinhibit fullscreen, firefox
@@ -229,7 +229,7 @@
           gaps_in = 5
           gaps_out = 20
           border_size = 2
-          col.active_border = $activeBorder
+          col.active_border = $activeBorder $activeBorderGrad 45deg
           col.inactive_border = $inactiveBorder
           #no_cursor_warps = true
 
@@ -344,14 +344,14 @@
 
       bind = $mainMod, Return, exec, kitty
       bind = ALT, space, killactive,
-      bind = $mainMod, D, exec, wofi --show run
+      bind = $mainMod, D, exec, fuzzel
       bind = $mainMod, Q, pseudo, # dwindle
       bind = $mainMod, F, fullscreen,
       bind = $mainMod, B, exec, firefox
       bind = $mainMod, Y, exec, youtube-music
       bind = $mainMod, C, exec, coolercontrol
       bind = $mainMod CTRL, Q, exec, wlogout
-      bind = $mainMod, S, exec, localsend
+      bind = $mainMod, S, exec, localsend_app
       bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
       bind = $mainMod SHIFT, W, exec, wal_init && wal_set
       bind = $mainMod CTRL, RETURN, exec, ~/scripts/applauncher.sh
