@@ -5,7 +5,7 @@
     ./kitty.nix
     ./tmux.nix
     ./fastfetch.nix
-    ./nixus.nix
+    ./nvim.nix
     ./services
   ];
 }

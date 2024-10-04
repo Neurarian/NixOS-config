@@ -118,11 +118,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1728027500,
-        "narHash": "sha256-yjA8Tu6XCZjvh364E3MixlLqxnPn65cxQ5EYvpuXa/E=",
+        "lastModified": 1728049238,
+        "narHash": "sha256-wYRRSUZF+Xq7Fz2cx/WPDgqiYOfCBOkH+9LWCJZR3Ns=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "4c32bcf324dc960eb6c95606d53e8ac336030e9b",
+        "rev": "1617deefd64c5ac494a8155b5856e6e90efd8eab",
         "type": "gitlab"
       },
       "original": {
@@ -371,7 +371,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-ebsHG1aC6KPXkOUJ7vlK2Hwuue06FfigxD8+J9HmcmU=",
+        "narHash": "sha256-+E5zc+uRPILSlmBhZmkQcMbJ9h1f1wzFR1iJDHwd2iI=",
         "path": "./home/Liqyid/common/core/nvim",
         "type": "path"
       },

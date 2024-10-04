@@ -6,10 +6,10 @@
 {
 
   home.packages = with pkgs; [
-    inputs.nixCats.packages.${system}.nixus
+    inputs.nixCats.packages.${system}.nvim
   ];
 
-  nixus = {
+  nvim = {
     enable = true;
   };
 }
