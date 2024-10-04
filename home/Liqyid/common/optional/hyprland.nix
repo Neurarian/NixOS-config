@@ -5,6 +5,8 @@
     hyprcursor
     catppuccin-cursors.macchiatoDark
     wlogout
+    glib
+    libnotify
   ];
 
   services.hyprpaper = {
@@ -25,6 +27,7 @@
   programs.hyprlock = {
     enable = true;
     settings = {
+      source = "~/.config/hypr/hyprlock_colors.conf";
       general = {
         pam_module = "/etc/pam.d/hyprlock";
         disable_loading_bar = true;
@@ -46,7 +49,7 @@
         {
           monitor = "";
           text = ''cmd[update:30000] echo "$(date +"%I:%M %p")"'';
-          color = "rgb(202, 211, 245)";
+          color = "$text_color";
           font_size = 90;
           font_family = "JetBrainsMono NF";
           position = "-130 -100";
@@ -58,7 +61,7 @@
         {
           monitor = "";
           text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';
-          color = "rgb(202, 211, 245)";
+          color = "$text_color";
           font_size = 25;
           font_family = "JetBrainsMono NF";
           position = "-130, -250";
@@ -70,7 +73,7 @@
         {
           monitor = "";
           text = "$LAYOUT";
-          color = "rgb(202, 211, 245)";
+          color = "$text_color";
           font_size = 20;
           font_family = "JetBrainsMono NF";
           rotate = 0; # degrees, counter-clockwise
@@ -87,7 +90,7 @@
           monitor = "";
           path = "${builtins.toString ./.face}";
           size = 350;
-          border_color = "rgb(24, 25, 38)";
+          border_color = "$entry_border_color";
           rounding = -1;
           position = "0, 75";
           halign = "center";
@@ -104,9 +107,9 @@
           dots_spacing = 0.2;
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
+          font_color = "$entry_color";
+          inner_color = "$entry_background_color";
+          outer_color = "$entry_border_color";
           outline_thickness = 4;
           placeholder_text = ''<i>󰌾 Logged in as </i>$USER'';
           shadow_passes = 2;
@@ -140,13 +143,17 @@
 
   wayland.windowManager.hyprland = {
     enable = true; # enable Hyprland
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
     plugins = [
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-    pkgs.hyprlandPlugins.hyprexpo
+    # pkgs.hyprlandPlugins.hyprexpo
     # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo #override {stdenv = pkgs.gcc14Stdenv;}
     ];
     systemd.enable = true;
+    settings = {
+      source = "~/.config/hypr/hyprland_colors.conf";
+
+    };
     extraConfig = ''
 
       # This is an example Hyprland config file.
@@ -163,7 +170,9 @@
       #monitor=,preferred,auto,auto
 
       # Window-Rules
-      #
+      #}
+
+      windowrulev2 = bordercolor $pinnedWindowBase $pinnedWindowGrad,pinned:1
       windowrule = workspace 2, youtube-music
       windowrule = workspace 4, firefox
       windowrule = idleinhibit fullscreen, firefox
@@ -178,7 +187,7 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       # Execute your favorite apps at launch
-      exec-once = ydotoold
+      exec-once = wal_init && wal_set
       exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
       exec-once = wl-paste --watch cliphist store
       exec-once = [workspace 1 silent] kitty -e tmux
@@ -191,11 +200,6 @@
       #exec-once = [workspace 8 silent] 
       #exec-once = [workspace 9 silent] 
       #exec-once = [workspace 10 silent] 
-
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.:conf
-      # source = ~/.cache/wal/colors-hyprland.conf
-      # Some default env vars.
 
       env = XCURSOR_THEME,catppuccin-macchiato-dark-cursors
       env = XCURSOR_SIZE,24
@@ -225,8 +229,8 @@
           gaps_in = 5
           gaps_out = 20
           border_size = 2
-          col.active_border = $accent rgba($accentAlphac1) 45deg
-          # col.inactive_border = rgba(595959aa)
+          col.active_border = $activeBorder
+          col.inactive_border = $inactiveBorder
           #no_cursor_warps = true
 
           layout = dwindle 
@@ -298,12 +302,13 @@
           disable_autoreload = false
           mouse_move_enables_dpms = true
           key_press_enables_dpms = true
+          background_color = $backgroundColor
       }
 
       plugin {
         overview {
-          workspaceActiveBorder = $accent
-          workspaceInactiveBorder = rgba(595959aa)
+          workspaceActiveBorder = $activeBorder
+          workspaceInactiveBorder = $inactiveBorder
           workspaceBorderSize = 2
         }
         hyprexpo {
@@ -354,6 +359,7 @@
       bind = $mainMod CTRL, C, exec, ~/scripts/cliphist.sh
       bind = $mainMod SHIFT, B, exec, ~/scripts/waybar.sh
       bind = $mainMod SHIFT, V, exec, ~/scripts/windows_vm.sh
+      bind = $mainMod, P, pin
 
 
       # Move focus

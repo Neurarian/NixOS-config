@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -53,6 +53,10 @@ apply_fuzzel() {
         echo "Template file not found for Fuzzel. Skipping that."
         return
     fi
+    # Check if fuzzel config dir exists
+    if [ ! -d "$XDG_CONFIG_HOME"/fuzzel ]; then
+        mkdir "$XDG_CONFIG_HOME"/fuzzel
+    fi
     # Copy template
     mkdir -p "$CACHE_DIR"/user/generated/fuzzel
     cp "scripts/templates/fuzzel/fuzzel.ini" "$CACHE_DIR"/user/generated/fuzzel/fuzzel.ini
@@ -88,38 +92,38 @@ apply_term() {
 }
 
 apply_hyprland() {
-    # Check if scripts/templates/hypr/hyprland/colors.conf exists
-    if [ ! -f "scripts/templates/hypr/hyprland/colors.conf" ]; then
+    # Check if scripts/templates/hypr/hyprland_colors.conf exists
+    if [ ! -f "scripts/templates/hypr/hyprland_colors.conf" ]; then
         echo "Template file not found for Hyprland colors. Skipping that."
         return
     fi
     # Copy template
-    mkdir -p "$CACHE_DIR"/user/generated/hypr/hyprland
-    cp "scripts/templates/hypr/hyprland/colors.conf" "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf
+    mkdir -p "$CACHE_DIR"/user/generated/hypr
+    cp "scripts/templates/hypr/hyprland_colors.conf" "$CACHE_DIR"/user/generated/hypr/hyprland_colors.conf
     # Apply colors
     for i in "${!colorlist[@]}"; do
-        sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf
+        sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprland_colors.conf
     done
 
-    cp "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf "$XDG_CONFIG_HOME"/hypr/hyprland/colors.conf
+    cp "$CACHE_DIR"/user/generated/hypr/hyprland_colors.conf "$XDG_CONFIG_HOME"/hypr/hyprland_colors.conf
 }
 
 apply_hyprlock() {
-    # Check if scripts/templates/hypr/hyprlock.conf exists
-    if [ ! -f "scripts/templates/hypr/hyprlock.conf" ]; then
+    # Check if scripts/templates/hypr/hyprlock_colors.conf exists
+    if [ ! -f "scripts/templates/hypr/hyprlock_colors.conf" ]; then
         echo "Template file not found for hyprlock. Skipping that."
         return
     fi
     # Copy template
     mkdir -p "$CACHE_DIR"/user/generated/hypr/
-    cp "scripts/templates/hypr/hyprlock.conf" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+    cp "scripts/templates/hypr/hyprlock_colors.conf" "$CACHE_DIR"/user/generated/hypr/hyprlock_colors.conf
     # Apply colors
-    # sed -i "s/{{ SWWW_WALL }}/${wallpath_png}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+    # sed -i "s/{{ SWWW_WALL }}/${wallpath_png}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock_colors.conf
     for i in "${!colorlist[@]}"; do
-        sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+        sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock_colors.conf
     done
 
-    cp "$CACHE_DIR"/user/generated/hypr/hyprlock.conf "$XDG_CONFIG_HOME"/hypr/hyprlock.conf
+    cp "$CACHE_DIR"/user/generated/hypr/hyprlock_colors.conf "$XDG_CONFIG_HOME"/hypr/hyprlock_colors.conf
 }
 
 apply_gtk() { # Using gradience-cli
@@ -174,8 +178,9 @@ else
 fi
 
 apply_ags &
-#apply_hyprland &
-#apply_hyprlock &
+apply_hyprland &
+apply_hyprlock &
 apply_gtk &
-#apply_fuzzel &
+apply_fuzzel &
+# use wal generated colors
 #apply_term &
