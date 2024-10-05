@@ -21,10 +21,6 @@ let
 
     hyprctl hyprpaper preload $(cat $HOME/.cache/wal/wal) && hyprctl hyprpaper wallpaper "eDP-1, $(cat $HOME/.cache/wal/wal)"
 
-    # Update music visualizer colors & mako theme
-
-    hyprctl dispatch focuswindow kitty
-    ydotool key 19:1 19:0
     #~/.config/mako/update-theme.sh
 
     # Get wallpaper image name & send notification

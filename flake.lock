@@ -212,11 +212,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1728135704,
-        "narHash": "sha256-M3CtCDGhf1uksdNE/Yq0vPzYPeL+ujBdLqpnHmmO8Ig=",
+        "lastModified": 1728142617,
+        "narHash": "sha256-ramJ6G9bKYuZshtYRc0olhtN89bP9i4BDhhTU0E0cLc=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "52c09196219313aec2ec1d3d543669bff834d746",
+        "rev": "0ec6072a290051a03ab66cfb9bc616b2f5540e64",
         "type": "github"
       },
       "original": {
@@ -371,7 +371,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-+E5zc+uRPILSlmBhZmkQcMbJ9h1f1wzFR1iJDHwd2iI=",
+        "narHash": "sha256-kH7CngH7iPZ+Dp0DqI3VkSGAtGl7mSxIVgTIi6eErFc=",
         "path": "./home/Liqyid/common/core/nvim",
         "type": "path"
       },

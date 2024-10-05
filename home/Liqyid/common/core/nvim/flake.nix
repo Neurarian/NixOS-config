@@ -266,7 +266,7 @@
             ];
             lsp = [
               nvim-lspconfig
-              # rustaceanvim
+              rustaceanvim
             ];
             debug = [
               nvim-dap
