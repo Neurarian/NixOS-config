@@ -341,17 +341,13 @@
       bind = $mainMod, F, fullscreen,
       bind = $mainMod, B, exec, firefox
       bind = $mainMod, Y, exec, youtube-music
-      bind = $mainMod, S, exec, steam
+      bind = $mainMod, G, exec, steam
       bind = $mainMod, D, exec, discord
       bind = $mainMod, C, exec, coolercontrol
-      bind = $mainMod, L, exec, localsend_app
-      bind = $mainMod CTRL, Q, exec, wlogout
+      bind = $mainMod, S, exec, localsend_app
+      bind = $mainMod SHIFT, Q, exec, wlogout
       bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
       bind = $mainMod SHIFT, W, exec, wal_init && wal_set
-      bind = $mainMod CTRL, RETURN, exec, ~/scripts/applauncher.sh
-      bind = $mainMod CTRL, F, exec, ~/scripts/filemanager.sh
-      bind = $mainMod CTRL, C, exec, ~/scripts/cliphist.sh
-      bind = $mainMod SHIFT, B, exec, ~/scripts/waybar.sh
       bind = $mainMod SHIFT, V, exec, ~/scripts/windows_vm.sh
       bind = $mainMod, P, pin
 

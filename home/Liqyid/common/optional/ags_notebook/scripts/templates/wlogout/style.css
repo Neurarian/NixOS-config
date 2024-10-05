@@ -12,9 +12,12 @@ button {
 	font-family: 'Material Symbols Outlined';
 	font-size: 10rem;
 	background-color: alpha(#{{ $onSurface }}, 0.6);
+	border-color: alpha(#{{ $onSurface }}, 0);
 	color: alpha(#{{ $primaryContainer }}, 1);
 	margin: 2rem;
 	border-radius: 2rem;
+	border-style: solid;
+	border-width: .3rem;
 	padding: 3rem;
 }
 
@@ -22,5 +25,7 @@ button:focus,
 button:active,
 button:hover {
 	background-color: alpha(#{{ $inverseSurface }}, 0.9);
+	border-color: alpha(#{{ $primaryContainer }}, 0.7);
+	box-shadow: inset -0.6rem -0.6rem 0.6rem alpha(#{{ $shadow }}, 0.4), inset 0.6rem 0.6rem 0.6rem alpha(#{{ $shadow }}, 0.4);
 	border-radius: 4rem;
 }

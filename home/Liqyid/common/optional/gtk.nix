@@ -14,25 +14,28 @@
 
   config = lib.mkIf config.gtk_module.enable {
 
-    home.packages = [ pkgs.dconf ];
-
     gtk = {
 
       enable = true;
 
       font = {
-        name = "JetBrainsMono";
-        package = pkgs.jetbrains-mono;
+        package = pkgs.fira-code;
+        name = "FiraCode";
         size = 9;
       };
 
-      # gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-
       iconTheme = {
-        name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
+      };
+    };
+
+    # Set GTK cursor-theme
+    # TODO: Make this work with $HYPRCURSOR_THEME env var
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        cursor-theme = "catppuccin-macchiato-dark-cursors";
       };
     };
   };
-
 }

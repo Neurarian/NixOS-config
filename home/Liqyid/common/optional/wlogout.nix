@@ -22,7 +22,7 @@
         {
           "label" = "hibernate";
           "action" = "systemctl hibernate || loginctl hibernate";
-          "text" = "save";
+          "text" = "mode_standby";
           "keybind" = "h";
         }
         {
