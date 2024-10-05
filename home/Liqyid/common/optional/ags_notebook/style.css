@@ -8,17 +8,17 @@
 
 /* buttons */
 * {
-  text-shadow: 0 2px 3px rgba(252, 248, 250, 0.2);
+  text-shadow: 0 2px 3px rgba(250, 249, 255, 0.2);
 }
 
 /* general styles */
 * {
-  color: #1C1B1D;
+  color: #181B25;
 }
 
 /* mixins */
 tooltip {
-  background: #FCF8FA;
+  background: #FAF9FF;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
@@ -26,7 +26,7 @@ tooltip {
 /* scales & progress bars */
 scale trough,
 progressbar trough {
-  background-color: rgba(252, 248, 250, 0.4);
+  background-color: rgba(250, 249, 255, 0.4);
   border-radius: 0.5rem;
   min-width: 5rem;
   padding: 0 0.25rem;
@@ -35,7 +35,7 @@ scale highlight,
 scale progress,
 progressbar highlight,
 progressbar progress {
-  background: rgba(28, 27, 29, 0.75);
+  background: rgba(24, 27, 37, 0.75);
   border-radius: 0.5rem;
   margin: 0 calc(0px - 0.25rem);
   min-height: 0.5rem;
@@ -43,32 +43,32 @@ progressbar progress {
 
 .button {
   transition: 200ms;
-  background: #747288;
+  background: #796DA1;
   border-radius: 5rem;
   padding: 0.4rem;
 }
 .button:hover {
-  background: #514f5e;
+  background: #554c76;
 }
 
 .button.disabled {
   transition: 200ms;
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
 }
 .button.disabled:hover {
-  background: #fcf8fa;
+  background: #faf9ff;
 }
 
 /* modules & windows */
 .bar {
-  background: rgba(252, 248, 250, 0.5);
+  background: rgba(250, 249, 255, 0.5);
   min-height: 32px;
   border-radius: 32px;
   margin: 0.45rem 0.45rem 0px 0.45rem;
   font-size: 1.1rem;
-  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(252, 248, 250, 0.5);
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(250, 249, 255, 0.5);
 }
 .bar .module {
   margin: 0 0.4rem;
@@ -84,31 +84,31 @@ progressbar progress {
   margin: 0.6rem 0.35rem;
   min-width: 1.3rem;
   transition: 100ms linear;
-  box-shadow: inset -2px -2px 2px rgba(252, 248, 250, 0.3);
+  box-shadow: inset -2px -2px 2px rgba(250, 249, 255, 0.3);
 }
 .bar .workspaces .focused {
   min-width: 2.5rem;
 }
 .bar .workspaces .monitor0 {
-  background: #E4E0F2;
-  box-shadow: inset -2px -2px 2px #c5bce3;
+  background: #D8E2FF;
+  box-shadow: inset -2px -2px 2px #a5bcff;
 }
 .bar .workspaces .monitor0:hover {
-  background: #fdfdfe;
+  background: white;
 }
 .bar .workspaces .monitor1 {
-  background: #747288;
-  box-shadow: inset -2px -2px 2px #5c5b6c;
+  background: #796DA1;
+  box-shadow: inset -2px -2px 2px #615685;
 }
 .bar .workspaces .monitor1:hover {
-  background: #8a889b;
+  background: #9086b1;
 }
 .bar .workspaces .monitor2 {
-  background: #747288;
-  box-shadow: inset -2px -2px 2px #5c5b6c;
+  background: #796DA1;
+  box-shadow: inset -2px -2px 2px #615685;
 }
 .bar .workspaces .monitor2:hover {
-  background: #8a889b;
+  background: #9086b1;
 }
 .bar .workspaces .monitor3 {
   background: #4F6354;
@@ -126,7 +126,7 @@ progressbar progress {
   font-size: 1.1rem;
 }
 .bar .music.active > box {
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
 }
 .bar .music .cover {
   background-size: cover;
@@ -140,7 +140,7 @@ progressbar progress {
 /* tray */
 .tray button {
   transition: 200ms;
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   background: none;
@@ -148,32 +148,32 @@ progressbar progress {
   font-size: 1.1rem;
 }
 .tray button:hover {
-  background: #fcf8fa;
+  background: #faf9ff;
 }
 .tray button:not(:last-child) {
   margin-right: 0.3rem;
 }
 .tray button.active {
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
 }
 
 menu {
-  background: #FCF8FA;
+  background: #FAF9FF;
   border-radius: 8px;
 }
 menu separator {
-  background-color: rgba(252, 248, 250, 0.4);
+  background-color: rgba(250, 249, 255, 0.4);
 }
 menu menuitem {
   transition: 200ms;
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   border-radius: 0;
   padding: 0.4rem 0.7rem;
 }
 menu menuitem:hover {
-  background: #fcf8fa;
+  background: #faf9ff;
 }
 menu menuitem:first-child {
   border-radius: 8px 8px 0 0;
@@ -191,28 +191,28 @@ menu menuitem:only-child {
   border-radius: 16px;
 }
 .system-menu-toggler.active box {
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
 }
 
 .bar-hardware-progress-circle, .ram, .cpu {
   min-width: 2rem;
   min-height: 1.3rem;
   font-size: 0.3rem;
-  background: rgba(221, 217, 219, 0.5);
+  background: rgba(215, 217, 230, 0.5);
 }
 
 .bar-hardware-progress-inner-circle, .ram-inner, .cpu-inner {
   font-size: 0.7rem;
   margin: 1px 4px 0px 0px;
-  color: #1C1B1D;
+  color: #181B25;
 }
 
 .cpu {
-  color: #7445C1;
+  color: #5551C2;
 }
 
 .ram {
-  color: #A67D8F;
+  color: #009993;
 }
 
 .bar-hw-ram-box {
@@ -227,7 +227,7 @@ menu menuitem:only-child {
 
 .separator {
   font-size: 1.8rem;
-  color: #767476;
+  color: #707482;
 }
 
 .bar .date {
@@ -235,9 +235,9 @@ menu menuitem:only-child {
 }
 
 .music.window {
-  box-shadow: 0 3px 5px 1px rgba(252, 248, 250, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(250, 249, 255, 0.1);
   border-radius: 16px;
-  background: rgba(252, 248, 250, 0.5);
+  background: rgba(250, 249, 255, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
 }
@@ -245,7 +245,7 @@ menu menuitem:only-child {
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  box-shadow: 0 1px 2px -1px rgba(252, 248, 250, 0.5);
+  box-shadow: 0 1px 2px -1px rgba(250, 249, 255, 0.5);
   margin: 0.4rem;
   min-height: 13rem;
   min-width: 13rem;
@@ -286,9 +286,9 @@ menu menuitem:only-child {
 }
 
 .osd {
-  box-shadow: 0 3px 5px 1px rgba(252, 248, 250, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(250, 249, 255, 0.1);
   border-radius: 16px;
-  background: rgba(252, 248, 250, 0.5);
+  background: rgba(250, 249, 255, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   border-radius: 3rem;
@@ -313,9 +313,9 @@ menu menuitem:only-child {
 
 /* general */
 .system-menu {
-  box-shadow: 0 3px 5px 1px rgba(252, 248, 250, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(250, 249, 255, 0.1);
   border-radius: 16px;
-  background: rgba(252, 248, 250, 0.5);
+  background: rgba(250, 249, 255, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin-top: 4px;
@@ -323,7 +323,7 @@ menu menuitem:only-child {
 }
 .system-menu > box {
   border-radius: calc(16px - 0.4rem - 2px);
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   box-shadow: 0 1px 5px -5px rgba(0, 0, 0, 0.5);
   margin: 0.4rem;
   padding: 0.4rem;
@@ -356,13 +356,13 @@ menu menuitem:only-child {
 }
 .system-menu .power-profiles .options widget {
   transition: 200ms;
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   border-radius: 0;
 }
 .system-menu .power-profiles .options widget:hover {
-  background: #fcf8fa;
+  background: #faf9ff;
 }
 .system-menu .power-profiles .options widget:last-child {
   border-radius: 0 0 8px 8px;
@@ -380,15 +380,15 @@ menu menuitem:only-child {
 }
 
 .notification {
-  box-shadow: 0 3px 5px 1px rgba(252, 248, 250, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(250, 249, 255, 0.1);
   border-radius: 16px;
-  background: rgba(252, 248, 250, 0.5);
+  background: rgba(250, 249, 255, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin: 5px 5px 5px 10px;
   min-width: 25rem;
   border-radius: 16px;
-  background-color: rgba(252, 248, 250, 0.5);
+  background-color: rgba(250, 249, 255, 0.5);
 }
 .notification.critical {
   border: 1px solid red;
@@ -413,7 +413,7 @@ menu menuitem:only-child {
 
 .notification .actions .action-button {
   border-radius: calc(16px - 0.4rem - 2px);
-  background: rgba(252, 248, 250, 0.4);
+  background: rgba(250, 249, 255, 0.4);
   box-shadow: 0 1px 5px -5px rgba(0, 0, 0, 0.5);
   margin: 0.4rem;
   padding: 0.4rem;
@@ -421,7 +421,7 @@ menu menuitem:only-child {
   padding: 0.5rem 0;
 }
 .notification .actions .action-button:hover {
-  background: #fcf8fa;
+  background: #faf9ff;
 }
 
 .notification .text {
@@ -432,7 +432,7 @@ menu menuitem:only-child {
   font-weight: 500;
 }
 .notification .text .body {
-  color: #1C1B1D;
+  color: #181B25;
   font-weight: 500;
 }
 

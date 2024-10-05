@@ -189,10 +189,8 @@
       # Execute your favorite apps at launch
       exec-once = wal_init && wal_set
       exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
-      exec-once = ydotoold
       exec-once = wl-paste --watch cliphist store
       exec-once = [workspace 1 silent] kitty -e tmux
-      exec-once = [workspace 2 silent] kitty -e vis
 
       env = XCURSOR_THEME,catppuccin-macchiato-dark-cursors
       env = XCURSOR_SIZE,24

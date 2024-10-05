@@ -31,4 +31,6 @@
   polkit_gnome.enable = true;
   fuzzel.enable = true;
   wlogout.enable = true;
+  cava.enable = true;
+  
 }
