@@ -36,6 +36,7 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
 
 - ags widgets
 - switch to [Wezterm](https://github.com/wez/wezterm)?
+- looking-glass
 
 </details>
 

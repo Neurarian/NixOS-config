@@ -53,6 +53,14 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   zsh.enable = true;
   security.polkit.enable = true;
+
+  # Option to attach GPU to VFIO on boot
+  specialisation."VFIO".configuration = {
+    system.nixos.tags = [ "with-vfio" ];
+    vfio.enable = true;
+  };
+  # VMs
+  libvirt.enable = true;
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -79,6 +87,7 @@
       "input"
       "networkmanager"
       "video"
+      "libvirtd"
     ]; # Enable ‘sudo’ for the user.
     #   packages = with pkgs; [
     #     firefox

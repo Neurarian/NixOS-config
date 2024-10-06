@@ -36,6 +36,11 @@
       "org/gnome/desktop/interface" = {
         cursor-theme = "catppuccin-macchiato-dark-cursors";
       };
+    # needed for virt-manager setup, factor this out?
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
     };
   };
 }
