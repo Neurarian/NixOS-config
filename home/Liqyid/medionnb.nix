@@ -35,5 +35,6 @@
   fuzzel.enable = true;
   wlogout.enable = true;
   cava.enable = true;
+  looking-glass.enable = true;
 
 }

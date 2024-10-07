@@ -58,6 +58,7 @@
   specialisation."VFIO".configuration = {
     system.nixos.tags = [ "with-vfio" ];
     vfio.enable = true;
+    gpu_power_management.enable = true;
   };
   # VMs
   libvirt.enable = true;

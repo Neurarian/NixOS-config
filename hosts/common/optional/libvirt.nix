@@ -12,6 +12,7 @@
   config = lib.mkIf config.libvirt.enable {
 
     programs.virt-manager.enable = true;
+
     # Service to declaratively start VFIO networking
     virsh_netstart_service.enable = true;
     virtualisation.libvirtd = {
@@ -22,12 +23,13 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [
+          packages = [ pkgs.OVMFFull.fd ];
+          /* packages = [
             (pkgs.OVMF.override {
               secureBoot = true;
               tpmSupport = true;
             }).fd
-          ];
+          ]; */
         };
       };
     };

@@ -20,7 +20,6 @@
       systemd.enable = true;
     };
     kernelParams = [
-      "intel_iommu=on"
       "quiet"
       "splash"
       "boot.shell_on_fail"

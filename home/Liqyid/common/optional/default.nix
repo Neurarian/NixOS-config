@@ -14,6 +14,7 @@
     ./fuzzel.nix
     ./wlogout.nix
     ./cava.nix
+    ./looking-glass-client.nix
   ];
   discord.enable = lib.mkDefault false;
   overskride.enable = lib.mkDefault false;
@@ -24,4 +25,5 @@
   fuzzel.enable = lib.mkDefault false;
   wlogout.enable = lib.mkDefault false;
   cava.enable = lib.mkDefault false;
+  looking-glass.enable = lib.mkDefault false;
 }
