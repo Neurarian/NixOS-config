@@ -9,7 +9,7 @@ let
       #!/bin/bash
       if [ ! -d ~/Pictures/wallpapers/ ]; then
 	
-      wal -q  -i ${builtins.toString ./../optional/wallpaper}
+      wal -q  -i ${builtins.toString ./../optional/hyprland/default_wallpaper}
 
       else
 

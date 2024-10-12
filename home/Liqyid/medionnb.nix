@@ -37,4 +37,8 @@
   cava.enable = true;
   looking-glass.enable = true;
 
+  desktop = {
+    hypr.enable = false;
+  };
+
 }

@@ -2,9 +2,7 @@
 {
   imports = [
     ./discord.nix
-    ./hyprland.nix
     ./firefox.nix
-    ./catppuccin.nix
     ./overskride.nix
     ./mpd.nix
     ./ags.nix
@@ -15,6 +13,7 @@
     ./wlogout.nix
     ./cava.nix
     ./looking-glass-client.nix
+    ./hyprland
   ];
   discord.enable = lib.mkDefault false;
   overskride.enable = lib.mkDefault false;
