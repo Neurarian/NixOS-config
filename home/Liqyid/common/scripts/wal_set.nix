@@ -1,7 +1,9 @@
 { pkgs, ... }:
 let
-  wal_set = pkgs.writeShellScriptBin "wal_set" ''
-          
+  wal_set = pkgs.writeShellApplication {
+  name = "wal_set";
+  runtimeInputs = with pkgs; [ wlr-randr ];
+  text = ''
     #!/bin/bash
 
     apply_hyprpaper() {
@@ -34,15 +36,13 @@ let
     newwall=$(basename "$(< "$HOME/.cache/wal/wal")")
     notify-send "Colors and Wallpaper updated" "with image $newwall"
 
-    $HOME/.config/ags/scripts/colorgen.sh "$HOME/.cache/current_wallpaper.jpg" --apply --smart
+    "$HOME"/.config/ags/scripts/colorgen.sh "$HOME/.cache/current_wallpaper.jpg" --apply --smart
 
     echo "DONE!"
 
     	    '';
+  };
 in
 {
-  home.packages = [
-    wal_set
-    pkgs.wlr-randr
-  ];
+  home.packages = [ wal_set ];
 }
