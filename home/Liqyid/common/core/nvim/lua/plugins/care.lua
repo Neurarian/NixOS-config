@@ -73,7 +73,7 @@ return {
         },
         ghost_text = {
           enabled = true,
-          position = 'overlay',
+          position = 'inline',
         },
       },
       snippet_expansion = function(body)
@@ -84,7 +84,7 @@ return {
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       sources = {},
       preselect = true,
-      sorting_direction = 'top-down',
+      sorting_direction = 'away-from-cursor',
       completion_events = { 'TextChangedI' },
       enabled = function()
         local enabled = true
@@ -114,7 +114,7 @@ return {
       end
     end)
 
-    vim.keymap.set('i', '>', function()
+    vim.keymap.set('i', '<c-f>', function()
       if care.api.doc_is_open() then
         care.api.scroll_docs(4)
       else
