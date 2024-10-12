@@ -1,6 +1,6 @@
 return {
   'care.nvim',
-  event = 'InsertEnter',
+  event = 'DeferredUIEnter',
 
   after = function()
     local care = require 'care'

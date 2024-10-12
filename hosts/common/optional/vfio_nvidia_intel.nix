@@ -20,7 +20,7 @@ in
     in
     {
       boot = {
-        # extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+        extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
         kernelModules = [ "kvmfr" ];
         initrd.kernelModules = [
           "vfio_pci"

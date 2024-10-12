@@ -72,9 +72,23 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
+  services = {
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+    # Autologin Hyprland on nvidia GPU  TODO: make this common/optional with gpu specific option for command
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          # Script: /home/Liqyid/common/scripts/nvidia_hyprland_wrapper.nix
+          # Wrapper to launch Hyprland correctly 
+          command = "hyprwrapper";
+          user = "${user}";
+        };
+      };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -95,6 +109,7 @@
     #     tree
     #   ];
   };
+
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.nvidia.acceptLicense= true;
 

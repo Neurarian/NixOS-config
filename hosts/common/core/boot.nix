@@ -5,7 +5,7 @@
 }:
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     plymouth = {
       enable = true;
       font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
@@ -40,23 +40,4 @@
       grub.configurationLimit = 42;
     };
   };
-
-  services.greetd =
-    let
-      tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-      session = "${pkgs.hyprland}/bin/Hyprland";
-    in
-    {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = "${session}";
-          user = "${user}";
-        };
-        default_session = {
-          command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time -cmd ${session}";
-          user = "greeter";
-        };
-      };
-    };
 }

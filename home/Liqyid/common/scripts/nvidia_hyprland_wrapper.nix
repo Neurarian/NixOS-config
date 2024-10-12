@@ -1,9 +1,9 @@
-{pkgs, ...}:
+{pkgs, inputs, ...}:
   let
     hyprwrapper = pkgs.writeShellApplication {
       name = "hyprwrapper";
 
-      runtimeInputs = with pkgs; [ hyprland ];
+      runtimeInputs = [ inputs.hyprland.packages.${pkgs.system}.default ];
 
       text = ''
 	    #!/bin/bash

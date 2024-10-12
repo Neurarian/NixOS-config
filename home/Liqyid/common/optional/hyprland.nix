@@ -7,6 +7,7 @@
     wlogout
     glib
     libnotify
+    okteta
   ];
 
   services.hyprpaper = {
@@ -143,7 +144,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true; # enable Hyprland
-    # package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     plugins = [
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
     # pkgs.hyprlandPlugins.hyprexpo
@@ -399,7 +400,7 @@
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
 
-      bind = $mainMod, E, exec, kitty --class="nixus" -e "nixus"
+      bind = $mainMod, E, exec, kitty --class="nvim" -e "nvim"
       bind = CONTROL, Space, togglefloating,
       bind = ALT, J, togglesplit, # dwindle
       #bind = $mainMod, M, exec, ~/.config/hyprland/menu.sh
