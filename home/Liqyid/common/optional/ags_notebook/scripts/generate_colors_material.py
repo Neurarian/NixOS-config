@@ -62,11 +62,20 @@ darkmode = (args.mode == 'dark')
 transparent = (args.transparency == 'transparent')
 
 if args.path is not None:
+    
     image = Image.open(args.path)
+
+    if image.mode in ["L", "P"]:
+        image = image.convert('RGB')
+
+    if image.format == "GIF":
+        image.seek(1)
+
     wsize, hsize = image.size
     wsize_new, hsize_new = calculate_optimal_size(wsize, hsize, args.size)
     if wsize_new < wsize or hsize_new < hsize:
         image = image.resize((wsize_new, hsize_new), Image.Resampling.BICUBIC)
+    # print(list(image.getdata()))
     colors = QuantizeCelebi(list(image.getdata()), 128)
     argb = Score.score(colors)[0]
 

@@ -13,7 +13,7 @@
     ./wlogout.nix
     ./cava.nix
     ./looking-glass-client.nix
-    ./hyprland
+    ./hypr
   ];
   discord.enable = lib.mkDefault false;
   overskride.enable = lib.mkDefault false;

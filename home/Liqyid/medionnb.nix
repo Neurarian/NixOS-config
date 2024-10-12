@@ -38,7 +38,8 @@
   looking-glass.enable = true;
 
   desktop = {
-    hypr.enable = false;
+    # Enable entire hypr-ecosystem
+    hypr.enable = true;
   };
 
 }
