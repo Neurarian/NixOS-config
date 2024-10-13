@@ -6,24 +6,65 @@
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "wezterm";
     historyLimit = 100000;
+    keyMode = "vi";
     prefix = "C-a";
+    clock24 = true;
+    catppuccin = {
+      enable = true;
+      extraConfig = ''
+
+        set -g @catppuccin_flavor "mocha"
+
+        set -g @catppuccin_status_left_separator  " "
+        set -g @catppuccin_status_fill "icon"
+        set -g @catppuccin_status_connect_separator "yes"
+
+        set -g @catppuccin_directory_text "#{pane_current_path}"
+
+        set -g @catppuccin_status_modules_right "application host user directory session"
+
+      '';
+    };
     plugins = with pkgs.tmuxPlugins; [
-      catppuccin
       vim-tmux-navigator
-      continuum
-      resurrect
+      {
+        plugin = resurrect;
+        extraConfig = ''
+
+          set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-strategy-vim 'session'
+
+          resurrect_dir="$HOME/.tmux/resurrect"
+          set -g @resurrect-dir $resurrect_dir
+          set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g' $(readlink -f $resurrect_dir/last)"
+
+        '';
+
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10'
+
+        '';
+
+      }
     ];
     extraConfig = ''
       unbind C-b
       bind-key C-a send-prefix
       unbind %
-      bind | split-window -h
+      bind h split-window -h
 
       unbind '"'
-      bind - split-window -v
+      bind v split-window -v
 
       unbind r 
-      bind r source-file ~/.tmux.conf
+      bind r source-file ~/.config/tmux/tmux.conf
 
       bind -r j resize-pane -D 5
       bind -r k resize-pane -U 5
@@ -43,17 +84,8 @@
 
       unbind -T copy-mode-vi MouseDragEnd1Pane
 
-      set -g @continuum-restore 'on'
-      set -g @continuum-boot 'on'
-      set -g @continuum-save-interval '10'
+      set -g status-position top
 
-      set -g @resurrect-capture-pane-contents 'on'
-      set -g @resurrect-strategy-nvim 'session'
-      set -g @resurrect-strategy-vim 'session'
-
-      resurrect_dir="$HOME/.tmux/resurrect"
-      set -g @resurrect-dir $resurrect_dir
-      set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g' $(readlink -f $resurrect_dir/last)"
 
     '';
   };

@@ -66,7 +66,7 @@
         exec-once = wal_init && wal_set
         exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
         exec-once = wl-paste --watch cliphist store
-        exec-once = [workspace 1 silent] wezterm -e tmux
+        exec-once = [workspace 1 silent] wezterm
 
         env = XCURSOR_THEME,catppuccin-macchiato-dark-cursors
         env = XCURSOR_SIZE,24
@@ -210,7 +210,7 @@
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
 
-        bind = $mainMod, Return, exec, wezterm -e tmux
+        bind = $mainMod, Return, exec, wezterm
         bind = ALT, space, killactive,
         bind = $mainMod, A, exec, fuzzel
         bind = $mainMod, Q, pseudo, # dwindle

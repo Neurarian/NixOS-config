@@ -18,8 +18,10 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
   <summary>show integrated</summary>
 
 - [zsh](https://www.zsh.org/)
+- [Starship](https://github.com/starship/starship)
 - [Wezterm](https://github.com/wez/wezterm)
-- custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
+- Colorscheme for CLI & FF: [Catppuccin Mocha](https://github.com/catppuccin/nix)
+- Custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
 - [custom](https://github.com/fufexan/dotfiles) AGS bar
 - [hyprspace](https://github.com/KZDKM/Hyprspace)
 - [fuzzel](https://codeberg.org/dnkl/fuzzel)
