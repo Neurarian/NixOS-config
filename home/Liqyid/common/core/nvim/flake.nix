@@ -263,6 +263,7 @@
               fidget-nvim
               neo-tree-nvim
               nui-nvim
+              lualine-nvim
             ];
             lsp = [
               nvim-lspconfig
