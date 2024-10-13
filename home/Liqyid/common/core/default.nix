@@ -2,7 +2,7 @@
   imports = [
     ./sh.nix
     ./git.nix
-    ./kitty.nix
+    ./wezterm.nix
     ./tmux.nix
     ./fastfetch.nix
     ./nvim.nix

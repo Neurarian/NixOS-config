@@ -25,10 +25,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    /* hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    }; */
+    /*
+      hyprland-plugins = {
+        url = "github:hyprwm/hyprland-plugins";
+        inputs.hyprland.follows = "hyprland";
+      };
+    */
 
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
@@ -54,6 +56,12 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #inputs.nur.url = github:nix-community/NUR;
 
   };

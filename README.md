@@ -18,12 +18,12 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
   <summary>show integrated</summary>
 
 - [zsh](https://www.zsh.org/)
-- [kitty](https://github.com/kovidgoyal/kitty)
+- [Wezterm](https://github.com/wez/wezterm)
 - custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
 - [custom](https://github.com/fufexan/dotfiles) AGS bar
 - [hyprspace](https://github.com/KZDKM/Hyprspace)
-- fuzzel
-- wlogout
+- [fuzzel](https://codeberg.org/dnkl/fuzzel)
+- [wlogout](https://github.com/ArtsyMacaw/wlogout)
 - [CAVA](https://github.com/karlstav/cava)
 - Steam
 - Discord
@@ -35,8 +35,7 @@ Setup for management of secrets with [sops-nix](https://github.com/Mic92/sops-ni
   <summary>show planned</summary>
 
 - ags widgets
-- switch to [Wezterm](https://github.com/wez/wezterm)?
-- looking-glass
+- Get VFIO to work
 
 </details>
 

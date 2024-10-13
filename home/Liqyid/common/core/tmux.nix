@@ -4,14 +4,14 @@
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
-    terminal = "tmux-256color";
+    terminal = "wezterm";
     historyLimit = 100000;
     prefix = "C-a";
-    plugins = with pkgs; [
-      tmuxPlugins.catppuccin
-      tmuxPlugins.continuum
-      tmuxPlugins.resurrect
-      tmuxPlugins.vim-tmux-navigator
+    plugins = with pkgs.tmuxPlugins; [
+      catppuccin
+      vim-tmux-navigator
+      continuum
+      resurrect
     ];
     extraConfig = ''
       unbind C-b
@@ -43,8 +43,18 @@
 
       unbind -T copy-mode-vi MouseDragEnd1Pane
 
-      set -g @resurrect-capture-pane-contents 'on'
       set -g @continuum-restore 'on'
+      set -g @continuum-boot 'on'
+      set -g @continuum-save-interval '10'
+
+      set -g @resurrect-capture-pane-contents 'on'
+      set -g @resurrect-strategy-nvim 'session'
+      set -g @resurrect-strategy-vim 'session'
+
+      resurrect_dir="$HOME/.tmux/resurrect"
+      set -g @resurrect-dir $resurrect_dir
+      set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g' $(readlink -f $resurrect_dir/last)"
+
     '';
   };
 }
