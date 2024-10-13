@@ -2,7 +2,7 @@
 let
   wal_set = pkgs.writeShellApplication {
   name = "wal_set";
-  runtimeInputs = with pkgs; [ wlr-randr ];
+  runtimeInputs = with pkgs; [ wlr-randr hyprpaper ];
   text = ''
     #!/bin/bash
 
@@ -36,7 +36,7 @@ let
     newwall=$(basename "$(< "$HOME/.cache/wal/wal")")
     notify-send "Colors and Wallpaper updated" "with image $newwall"
 
-    "$HOME"/.config/ags/scripts/colorgen.sh "$HOME/.cache/current_wallpaper.jpg" --apply --smart
+    colorgen "$HOME/.cache/current_wallpaper.jpg" --apply --smart
 
     echo "DONE!"
 

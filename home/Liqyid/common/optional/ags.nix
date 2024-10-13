@@ -3,12 +3,14 @@
   lib,
   config,
   user,
+  inputs,
   ...
 }:
 
 let
   requiredDeps = with pkgs; [
     bash
+    inputs.hyprland.packages.${pkgs.system}.default
     coreutils
     dart-sass
     gawk
