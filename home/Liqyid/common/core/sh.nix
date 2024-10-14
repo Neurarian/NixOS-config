@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, ... }:
 {
 
   programs = {
@@ -13,6 +13,7 @@
         c = "clear";
 
       };
+      # Use OMZ for some plugin management
       oh-my-zsh = {
         enable = true;
         plugins = [
@@ -21,8 +22,15 @@
           "pip"
           "docker"
         ];
-        theme = "robbyrussell";
       };
+      # zsh vim motions for command line
+      plugins = [
+        {
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
@@ -80,39 +88,46 @@
         eval $(thefuck --alias)
         eval $(thefuck --alias fk)
       '';
-      loginExtra = ''[[ "$(tty)" == /dev/tty1 ]] && hyprwrapper '';
+      loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
     };
 
+    # zsh promt 
     starship = {
       enable = true;
       enableZshIntegration = true;
       catppuccin.enable = true;
     };
 
+    # Better cat
     bat = {
       enable = true;
     };
 
+    # Fuzzy find
     fzf = {
       enable = true;
       enableZshIntegration = true;
       catppuccin.enable = true;
     };
 
+    # Improved find
     fd = {
       enable = true;
     };
 
+    # Improved cd
     zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
 
+    # Correct typos
     thefuck = {
       enable = true;
       enableZshIntegration = true;
     };
 
+    # Better ls
     eza = {
       enable = true;
       enableZshIntegration = true;

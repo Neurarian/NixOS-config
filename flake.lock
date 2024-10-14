@@ -452,8 +452,8 @@
         "plugins-telescope-luasnip": "plugins-telescope-luasnip"
       },
       "locked": {
-        "lastModified": 1728851151,
-        "narHash": "sha256-pYrlkmrxpScZdZR0wyzsiHZ8XCeCQNne3qTLQnH8qvg=",
+        "lastModified": 1728926934,
+        "narHash": "sha256-jZvuFP36Uc4Wd0KQgg1ASmHPzmHZP3Sfs/8YmNIQbgU=",
         "path": "/home/Liqyid/.dotfiles/nix/home/Liqyid/common/core/nvim",
         "type": "path"
       },
