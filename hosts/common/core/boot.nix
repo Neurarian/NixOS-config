@@ -1,6 +1,5 @@
 {
   pkgs,
-  user,
   ...
 }:
 {
@@ -39,5 +38,7 @@
       timeout = 0;
       grub.configurationLimit = 42;
     };
+    # Use tmpfs to decrease strain on NVME
+    tmp.useTmpfs = true;
   };
 }

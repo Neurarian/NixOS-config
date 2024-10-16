@@ -39,7 +39,12 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
+  # Enable TRIM
+  services.fstrim.enable = true;
+  boot.initrd.luks.devices."luksroot" = {
+    device = "/dev/mapper/crypted";
+    allowDiscards = true;
+  };
   # Notebook specific modules
   graphics_erazer.enable = true;
   powermanagement.enable = true;
@@ -51,7 +56,6 @@
   security.pam.services.hyprlock = { };
   # Wayland support for chromium and electron apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  zsh.enable = true;
   security.polkit.enable = true;
 
   # Option to attach GPU to VFIO on boot

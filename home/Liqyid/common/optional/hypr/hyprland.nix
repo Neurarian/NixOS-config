@@ -200,9 +200,9 @@
         }
 
         # Example windowrule v1
-        # windowrule = float, ^(kitty)$
+        windowrule = float, ^(wezterm)$
         # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+        # windowrulev2 = float,class:^(wezterm)$,title:^(wezterm)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
 
