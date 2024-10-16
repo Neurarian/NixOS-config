@@ -259,7 +259,6 @@
               nvim-colorizer-lua
               nvim-web-devicons
               catppuccin-nvim
-              #tokyonight-nvim
               fidget-nvim
               neo-tree-nvim
               nui-nvim

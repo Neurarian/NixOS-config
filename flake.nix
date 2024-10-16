@@ -58,7 +58,8 @@
     };
 
     wezterm = {
-      url = "github:wez/wezterm?dir=nix";
+      url = "github:Neurarian/wezterm?dir=nix";
+      # url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
