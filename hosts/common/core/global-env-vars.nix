@@ -1,7 +1,7 @@
 {
   environment.variables = {
-    EDITOR = "nixus";
-    SUDO_EDITOR = "nixus";
+    EDITOR = "nvim";
+    SUDO_EDITOR = "nvim";
   };
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
