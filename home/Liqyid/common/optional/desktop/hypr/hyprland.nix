@@ -63,7 +63,7 @@
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         # Execute your favorite apps at launch
-        exec-once = wal_init && wal_set
+        exec-once = wal_set
         exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
         exec-once = wl-paste --watch cliphist store
         exec-once = [workspace 1 silent] wezterm

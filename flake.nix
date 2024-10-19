@@ -125,7 +125,8 @@
       };
 
       homeConfigurations = {
-        ${user} = home-manager.lib.homeManagerConfiguration {
+
+        "${user}@Loki" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           extraSpecialArgs = {
@@ -133,7 +134,34 @@
           };
 
           modules = [
-            ./home/${user}
+            ./home/${user}/Loki.nix
+            inputs.catppuccin.homeManagerModules.catppuccin
+          ];
+        };
+
+        "${user}@Medion" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          extraSpecialArgs = {
+            inherit inputs user system;
+          };
+
+          modules = [
+            ./home/${user}/Medion.nix
+            inputs.catppuccin.homeManagerModules.catppuccin
+          ];
+        };
+
+
+        "${user}@Fujitsu" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          extraSpecialArgs = {
+            inherit inputs user system;
+          };
+
+          modules = [
+            ./home/${user}/Fujitsu.nix
             inputs.catppuccin.homeManagerModules.catppuccin
           ];
         };
