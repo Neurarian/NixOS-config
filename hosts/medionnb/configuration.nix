@@ -15,7 +15,9 @@
   ];
 
   imports = [
+
     # Include the results of the hardware scan.
+    ./disk-config.nix
     ./hardware-configuration.nix
     ../common/core
     ../common/optional

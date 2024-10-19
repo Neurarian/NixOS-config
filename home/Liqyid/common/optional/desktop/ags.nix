@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   config,
@@ -33,6 +34,10 @@ let
 in
 
 {
+  imports = [
+    inputs.ags.homeManagerModules.default
+  ];
+
   options = {
     desktop.ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
   };

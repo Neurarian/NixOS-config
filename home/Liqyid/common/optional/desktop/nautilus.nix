@@ -12,7 +12,7 @@
   config = lib.mkIf config.desktop.nautilus.enable {
 
     home.packages = with pkgs; [
-      gnome.nautilus
+      nautilus
     ];
   };
 }

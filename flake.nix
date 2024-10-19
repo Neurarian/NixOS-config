@@ -82,16 +82,16 @@
     in
     {
       nixosConfigurations = {
-        NixOS = lib.nixosSystem {
+
+        # Medion Notebook
+        medionnb = lib.nixosSystem {
           inherit system;
 
           specialArgs = {
             inherit inputs user;
           };
+
           modules = [
-            inputs.disko.nixosModules.disko
-            inputs.catppuccin.nixosModules.catppuccin
-            inputs.sops-nix.nixosModules.sops
             ./hosts/medionnb
           ];
         };
@@ -106,9 +106,7 @@
 
           modules = [
             ./home/Liqyid/medionnb.nix
-            inputs.ags.homeManagerModules.default
             inputs.catppuccin.homeManagerModules.catppuccin
-            inputs.nixCats.homeModule
           ];
         };
       };
