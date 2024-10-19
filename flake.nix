@@ -78,13 +78,14 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      # Default user, full gui environment
       user = "Liqyid";
     in
     {
       nixosConfigurations = {
 
-        # Medion Notebook
-        medionnb = lib.nixosSystem {
+        # Main machine
+        Loki = lib.nixosSystem {
           inherit system;
 
           specialArgs = {
@@ -92,10 +93,37 @@
           };
 
           modules = [
-            ./hosts/medionnb
+            ./hosts/Loki
+          ];
+        };
+
+        # Medion notebook
+        Medion = lib.nixosSystem {
+          inherit system;
+
+          specialArgs = {
+            inherit inputs user;
+          };
+
+          modules = [
+            ./hosts/Medion
+          ];
+        };
+
+        # Fujitsu home lab
+        Fujitsu = lib.nixosSystem {
+          inherit system;
+
+          specialArgs = {
+            inherit inputs user;
+          };
+
+          modules = [
+            ./hosts/Fujitsu
           ];
         };
       };
+
       homeConfigurations = {
         ${user} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -105,7 +133,7 @@
           };
 
           modules = [
-            ./home/Liqyid/medionnb.nix
+            ./home/${user}
             inputs.catppuccin.homeManagerModules.catppuccin
           ];
         };
