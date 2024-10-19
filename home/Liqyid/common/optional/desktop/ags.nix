@@ -34,10 +34,10 @@ in
 
 {
   options = {
-    ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
+    desktop.ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
   };
 
-  config = lib.mkIf config.ags.enable {
+  config = lib.mkIf config.desktop.ags.enable {
 
     home = {
       # Ensure presence of colorgen dir and file
@@ -60,7 +60,7 @@ in
 
     programs.ags = {
       enable = true;
-      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/ags_notebook;
+      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/desktop/ags_notebook;
     };
     systemd.user.services.ags = {
       Unit = {

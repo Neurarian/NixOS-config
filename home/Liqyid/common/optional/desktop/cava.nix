@@ -5,10 +5,10 @@
 }:
 {
   options = {
-    cava.enable = lib.mkEnableOption "enable cava";
+    desktop.cava.enable = lib.mkEnableOption "enable cava";
   };
 
-  config = lib.mkIf config.cava.enable {
+  config = lib.mkIf config.desktop.cava.enable {
 
     programs = {
       cava = {

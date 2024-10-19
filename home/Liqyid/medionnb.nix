@@ -22,30 +22,29 @@
     };
   };
 
-
   desktop = {
     # Enable entire hypr-ecosystem
     hypr.enable = true;
+    # GUI
+    ags.enable = true;
+    gtk-module.enable = true;
+    nautilus.enable = true;
+    fuzzel.enable = true;
+    overskride.enable = true;
+    firefox.enable = true;
+    wlogout.enable = true;
+    discord.enable = true;
+    # Music 
+    ytmusic.enable = true;
+    mpd.enable = true;
+    cava.enable = true;
+    # VFIO
+    looking-glass.enable = true;
   };
-  # GUI
-  ags.enable = true;
-  gtk-module.enable = true;
-  nautilus.enable = true;
-  fuzzel.enable = true;
-  wlogout.enable = true;
-  discord.enable = true;
-  overskride.enable = true;
-  # Music 
-  ytmusic.enable = true;
-  mpd.enable = true;
-  cava.enable = true;
-  # VFIO
-  looking-glass.enable = true;
+
   # Services
   systemd.user.enable = true;
   power_monitor.enable = true;
   polkit_gnome.enable = true;
-  
-
 
 }

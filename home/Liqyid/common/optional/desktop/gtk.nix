@@ -8,11 +8,11 @@
 
   options = {
 
-    gtk-module.enable = lib.mkEnableOption "enable gtk";
+    desktop.gtk-module.enable = lib.mkEnableOption "enable gtk";
 
   };
 
-  config = lib.mkIf config.gtk-module.enable {
+  config = lib.mkIf config.desktop.gtk-module.enable {
 
     gtk = {
 

@@ -6,10 +6,10 @@
 }:
 {
   options = {
-    fuzzel.enable = lib.mkEnableOption "enable fuzzel";
+    desktop.fuzzel.enable = lib.mkEnableOption "enable fuzzel";
   };
 
-  config = lib.mkIf config.fuzzel.enable {
+  config = lib.mkIf config.desktop.fuzzel.enable {
 
     programs = {
       fuzzel = {
