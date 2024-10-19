@@ -36,7 +36,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 0;
-      grub.configurationLimit = 42;
+      grub.configurationLimit = 3;
     };
     # Use tmpfs to decrease strain on NVME
     tmp.useTmpfs = true;

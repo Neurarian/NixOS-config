@@ -3,14 +3,12 @@
   lib,
   config,
   user,
-  inputs,
   ...
 }:
 
 let
   requiredDeps = with pkgs; [
     bash
-    inputs.hyprland.packages.${pkgs.system}.default
     coreutils
     dart-sass
     gawk
@@ -41,21 +39,7 @@ in
 
   config = lib.mkIf config.ags.enable {
 
-    # packages for gradience color generation handled outside of service
     home = {
-      packages = with pkgs; [
-        gradience
-        (pkgs.python3.withPackages (python-pkgs: [
-          python-pkgs.setuptools-scm
-          python-pkgs.pillow
-          python-pkgs.build
-          python-pkgs.material-color-utilities
-          python-pkgs.materialyoucolor
-          python-pkgs.libsass
-          python-pkgs.wheel
-        ]))
-      ];
-
       # Ensure presence of colorgen dir and file
       activation = {
         makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

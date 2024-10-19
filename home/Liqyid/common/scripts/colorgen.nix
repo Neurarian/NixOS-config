@@ -51,7 +51,6 @@ let
             backend=$(cat "$STATE_DIR/user/colorbackend.txt") # either "" or "-l"
         fi
 
-        cd "$CONFIG_DIR/scripts/" || exit
         if [[ "$1" = "#"* ]]; then # this is a color
             generate_colors_material --color "$1" \
             --mode "$lightdark" --scheme "$materialscheme" --transparency "$transparency" \

@@ -6,6 +6,5 @@
     ./tmux.nix
     ./fastfetch.nix
     ./nvim.nix
-    ./services
   ];
 }
