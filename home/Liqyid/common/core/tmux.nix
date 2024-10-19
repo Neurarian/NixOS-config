@@ -57,11 +57,6 @@
     extraConfig = ''
       unbind C-b
       bind-key C-a send-prefix
-      unbind %
-      bind h split-window -h
-
-      unbind '"'
-      bind v split-window -v
 
       unbind r 
       bind r source-file ~/.config/tmux/tmux.conf
