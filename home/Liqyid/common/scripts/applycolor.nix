@@ -125,7 +125,7 @@ let
             fi
             # Copy template
             mkdir -p "$CACHE_DIR"/user/generated/wlogout
-            cp "templates/wlogout/style.css" "$CACHE_DIR"/user/generated/wlogout/style.css
+            cp "templates/wlogout/wlogout.css" "$CACHE_DIR"/user/generated/wlogout/style.css
             # Apply colors
             for i in "''${!colorlist[@]}"; do
                 sed -i "s/{{ ''${colorlist[$i]} }}/''${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/wlogout/style.css
