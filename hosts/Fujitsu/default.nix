@@ -2,6 +2,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
+  inputs,
   pkgs,
   user,
   ...
@@ -21,6 +22,7 @@
     ./hardware-configuration.nix
     ../common/core
     ../common/optional
+    inputs.disko.nixosModules.disko
 
   ];
 
