@@ -120,6 +120,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     pciutils
+    git
+    neovim
     home-manager
     age
     lshw

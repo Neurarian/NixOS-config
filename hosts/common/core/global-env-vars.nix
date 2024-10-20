@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   environment.variables = {
     EDITOR = "nvim";
@@ -8,6 +9,7 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
+    HOST = builtins.toString config.networking.hostName;
     # AQ_DRM_DEVICES = "/dev/dri/card1";
   };
 }

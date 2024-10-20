@@ -5,7 +5,7 @@
     ./localsend.nix
     ./services
     ./powermanagement.nix
-    ./vfio_nvidia_intel.nix
+#    ./vfio_nvidia_intel.nix
     ./libvirt.nix
   ];
   localsend.enable = lib.mkDefault false;

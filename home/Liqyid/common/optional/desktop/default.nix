@@ -5,7 +5,7 @@
     ./firefox.nix
     ./overskride.nix
     ./mpd.nix
-    ./ags.nix
+    ./ags/ags.nix
     ./gtk.nix
     ./nautilus.nix
     ./youtube-music.nix

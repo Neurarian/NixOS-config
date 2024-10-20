@@ -30,6 +30,12 @@ let
   dependencies = requiredDeps ++ guiDeps;
 
   cfg = config.programs.ags;
+  isMobile = builtins.pathExists /sys/class/power_supply/BAT0;
+  agsDir =
+    if isMobile then
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook
+    else
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop;
 
 in
 
@@ -48,7 +54,7 @@ in
       # Ensure presence of colorgen dir and file
       activation = {
         makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          run mkdir -p "$XDG_STATE_HOME/ags/scss"
+          run mkdir -p "$XDG_STATE_HOME/ags/scss" "$XDG_CACHE_HOME/ags/user/generated"
         '';
       };
       file = {
@@ -65,7 +71,7 @@ in
 
     programs.ags = {
       enable = true;
-      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags_notebook;
+      configDir = config.lib.file.mkOutOfStoreSymlink agsDir;
     };
     systemd.user.services.ags = {
       Unit = {
