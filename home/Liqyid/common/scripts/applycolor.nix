@@ -118,8 +118,8 @@ let
         }
 
         apply_wlogout() {
-            # Check if templates/wlogout/style.css exists
-            if [ ! -f "templates/wlogout/style.css" ]; then
+            # Check if templates/wlogout/wlogout.css exists
+            if [ ! -f "templates/wlogout/wlogout.css" ]; then
                 echo "Template file not found for wlogout colors. Skipping that."
                 return
             fi
