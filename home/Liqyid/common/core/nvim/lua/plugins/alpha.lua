@@ -41,7 +41,7 @@ return {
       dashboard.button('SPC s f', '󰈞  Find file'),
       dashboard.button('SPC s g', '󰊄  Live grep'),
       dashboard.button('SPC s m', '⇁  Harpoon marks'),
-      dashboard.button('c', '  Configuration', '<cmd>cd ~/.dotfiles/nix/home/Liqyid/common/core/nvim/ <CR>'),
+      dashboard.button('c', '  Configuration', '<cmd>cd ~/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim/ <CR>'),
       dashboard.button('q', '󰅚  Quit', '<cmd>qa<CR>'),
     }
 

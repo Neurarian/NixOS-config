@@ -1,5 +1,5 @@
 let
-  # RTX 3070 Ti
+  # GTX 1070M
   gpuIDs = [
     "10de:1be1" # Graphics
     "10de:10f0" # Audio

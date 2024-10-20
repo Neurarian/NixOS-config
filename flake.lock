@@ -452,13 +452,13 @@
         "plugins-telescope-luasnip": "plugins-telescope-luasnip"
       },
       "locked": {
-        "lastModified": 1729019662,
-        "narHash": "sha256-tA1NWdxQnnaAwlApaB8X/XE1lMED51rNIJszrTLzA0A=",
-        "path": "/home/Liqyid/.dotfiles/nix/home/Liqyid/common/core/nvim",
+        "lastModified": 1729427094,
+        "narHash": "sha256-CxkZJjd4FxFJf3QLc9wmnwTb8Y8joTzKtdfOHNqCjag=",
+        "path": "/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim",
         "type": "path"
       },
       "original": {
-        "path": "/home/Liqyid/.dotfiles/nix/home/Liqyid/common/core/nvim",
+        "path": "/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim",
         "type": "path"
       }
     },

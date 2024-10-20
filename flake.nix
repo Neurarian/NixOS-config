@@ -43,7 +43,7 @@
     };
 
     nixCats = {
-      url = "path:/home/Liqyid/.dotfiles/nix/home/Liqyid/common/core/nvim";
+      url = "path:/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

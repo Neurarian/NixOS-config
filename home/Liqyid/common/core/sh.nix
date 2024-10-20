@@ -7,7 +7,7 @@
       shellAliases = {
         update = "nix flake update";
         rebuild = "nh os switch --ask && nh home switch --ask";
-        upgrade = "cd ~/.dotfiles/nix && update && rebuild";
+        upgrade = "cd ~/.dotfiles/NixOS-config && update && rebuild";
         ls = "eza --icons=always";
         cd = "z";
         c = "clear";

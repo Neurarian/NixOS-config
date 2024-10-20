@@ -65,7 +65,7 @@ in
 
     programs.ags = {
       enable = true;
-      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/nix/home/${user}/common/optional/desktop/ags_notebook;
+      configDir = config.lib.file.mkOutOfStoreSymlink /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags_notebook;
     };
     systemd.user.services.ags = {
       Unit = {
