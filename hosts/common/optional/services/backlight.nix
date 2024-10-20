@@ -11,5 +11,7 @@
   config = lib.mkIf config.backlight.enable {
 
     hardware.brillo.enable = true;
+    programs.light.enable = true;
+
   };
 }

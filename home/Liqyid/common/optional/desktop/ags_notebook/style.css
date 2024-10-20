@@ -8,17 +8,17 @@
 
 /* buttons */
 * {
-  text-shadow: 0 2px 3px rgba(19, 19, 21, 0.2);
+  text-shadow: 0 2px 3px rgba(20, 19, 21, 0.2);
 }
 
 /* general styles */
 * {
-  color: #E5E2E3;
+  color: #E5E1E3;
 }
 
 /* mixins */
 tooltip {
-  background: #131315;
+  background: #141315;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
@@ -26,7 +26,7 @@ tooltip {
 /* scales & progress bars */
 scale trough,
 progressbar trough {
-  background-color: rgba(57, 57, 58, 0.4);
+  background-color: rgba(58, 57, 58, 0.4);
   border-radius: 0.5rem;
   min-width: 5rem;
   padding: 0 0.25rem;
@@ -35,7 +35,7 @@ scale highlight,
 scale progress,
 progressbar highlight,
 progressbar progress {
-  background: rgba(229, 226, 227, 0.75);
+  background: rgba(229, 225, 227, 0.75);
   border-radius: 0.5rem;
   margin: 0 calc(0px - 0.25rem);
   min-height: 0.5rem;
@@ -43,32 +43,32 @@ progressbar progress {
 
 .button {
   transition: 200ms;
-  background: #8C90A6;
+  background: #908EA5;
   border-radius: 5rem;
   padding: 0.4rem;
 }
 .button:hover {
-  background: #646981;
+  background: #686680;
 }
 
 .button.disabled {
   transition: 200ms;
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
 }
 .button.disabled:hover {
-  background: #39393a;
+  background: #3a393a;
 }
 
 /* modules & windows */
 .bar {
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   min-height: 32px;
   border-radius: 32px;
   margin: 0.45rem 0.45rem 0px 0.45rem;
   font-size: 1.1rem;
-  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(19, 19, 21, 0.5);
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(20, 19, 21, 0.5);
 }
 .bar .module {
   margin: 0 0.4rem;
@@ -84,31 +84,31 @@ progressbar progress {
   margin: 0.6rem 0.35rem;
   min-width: 1.3rem;
   transition: 100ms linear;
-  box-shadow: inset -2px -2px 2px rgba(19, 19, 21, 0.3);
+  box-shadow: inset -2px -2px 2px rgba(20, 19, 21, 0.3);
 }
 .bar .workspaces .focused {
   min-width: 2.5rem;
 }
 .bar .workspaces .monitor0 {
-  background: #434654;
-  box-shadow: inset -2px -2px 2px #2c2e38;
+  background: #464554;
+  box-shadow: inset -2px -2px 2px #2f2e38;
 }
 .bar .workspaces .monitor0:hover {
-  background: #55596b;
+  background: #59576a;
 }
 .bar .workspaces .monitor1 {
-  background: #8C90A6;
-  box-shadow: inset -2px -2px 2px #6f7490;
+  background: #908EA5;
+  box-shadow: inset -2px -2px 2px #74728e;
 }
 .bar .workspaces .monitor1:hover {
-  background: #a3a6b8;
+  background: #a6a5b7;
 }
 .bar .workspaces .monitor2 {
-  background: #C2C5DD;
-  box-shadow: inset -2px -2px 2px #a1a6cb;
+  background: #C7C4DD;
+  box-shadow: inset -2px -2px 2px #a8a4ca;
 }
 .bar .workspaces .monitor2:hover {
-  background: #dcdeec;
+  background: #e0deec;
 }
 .bar .workspaces .monitor3 {
   background: #B5CCBA;
@@ -126,7 +126,7 @@ progressbar progress {
   font-size: 1.1rem;
 }
 .bar .music.active > box {
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
 }
 .bar .music .cover {
   background-size: cover;
@@ -140,7 +140,7 @@ progressbar progress {
 /* tray */
 .tray button {
   transition: 200ms;
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   background: none;
@@ -148,32 +148,32 @@ progressbar progress {
   font-size: 1.1rem;
 }
 .tray button:hover {
-  background: #39393a;
+  background: #3a393a;
 }
 .tray button:not(:last-child) {
   margin-right: 0.3rem;
 }
 .tray button.active {
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
 }
 
 menu {
-  background: #131315;
+  background: #141315;
   border-radius: 8px;
 }
 menu separator {
-  background-color: rgba(57, 57, 58, 0.4);
+  background-color: rgba(58, 57, 58, 0.4);
 }
 menu menuitem {
   transition: 200ms;
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   border-radius: 0;
   padding: 0.4rem 0.7rem;
 }
 menu menuitem:hover {
-  background: #39393a;
+  background: #3a393a;
 }
 menu menuitem:first-child {
   border-radius: 8px 8px 0 0;
@@ -191,28 +191,28 @@ menu menuitem:only-child {
   border-radius: 16px;
 }
 .system-menu-toggler.active box {
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
 }
 
 .bar-hardware-progress-circle, .ram, .cpu {
   min-width: 2rem;
   min-height: 1.3rem;
   font-size: 0.3rem;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
 }
 
 .bar-hardware-progress-inner-circle, .ram-inner, .cpu-inner {
   font-size: 0.7rem;
   margin: 1px 4px 0px 0px;
-  color: #E5E2E3;
+  color: #E5E1E3;
 }
 
 .cpu {
-  color: #9B7BFF;
+  color: #B071FF;
 }
 
 .ram {
-  color: #92ABD6;
+  color: #9AA9D8;
 }
 
 .bar-hw-ram-box {
@@ -235,9 +235,9 @@ menu menuitem:only-child {
 }
 
 .music.window {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
 }
@@ -245,7 +245,7 @@ menu menuitem:only-child {
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  box-shadow: 0 1px 2px -1px rgba(19, 19, 21, 0.5);
+  box-shadow: 0 1px 2px -1px rgba(20, 19, 21, 0.5);
   margin: 0.4rem;
   min-height: 13rem;
   min-width: 13rem;
@@ -286,9 +286,9 @@ menu menuitem:only-child {
 }
 
 .osd {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   border-radius: 3rem;
@@ -313,9 +313,9 @@ menu menuitem:only-child {
 
 /* general */
 .system-menu {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin-top: 4px;
@@ -323,7 +323,7 @@ menu menuitem:only-child {
 }
 .system-menu > box {
   border-radius: calc(16px - 0.4rem - 2px);
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   box-shadow: 0 1px 5px -5px rgba(0, 0, 0, 0.5);
   margin: 0.4rem;
   padding: 0.4rem;
@@ -356,13 +356,13 @@ menu menuitem:only-child {
 }
 .system-menu .power-profiles .options widget {
   transition: 200ms;
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   border-radius: 5rem;
   padding: 0.4rem;
   border-radius: 0;
 }
 .system-menu .power-profiles .options widget:hover {
-  background: #39393a;
+  background: #3a393a;
 }
 .system-menu .power-profiles .options widget:last-child {
   border-radius: 0 0 8px 8px;
@@ -380,15 +380,15 @@ menu menuitem:only-child {
 }
 
 .notification {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin: 5px 5px 5px 10px;
   min-width: 25rem;
   border-radius: 16px;
-  background-color: rgba(19, 19, 21, 0.5);
+  background-color: rgba(20, 19, 21, 0.5);
 }
 .notification.critical {
   border: 1px solid red;
@@ -413,7 +413,7 @@ menu menuitem:only-child {
 
 .notification .actions .action-button {
   border-radius: calc(16px - 0.4rem - 2px);
-  background: rgba(57, 57, 58, 0.4);
+  background: rgba(58, 57, 58, 0.4);
   box-shadow: 0 1px 5px -5px rgba(0, 0, 0, 0.5);
   margin: 0.4rem;
   padding: 0.4rem;
@@ -421,7 +421,7 @@ menu menuitem:only-child {
   padding: 0.5rem 0;
 }
 .notification .actions .action-button:hover {
-  background: #39393a;
+  background: #3a393a;
 }
 
 .notification .text {
@@ -432,7 +432,7 @@ menu menuitem:only-child {
   font-weight: 500;
 }
 .notification .text .body {
-  color: #E5E2E3;
+  color: #E5E1E3;
   font-weight: 500;
 }
 

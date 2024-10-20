@@ -79,6 +79,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Enable fn keybindings
+  actkbd.enable = true;
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
@@ -86,6 +88,7 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+      alsa.enable = true;
     };
     # Autologin Hyprland on nvidia GPU  TODO: make this common/optional with gpu specific option for command
     greetd = {

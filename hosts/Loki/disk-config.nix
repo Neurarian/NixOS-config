@@ -69,7 +69,7 @@
           };
         };
       };
-      data = {
+      kingston_sa400s2 = {
         type = "disk";
         device = "/dev/sda";
         content = {
@@ -85,7 +85,34 @@
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];
-                  mountpoint = "/data";
+                  mountpoint = "/kingston";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+              };
+            };
+          };
+        };
+      };
+      samsung_ssd_850 = {
+        type = "disk";
+        device = "/dev/sda";
+        content = {
+          type = "gpt";
+          partitions = {
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "crypted3";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key"; # Interactive
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  mountpoint = "/samsung";
                   mountOptions = [
                     "compress=zstd"
                     "noatime"

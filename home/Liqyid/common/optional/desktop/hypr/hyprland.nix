@@ -58,7 +58,6 @@
         #windowrule = workspace 6, 
         #windowrule = workspace 7, vlc
         #windowrule = workspace 8, ranger
-        #windowrule = tile, google-chrome-stable
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -223,7 +222,7 @@
         bind = $mainMod, S, exec, localsend_app
         bind = $mainMod SHIFT, Q, exec, wlogout
         bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
-        bind = $mainMod SHIFT, W, exec, wal_init && wal_set
+        bind = $mainMod SHIFT, W, exec, wal_set
         bind = $mainMod SHIFT, V, exec, ~/scripts/windows_vm.sh
         bind = $mainMod, P, pin
 

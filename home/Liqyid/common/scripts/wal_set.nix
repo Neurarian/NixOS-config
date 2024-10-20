@@ -1,46 +1,50 @@
 { pkgs, ... }:
 let
   wal_set = pkgs.writeShellApplication {
-  name = "wal_set";
-  runtimeInputs = with pkgs; [ wlr-randr hyprpaper ];
-  text = ''
-    #!/bin/bash
+    name = "wal_set";
+    runtimeInputs = with pkgs; [
+      hyprpaper
+      fd
+      ripgrep
+    ];
+    text = ''
+          #!/bin/bash
 
-    apply_hyprpaper() {
-      local wallpaper_path
-      wallpaper_path="$(< "$HOME/.cache/wal/wal")"
+          if [ ! -d ~/Pictures/wallpapers/ ]; then
+            wallpaper_path=${builtins.toString ./../optional/desktop/hypr/default_wallpaper}
+          else
+            wallpaper_path="$(fd . "$HOME/Pictures/wallpapers" -t f | shuf -n 1)"
+          fi
+          
+          apply_hyprpaper() {
 
-      # Preload the wallpaper once, since it doesn't change per monitor
-      hyprctl hyprpaper preload "$wallpaper_path"
+            # Preload the wallpaper once, since it doesn't change per monitor
+            hyprctl hyprpaper preload "$wallpaper_path"
 
-      # Set wallpaper for each monitor
-      wlr-randr | awk '/^[^ ]/ {print $1}' | while read -r monitor; do
-	hyprctl hyprpaper wallpaper "$monitor, $wallpaper_path"
-      done
-    }
+            # Set wallpaper for each monitor
+            hyprctl monitors | rg 'Monitor' | awk '{print $2}' | while read -r monitor; do
+	      hyprctl hyprpaper wallpaper "$monitor, $wallpaper_path"
+            done
+          }
 
-    # unload previous wallpaper
+          # unload previous wallpaper
 
-    hyprctl hyprpaper unload all
+          hyprctl hyprpaper unload all
 
-    # Copy wal selected wallpaper into .cache folder
+          # Set the new wallpaper
 
-    cp "$(< "$HOME/.cache/wal/wal")" "$HOME/.cache/current_wallpaper.jpg"
+          apply_hyprpaper
 
-    # Set the new wallpaper
+          # Get wallpaper image name & send notification
 
-    apply_hyprpaper
+          newwall=$(basename "$wallpaper_path")
+          notify-send "Colors and Wallpaper updated" "with image $newwall"
 
-    # Get wallpaper image name & send notification
+          colorgen "$wallpaper_path" --apply --smart
 
-    newwall=$(basename "$(< "$HOME/.cache/wal/wal")")
-    notify-send "Colors and Wallpaper updated" "with image $newwall"
+          echo "DONE!"
 
-    colorgen "$HOME/.cache/current_wallpaper.jpg" --apply --smart
-
-    echo "DONE!"
-
-    	    '';
+          	    '';
   };
 in
 {
