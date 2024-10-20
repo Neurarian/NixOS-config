@@ -4,6 +4,7 @@
   lib,
   config,
   user,
+  osConfig,
   ...
 }:
 
@@ -30,12 +31,12 @@ let
   dependencies = requiredDeps ++ guiDeps;
 
   cfg = config.programs.ags;
-  isMobile = builtins.pathExists /sys/class/power_supply/BAT0;
+  isDesktop = osConfig.networking.hostName == "Loki";
   agsDir =
-    if isMobile then
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook
+    if isDesktop then
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop
     else
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop;
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook;
 
 in
 

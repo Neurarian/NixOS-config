@@ -67,11 +67,11 @@
   security.polkit.enable = true;
 
   # Option to attach GPU to VFIO on boot
-  # specialisation."VFIO".configuration = {
-  #   system.nixos.tags = [ "with-vfio" ];
-  #   vfio.enable = true;
-  #   gpu_power_management.enable = true;
-  # };
+  specialisation."VFIO".configuration = {
+    system.nixos.tags = [ "with-vfio" ];
+    nvidia-intel-vfio.enable = true;
+    gpu_power_management.enable = true;
+  };
   # VMs
   libvirt.enable = true;
   # Configure keymap in X11

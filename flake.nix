@@ -32,10 +32,10 @@
       };
     */
 
-   # Hyprspace = {
+    # Hyprspace = {
     #  url = "github:KZDKM/Hyprspace";
-     # inputs.hyprland.follows = "hyprland";
-   # };
+    # inputs.hyprland.follows = "hyprland";
+    # };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -71,13 +71,14 @@
     {
       nixpkgs,
       home-manager,
+      catppuccin,
       ...
     }@inputs:
 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
       # Default user, full gui environment
       user = "Liqyid";
     in
@@ -94,6 +95,22 @@
 
           modules = [
             ./hosts/Loki
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+
+                extraSpecialArgs = {
+                  inherit inputs user system;
+                };
+
+                users.${user} = {
+                  imports = [
+                    ./home/${user}/Loki.nix
+                    catppuccin.homeManagerModules.catppuccin
+                  ];
+                };
+              };
+            }
           ];
         };
 
@@ -107,6 +124,22 @@
 
           modules = [
             ./hosts/Medion
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+
+                extraSpecialArgs = {
+                  inherit inputs user system;
+                };
+
+                users.${user} = {
+                  imports = [
+                    ./home/${user}/Medion.nix
+                    catppuccin.homeManagerModules.catppuccin
+                  ];
+                };
+              };
+            }
           ];
         };
 
@@ -120,49 +153,22 @@
 
           modules = [
             ./hosts/Fujitsu
-          ];
-        };
-      };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
 
-      homeConfigurations = {
+                extraSpecialArgs = {
+                  inherit inputs user system;
+                };
 
-        "${user}@Loki" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = {
-            inherit inputs user system;
-          };
-
-          modules = [
-            ./home/${user}/Loki.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
-          ];
-        };
-
-        "${user}@Medion" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = {
-            inherit inputs user system;
-          };
-
-          modules = [
-            ./home/${user}/Medion.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
-          ];
-        };
-
-
-        "${user}@Fujitsu" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = {
-            inherit inputs user system;
-          };
-
-          modules = [
-            ./home/${user}/Fujitsu.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
+                users.${user} = {
+                  imports = [
+                    ./home/${user}/Fujitsu.nix
+                    catppuccin.homeManagerModules.catppuccin
+                  ];
+                };
+              };
+            }
           ];
         };
       };

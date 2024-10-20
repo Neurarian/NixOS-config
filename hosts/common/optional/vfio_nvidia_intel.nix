@@ -12,12 +12,12 @@ in
   ...
 }:
 {
-  options.vfio.enable = with lib; mkEnableOption "Configure the machine for VFIO";
+  options.nvidia-intel-vfio.enable = with lib; mkEnableOption "Configure the machine for VFIO";
 
-  config =
-    let
-      cfg = config.vfio;
+  config =     let
+      cfg = config.nvidia-intel-vfio;
     in
+      lib.mkIf cfg.enable
     {
       boot = {
         extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
