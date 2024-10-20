@@ -31,12 +31,12 @@ let
   dependencies = requiredDeps ++ guiDeps;
 
   cfg = config.programs.ags;
-  isDesktop = osConfig.networking.hostName == "Loki";
+  isMobile = osConfig.powermanagement.enable;
   agsDir =
-    if isDesktop then
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop
+    if isMobile then
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook
     else
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook;
+      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop;
 
 in
 
