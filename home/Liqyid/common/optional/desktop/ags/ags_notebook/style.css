@@ -8,7 +8,7 @@
 
 /* buttons */
 * {
-  text-shadow: 0 2px 3px rgba(19, 19, 21, 0.2);
+  text-shadow: 0 2px 3px rgba(20, 19, 21, 0.2);
 }
 
 /* general styles */
@@ -18,7 +18,7 @@
 
 /* mixins */
 tooltip {
-  background: #131315;
+  background: #141315;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 rgba(0, 0, 0, 0.4);
   border-radius: 8px;
 }
@@ -43,12 +43,12 @@ progressbar progress {
 
 .button {
   transition: 200ms;
-  background: #8E8FA6;
+  background: #908EA5;
   border-radius: 5rem;
   padding: 0.4rem;
 }
 .button:hover {
-  background: #666782;
+  background: #686680;
 }
 
 .button.disabled {
@@ -63,12 +63,12 @@ progressbar progress {
 
 /* modules & windows */
 .bar {
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   min-height: 32px;
   border-radius: 32px;
   margin: 0.45rem 0.45rem 0px 0.45rem;
   font-size: 1.1rem;
-  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(19, 19, 21, 0.5);
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4), -1px -1px 2px rgba(20, 19, 21, 0.5);
 }
 .bar .module {
   margin: 0 0.4rem;
@@ -84,31 +84,31 @@ progressbar progress {
   margin: 0.6rem 0.35rem;
   min-width: 1.3rem;
   transition: 100ms linear;
-  box-shadow: inset -2px -2px 2px rgba(19, 19, 21, 0.3);
+  box-shadow: inset -2px -2px 2px rgba(20, 19, 21, 0.3);
 }
 .bar .workspaces .focused {
   min-width: 2.5rem;
 }
 .bar .workspaces .monitor0 {
-  background: #454654;
-  box-shadow: inset -2px -2px 2px #2e2f38;
+  background: #464554;
+  box-shadow: inset -2px -2px 2px #2f2e38;
 }
 .bar .workspaces .monitor0:hover {
-  background: #57596a;
+  background: #59576a;
 }
 .bar .workspaces .monitor1 {
-  background: #8E8FA6;
-  box-shadow: inset -2px -2px 2px #717390;
+  background: #908EA5;
+  box-shadow: inset -2px -2px 2px #74728e;
 }
 .bar .workspaces .monitor1:hover {
-  background: #a5a6b8;
+  background: #a6a5b7;
 }
 .bar .workspaces .monitor2 {
-  background: #C4C5DD;
-  box-shadow: inset -2px -2px 2px #a4a5ca;
+  background: #C7C4DD;
+  box-shadow: inset -2px -2px 2px #a8a4ca;
 }
 .bar .workspaces .monitor2:hover {
-  background: #dedeec;
+  background: #e0deec;
 }
 .bar .workspaces .monitor3 {
   background: #B5CCBA;
@@ -158,7 +158,7 @@ progressbar progress {
 }
 
 menu {
-  background: #131315;
+  background: #141315;
   border-radius: 8px;
 }
 menu separator {
@@ -198,7 +198,7 @@ menu menuitem:only-child {
   min-width: 2rem;
   min-height: 1.3rem;
   font-size: 0.3rem;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
 }
 
 .bar-hardware-progress-inner-circle, .ram-inner, .cpu-inner {
@@ -208,11 +208,11 @@ menu menuitem:only-child {
 }
 
 .cpu {
-  color: #A078FF;
+  color: #B071FF;
 }
 
 .ram {
-  color: #94ABD7;
+  color: #9AA9D8;
 }
 
 .bar-hw-ram-box {
@@ -235,9 +235,9 @@ menu menuitem:only-child {
 }
 
 .music.window {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
 }
@@ -245,7 +245,7 @@ menu menuitem:only-child {
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  box-shadow: 0 1px 2px -1px rgba(19, 19, 21, 0.5);
+  box-shadow: 0 1px 2px -1px rgba(20, 19, 21, 0.5);
   margin: 0.4rem;
   min-height: 13rem;
   min-width: 13rem;
@@ -286,9 +286,9 @@ menu menuitem:only-child {
 }
 
 .osd {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   border-radius: 3rem;
@@ -313,9 +313,9 @@ menu menuitem:only-child {
 
 /* general */
 .system-menu {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin-top: 4px;
@@ -380,15 +380,15 @@ menu menuitem:only-child {
 }
 
 .notification {
-  box-shadow: 0 3px 5px 1px rgba(19, 19, 21, 0.1);
+  box-shadow: 0 3px 5px 1px rgba(20, 19, 21, 0.1);
   border-radius: 16px;
-  background: rgba(19, 19, 21, 0.5);
+  background: rgba(20, 19, 21, 0.5);
   margin: 5px 10px 15px;
   padding: 0.4rem;
   margin: 5px 5px 5px 10px;
   min-width: 25rem;
   border-radius: 16px;
-  background-color: rgba(19, 19, 21, 0.5);
+  background-color: rgba(20, 19, 21, 0.5);
 }
 .notification.critical {
   border: 1px solid red;
