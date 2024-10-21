@@ -24,7 +24,7 @@
       enable = true; # enable Hyprland
       package = inputs.hyprland.packages.${pkgs.system}.default;
       plugins = [
-        #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+        inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       ];
       systemd.enable = true;
       settings = {
@@ -307,7 +307,7 @@
         submap=reset
 
         # plugins
-        # bind = $mainMod, W, overview:toggle
+        bind = $mainMod, W, overview:toggle
 
       '';
     };

@@ -38,13 +38,10 @@
     ytmusic.enable = true;
     mpd.enable = true;
     cava.enable = true;
-    # VFIO
-    looking-glass.enable = true;
   };
 
   # Services
   systemd.user.enable = true;
-  power_monitor.enable = true;
   polkit_gnome.enable = true;
 
 }

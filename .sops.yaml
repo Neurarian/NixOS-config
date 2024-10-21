@@ -1,7 +1,9 @@
 keys:
-  - &Liqyid age1ec3sk8vpus95h3gz8vz0nxn6l08zetyfqv5x6m536pmvv274fahs5emx45
+  - &Liqyid@Medion age1ec3sk8vpus95h3gz8vz0nxn6l08zetyfqv5x6m536pmvv274fahs5emx45
+  - &Liqyid@Loki age12f8dxt8qwqa5dwfq2z0cap8hfgsj7nsc0v95yfyafmpv9rjwz99sdrpcpw
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
-      - *Liqyid
+      - *Liqyid@Medion
+      - *Liqyid@Loki

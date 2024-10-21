@@ -32,10 +32,12 @@
       };
     */
 
-    # Hyprspace = {
-    #  url = "github:KZDKM/Hyprspace";
-    # inputs.hyprland.follows = "hyprland";
-    # };
+    Hyprspace = {
+
+     url = "github:myamusashi/Hyprspace"; # Temporary fix
+     # url = "github:KZDKM/Hyprspace";
+    inputs.hyprland.follows = "hyprland";
+    };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
