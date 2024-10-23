@@ -34,9 +34,9 @@
 
     Hyprspace = {
 
-     url = "github:myamusashi/Hyprspace"; # Temporary fix
-     # url = "github:KZDKM/Hyprspace";
-    inputs.hyprland.follows = "hyprland";
+      url = "github:myamusashi/Hyprspace"; # Temporary fix
+      # url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
     };
 
     firefox-addons = {
@@ -44,10 +44,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixCats = {
-      url = "path:/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    /*
+      nixCats = {
+        url = "path:/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    */
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -66,6 +68,46 @@
     };
 
     #inputs.nur.url = github:nix-community/NUR;
+
+    # Nvim
+    nixCats = {
+      url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    plugins-care-nvim = {
+      url = "github:max397574/care.nvim";
+      flake = false;
+    };
+
+    plugins-care-cmp = {
+      url = "github:max397574/care-cmp";
+      flake = false;
+    };
+
+    plugins-lz-n = {
+      url = "github:nvim-neorocks/lz.n";
+      flake = false;
+    };
+
+    plugins-fzy-lua-native = {
+      url = "github:romgrk/fzy-lua-native";
+      flake = false;
+    };
+
+    plugins-friendly-snippets = {
+      url = "github:rafamadriz/friendly-snippets";
+      flake = false;
+    };
+
+    plugins-telescope-luasnip = {
+      url = "github:benfowler/telescope-luasnip.nvim";
+      flake = false;
+    };
+
+    # neovim-nightly-overlay = {
+    #   url = "github:nix-community/neovim-nightly-overlay";
+    # };
 
   };
 

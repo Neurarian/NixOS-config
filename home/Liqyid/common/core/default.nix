@@ -5,6 +5,6 @@
     ./wezterm.nix
     ./tmux.nix
     ./fastfetch.nix
-    ./nvim.nix
+    ./nvim
   ];
 }

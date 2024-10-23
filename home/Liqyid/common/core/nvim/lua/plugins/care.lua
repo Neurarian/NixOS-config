@@ -1,6 +1,6 @@
 return {
   'care.nvim',
-  event = 'DeferredUIEnter',
+  event = 'VimEnter',
 
   after = function()
     local care = require 'care'
@@ -145,11 +145,11 @@ return {
       end)
     end
 
-    vim.keymap.set('i', '<c-x><c-o>', function()
-      care.api.complete(function(name)
-        return name == 'lsp'
-      end)
-    end)
+    -- vim.keymap.set('i', '<c-x><c-o>', function()
+    --   care.api.complete(function(name)
+    --     return name == 'lsp'
+    --   end)
+    -- end)
 
     vim.keymap.set('i', '<c-x><c-l>', function()
       care.api.complete(function(name)

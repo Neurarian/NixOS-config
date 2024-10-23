@@ -68,7 +68,7 @@ local servers = {}
 
 -- servers.rust_analyzer = {}
 servers.marksman = {}
-servers.harper_ls= {}
+servers.harper_ls = {}
 servers.cmake = {}
 -- servers.codelldb = {}
 -- servers.cpptools = {}
@@ -83,12 +83,13 @@ servers.nixd = {
     },
     options = {
       nixos = {
-        expr = vim.env.SYS_FLAKE_HOST and '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.' .. vim.env.SYS_FLAKE_HOST .. '.options',
-      },
-      home_manager = {
-        expr = vim.env.USER
-          and vim.env.SYS_FLAKE_HOST
-          and 'builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."' .. vim.env.USER .. '@' .. vim.env.SYS_FLAKE_HOST .. '".options',
+        -- In the nixCats module, the nixdExtras attribute set 
+        -- passes info from nix needed in the lua config, which is called here.
+        expr = [[(builtins.getFlake "]]
+          .. nixCats 'nixdExtras.flake-path'
+          .. [[").nixosConfigurations."]]
+          .. nixCats 'nixdExtras.systemCFGname'
+          .. [[".options]],
       },
     },
   },
