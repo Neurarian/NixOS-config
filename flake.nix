@@ -34,8 +34,7 @@
 
     Hyprspace = {
 
-      url = "github:myamusashi/Hyprspace"; # Temporary fix
-      # url = "github:KZDKM/Hyprspace";
+      url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -43,13 +42,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    /*
-      nixCats = {
-        url = "path:/home/Liqyid/.dotfiles/NixOS-config/home/Liqyid/common/core/nvim";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-    */
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -122,7 +114,6 @@
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      # pkgs = nixpkgs.legacyPackages.${system};
       # Default user, full gui environment
       user = "Liqyid";
     in

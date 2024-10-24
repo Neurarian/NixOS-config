@@ -1,8 +1,3 @@
-return {
-  'care.nvim',
-  event = 'VimEnter',
-
-  after = function()
     local care = require 'care'
 
     local labels = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }
@@ -21,7 +16,7 @@ return {
             return {
               {
                 {
-                  ' ' .. require('care.presets.utils').LabelEntries(labels)(entry, data) .. ' ',
+                  ' ' .. require('care.presets.utils').label_entries(labels)(entry, data) .. ' ',
                   'Comment',
                 },
               },
@@ -145,11 +140,11 @@ return {
       end)
     end
 
-    -- vim.keymap.set('i', '<c-x><c-o>', function()
-    --   care.api.complete(function(name)
-    --     return name == 'lsp'
-    --   end)
-    -- end)
+    vim.keymap.set('i', '<c-x><c-o>', function()
+      care.api.complete(function(name)
+        return name == 'lsp'
+      end)
+    end)
 
     vim.keymap.set('i', '<c-x><c-l>', function()
       care.api.complete(function(name)
@@ -186,5 +181,3 @@ return {
         end
       end,
     })
-  end,
-}

@@ -1,7 +1,7 @@
 -- [[ Import options ]]
 require 'core'
+require 'completion'
 require('lz.n').load 'plugins'
-require 'snippets'
 -- require('lz.n').load {
 --   'luasnip',
 --   event = 'VimEnter',

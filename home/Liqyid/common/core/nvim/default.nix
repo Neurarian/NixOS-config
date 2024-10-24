@@ -211,6 +211,7 @@ in
           # populates $LUA_PATH and $LUA_CPATH
           extraLuaPackages = {
             test = [ (_: [ ]) ];
+            completion = ps: [ ps.fzy ];
           };
         }
       );

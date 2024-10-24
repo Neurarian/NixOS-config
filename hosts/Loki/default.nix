@@ -132,6 +132,7 @@
     wl-clipboard
     polkit_gnome
     ripgrep
+    fzy
   ];
   fonts.packages = with pkgs; [
     fira-code
