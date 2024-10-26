@@ -32,6 +32,7 @@
     fuzzel.enable = true;
     overskride.enable = true;
     firefox.enable = true;
+    zen-browser.enable = true;
     wlogout.enable = true;
     discord.enable = true;
     # Music 

@@ -62,10 +62,9 @@
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         # Execute your favorite apps at launch
-        exec-once = wal_set
         exec-once = hyprctl setcursor catppuccin-macchiato-dark-cursors 24
         exec-once = wl-paste --watch cliphist store
-        exec-once = [workspace 1 silent] wezterm
+        exec-once = [workspace 1 silent] wezterm && wal_set
 
         env = XCURSOR_THEME,catppuccin-macchiato-dark-cursors
         env = XCURSOR_SIZE,24
@@ -223,7 +222,7 @@
         bind = $mainMod SHIFT, Q, exec, wlogout
         bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
         bind = $mainMod SHIFT, W, exec, wal_set
-        bind = $mainMod SHIFT, V, exec, ~/scripts/windows_vm.sh
+        bind = $mainMod SHIFT, V, exec, virsh --connect qemu:///system start win10
         bind = $mainMod, P, pin
 
 

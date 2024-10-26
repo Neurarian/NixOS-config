@@ -65,8 +65,53 @@
   #   vfio.enable = true;
   #   gpu_power_management.enable = true;
   # };
-  # VMs
+
+  # VFIO: single GPU passthrough for 6800XT
   libvirt.enable = true;
+  virtualisation.libvirtd.hooks.qemu = {
+    "win-vfio" = pkgs.writers.writeBash "windows.sh" ''
+      # Variables
+      GUEST_NAME="$1"
+      OPERATION="$2"
+      SUB_OPERATION="$3"
+
+      # Run commands when the vm is started/stopped.
+      if [ "$GUEST_NAME" == "win10" ]; then
+        if [ "$OPERATION" == "prepare" ]; then
+          if [ "$SUB_OPERATION" == "begin" ]; then
+            systemctl stop greetd
+
+            sleep 4
+
+            virsh nodedev-detach pci_0000_0b_00_0
+            virsh nodedev-detach pci_0000_0b_00_1
+            virsh nodedev-detach pci_0000_0b_00_2
+            virsh nodedev-reattach pci_0000_0b_00_3
+
+            modprobe -r amdgpu
+
+            modprobe vfio-pci
+          fi
+        fi
+
+        if [ "$OPERATION" == "release" ]; then
+          if [ "$SUB_OPERATION" == "end" ]; then
+            virsh nodedev-reattach pci_0000_0b_00_0
+            virsh nodedev-reattach pci_0000_0b_00_1
+            virsh nodedev-reattach pci_0000_0b_00_2
+            virsh nodedev-reattach pci_0000_0b_00_3
+
+            modprobe -r vfio-pci
+
+            modprobe amdgpu
+
+            systemctl start greetd
+          fi
+        fi
+      fi
+    '';
+
+  };
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -105,6 +150,7 @@
       "networkmanager"
       "video"
       "libvirtd"
+      "kvm"
     ]; # Enable ‘sudo’ for the user.
     #   packages = with pkgs; [
     #     firefox

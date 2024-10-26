@@ -644,7 +644,8 @@
         "plugins-lz-n": "plugins-lz-n",
         "plugins-telescope-luasnip": "plugins-telescope-luasnip",
         "sops-nix": "sops-nix",
-        "wezterm": "wezterm"
+        "wezterm": "wezterm",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -815,6 +816,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729457884,
+        "narHash": "sha256-oNuY6kQDfqpe1K6dEP7IIoegnSZvvv/WKD/6xcefncc=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "8146e6a761f9d51f1a93528709733685ff046e2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     },
