@@ -17,6 +17,7 @@
     initrd = {
       verbose = false;
       systemd.enable = true;
+      luks.devices.crypted.allowDiscards = true;
     };
     kernelParams = [
       "quiet"

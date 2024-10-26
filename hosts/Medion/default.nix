@@ -49,9 +49,6 @@
 
   # Enable TRIM
   services.fstrim.enable = true;
-  boot.initrd.luks.devices.crypted = {
-    allowDiscards = true;
-  };
 
   # Notebook specific modules
   graphics_erazer.enable = true;

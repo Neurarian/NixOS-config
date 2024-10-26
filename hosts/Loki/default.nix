@@ -28,6 +28,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  boot.plymouth.extraConfig = "DeviceScale=1";
 
   networking.hostName = "Loki"; # Define your hostname.
 
@@ -48,9 +49,6 @@
 
   # Enable TRIM
   services.fstrim.enable = true;
-  boot.initrd.luks.devices.crypted = {
-    allowDiscards = true;
-  };
 
   hardware.bluetooth.enable = true;
   # FOSS Airdrop alternative
@@ -132,7 +130,6 @@
     wl-clipboard
     polkit_gnome
     ripgrep
-    fzy
   ];
   fonts.packages = with pkgs; [
     fira-code
