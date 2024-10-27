@@ -59,7 +59,6 @@
             "HYPRCURSOR_SIZE,${toString pointer.size}"
           ];
           exec-once = [
-            "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             # set cursor for HL itself
             "hyprctl setcursor ${cursorName} ${toString pointer.size}"
             "wl-paste --watch cliphist store"
@@ -140,7 +139,8 @@
             mouse_move_enables_dpms = true;
             key_press_enables_dpms = true;
             background_color = "$backgroundColor";
-            vrr = 1;
+            # will cause screen flicker if = 1
+            vrr = 2;
           };
           device = {
             name = "logitech-gaming-mouse-g502-keyboard";
@@ -167,7 +167,7 @@
             };
           };
           "$mod" = "SUPER";
-          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+          # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
           bind =
             let
               workspaces = builtins.concatLists (
@@ -176,7 +176,7 @@
                   let
                     wsKey =
                       let
-                        # integer division: c = 0 for x+1 = 1 to 9; c = 1 for x+1 = 10
+                        # Integer division: c = 0 for x+1 = 1 to 9; c = 1 for x+1 = 10
                         c = (x + 1) / 10;
                       in
                       # 1-9 for ws 1-9 & 0 for ws 10
