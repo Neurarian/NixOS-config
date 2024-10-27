@@ -18,6 +18,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     "<leader>sh",
     "<leader>sM",
     "<leader>sb",
+    "<leader>lg",
     },
   -- dependencies = {
     -- 'nvim-lua/plenary.nvim',
@@ -89,6 +90,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension 'harpoon')
     pcall(require('telescope').load_extension 'luasnip')
+    pcall(require('telescope').load_extension 'lazygit')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -102,7 +104,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-    --vim.keymap.set('n', '<leader>sm', '<cmd>Telescope harpoon marks<CR>', { desc = '[S]earch pinned Harpoon [M]arks' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

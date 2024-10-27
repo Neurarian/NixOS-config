@@ -57,6 +57,10 @@ in
               stdenv.cc.cc
               lua54Packages.jsregexp
             ];
+            git = [
+              git
+              lazygit
+            ];
             debug =
               [
               ];
@@ -113,12 +117,15 @@ in
               indent-blankline-nvim
               comment-nvim
               todo-comments-nvim
-              gitsigns-nvim
               which-key-nvim
               plenary-nvim
               conform-nvim
               mini-nvim
               vim-startuptime
+            ];
+            git = [
+              lazygit-nvim
+              gitsigns-nvim
             ];
             completion = [
               pkgs.neovimPlugins.care-nvim
@@ -243,6 +250,7 @@ in
 
               # nvim plugins
               tresitter = true;
+              git = true;
               customPlugins = true;
               ui_nav = true;
               lsp = true;
