@@ -51,7 +51,9 @@
         windowrulev2 = bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1
         windowrule = workspace 2, youtube-music
         windowrule = workspace 4, firefox
+        windowrule = workspace 4, zen
         windowrule = idleinhibit fullscreen, firefox
+        windowrule = idleinhibit fullscreen, zen
         windowrulev2 = workspace 5 silent, class:steam
         #windowrule = nofocus, steam
         windowrule = workspace 6 silent, discord
@@ -198,7 +200,7 @@
         }
 
         # Example windowrule v1
-        windowrule = float, ^(wezterm)$
+        # windowrule = float, ^(wezterm)$
         # Example windowrule v2
         # windowrulev2 = float,class:^(wezterm)$,title:^(wezterm)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
@@ -213,7 +215,7 @@
         bind = $mainMod, A, exec, fuzzel
         bind = $mainMod, Q, pseudo, # dwindle
         bind = $mainMod, F, fullscreen,
-        bind = $mainMod, B, exec, firefox
+        bind = $mainMod, B, exec, zen
         bind = $mainMod, Y, exec, youtube-music
         bind = $mainMod, G, exec, steam
         bind = $mainMod, D, exec, discord
