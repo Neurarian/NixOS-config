@@ -3,6 +3,7 @@
   lib,
   inputs,
   pkgs,
+  user,
   ...
 }:
 {
@@ -11,6 +12,14 @@
   };
 
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
+
+    nix.settings = {
+      trusted-users = [ "${toString user}" ];
+      extra-substituters = [ "https://hyprland.cachix.org" ];
+      extra-trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+    };
 
     home.packages = with pkgs; [
       hyprcursor
@@ -58,221 +67,192 @@
             "sleep 1s && wal_set"
             ""
           ];
+          input = {
+            kb_layout = "us, de";
+            kb_options = "grp:win_space_toggle";
+            follow_mouse = 1;
+            touchpad.natural_scroll = true;
+            sensitivity = 0;
+
+          };
+          general = {
+            gaps_in = 5;
+            gaps_out = 20;
+            border_size = 2;
+            "col.active_border" = "$activeBorder $activeBorderGrad 45deg";
+            "col.inactive_border" = "$inactiveBorder";
+            layout = "dwindle";
+            allow_tearing = true;
+            resize_on_border = true;
+          };
+          decoration = {
+            rounding = 15;
+            active_opacity = 1.0;
+            inactive_opacity = 0.96;
+            fullscreen_opacity = 1.0;
+            drop_shadow = true;
+            shadow_range = 40;
+            shadow_render_power = 2;
+            "col.shadow" = "0x66000000";
+            shadow_offset = "5 5";
+            shadow_scale = 1;
+            blur = {
+              enabled = true;
+              size = 10;
+              new_optimizations = true;
+              passes = 2;
+              brightness = 1.0;
+              contrast = 1.0;
+              noise = 0.1;
+              vibrancy = 0.2;
+              vibrancy_darkness = 0.5;
+              popups = true;
+              popups_ignorealpha = 0.2;
+            };
+          };
+          animations = {
+            enabled = true;
+            bezier = "myBezier, 0.3, 0.3, 0.1, 1.05";
+            animation = [
+              "windows, 1, 4, myBezier"
+              "windowsOut, 1, 3, default, popin 80%"
+              "border, 1, 2, default"
+              "borderangle, 1, 2, default"
+              "fade, 1, 4, default"
+              "workspaces, 1, 2, default, slide"
+            ];
+          };
+          dwindle = {
+            pseudotile = true;
+            preserve_split = true;
+          };
+          gestures = {
+            workspace_swipe = true;
+            workspace_swipe_invert = false;
+            workspace_swipe_forever = true;
+            workspace_swipe_cancel_ratio = 0.1;
+          };
+          misc = {
+            force_default_wallpaper = 0;
+            disable_hyprland_logo = true;
+            disable_splash_rendering = false;
+            disable_autoreload = true;
+            mouse_move_enables_dpms = true;
+            key_press_enables_dpms = true;
+            background_color = "$backgroundColor";
+            vrr = 1;
+          };
+          device = {
+            name = "logitech-gaming-mouse-g502-keyboard";
+            sensitivity = -0.5;
+          };
+          xwayland.force_zero_scaling = true;
+          render.direct_scanout = true;
+          plugin = {
+            overview = {
+              workspaceActiveBorder = "$activeBorder";
+              workspaceInactiveBorder = "$inactiveBorder";
+              workspaceBorderSize = 2;
+
+            };
+            hyprexpo = {
+              columns = 1;
+              gap_size = 2;
+              bg_col = "rgb(111111)";
+              workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+
+              enable_gesture = true; # laptop touchpad
+              gesture_fingers = 3; # 3 or 4
+              gesture_distance = 300; # how far is the "max"
+              gesture_positive = true; # positive = swipe down. Negative = swipe up.
+            };
+          };
+          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+          "$mod" = "SUPER";
+          bind =
+            let
+              workspaces = builtins.concatLists (
+                builtins.genList (
+                  x:
+                  let
+                    wsKey =
+                      let
+                        # integer division: c = 0 for x+1 = 1 to 9; c = 1 for x+1 = 10
+                        c = (x + 1) / 10;
+                      in
+                      # 1-9 for ws 1-9 & 0 for ws 10
+                      builtins.toString (x + 1 - (c * 10));
+                    ws = builtins.toString (x + 1);
+                  in
+                  [
+                    "$mod, ${wsKey}, workspace, ${ws}"
+                    "$mod SHIFT, ${wsKey}, movetoworkspace, ${ws}"
+                  ]
+                ) 10
+              );
+            in
+            [
+              # Hyprland
+              "ALT, space, killactive"
+              "$mod, P, pin"
+              "CONTROL, Space, togglefloating,"
+              "ALT, J, togglesplit, # dwindle"
+
+              # Software & utils
+              "$mod, Return, exec, wezterm"
+              "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
+              "$mod, A, exec, fuzzel"
+              "$mod, Q, pseudo, # dwindle"
+              "$mod, F, fullscreen"
+              "$mod, B, exec, zen"
+              "$mod, Y, exec, youtube-music && wezterm -e cava"
+              "$mod, G, exec, steam"
+              "$mod, D, exec, discord"
+              "$mod, C, exec, coolercontrol"
+              "$mod, S, exec, localsend_app"
+              "$mod SHIFT, Q, exec, wlogout"
+              "$mod, PRINT, exec, ~/scripts/grim.sh"
+              "$mod SHIFT, W, exec, wal_set"
+              "$mod SHIFT, V, exec, virsh --connect qemu:///system start win10"
+
+              # Move focus
+              "$mod, H, movefocus, l"
+              "$mod, L, movefocus, r"
+              "$mod, K, movefocus, u"
+              "$mod, J, movefocus, d"
+
+              # Move window
+              "$mod SHIFT, H, movewindow, l"
+              "$mod SHIFT, L, movewindow, r"
+              "$mod SHIFT, K, movewindow, u"
+              "$mod SHIFT, J, movewindow, d"
+              # Scroll through existing workspaces with mainMod + scroll
+              "$mod, mouse_down, workspace, e+1"
+              "$mod, mouse_up, workspace, e-1"
+
+              # Next workspace on monitor
+              "CONTROL_ALT, right, workspace, m+1"
+              "CONTROL_ALT, left, workspace, m-1"
+
+              # Plugins
+              "$mod, W, overview:toggle"
+
+            ]
+            ++ workspaces;
+          bindm = [
+            # Mouse side buttons
+            ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected t
+            ",mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift" # paste by Ctrl+Shift+v
+
+            # Move/resize windows with mainMod + LMB/RMB and dragging
+            "$mod, mouse:272, movewindow"
+            "$mod, mouse:273, resizewindow"
+          ];
         };
+
+        # Submaps require specific order in config
         extraConfig = ''
-
-          # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-          input {
-              kb_layout = us, de
-              kb_variant =
-              kb_model =
-              kb_options = grp:win_space_toggle
-              kb_rules =
-
-              follow_mouse = 1
-
-              touchpad {
-                  natural_scroll = true
-              }
-
-              sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-          }
-
-          general {
-              # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-              gaps_in = 5
-              gaps_out = 20
-              border_size = 2
-              col.active_border = $activeBorder $activeBorderGrad 45deg
-              col.inactive_border = $inactiveBorder
-              #no_cursor_warps = true
-
-              layout = dwindle 
-
-              # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-              allow_tearing = false
-          }
-
-          decoration {
-              # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-              rounding = 10
-
-              blur {
-                  enabled = true
-                  size = 3
-                  new_optimizations = true
-                  passes = 1
-              }
-
-              active_opacity = 1.0
-              inactive_opacity = 1.0
-              fullscreen_opacity = 1.0
-              
-
-              drop_shadow = true
-              shadow_range = 30
-              shadow_render_power = 3
-              col.shadow = 0x66000000
-          }
-
-          animations {
-              enabled = true
-
-              # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
-              bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-              animation = windows, 1, 7, myBezier
-              animation = windowsOut, 1, 7, default, popin 80%
-              animation = border, 1, 10, default
-              animation = borderangle, 1, 8, default
-              animation = fade, 1, 7, default
-              animation = workspaces, 1, 6, default
-          }
-
-          dwindle {
-              # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-              pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-              preserve_split = true # you probably want this
-          }
-
-          master {
-              # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-          }
-
-          gestures {
-              # See https://wiki.hyprland.org/Configuring/Variables/ for more
-              workspace_swipe = on 
-              workspace_swipe_invert = no 
-              workspace_swipe_cancel_ratio = 0.1
-          }
-
-          misc {
-              # See https://wiki.hyprland.org/Configuring/Variables/ for more
-              force_default_wallpaper = 0 # Set to 0 to disable the anime mascot wallpapers
-              disable_hyprland_logo = true
-              disable_splash_rendering = false
-              disable_autoreload = false
-              mouse_move_enables_dpms = true
-              key_press_enables_dpms = true
-              background_color = $backgroundColor
-          }
-
-          plugin {
-            overview {
-              workspaceActiveBorder = $activeBorder
-              workspaceInactiveBorder = $inactiveBorder
-              workspaceBorderSize = 2
-
-            }
-            hyprexpo {
-              columns = 1
-              gap_size = 2
-              bg_col = rgb(111111)
-              workspace_method = center current # [center/first] [workspace] e.g. first 1 or center m+1
-
-              enable_gesture = true # laptop touchpad
-              gesture_fingers = 3  # 3 or 4
-              gesture_distance = 300 # how far is the "max"
-              gesture_positive = true # positive = swipe down. Negative = swipe up.
-            }
-          }
-
-          # Example per-device config
-          # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
-          device {
-              name = logitech-gaming-mouse-g502-keyboard
-              sensitivity = -0.5
-          }
-
-          # Example windowrule v1
-          # windowrule = float, ^(wezterm)$
-          # Example windowrule v2
-          # windowrulev2 = float,class:^(wezterm)$,title:^(wezterm)$
-          # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-
-
-          # Bindings
-          # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-          $mainMod = SUPER
-
-          bind = $mainMod, Return, exec, wezterm
-          bind = ALT, space, killactive,
-          bind = $mainMod, A, exec, fuzzel
-          bind = $mainMod, Q, pseudo, # dwindle
-          bind = $mainMod, F, fullscreen,
-          bind = $mainMod, B, exec, zen
-          bind = $mainMod, Y, exec, youtube-music && wezterm -e cava
-          bind = $mainMod, G, exec, steam
-          bind = $mainMod, D, exec, discord
-          bind = $mainMod, C, exec, coolercontrol
-          bind = $mainMod, S, exec, localsend_app
-          bind = $mainMod SHIFT, Q, exec, wlogout
-          bind = $mainMod, PRINT, exec, ~/scripts/grim.sh
-          bind = $mainMod SHIFT, W, exec, wal_set
-          bind = $mainMod SHIFT, V, exec, virsh --connect qemu:///system start win10
-          bind = $mainMod, P, pin
-
-
-          # Move focus
-          bind = $mainMod, H, movefocus, l
-          bind = $mainMod, L, movefocus, r
-          bind = $mainMod, K, movefocus, u
-          bind = $mainMod, J, movefocus, d
-
-          bind = $mainMod SHIFT, H, movewindow, l
-          bind = $mainMod SHIFT, L, movewindow, r
-          bind = $mainMod SHIFT, K, movewindow, u
-          bind = $mainMod SHIFT, J, movewindow, d
-
-          # Switch workspaces with mainMod + [0-9]
-          bind = $mainMod, 1, workspace, 1
-          bind = $mainMod, 2, workspace, 2
-          bind = $mainMod, 3, workspace, 3
-          bind = $mainMod, 4, workspace, 4
-          bind = $mainMod, 5, workspace, 5
-          bind = $mainMod, 6, workspace, 6
-          bind = $mainMod, 7, workspace, 7
-          bind = $mainMod, 8, workspace, 8
-          bind = $mainMod, 9, workspace, 9
-          bind = $mainMod, 0, workspace, 10
-
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          bind = $mainMod SHIFT, 1, movetoworkspace, 1
-          bind = $mainMod SHIFT, 2, movetoworkspace, 2
-          bind = $mainMod SHIFT, 3, movetoworkspace, 3
-          bind = $mainMod SHIFT, 4, movetoworkspace, 4
-          bind = $mainMod SHIFT, 5, movetoworkspace, 5
-          bind = $mainMod SHIFT, 6, movetoworkspace, 6
-          bind = $mainMod SHIFT, 7, movetoworkspace, 7
-          bind = $mainMod SHIFT, 8, movetoworkspace, 8
-          bind = $mainMod SHIFT, 9, movetoworkspace, 9
-          bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
-          # Scroll through existing workspaces with mainMod + scroll
-          bind = $mainMod, mouse_down, workspace, e+1
-          bind = $mainMod, mouse_up, workspace, e-1
-
-          # next workspace on monitor
-          bind = CONTROL_ALT, right, workspace, m+1
-          bind = CONTROL_ALT, left, workspace, m-1
-
-          # Move/resize windows with mainMod + LMB/RMB and dragging
-          bindm = $mainMod, mouse:272, movewindow
-          bindm = $mainMod, mouse:273, resizewindow
-
-          bind = $mainMod, E, exec, wezterm --class="nvim" -e "nvim"
-          bind = CONTROL, Space, togglefloating,
-          bind = ALT, J, togglesplit, # dwindle
-          #bind = $mainMod, M, exec, ~/.config/hyprland/menu.sh
-
-          # mouse side buttons
-          bind=,mouse:275,exec,wl-copy $(wl-paste -p) # copy selected text
-          bind=,mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift # paste by Ctrl+Shift+v
-
-          # resize submap (mode)
+          # Resize mode
           bind=SUPER,R,submap,resize
           submap=resize
           binde=,L,resizeactive,40 0
@@ -282,22 +262,6 @@
           bind=,escape,submap,reset
           bind=,Return,submap,reset
           submap=reset
-
-          # exit mode
-          bind=SUPER,escape,exec,hyprctl dispatch submap logout; notify-send -a Hyprland -t 3500 $'\ne - exit\n\nr - reboot\n\ns - suspend\n\nS - poweroff\n\nl - lock' -i /usr/share/icons/breeze-dark/actions/32/system-suspend.svg
-          submap=logout
-          bindr =,E,exec,~/.config/hyprland/exit.sh &
-          bindr =,S,exec,hyprctl dispatch submap reset && systemctl suspend
-          bindr =,R,exec,systemctl reboot
-          bindr =SHIFT,S,exec,systemctl poweroff -i
-          bindr =,L,exec,hyprctl dispatch submap reset && swaylock
-          bindr=,escape,submap,reset
-          bind=,Return,submap,reset
-          submap=reset
-
-          # plugins
-          bind = $mainMod, W, overview:toggle
-
         '';
       };
 

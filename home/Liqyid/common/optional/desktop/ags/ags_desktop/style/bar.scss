@@ -6,7 +6,7 @@ $font: 1.1rem;
   border-radius: calc($round2 * 2);
   margin: 0.45rem 0.45rem 0px 0.45rem;
   font-size: $font;
-  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.4) , -1px -1px 2px $bg; 
+  box-shadow: inset -1px -1px 6px rgba(0, 0, 0, 0.4) , 1px 1px 2px rgba(0, 0, 0, 0.4); 
   .module {
     margin: 0 0.4rem;
   }

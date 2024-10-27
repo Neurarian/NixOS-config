@@ -2,6 +2,16 @@
 
   description = "NeurNix Flake";
 
+  /* nixConfig = {
+
+    # override the default substituters
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+    trusted-public-keys =
+      [
+      ];
+  }; */
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -70,7 +80,6 @@
     # Nvim
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     plugins-care-nvim = {
