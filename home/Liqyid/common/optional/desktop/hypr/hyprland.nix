@@ -153,7 +153,6 @@
               workspaceActiveBorder = "$activeBorder";
               workspaceInactiveBorder = "$inactiveBorder";
               workspaceBorderSize = 2;
-
             };
             hyprexpo = {
               columns = 1;
@@ -167,8 +166,8 @@
               gesture_positive = true; # positive = swipe down. Negative = swipe up.
             };
           };
-          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
           "$mod" = "SUPER";
+          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
           bind =
             let
               workspaces = builtins.concatLists (
@@ -237,13 +236,13 @@
               # Plugins
               "$mod, W, overview:toggle"
 
+              # Mouse side buttons
+              ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected t
+              ",mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift" # paste by Ctrl+Shift+v
+
             ]
             ++ workspaces;
           bindm = [
-            # Mouse side buttons
-            ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected t
-            ",mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift" # paste by Ctrl+Shift+v
-
             # Move/resize windows with mainMod + LMB/RMB and dragging
             "$mod, mouse:272, movewindow"
             "$mod, mouse:273, resizewindow"
