@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
 {
@@ -31,16 +32,19 @@
     };
 
     # Set GTK cursor-theme
-    # TODO: Make this work with $HYPRCURSOR_THEME env var
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         cursor-theme = "catppuccin-macchiato-dark-cursors";
       };
-    # needed for virt-manager setup, factor this out?
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
-      };
+      # needed for virt-manager setup, factor this out?
+      "org/virt-manager/virt-manager/connections" =
+        if osConfig.libvirt.enable then
+          {
+            autoconnect = [ "qemu:///system" ];
+            uris = [ "qemu:///system" ];
+          }
+        else
+          { };
     };
   };
 }
