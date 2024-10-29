@@ -22,7 +22,7 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     /*
@@ -60,16 +60,21 @@
     };
 
     wezterm = {
-      url = "github:Neurarian/wezterm?dir=nix";
-      # url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:wez/wezterm?dir=nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay = {
+          url = "github:oxalica/rust-overlay/master";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+      };
     };
 
     #inputs.nur.url = github:nix-community/NUR;
 
     # Nvim
     nixCats = {
-      url = "github:BirdeeHub/nixCats-nvim";
+      url = "github:BirdeeHub/nixCats-nvim/765810b6c14fd581f906d1ac9b2514a6047242ff";
     };
 
     plugins-care-nvim = {

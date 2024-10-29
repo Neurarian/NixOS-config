@@ -3,7 +3,6 @@
   lib,
   inputs,
   pkgs,
-  user,
   ...
 }:
 {
