@@ -2,18 +2,6 @@
 
   description = "NeurNix Flake";
 
-  /*
-    nixConfig = {
-
-      # override the default substituters
-      substituters = [
-        "https://cache.nixos.org"
-      ];
-      trusted-public-keys =
-        [
-        ];
-    };
-  */
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -149,15 +137,6 @@
             ./hosts/Loki
             home-manager.nixosModules.home-manager
 
-            {
-              nix.settings = {
-                trusted-users = [ "${toString user}" ];
-                extra-substituters = [ "https://hyprland.cachix.org" ];
-                extra-trusted-public-keys = [
-                  "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-                ];
-              };
-            }
             {
               home-manager = {
 
