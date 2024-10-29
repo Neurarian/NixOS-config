@@ -5,5 +5,6 @@
     ./boot.nix
     ./networking.nix
     ./nix-helper.nix
+    ./caches.nix
   ];
 }
