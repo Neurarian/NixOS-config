@@ -37,7 +37,7 @@
         ];
         systemd.enable = true;
         settings = {
-          source = "~/.config/hypr/hyprland_colors.conf";
+          source = "hyprland_colors.conf";
           windowrulev2 = [
             "bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1"
             "workspace 2, class:YouTube Music"
@@ -130,7 +130,7 @@
             force_default_wallpaper = 0;
             disable_hyprland_logo = true;
             disable_splash_rendering = false;
-            disable_autoreload = true;
+            disable_autoreload = false;
             mouse_move_enables_dpms = true;
             key_press_enables_dpms = true;
             background_color = "$backgroundColor";
