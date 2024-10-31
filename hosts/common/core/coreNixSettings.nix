@@ -1,13 +1,18 @@
 { config, user, ... }:
 {
   sops.secrets = {
-    "tokens/github/loki" = { 
-    mode = "0440";
-    owner = config.users.users.${user}.name;
+    "tokens/github/loki" = {
+      mode = "0440";
+      owner = config.users.users.${user}.name;
     };
   };
   nix = {
     settings = {
+      # Enable Flakes
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       trusted-users = [ "${toString user}" ];
       extra-substituters = [
         "https://hyprland.cachix.org"

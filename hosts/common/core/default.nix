@@ -1,10 +1,15 @@
 {
   imports = [
-    ./global-env-vars.nix
-    ./sops.nix
     ./boot.nix
+    ./corePackages.nix
+    ./coreFonts.nix
+    ./coreUsers.nix
+    ./coreNixSettings.nix
+    ./coreServices.nix
+    ./locale.nix
+    ./sops.nix
     ./networking.nix
-    ./nix-helper.nix
-    ./caches.nix
+    ./globalEnvVars.nix
+    ./nixHelper.nix
   ];
 }
