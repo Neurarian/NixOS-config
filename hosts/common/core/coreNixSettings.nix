@@ -26,6 +26,5 @@
     extraOptions = ''
       !include ${config.sops.secrets."tokens/github/loki".path}
     '';
-    # access-tokens = github.com=${config.sops.secrets."tokens/github/loki".key}
   };
 }
