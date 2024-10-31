@@ -8,10 +8,12 @@
     ./vfio_nvidia_intel.nix
     ./libvirt.nix
     ./coolercontrol.nix
+    ./hyprsys.nix
   ];
   localsend.enable = lib.mkDefault false;
   coolercontrol.enable = lib.mkDefault false;
   powermanagement.enable = lib.mkDefault false;
   libvirt.enable = lib.mkDefault false;
   nvidia-intel-vfio.enable = lib.mkDefault false;
+  hyprsys.enable = lib.mkDefault false;
 }
