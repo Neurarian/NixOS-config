@@ -7,8 +7,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    catppuccin.url = "github:catppuccin/nix";
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +29,14 @@
         inputs.hyprland.follows = "hyprland";
       };
     */
+
+    # CPU undervolt Loki host
+    vermeer-undervolt = {
+      url = "github:Neurarian/5800x3d-undervolt/fixLoop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin.url = "github:catppuccin/nix";
 
     Hyprspace = {
 
@@ -61,6 +67,7 @@
 
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
+      # Workaround to avoid buildfailure due to outdated rust-overlay in wezterm flake
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay = {

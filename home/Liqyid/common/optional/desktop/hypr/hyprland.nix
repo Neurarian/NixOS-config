@@ -14,7 +14,10 @@
 
 
     home.packages = with pkgs; [
+      wl-clipboard
+      cliphist
       hyprcursor
+      grimblast
       catppuccin-cursors.macchiatoDark
       wlogout
       glib
@@ -186,6 +189,8 @@
               # Hyprland
               "ALT, space, killactive"
               "$mod, P, pin"
+              "$mod, F, fullscreen"
+              "$mod, Q, pseudo, # dwindle"
               "CONTROL, Space, togglefloating,"
               "ALT, J, togglesplit, # dwindle"
 
@@ -193,18 +198,19 @@
               "$mod, Return, exec, wezterm"
               "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
               "$mod, A, exec, fuzzel"
-              "$mod, Q, pseudo, # dwindle"
-              "$mod, F, fullscreen"
+              "$mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
               "$mod, B, exec, zen"
-              "$mod, Y, exec, youtube-music && wezterm -e cava"
+              "$mod, Y, exec, youtube-music & wezterm -e cava"
               "$mod, G, exec, steam"
               "$mod, D, exec, discord"
               "$mod, C, exec, coolercontrol"
               "$mod, S, exec, localsend_app"
               "$mod SHIFT, Q, exec, wlogout"
-              "$mod, PRINT, exec, ~/scripts/grim.sh"
               "$mod SHIFT, W, exec, wal_set"
               "$mod SHIFT, V, exec, virsh --connect qemu:///system start win10"
+              "$mod, P, exec, grimblast --notify --freeze copysave area"
+              "$mod SHIFT, P, exec, grimblast --notify copysave active"
+              "$mod ALT, P, exec, grimblast --notify copysave screen"
 
               # Move focus
               "$mod, H, movefocus, l"
@@ -229,7 +235,7 @@
               "$mod, W, overview:toggle"
 
               # Mouse side buttons
-              ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected t
+              ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected text
               ",mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift" # paste by Ctrl+Shift+v
 
             ]

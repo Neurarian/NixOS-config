@@ -1,12 +1,13 @@
 {
   inputs,
   osConfig,
+  pkgs,
   ...
 }:
 let
   utils = inputs.nixCats.utils;
 
-  extraNixdItems = pkgs: {
+  extraNixdItems = {
 
     nixpkgs = inputs.nixpkgs.outPath;
     flake-path = inputs.self.outPath;
@@ -64,6 +65,7 @@ in
             ];
             debug =
               [
+              lldb
               ];
             bash = [
               bash-language-server
@@ -80,10 +82,6 @@ in
               cargo
               rustc
               rustfmt
-              # debug
-              lldb
-              # vscode-extensions.vadimcn.vscode-lldb
-              # vscode-extensions.ms-vscode.cpptools
             ];
             lua = [
               lua-language-server
@@ -229,7 +227,7 @@ in
         # These are the names of your packages
         # you can include as many as you wish.
         nvim =
-          { pkgs, ... }:
+          { ... }:
           {
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
@@ -272,18 +270,7 @@ in
               test = true;
 
               # Extra info to pass to lua
-              nixdExtras = extraNixdItems pkgs;
-
-              example = {
-                youCan = "add more than just booleans";
-                toThisSet = [
-                  "and the contents of this categories set"
-                  "will be accessible to your lua with"
-                  "nixCats('path.to.value')"
-                  "see :help nixCats"
-                  "and type :NixCats to see the categories set in nvim"
-                ];
-              };
+              nixdExtras = extraNixdItems;
             };
           };
       };
