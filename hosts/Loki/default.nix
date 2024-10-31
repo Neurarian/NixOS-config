@@ -4,10 +4,7 @@
 }:
 
 {
-
   imports = [
-
-    # Include the results of the hardware scan.
     ./diskConfig.nix
     ./hardware-configuration.nix
     ../common/core
@@ -28,7 +25,10 @@
 
   nixpkgs.config.allowUnfree = true;
   # Hyprland specific system configurations
-  hyprsys.enable = true;
+  hyprsys = {
+    enable = true;
+    launchCommand = "Hyprland";
+  };
   # System cooling GUI
   coolercontrol.enable = true;
   # FOSS Airdrop alternative

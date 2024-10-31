@@ -7,7 +7,15 @@
 {
 
   options = {
-    hyprsys.enable = lib.mkEnableOption "enable hyprland specific system configurations";
+    hyprsys = {
+      enable = lib.mkEnableOption "enable hyprland specific system configurations";
+      launchCommand = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        example = "Hyprland";
+        description = "The command to launch Hyprland with from greetd";
+      };
+    };
   };
 
   config = lib.mkIf config.hyprsys.enable {
@@ -21,7 +29,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "Hyprland";
+          command = config.hyprsys.launchCommand;
           user = "${user}";
         };
       };
