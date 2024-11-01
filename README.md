@@ -6,10 +6,10 @@ Still needs work on structure/modularity of the config.
 Currently running on two hosts: Medion (Intel Notebook; Nvidia GPU) & Loki (AMD Workstation; AMD GPU)
 ______________________________________________________________________
 
-## Compositor & GUI
+## 🖥️ Compositor & GUI
 Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Uses a modified [AGS](https://github.com/Aylur/ags) setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, [fuzzel](https://codeberg.org/dnkl/fuzzel), [wlogout](https://github.com/ArtsyMacaw/wlogout), hyprland and hyprlock are dynamically themed in a matching light or dark theme depending on the wallpaper.
 
-## Neovim
+## 🧑‍💻 Neovim
 Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
 
 ### ✨ Main Features
@@ -23,10 +23,10 @@ Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstar
 - 🐞 Integrated debugger via [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 - 🎨 Harmonizing pastel aesthetics across the entire terminal via [Catppuccin](https://github.com/catppuccin/catppuccin) Dark Mocha and a pretty [alpha-nvim](https://github.com/goolord/alpha-nvim) splash screen.
 
-## Secret provisioning
+## 🔒 Secret provisioning
 Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as Wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time. 
 
-## Plug & Play VFIO GPU passthrough
+## 🔌 Plug & Play VFIO GPU passthrough
 
 Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/master/hosts/common/optional/libvirt.nix) that generates a single-file qemu hook making (single) GPU passthrough via detaching and reattaching of the respective kernel drivers on NixOS dead simple, e.g.:
 
@@ -64,10 +64,10 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 ```
 
 
-## Other Software
+## 💿 Other Software
 
 <details>
-  <summary>show integrated</summary>
+  <summary>Show integrated</summary>
 
 - [zsh](https://www.zsh.org/)
 - [Starship](https://github.com/starship/starship)
@@ -86,7 +86,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 </details>
 
 <details>
-  <summary>show planned</summary>
+  <summary>Show planned</summary>
 
 - ags widgets
 - Get VFIO to work properly on Notebook with Nvidia GPU (f*** them)
