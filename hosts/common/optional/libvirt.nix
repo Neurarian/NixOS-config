@@ -41,7 +41,19 @@
           description = "The VFIO module to be loaded for passthrough.";
         };
       };
-
+      nvidiaIntelVfio = {
+        enable = lib.mkEnableOption "Setup required options for Nvidia GPU passthrough";
+        vfioOnBoot.enable = lib.mkEnableOption "Hook GPU to VFIO driver on boot";
+        nvidiaDeviceIds = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ ];
+          example = [
+            "10de:1be1"
+            "10de:10f0"
+          ];
+          description = "List of device IDs to detach/reattach for GPU passthrough";
+        };
+      };
     };
   };
 
