@@ -17,7 +17,6 @@ in
   config =     let
       cfg = config.nvidia-intel-vfio;
     in
-      lib.mkIf cfg.enable
     {
       boot = {
         extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];

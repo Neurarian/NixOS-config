@@ -145,7 +145,7 @@
           ]
           ++ lib.optional cfgNvidiaIntel.vfioOnBoot.enable
             # isolate the GPU
-            ("vfio-pci.ids=" + lib.concatStringsSep ",");
+            ("vfio-pci.ids=" + lib.concatStringsSep "," cfgNvidiaIntel.nvidiaDeviceIds);
       };
 
       # looking glass

@@ -31,12 +31,34 @@
 
   # Option to attach GPU to VFIO on boot
   specialisation."VFIO".configuration = {
+    libvirt.vfioNvidiaIntel.vfioOnBoot.enable = true;
     system.nixos.tags = [ "with-vfio" ];
-    nvidia-intel-vfio.enable = true;
     gpu_power_management.enable = true;
   };
   # VMs
-  libvirt.enable = true;
+  libvirt = {
+    enable = true;
+    qemuHook = {
+      enable = true;
+      vmName = "win11";
+      pciDevices = [
+        "pci_0000_01_00_0"
+        "pci_0000_01_00_1"
+      ];
+      gpuModule = "nvidia";
+      vfioModule = "vfio-pci";
+    };
+    vfioNvidiaIntel = {
+      enable = true;
+      nvidiaDeviceIds = [
+        # GTX 1070M
+        "10de:1be1" # Graphics
+        "10de:10f0" # Audio
+      ];
+
+    };
+
+  };
   services.printing.enable = true;
   # Enable fn keybindings
   actkbd.enable = true;
