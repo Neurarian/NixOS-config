@@ -55,18 +55,8 @@ in
       # Ensure presence of colorgen dir and file
       activation = {
         makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          run mkdir -p "$XDG_STATE_HOME/ags/scss" "$XDG_CACHE_HOME/ags/user/generated"
+          run mkdir -p "$XDG_STATE_HOME"/ags/{user,scss} "$XDG_CACHE_HOME"/ags/user/generated
         '';
-      };
-      file = {
-        "ags-state-colormode-file" = {
-          target = ".local/state/ags/user/colormode.txt";
-          text = ''
-            dark
-            opaque
-            vibrant
-          '';
-        };
       };
     };
 
