@@ -33,6 +33,17 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 
 Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Uses a modified [AGS](https://github.com/Aylur/ags) setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, [fuzzel](https://codeberg.org/dnkl/fuzzel), [wlogout](https://github.com/ArtsyMacaw/wlogout), hyprland and hyprlock are dynamically themed in a matching light or dark theme depending on the wallpaper.
 
+<details>
+  <summary>Screenshots</summary>
+  
+### 🌚 Host: Medion - With dark colorscheme
+![2024-11-02T21:11:34,395432515+01:00](https://github.com/user-attachments/assets/78b18a24-52f4-4581-816a-cad09019e564)
+### 🌞 Host: Loki - With light colorscheme
+![2024-11-02T21:37:57,019175934+01:00](https://github.com/user-attachments/assets/673139f7-0ffb-4d18-8029-831fa2dc0724)
+
+
+</details>
+
 ## 🧑‍💻 Neovim
 
 Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
