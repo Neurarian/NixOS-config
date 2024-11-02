@@ -34,7 +34,6 @@
     firefox.enable = true;
     zen-browser.enable = true;
     wlogout.enable = true;
-    discord.enable = true;
     # Music 
     ytmusic.enable = true;
     mpd.enable = true;
