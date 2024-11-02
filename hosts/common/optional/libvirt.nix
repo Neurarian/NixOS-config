@@ -61,7 +61,6 @@
   config =
     let
       hookCfg = config.libvirt.qemuHook;
-      cfgNvidiaIntel = config.libvirt.vfioNvidiaIntel;
     in
     lib.mkIf config.libvirt.enable {
 
@@ -123,35 +122,37 @@
         };
         spiceUSBRedirection.enable = true;
       };
-      boot = lib.mkIf cfgNvidiaIntel.enable {
-        extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
-        kernelModules = [ "kvmfr" ];
-        initrd.kernelModules = [
-          "vfio_pci"
-          "vfio"
-          "vfio_iommu_type1"
+      boot =
+        let
+          cfgNvidiaIntel = config.libvirt.vfioNvidiaIntel;
+        in
+        lib.mkIf cfgNvidiaIntel.enable {
+          extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+          kernelModules = [ "kvmfr" ];
+          initrd.kernelModules = [
+            "vfio_pci"
+            "vfio"
+            "vfio_iommu_type1"
 
-          "nvidia"
-          "nvidia_modeset"
-          "nvidia_uvm"
-          "nvidia_drm"
-        ];
+            "nvidia"
+            "nvidia_modeset"
+            "nvidia_uvm"
+            "nvidia_drm"
+          ];
 
-        kernelParams =
-          [
-            # enable IOMMU
-            "intel_iommu=on"
-            "iommu=pt"
-          ]
-          ++ lib.optional cfgNvidiaIntel.vfioOnBoot.enable
-            # isolate the GPU
-            ("vfio-pci.ids=" + lib.concatStringsSep "," cfgNvidiaIntel.nvidiaDeviceIds);
-      };
-
+          kernelParams =
+            [
+              # enable IOMMU
+              "intel_iommu=on"
+              "iommu=pt"
+            ]
+            ++ lib.optional cfgNvidiaIntel.vfioOnBoot.enable
+              # isolate the GPU
+              ("vfio-pci.ids=" + lib.concatStringsSep "," cfgNvidiaIntel.nvidiaDeviceIds);
+        };
       # looking glass
       # systemd.tmpfiles.rules = [
       #   "f /dev/shm/looking-glass 0660 ${user} qemu-libvirtd -"
       # ];
-
     };
 }
