@@ -81,7 +81,7 @@
 
     # Nvim
     nixCats = {
-      url = "github:BirdeeHub/nixCats-nvim/765810b6c14fd581f906d1ac9b2514a6047242ff";
+      url = "github:BirdeeHub/nixCats-nvim";
     };
 
     plugins-care-nvim = {
