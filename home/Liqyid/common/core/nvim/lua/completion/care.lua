@@ -82,9 +82,7 @@ care.setup {
       enabled = true,
     },
     cmp_buffer = {
-      -- care currently errors on first TextChangedI with cmp buffer enabled? 
-      -- "care-cmp/lua/cmp/init.lua:17: attempt to index field 'completion_context' (a nil value)"
-      enabled = false,
+      enabled = true,
     },
     cmp_path = {
       enabled = true,
