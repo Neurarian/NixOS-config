@@ -13,7 +13,7 @@ button {
 	font-size: 20rem;
 	background-color: alpha(#{{ $onSurface }}, 0.6);
 	border-color: alpha(#{{ $onSurface }}, 0);
-	color: alpha(#{{ $primaryContainer }}, 1);
+	color: alpha(#{{ $surface }}, 0.9);
 	margin: 2rem;
 	border-radius: 2rem;
 	border-style: solid;
