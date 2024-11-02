@@ -16,7 +16,10 @@
   # Scale plymouth to 2k
   boot.plymouth.extraConfig = "DeviceScale=1";
 
-  networking.hostName = "Loki"; # Define your hostname.
+  networking = {
+    hostName = "Loki"; # Define your hostname.
+    networkmanager.ensureProfiles.profiles.ChArian_Inet.connection.interface-name = "wlp5s0";
+  };
 
   hardware.bluetooth.enable = true;
 

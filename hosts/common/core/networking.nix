@@ -16,16 +16,12 @@
       "${home}psk" = { };
     };
 
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   networking.networkmanager = {
     enable = true; # Easiest to use and most distros use this by default.
     ensureProfiles.profiles = {
       ChArian_Inet = {
         connection = {
           id = config.sops.secrets."wifi/home/ssid".path;
-          interface-name = "wlp110s0";
           permissions = "user:${user}:;";
           timestamp = "1725477527";
           type = "wifi";

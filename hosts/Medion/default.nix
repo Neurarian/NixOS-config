@@ -13,8 +13,10 @@
 
   ];
 
-  networking.hostName = "Medion"; # Define your hostname.
-
+  networking = {
+    hostName = "Medion"; # Define your hostname.
+    networkmanager.ensureProfiles.profiles.ChArian_Inet.connection.interface-name = "wlp110s0";
+  };
   # Enable TRIM
   services.fstrim.enable = true;
 
