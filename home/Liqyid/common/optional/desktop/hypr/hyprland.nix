@@ -1,3 +1,7 @@
+
+
+/* Same issue here. But on an AMD machine. Interestingly, on my Nvidia notebook everything works perfectly fine. Both are running almost the same NixOS/Home Manager config. 40081cb improved/delayed the issue a little bit for some apps, but it still crashes after dragging tiles for a while. Dragging e.g. Firefox crashes Hyprland immediately. It also doesn't generate a crash report. */
+
 {
   config,
   lib,
@@ -31,7 +35,7 @@
       in
       {
         enable = true; # enable Hyprland
-        package = inputs.hyprland.packages.${pkgs.system}.default;
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         plugins = [
           inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
         ];
@@ -126,6 +130,9 @@
             workspace_swipe_forever = true;
             workspace_swipe_cancel_ratio = 0.1;
           };
+          /* debug = {
+          disable_logs = false;
+          }; */
           misc = {
             force_default_wallpaper = 0;
             disable_hyprland_logo = true;

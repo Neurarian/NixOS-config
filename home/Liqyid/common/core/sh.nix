@@ -88,7 +88,7 @@
         eval $(thefuck --alias)
         eval $(thefuck --alias fk)
       '';
-      loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
+      # loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
     };
 
     # zsh promt 
