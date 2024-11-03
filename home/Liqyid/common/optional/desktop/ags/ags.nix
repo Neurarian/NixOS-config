@@ -26,6 +26,7 @@ let
     mission-center
     overskride
     wlogout
+    pwvucontrol
   ];
 
   dependencies = requiredDeps ++ guiDeps;
