@@ -9,7 +9,7 @@
     keyMode = "vi";
     prefix = "C-a";
     clock24 = true;
-    catppuccin = {
+    /* catppuccin = {
       enable = true;
       extraConfig = ''
 
@@ -24,7 +24,7 @@
         set -g @catppuccin_status_modules_right "application host user directory session"
 
       '';
-    };
+    }; */
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       {
@@ -49,6 +49,23 @@
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
+
+        '';
+
+      }
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+
+        set -g @catppuccin_flavor "mocha"
+
+        set -g @catppuccin_status_left_separator  " "
+        set -g @catppuccin_status_fill "icon"
+        set -g @catppuccin_status_connect_separator "yes"
+
+        set -g @catppuccin_directory_text "#{pane_current_path}"
+
+        set -g @catppuccin_status_modules_right "application host user directory session"
 
         '';
 
