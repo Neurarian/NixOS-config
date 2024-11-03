@@ -69,6 +69,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    matugen = {
+      url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
       # Workaround to avoid buildfailure due to outdated rust-overlay in wezterm flake

@@ -23,6 +23,7 @@
     hypr.enable = true;
     # GUI
     ags.enable = true;
+    matugen.enable = true;
     gtk-module.enable = true;
     nautilus.enable = true;
     fuzzel.enable = true;

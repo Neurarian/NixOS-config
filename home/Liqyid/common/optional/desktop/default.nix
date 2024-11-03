@@ -15,6 +15,7 @@
     ./cava.nix
     ./looking-glass-client.nix
     ./hypr
+    ./matugen.nix
   ];
   desktop = {
     discord.enable = lib.mkDefault false;
@@ -22,6 +23,7 @@
     ytmusic.enable = lib.mkDefault false;
     mpd.enable = lib.mkDefault false;
     ags.enable = lib.mkDefault false;
+    matugen.enable = lib.mkDefault false;
     gtk-module.enable = lib.mkDefault false;
     fuzzel.enable = lib.mkDefault false;
     wlogout.enable = lib.mkDefault false;
