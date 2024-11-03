@@ -126,7 +126,9 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 <details>
   <summary>Show planned</summary>
 
-- ags widgets
+- Implement impermancence
+- Obsidian
+- AGS widgets
 - Get VFIO to work properly on Notebook with Nvidia GPU (f\*\*\* them)
 
 </details>
