@@ -12,7 +12,7 @@ ______________________________________________________________________
 Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 
 - `flake.nix`: Entrypoint for all hosts.
-- `hosts`: NixOS Configurations, build via `nh os switch -H <hostname>`.
+- `hosts`: NixOS Configurations, rebuild via `nh os switch -H <hostname>` after bootstrapping.
   - `common`: Shared configurations imported by the host configurations.
     - `core`: Core configurations that every host requires.
     - `optional`: Optional configurations that only some hosts require
@@ -64,7 +64,7 @@ Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstar
 
 Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
 
-## 🔌 Plug & Play VFIO GPU passthrough
+## 🔌 Plug & Play VFIO GPU Passthrough
 
 Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/master/hosts/common/optional/libvirt.nix) that generates a single-file qemu hook making (single) GPU passthrough via detaching and reattaching of the respective kernel drivers on NixOS dead simple, e.g.:
 
@@ -126,7 +126,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 <details>
   <summary>Show planned</summary>
 
-- Implement impermancence
+- Implement impermanence
 - Obsidian
 - AGS widgets
 - Get VFIO to work properly on Notebook with Nvidia GPU (f\*\*\* them)
