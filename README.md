@@ -60,7 +60,7 @@ Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstar
 - 🐞 Integrated debugger via [nvim-dap](https://github.com/mfussenegger/nvim-dap).
 - 🎨 Harmonizing pastel aesthetics across the entire terminal via [Catppuccin](https://github.com/catppuccin/catppuccin) Dark Mocha and a pretty [alpha-nvim](https://github.com/goolord/alpha-nvim) splash screen.
 
-## 🔒 Secret provisioning
+## 🔒 Secret Provisioning
 
 Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as Wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
 
