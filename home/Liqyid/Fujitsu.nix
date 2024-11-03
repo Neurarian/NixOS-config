@@ -1,14 +1,10 @@
-{ user, pkgs, ... }:
+{ user, ... }:
 {
 
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "24.05";
-    pointerCursor = {
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-      name = "Catppuccin-Macchiato-Dark-Cursors";
-    };
   };
 
   imports = [

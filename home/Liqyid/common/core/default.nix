@@ -6,5 +6,6 @@
     ./tmux.nix
     ./fastfetch.nix
     ./nvim
+    ./cursor.nix
   ];
 }
