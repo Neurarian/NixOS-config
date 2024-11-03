@@ -119,6 +119,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 - [CAVA](https://github.com/karlstav/cava)
 - Steam
 - [YouTube Music](https://github.com/th-ch/youtube-music)
+- [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)
 
 </details>
 
