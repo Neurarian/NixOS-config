@@ -1,7 +1,3 @@
-
-
-/* Same issue here. But on an AMD machine. Interestingly, on my Nvidia notebook everything works perfectly fine. Both are running almost the same NixOS/Home Manager config. 40081cb improved/delayed the issue a little bit for some apps, but it still crashes after dragging tiles for a while. Dragging e.g. Firefox crashes Hyprland immediately. It also doesn't generate a crash report. */
-
 {
   config,
   lib,
