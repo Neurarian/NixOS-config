@@ -18,6 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    systems = {
+      url = "github:nix-systems/default-linux";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -125,6 +129,7 @@
       nixpkgs,
       home-manager,
       catppuccin,
+      systems,
       ...
     }@inputs:
 
@@ -133,29 +138,31 @@
       system = "x86_64-linux";
       # Default user, full gui environment
       user = "Liqyid";
+      specialArgs = {
+        inherit inputs system user;
+      };
+      forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs (import systems) (
+        system:
+        import nixpkgs {
+          inherit system;
+        }
+      );
     in
     {
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+
       nixosConfigurations = {
 
         # Main machine
         Loki = lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs user;
-          };
-
+          inherit specialArgs;
           modules = [
             ./hosts/Loki
             home-manager.nixosModules.home-manager
-
             {
               home-manager = {
-
-                extraSpecialArgs = {
-                  inherit inputs user system;
-                };
-
+                extraSpecialArgs = specialArgs;
                 users.${user} = {
                   imports = [
                     ./home/${user}/Loki.nix
@@ -169,22 +176,13 @@
 
         # Medion notebook
         Medion = lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs user;
-          };
-
+          inherit specialArgs;
           modules = [
             ./hosts/Medion
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-
-                extraSpecialArgs = {
-                  inherit inputs user system;
-                };
-
+                extraSpecialArgs = specialArgs;
                 users.${user} = {
                   imports = [
                     ./home/${user}/Medion.nix
@@ -198,22 +196,13 @@
 
         # Fujitsu home lab
         Fujitsu = lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs user;
-          };
-
+          inherit specialArgs;
           modules = [
             ./hosts/Fujitsu
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-
-                extraSpecialArgs = {
-                  inherit inputs user system;
-                };
-
+                extraSpecialArgs = specialArgs;
                 users.${user} = {
                   imports = [
                     ./home/${user}/Fujitsu.nix
