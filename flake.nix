@@ -23,6 +23,11 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    Hyprspace = {
+
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
     /*
       hyprland-plugins = {
         url = "github:hyprwm/hyprland-plugins";
@@ -38,11 +43,6 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    Hyprspace = {
-
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
     # Zen browser
 
     zen-browser = {

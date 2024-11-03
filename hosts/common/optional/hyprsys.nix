@@ -12,7 +12,7 @@
       launchCommand = lib.mkOption {
         type = lib.types.str;
         default = "";
-        example = "Hyprland";
+        example = "hyprwrapperAmd";
         description = "The command to launch Hyprland with from greetd";
       };
     };

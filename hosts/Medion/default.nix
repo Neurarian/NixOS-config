@@ -66,7 +66,7 @@
   actkbd.enable = true;
   hyprsys = {
     enable = true;
-    launchCommand = "hyprwrapper";
+    launchCommand = "hyprwrapperNvidia";
   };
 
   services.libinput.enable = true;

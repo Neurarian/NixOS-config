@@ -1,7 +1,7 @@
 {pkgs, inputs, ...}:
   let
-    hyprwrapper = pkgs.writeShellApplication {
-      name = "hyprwrapper";
+    hyprwrapperNvidia = pkgs.writeShellApplication {
+      name = "hyprwrapperNvidia";
 
       runtimeInputs = [ inputs.hyprland.packages.${pkgs.system}.default ];
 
@@ -21,6 +21,6 @@
       '';
    };
   in {
-    home.packages = [ hyprwrapper ];
+    home.packages = [ hyprwrapperNvidia ];
 } 
 
