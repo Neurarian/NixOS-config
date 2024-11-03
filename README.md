@@ -62,7 +62,7 @@ Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstar
 
 ## 🔒 Secret Provisioning
 
-Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as Wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
+Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
 
 ## 🔌 Plug & Play VFIO GPU passthrough
 
