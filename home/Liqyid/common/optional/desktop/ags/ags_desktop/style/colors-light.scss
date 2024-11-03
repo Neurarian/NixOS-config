@@ -1,32 +1,38 @@
-$red: #f38ba8;
-$yellow: #f9e2af;
-$green: #a6e3a1;
-$blue: #89b4fa;
+@import 'material';
+$red:                  #d17678;
+$accent_green:         #afbea2;
 
-$tooltip-bg: #ffffff;
-$fg: #000000;
-$bg: rgba(255, 255, 255, 0.5);
-$bar-bg: rgba(255, 255, 255, 0.3);
+$primaryMon:           $primaryContainer;
+$primaryMonHover:      mix($primaryContainer, $onPrimaryContainer, 30%);
+$primaryMonActive:     mix($primaryContainer, $onPrimaryContainer, 100%);
+$secondaryMon:         $tertiaryContainer;
+$thirdMon:             $tertiary;
+$fourthMon:            $success;
 
-$surface: rgba(255, 255, 255, 0.3);
-$overlay: rgba(0, 0, 0, 0.5);
+$tooltipBg:            $background;
+$fg:                   $onBackground;
+$bg:                   transparentize($background, .5);
+$barBg:                transparentize($background, .5);
 
-$accent: #ddbaef;
+$surface:              transparentize($surfaceBright, .6);
+$overlay:              transparentize($onSurface, .25);
+
+$accent:               $tertiaryContainer;
 
 /* buttons */
-$button-enabled: $accent;
-$button-enabled-hover: adjust_color($button-enabled, $lightness: -10%);
+$buttonEnabled:        $accent;
+$buttonEnabledHover:   adjust_color($buttonEnabled, $lightness: -15%);
 
-$button-disabled: $surface;
-$button-disabled-hover: adjust_color($button-disabled, $alpha: +0.1);
+$buttonDisabled:       $surface;
+$buttonDisabledHover:  adjust_color($buttonDisabled, $alpha: +0.8);
 
 * {
-  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 3px transparentize($background, .8);
 }
 
 @mixin border {
-  // border: 1px solid rgba(0, 0, 0, 0.1);
+  // border: 1px solid transparentize($background, .9);
   box-shadow:
-    // inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 3px 5px 1px rgba(0, 0, 0, 0.3);
+    // inset 0 0 0 1px transparentize($background, .9),
+    0 3px 5px 1px transparentize($background, .9);
 }
