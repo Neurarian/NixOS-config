@@ -50,8 +50,11 @@
             "idleinhibit fullscreen, class:zen"
           ];
           env = [
+            ""
             "HYPRCURSOR_THEME,${cursorName}"
+            "XCURSOR_THEME,${cursorName}"
             "HYPRCURSOR_SIZE,${toString pointer.size}"
+            "XCURSOR_SIZE,${toString pointer.size}"
           ];
           exec-once = [
             # set cursor for HL itself
