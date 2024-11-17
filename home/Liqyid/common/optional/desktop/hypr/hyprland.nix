@@ -87,12 +87,14 @@
             active_opacity = 1.0;
             inactive_opacity = 0.96;
             fullscreen_opacity = 1.0;
-            drop_shadow = true;
-            shadow_range = 40;
-            shadow_render_power = 2;
-            "col.shadow" = "0x66000000";
-            shadow_offset = "5 5";
-            shadow_scale = 1;
+            shadow = {
+              enabled = true;
+              color = "0x66000000";
+              offset = "5 5";
+              scale = 1;
+              render_power = 2;
+              range = 40;
+            };
             blur = {
               enabled = true;
               size = 10;
