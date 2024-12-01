@@ -34,7 +34,7 @@
     # Music 
     ytmusic.enable = true;
     mpd.enable = true;
-    cava.enable = true;
+    # cava.enable = true;
   };
 
   # Services
