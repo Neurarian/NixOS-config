@@ -4,12 +4,8 @@
     fira-code
     jetbrains-mono
     material-symbols
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "NerdFontsSymbolsOnly"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
   ];
 }
