@@ -23,7 +23,7 @@
     hypr.enable = true;
     # GUI
     ags.enable = true;
-    matugen.enable = true;
+    cad.enable = true;
     gtk-module.enable = true;
     nautilus.enable = true;
     fuzzel.enable = true;
@@ -34,7 +34,7 @@
     # Music 
     ytmusic.enable = true;
     mpd.enable = true;
-    # cava.enable = true;
+    cava.enable = true;
   };
 
   # Services

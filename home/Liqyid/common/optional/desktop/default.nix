@@ -16,6 +16,7 @@
     ./looking-glass-client.nix
     ./hypr
     ./matugen.nix
+    ./cad.nix
   ];
   desktop = {
     discord.enable = lib.mkDefault false;
@@ -32,5 +33,6 @@
     nautilus.enable = lib.mkDefault false;
     firefox.enable = lib.mkDefault false;
     zen-browser.enable = lib.mkDefault false;
+    cad.enable = lib.mkDefault false;
   };
 }
