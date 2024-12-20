@@ -7,5 +7,6 @@
     ./applycolor.nix
     ./colorgen.nix
     ./generate_colors_material.nix
+    ./gamescope.nix
   ];
 }

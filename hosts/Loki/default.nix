@@ -37,7 +37,7 @@
   # FOSS Airdrop alternative
   localsend.enable = true;
   # Gaming
-  programs.steam.enable = true;
+  gaming.enable = true;
   # Enable CUPS to print documents.
   # Undervolt 5800x3d
   services.vermeer-undervolt = {

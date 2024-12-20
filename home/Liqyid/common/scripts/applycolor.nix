@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 let
   applycolor = pkgs.writeShellApplication {
