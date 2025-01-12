@@ -27,11 +27,11 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    Hyprspace = {
+    #Hyprspace = {
 
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+     # url = "github:KZDKM/Hyprspace";
+     # inputs.hyprland.follows = "hyprland";
+    #};
     /*
       hyprland-plugins = {
         url = "github:hyprwm/hyprland-plugins";
@@ -89,22 +89,22 @@
     #inputs.nur.url = github:nix-community/NUR;
 
     # Nvim
+    
+    neovim-nightly-overlay = {
+       url = "github:nix-community/neovim-nightly-overlay";
+    };
+
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
     };
 
     plugins-care-nvim = {
       url = "github:max397574/care.nvim";
-      flake = false;
+      flake = true;
     };
 
     plugins-care-cmp = {
       url = "github:max397574/care-cmp";
-      flake = false;
-    };
-
-    plugins-lz-n = {
-      url = "github:nvim-neorocks/lz.n";
       flake = false;
     };
 
@@ -120,6 +120,11 @@
 
     plugins-telescope-luasnip = {
       url = "github:benfowler/telescope-luasnip.nvim";
+      flake = false;
+    };
+
+    plugins-arduino-nvim = {
+      url = "github:stevearc/vim-arduino";
       flake = false;
     };
 
@@ -140,9 +145,9 @@
 
     let
       lib = nixpkgs.lib;
-      system = "x86_64-linux";
       # Default user, full gui environment
       user = "Liqyid";
+      system = "x86_64-linux";
       specialArgs = {
         inherit inputs system user;
       };
@@ -151,6 +156,9 @@
         system:
         import nixpkgs {
           inherit system;
+          overlays = with inputs; [ 
+          plugins-care-nvim.overlays.default
+          neovim-nightly-overlay.overlays.default];
         }
       );
     in
@@ -167,7 +175,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = specialArgs;
+                extraSpecialArgs = specialArgs // { pkgs = pkgsFor.x86_64-linux; };
                 users.${user} = {
                   imports = [
                     ./home/${user}/Loki.nix
@@ -187,7 +195,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = specialArgs;
+                extraSpecialArgs = specialArgs // { pkgs = pkgsFor.x86_64-linux; };
                 users.${user} = {
                   imports = [
                     ./home/${user}/Medion.nix
@@ -207,7 +215,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = specialArgs;
+                extraSpecialArgs = specialArgs // { pkgs = pkgsFor.x86_64-linux; };
                 users.${user} = {
                   imports = [
                     ./home/${user}/Fujitsu.nix

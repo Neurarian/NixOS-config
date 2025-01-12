@@ -91,11 +91,10 @@
       # loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
     };
 
-    # zsh promt 
+    # zsh promt
     starship = {
       enable = true;
       enableZshIntegration = true;
-      catppuccin.enable = true;
     };
 
     # Better cat
@@ -107,7 +106,6 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      catppuccin.enable = true;
     };
 
     # Improved find
@@ -132,5 +130,9 @@
       enable = true;
       enableZshIntegration = true;
     };
+  };
+  catppuccin = {
+    fzf.enable = true;
+    starship.enable = true;
   };
 }

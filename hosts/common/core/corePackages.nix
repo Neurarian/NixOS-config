@@ -8,5 +8,6 @@
     wireplumber
     pwvucontrol
     ripgrep
+    tio
   ];
 }

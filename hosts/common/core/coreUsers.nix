@@ -10,6 +10,7 @@
       "video"
       "libvirtd"
       "kvm"
+      #"dialout"
     ];
   };
 }

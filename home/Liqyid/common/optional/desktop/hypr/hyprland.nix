@@ -33,7 +33,7 @@
         enable = true; # enable Hyprland
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         plugins = [
-          inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+         # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
         ];
         systemd.enable = true;
         settings = {
@@ -240,7 +240,7 @@
               "CONTROL_ALT, left, workspace, m-1"
 
               # Plugins
-              "$mod, W, overview:toggle"
+              #"$mod, W, overview:toggle"
 
               # Mouse side buttons
               ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected text

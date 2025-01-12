@@ -8,7 +8,6 @@ let
   utils = inputs.nixCats.utils;
 
   extraNixdItems = {
-
     nixpkgs = inputs.nixpkgs.outPath;
     flake-path = inputs.self.outPath;
     system = pkgs.system;
@@ -111,7 +110,7 @@ in
           };
           startupPlugins = with pkgs.vimPlugins; {
             general = [
-              pkgs.neovimPlugins.lz-n
+              lz-n
               vim-sleuth
               indent-blankline-nvim
               comment-nvim
@@ -126,11 +125,14 @@ in
               lazygit-nvim
               gitsigns-nvim
             ];
+            arduino = [
+              #pkgs.neovimPlugins.arduino-nvim
+            ];
             completion = [
-              pkgs.neovimPlugins.care-nvim
+              care-nvim
               pkgs.neovimPlugins.care-cmp
-              pkgs.neovimPlugins.fzy-lua-native
-              pkgs.neovimPlugins.friendly-snippets
+              #pkgs.neovimPlugins.fzy-lua-native
+              friendly-snippets
               luasnip
               cmp_luasnip
               cmp-path
@@ -240,7 +242,7 @@ in
                 "vi"
                 "e"
               ];
-              # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+              neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
             };
             # and a set of categories that you want
             # (and other information to pass to lua)
@@ -257,6 +259,7 @@ in
               lint = true;
               completion = true;
               have_nerd_font = true;
+              arduino = true;
 
               # additional packages
               markdown = true;

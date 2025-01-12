@@ -35,6 +35,7 @@
     ytmusic.enable = true;
     mpd.enable = true;
     cava.enable = true;
+    arduino.enable = true;
   };
 
   # Services
