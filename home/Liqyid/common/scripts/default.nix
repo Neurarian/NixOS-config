@@ -8,5 +8,6 @@
     ./colorgen.nix
     ./generate_colors_material.nix
     ./gamescope.nix
+    ./gamescope_TV.nix
   ];
 }
