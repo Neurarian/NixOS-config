@@ -10,5 +10,6 @@ return {
       }
     vim.cmd.colorscheme 'catppuccin-mocha'
     vim.cmd.hi 'Comment gui=none'
+    vim.g.rout_follow_colorscheme = true
   end,
 }

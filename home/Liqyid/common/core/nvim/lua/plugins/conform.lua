@@ -7,7 +7,7 @@ return { -- Autoformat
     conform.setup {
       formatters_by_ft = {
         lua = { 'stylua' },
-        nix = { 'nixfmt' },
+        nix = { 'alejandra' },
         go = { 'gofmt', 'golint' },
         -- Conform will run multiple formatters sequentially
         python = { 'isort', 'black' },
@@ -24,7 +24,7 @@ return { -- Autoformat
       conform.format {
         lsp_fallback = true,
         async = false,
-        timeout_ms = 1000,
+        timeout_ms = 3000,
       }
     end, { desc = '[F]ormat [F]ile' })
   end,

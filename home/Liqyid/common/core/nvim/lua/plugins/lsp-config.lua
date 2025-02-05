@@ -79,11 +79,11 @@ servers.nixd = {
       expr = 'import <nixpkgs> { }',
     },
     formatting = {
-      command = { 'nixfmt' },
+      command = { 'alejandra' },
     },
     options = {
       nixos = {
-        -- In the nixCats module, the nixdExtras attribute set 
+        -- In the nixCats module, the nixdExtras attribute set
         -- passes info from nix needed in the lua config, which is called here.
         expr = [[(builtins.getFlake "]]
           .. nixCats 'nixdExtras.flake-path'
@@ -109,6 +109,7 @@ servers.lua_ls = {
     },
   },
 }
+servers.r_language_server = {}
 
 return {
   'nvim-lspconfig',
