@@ -6,9 +6,7 @@
   user,
   osConfig,
   ...
-}:
-
-let
+}: let
   requiredDeps = with pkgs; [
     bash
     coreutils
@@ -34,14 +32,10 @@ let
   cfg = config.programs.ags;
   isMobile = osConfig.powermanagement.enable;
   agsDir =
-    if isMobile then
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook
-    else
-      /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop;
-
-in
-
-{
+    if isMobile
+    then /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_notebook
+    else /home/${user}/.dotfiles/NixOS-config/home/${user}/common/optional/desktop/ags/ags_desktop;
+in {
   imports = [
     inputs.ags.homeManagerModules.default
   ];
@@ -51,11 +45,10 @@ in
   };
 
   config = lib.mkIf config.desktop.ags.enable {
-
     home = {
       # Ensure presence of colorgen dir and file
       activation = {
-        makeColorgenDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        makeColorgenDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
           run mkdir -p "$XDG_STATE_HOME"/ags/{user,scss} "$XDG_CACHE_HOME"/ags/user/generated
         '';
       };
@@ -78,7 +71,7 @@ in
         ExecStart = "${cfg.package}/bin/ags";
         Restart = "on-failure";
       };
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }

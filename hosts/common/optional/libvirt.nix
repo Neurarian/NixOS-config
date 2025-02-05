@@ -2,10 +2,8 @@
   lib,
   config,
   pkgs,
-  user,
   ...
-}:
-{
+}: {
   options = {
     libvirt = {
       enable = lib.mkEnableOption "Enable libvirt module";
@@ -21,7 +19,7 @@
         };
         pciDevices = lib.mkOption {
           type = lib.types.listOf lib.types.str;
-          default = [ ];
+          default = [];
           example = [
             "pci_0000_0b_00_0"
             "pci_0000_0b_00_1"
@@ -47,7 +45,7 @@
         vfioOnBoot.enable = lib.mkEnableOption "Hook GPU to VFIO driver on boot";
         nvidiaDeviceIds = lib.mkOption {
           type = lib.types.listOf lib.types.str;
-          default = [ ];
+          default = [];
           example = [
             "10de:1be1"
             "10de:10f0"
@@ -58,12 +56,10 @@
     };
   };
 
-  config =
-    let
-      hookCfg = config.libvirt.qemuHook;
-    in
+  config = let
+    hookCfg = config.libvirt.qemuHook;
+  in
     lib.mkIf config.libvirt.enable {
-
       programs.virt-manager.enable = true;
       hardware.graphics.enable = true;
 
@@ -78,7 +74,7 @@
             swtpm.enable = true;
             ovmf = {
               enable = true;
-              packages = [ pkgs.OVMFFull.fd ];
+              packages = [pkgs.OVMFFull.fd];
             };
           };
           hooks.qemu = lib.mkIf hookCfg.enable {
@@ -122,13 +118,12 @@
         };
         spiceUSBRedirection.enable = true;
       };
-      boot =
-        let
-          cfgNvidiaIntel = config.libvirt.vfioNvidiaIntel;
-        in
+      boot = let
+        cfgNvidiaIntel = config.libvirt.vfioNvidiaIntel;
+      in
         lib.mkIf cfgNvidiaIntel.enable {
-          extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
-          kernelModules = [ "kvmfr" ];
+          extraModulePackages = with config.boot.kernelPackages; [kvmfr];
+          kernelModules = ["kvmfr"];
           initrd.kernelModules = [
             "vfio_pci"
             "vfio"
@@ -147,8 +142,8 @@
               "iommu=pt"
             ]
             ++ lib.optional cfgNvidiaIntel.vfioOnBoot.enable
-              # isolate the GPU
-              ("vfio-pci.ids=" + lib.concatStringsSep "," cfgNvidiaIntel.nvidiaDeviceIds);
+            # isolate the GPU
+            ("vfio-pci.ids=" + lib.concatStringsSep "," cfgNvidiaIntel.nvidiaDeviceIds);
         };
       # looking glass
       # systemd.tmpfiles.rules = [

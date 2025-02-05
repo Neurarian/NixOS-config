@@ -1,5 +1,8 @@
-{ config, user, ... }:
 {
+  config,
+  user,
+  ...
+}: {
   sops.secrets = {
     "tokens/github/loki" = {
       mode = "0440";
@@ -13,7 +16,7 @@
         "nix-command"
         "flakes"
       ];
-      trusted-users = [ "${toString user}" ];
+      trusted-users = ["${toString user}"];
       extra-substituters = [
         "https://hyprland.cachix.org"
         "https://wezterm.cachix.org"

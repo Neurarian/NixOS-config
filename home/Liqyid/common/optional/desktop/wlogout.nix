@@ -2,14 +2,12 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   options = {
     desktop.wlogout.enable = lib.mkEnableOption "enable wlogout";
   };
 
   config = lib.mkIf config.desktop.wlogout.enable {
-
     programs.wlogout = {
       enable = true;
       layout = [
@@ -53,7 +51,8 @@
 
       # Styling handled dynamically by ags colorgen script
 
-      /* style = ''
+      /*
+         style = ''
                * {
         	all: unset;
         	background-image: none;
@@ -80,7 +79,8 @@
         	background-color: rgba(51, 51, 51, 0.5);
         	border-radius: 4rem;
         }
-      ''; */
+      '';
+      */
     };
   };
 }

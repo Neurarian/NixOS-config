@@ -1,11 +1,19 @@
-{ pkgs, ... }:
-let
-  colorgen = pkgs.writeShellApplication {
-    name = "colorgen";
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.scripts.wallpaperColorgen.enable {
+    scripts.wallpaperColorgen.output.colorgen = pkgs.writeShellApplication {
+      name = "colorgen";
 
-    runtimeInputs = with pkgs; [ dart-sass pywal ];
+      runtimeInputs = with pkgs; [
+        dart-sass
+        pywal
+      ];
 
-    text = ''
+      text = ''
         #!/bin/bash
 
         XDG_CONFIG_HOME="''${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -99,9 +107,7 @@ let
             fi
         fi
 
-    '';
+      '';
+    };
   };
-in
-{
-  home.packages = [ colorgen ];
 }

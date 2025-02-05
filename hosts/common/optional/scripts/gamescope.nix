@@ -1,15 +1,21 @@
-{ pkgs, ... }:
-let
-  gs_tv.sh = pkgs.writeShellScriptBin "gs_tv.sh" ''
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  gs.sh = pkgs.writeShellScriptBin "gs.sh" ''
     #!/usr/bin/env bash
     set -xeuo pipefail
 
     gamescopeArgs=(
-        -O HDMI-A-1
+        --adaptive-sync # VRR support
+        --hdr-enabled
+        -O DP-1
         --rt
-        -w 1920
-        -h 1080
-        -r 60
+        -w 3440
+        -h 1440
+        -r 100
         -f
         --steam
     )
@@ -32,7 +38,12 @@ let
     export "''${mangoVars[@]}"
     exec gamescope "''${gamescopeArgs[@]}" -- steam "''${steamArgs[@]}"
   '';
-in
-{
-  home.packages = [ gs_tv.sh ];
+in {
+  options = {
+    scripts.gamescopewm.enable = lib.mkEnableOption "enable steam gamescope wm wrapper script";
+  };
+
+  config = lib.mkIf config.scripts.gamescopewm.enable {
+    environment.systemPackages = [gs.sh];
+  };
 }

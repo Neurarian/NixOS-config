@@ -1,7 +1,12 @@
-{ pkgs, ... }:
-let
-  generate_colors_material =
-    pkgs.writers.writePython3Bin "generate_colors_material"
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.scripts.wallpaperColorgen.enable {
+    scripts.wallpaperColorgen.output.generate_colors_material =
+      pkgs.writers.writePython3Bin "generate_colors_material"
       {
         libraries = with pkgs.python3Packages; [
           setuptools-scm
@@ -12,7 +17,10 @@ let
           libsass
           wheel
         ];
-      flakeIgnore = [ "E501" "E731" ];
+        flakeIgnore = [
+          "E501"
+          "E731"
+        ];
       }
       ''
         import argparse
@@ -206,7 +214,5 @@ let
                 print(f"{color.ljust(6)} : {display_color(rgba_source)} {code_source} --> {display_color(rgba)} {code}")
             print('-----------------------------------------------')
       '';
-in
-{
-  home.packages = [ generate_colors_material ];
+  };
 }

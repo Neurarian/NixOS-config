@@ -1,25 +1,23 @@
-{
-  inputs,
-  ...
-}:
-
-{
+{inputs, ...}: {
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
     ../common/core
     ../common/optional
     inputs.disko.nixosModules.disko
-
   ];
 
   networking = {
     hostName = "Medion"; # Define your hostname.
     networkmanager.ensureProfiles.profiles.ChArian_Inet.connection.interface-name = "wlp110s0";
   };
-  # Enable TRIM
-  services.fstrim.enable = true;
 
+  services = {
+    # Enable TRIM
+    fstrim.enable = true;
+    printing.enable = true;
+    libinput.enable = true;
+  };
   # Notebook specific modules
   graphics_erazer.enable = true;
   powermanagement.enable = true;
@@ -28,13 +26,13 @@
   # FOSS Airdrop alternative
   localsend.enable = true;
   programs.steam.enable = true;
-  security.pam.services.hyprlock = { };
+  security.pam.services.hyprlock = {};
   # Wayland support for chromium and electron apps
 
   # Option to attach GPU to VFIO on boot
   specialisation."VFIO".configuration = {
     libvirt.vfioNvidiaIntel.vfioOnBoot.enable = true;
-    system.nixos.tags = [ "with-vfio" ];
+    system.nixos.tags = ["with-vfio"];
     gpu_power_management.enable = true;
   };
   # VMs
@@ -57,11 +55,8 @@
         "10de:1be1" # Graphics
         "10de:10f0" # Audio
       ];
-
     };
-
   };
-  services.printing.enable = true;
   # Enable fn keybindings
   actkbd.enable = true;
   hyprsys = {
@@ -69,11 +64,9 @@
     launchCommand = "hyprwrapperNvidia";
   };
 
-  services.libinput.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-
+  nixpkgs.config = {
+    allowUnfree = true;
+    nvidia.acceptLicense = true;
+  };
   system.stateVersion = "24.05";
-
 }

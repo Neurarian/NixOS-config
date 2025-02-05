@@ -29,7 +29,7 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = ["-f"];
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
@@ -78,7 +78,7 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = ["-f"];
                   mountpoint = "/kingston";
                   mountOptions = [
                     "compress=zstd"
@@ -105,7 +105,7 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = ["-f"];
                   mountpoint = "/samsung";
                   mountOptions = [
                     "compress=zstd"

@@ -2,8 +2,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   imports = [
     ./hyprland.nix
     ./hyprlock.nix
@@ -15,10 +14,18 @@
   };
 
   config = lib.mkIf config.desktop.hypr.enable {
+    desktop.hypr = {
+      hyprland.enable = lib.mkDefault true;
+      hyprlock.enable = lib.mkDefault true;
+      hyprpaper.enable = lib.mkDefault true;
+    };
 
-    desktop.hypr.hyprland.enable = lib.mkDefault true;
-    desktop.hypr.hyprlock.enable = lib.mkDefault true;
-    desktop.hypr.hyprpaper.enable = lib.mkDefault true;
-
+    # See ../../scripts/
+    scripts = {
+      # Enable GPU-specific wrapper scripts
+      hyprlandWrapper.enable = lib.mkForce true;
+      # Enable wallpaper colorgeneration of several main desktop applications
+      wallpaperColorgen.enable = lib.mkForce true;
+    };
   };
 }

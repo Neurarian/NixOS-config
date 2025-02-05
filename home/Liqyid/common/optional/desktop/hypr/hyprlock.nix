@@ -2,14 +2,12 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   options = {
     desktop.hypr.hyprlock.enable = lib.mkEnableOption "enable hyprlock";
   };
 
   config = lib.mkIf config.desktop.hypr.hyprlock.enable {
-
     programs.hyprlock = {
       enable = true;
       settings = {
@@ -43,7 +41,7 @@
             valign = "top";
             shadow_passes = 2;
           }
-          # DATE 
+          # DATE
           {
             monitor = "";
             text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';

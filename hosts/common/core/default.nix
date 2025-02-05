@@ -1,6 +1,5 @@
 {
   imports = [
-    ./boot.nix
     ./corePackages.nix
     ./coreFonts.nix
     ./coreUsers.nix

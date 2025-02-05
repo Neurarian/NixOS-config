@@ -2,5 +2,6 @@
   imports = [
     ./services
     ./desktop
+    ./scripts
   ];
 }

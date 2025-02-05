@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs = {
     zsh = {
       enable = true;
@@ -11,7 +9,6 @@
         ls = "eza --icons=always";
         cd = "z";
         c = "clear";
-
       };
       # Use OMZ for some plugin management
       oh-my-zsh = {
@@ -34,7 +31,7 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
-        fastfetch 
+        fastfetch
         bindkey '^y' autosuggest-accept
         bindkey '^e' autosuggest-execute
 

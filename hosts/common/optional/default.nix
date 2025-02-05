@@ -1,15 +1,19 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   imports = [
+    ./boot.nix
     ./nvidia.nix
     ./localsend.nix
-    ./services
     ./powermanagement.nix
     ./libvirt.nix
     ./coolercontrol.nix
     ./hyprsys.nix
     ./gaming.nix
+    ./services
+    ./scripts
   ];
+  # This module should only be disabled for WSL
+  bmboot.enable = lib.mkDefault true;
+
   localsend.enable = lib.mkDefault false;
   coolercontrol.enable = lib.mkDefault false;
   powermanagement.enable = lib.mkDefault false;

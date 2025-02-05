@@ -1,6 +1,4 @@
-{ user, ... }:
-{
-
+{user, ...}: {
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
@@ -30,7 +28,7 @@
     firefox.enable = true;
     wlogout.enable = true;
     discord.enable = true;
-    # Music 
+    # Music
     ytmusic.enable = true;
     mpd.enable = true;
     cava.enable = true;
@@ -42,5 +40,4 @@
   systemd.user.enable = true;
   power_monitor.enable = true;
   polkit_gnome.enable = true;
-
 }

@@ -10,6 +10,10 @@
       ssh-to-age
       gnupg
       age
+
+      alejandra
+      statix
+      deadnix
     ];
   };
 }

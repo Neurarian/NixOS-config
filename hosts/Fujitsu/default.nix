@@ -1,9 +1,4 @@
-{
-  inputs,
-  ...
-}:
-
-{
+{inputs, ...}: {
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
@@ -19,5 +14,4 @@
 
   hardware.bluetooth.enable = true;
   system.stateVersion = "24.05";
-
 }

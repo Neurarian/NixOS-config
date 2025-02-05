@@ -2,14 +2,12 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   options = {
     desktop.hypr.hyprpaper.enable = lib.mkEnableOption "enable hyprpaper";
   };
 
   config = lib.mkIf config.desktop.hypr.hyprpaper.enable {
-
     services.hyprpaper = {
       enable = true;
       settings = {
@@ -17,7 +15,7 @@
         splash = false;
         splash_offset = 2.0;
 
-        preload = [ "$HOME/.cache/current_wallpaper.jpg" ];
+        preload = ["$HOME/.cache/current_wallpaper.jpg"];
 
         wallpaper = [
           #TODO: This is not common!

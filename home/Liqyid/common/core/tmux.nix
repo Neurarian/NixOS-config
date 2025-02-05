@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
@@ -9,7 +7,8 @@
     keyMode = "vi";
     prefix = "C-a";
     clock24 = true;
-    /* catppuccin = {
+    /*
+       catppuccin = {
       enable = true;
       extraConfig = ''
 
@@ -24,7 +23,8 @@
         set -g @catppuccin_status_modules_right "application host user directory session"
 
       '';
-    }; */
+    };
+    */
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       {
@@ -40,7 +40,6 @@
           set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g' $(readlink -f $resurrect_dir/last)"
 
         '';
-
       }
       {
         plugin = continuum;
@@ -51,31 +50,29 @@
           set -g @continuum-save-interval '10'
 
         '';
-
       }
       {
         plugin = catppuccin;
         extraConfig = ''
 
-        set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_flavor "mocha"
 
-        set -g @catppuccin_status_left_separator  " "
-        set -g @catppuccin_status_fill "icon"
-        set -g @catppuccin_status_connect_separator "yes"
+          set -g @catppuccin_status_left_separator  " "
+          set -g @catppuccin_status_fill "icon"
+          set -g @catppuccin_status_connect_separator "yes"
 
-        set -g @catppuccin_directory_text "#{pane_current_path}"
+          set -g @catppuccin_directory_text "#{pane_current_path}"
 
-        set -g @catppuccin_status_modules_right "application host user directory session"
+          set -g @catppuccin_status_modules_right "application host user directory session"
 
         '';
-
       }
     ];
     extraConfig = ''
       unbind C-b
       bind-key C-a send-prefix
 
-      unbind r 
+      unbind r
       bind r source-file ~/.config/tmux/tmux.conf
 
       bind -r j resize-pane -D 5

@@ -1,20 +1,17 @@
+# All this is kinda useless bloat on wsl, but it's not too bad and I don't want to make this optional
 {
   config,
   user,
   ...
-}:
-{
-
+}: {
   # Sops encrypted wifi creds
-  sops.secrets =
-    let
-      home = "wifi/home/";
-    in
-    {
-      "${home}ssid" = { };
-      "${home}uuid" = { };
-      "${home}psk" = { };
-    };
+  sops.secrets = let
+    home = "wifi/home/";
+  in {
+    "${home}ssid" = {};
+    "${home}uuid" = {};
+    "${home}psk" = {};
+  };
 
   networking.networkmanager = {
     enable = true; # Easiest to use and most distros use this by default.
@@ -34,7 +31,7 @@
           addr-gen-mode = "default";
           method = "auto";
         };
-        proxy = { };
+        proxy = {};
         wifi = {
           mode = "infrastructure";
           ssid = config.sops.secrets."wifi/home/ssid".path;

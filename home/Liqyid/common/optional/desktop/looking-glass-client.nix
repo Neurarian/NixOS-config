@@ -2,14 +2,12 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   options = {
     desktop.looking-glass.enable = lib.mkEnableOption "enable looking-glass";
   };
 
   config = lib.mkIf config.desktop.looking-glass.enable {
-
     programs = {
       looking-glass-client = {
         enable = true;
@@ -37,6 +35,5 @@
         };
       };
     };
-
   };
 }

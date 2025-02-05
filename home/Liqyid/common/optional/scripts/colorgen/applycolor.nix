@@ -1,11 +1,19 @@
-{ pkgs, ... }:
-let
-  applycolor = pkgs.writeShellApplication {
-    name = "applycolor";
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.scripts.wallpaperColorgen.enable {
+    scripts.wallpaperColorgen.output.applycolor = pkgs.writeShellApplication {
+      name = "applycolor";
 
-    runtimeInputs = with pkgs; [ gradience glib ];
+      runtimeInputs = with pkgs; [
+        gradience
+        glib
+      ];
 
-    text = ''
+      text = ''
         #!/bin/bash
 
         XDG_CONFIG_HOME="''${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -193,7 +201,7 @@ let
             colorstrings=$(cut -d: -f2 scripts/color_generation/specials/_material_badapple"''${lightdark}".scss | cut -d ' ' -f2 | cut -d ";" -f1)
             mapfile -t colorlist < <(echo "$colornames") # Array of color names
             mapfile -t colorvalues < <(echo "$colorstrings") # Array of color values
-        else 
+        else
             echo "Unknown argument: $1"
             exit 1
         fi
@@ -206,9 +214,7 @@ let
         apply_wlogout &
         # use wal generated colors
         #apply_term &
-    '';
+      '';
+    };
   };
-in
-{
-  home.packages = [ applycolor ];
 }
