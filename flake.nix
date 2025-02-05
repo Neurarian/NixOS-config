@@ -139,6 +139,11 @@
         saint = final.callPackage ./packages/saint.nix {};
       })
     ];
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
     mkSystem = hostname: extraModules: system:
       lib.nixosSystem {
         inherit system;
@@ -153,10 +158,7 @@
               home-manager = {
                 extraSpecialArgs = {
                   inherit inputs system user;
-                  pkgs = import nixpkgs {
-                    inherit system overlays;
-                    config.allowUnfree = true;
-                  };
+                  pkgs = mkPkgs system;
                 };
                 users.${user} = {
                   imports = [
@@ -186,17 +188,11 @@
             };
           }
           .shellHook;
-        pkgs = import nixpkgs {
-          inherit system overlays;
-          config.allowUnfree = true;
-        };
+        pkgs = mkPkgs system;
       };
 
       packages = let
-        pkgs = import nixpkgs {
-          inherit system overlays;
-          config.allowUnfree = true;
-        };
+        pkgs = mkPkgs system;
         saint = pkgs.callPackage ./packages/saint.nix {};
       in {
         inherit saint;
