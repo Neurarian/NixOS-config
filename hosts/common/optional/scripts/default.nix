@@ -4,6 +4,6 @@
   ];
 
   scripts = {
-    gamescopewm.enable = lib.mkDefault false;
+    gamescope.enable = lib.mkDefault false;
   };
 }

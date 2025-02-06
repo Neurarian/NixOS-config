@@ -4,46 +4,62 @@
   config,
   ...
 }: let
-  gs.sh = pkgs.writeShellScriptBin "gs.sh" ''
-    #!/usr/bin/env bash
-    set -xeuo pipefail
+  mkGamescope = {name, output, width, height, refreshRate, adaptiveSync ? false}: 
+    pkgs.writeShellScriptBin name ''
+      #!/usr/bin/env bash
+      set -xeuo pipefail
 
-    gamescopeArgs=(
-        --adaptive-sync # VRR support
-        --hdr-enabled
-        -O DP-1
-        --rt
-        -w 3440
-        -h 1440
-        -r 100
-        -f
-        --steam
-    )
-    steamArgs=(
-        -pipewire-dmabuf
-        -tenfoot
-        -steamos3
-    )
-    mangoConfig=(
-        cpu_temp
-        gpu_temp
-        ram
-        vram
-    )
-    mangoVars=(
-        MANGOHUD=0
-        MANGOHUD_CONFIG="''$(IFS=,; echo "''${mangoConfig[*]}")"
-    )
+      gamescopeArgs=(
+          -O ${output}
+          --rt
+          -w ${toString width}
+          -h ${toString height}
+          -r ${toString refreshRate}
+          -f
+          --steam
+          ${lib.optionalString adaptiveSync "--adaptive-sync"}
+      )
+      steamArgs=(
+          -pipewire-dmabuf
+          -tenfoot
+          -steamos3
+      )
+      mangoConfig=(
+          cpu_temp
+          gpu_temp
+          ram
+          vram
+      )
+      mangoVars=(
+          MANGOHUD=0
+          MANGOHUD_CONFIG="''$(IFS=,; echo "''${mangoConfig[*]}")"
+      )
 
-    export "''${mangoVars[@]}"
-    exec gamescope "''${gamescopeArgs[@]}" -- steam "''${steamArgs[@]}"
-  '';
-in {
-  options = {
-    scripts.gamescopewm.enable = lib.mkEnableOption "enable steam gamescope wm wrapper script";
+      export "''${mangoVars[@]}"
+      exec gamescope "''${gamescopeArgs[@]}" -- steam "''${steamArgs[@]}"
+    '';
+
+  gamescopeScripts = {
+    ultrawide = mkGamescope {
+      name = "gs.sh";
+      output = "DP-1";
+      width = 3440;
+      height = 1440;
+      refreshRate = 100;
+      adaptiveSync = true;
+    };
+    tv = mkGamescope {
+      name = "gs_tv.sh";
+      output = "HDMI-A-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 60;
+    };
   };
+in {
+  options.scripts.gamescope.enable = lib.mkEnableOption "enable steam gamescope wrapper scripts";
 
-  config = lib.mkIf config.scripts.gamescopewm.enable {
-    environment.systemPackages = [gs.sh];
+  config = lib.mkIf config.scripts.gamescope.enable {
+    environment.systemPackages = builtins.attrValues gamescopeScripts;
   };
 }

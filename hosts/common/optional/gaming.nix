@@ -29,6 +29,6 @@
       '';
     };
 
-    scripts.gamescopewm.enable = true;
+    scripts.gamescope.enable = true;
   };
 }
