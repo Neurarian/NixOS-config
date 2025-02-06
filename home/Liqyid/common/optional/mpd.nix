@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    desktop.mpd.enable = lib.mkEnableOption "enable mpd";
+    mpd.enable = lib.mkEnableOption "enable mpd";
   };
 
-  config = lib.mkIf config.desktop.mpd.enable {
+  config = lib.mkIf config.mpd.enable {
     services = {
       mpd = {
         enable = true;

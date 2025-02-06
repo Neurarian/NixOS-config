@@ -31,10 +31,12 @@
     wlogout.enable = true;
     # Music
     ytmusic.enable = true;
-    mpd.enable = true;
     cava.enable = true;
     arduino.enable = true;
   };
+
+  # Music daemon
+  mpd.enable = true;
 
   scripts = {
     hyprlandWrapper = {

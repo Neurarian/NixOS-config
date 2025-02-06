@@ -1,8 +1,16 @@
 {
   pkgs,
   inputs,
+  lib,
+  config,
   ...
-}: {
+}:
+{
+  options = {
+    wezterm.enable = lib.mkEnableOption "enable customized wezterm terminal emulator";
+  };
+
+  config = lib.mkIf config.wezterm.enable {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
@@ -37,5 +45,6 @@
            }
 
            return config'';
+  };
   };
 }

@@ -4,7 +4,6 @@
     ./firefox.nix
     ./zen-browser.nix
     ./overskride.nix
-    ./mpd.nix
     ./ags/ags.nix
     ./gtk.nix
     ./nautilus.nix
@@ -21,7 +20,6 @@
     discord.enable = lib.mkDefault false;
     overskride.enable = lib.mkDefault false;
     ytmusic.enable = lib.mkDefault false;
-    mpd.enable = lib.mkDefault false;
     ags.enable = lib.mkDefault false;
     gtk-module.enable = lib.mkDefault false;
     fuzzel.enable = lib.mkDefault false;
