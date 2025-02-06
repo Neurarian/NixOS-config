@@ -4,7 +4,14 @@
   config,
   ...
 }: let
-  mkGamescope = {name, output, width, height, refreshRate, adaptiveSync ? false}: 
+  mkGamescope = {
+    name,
+    output,
+    width,
+    height,
+    refreshRate,
+    adaptiveSync ? false,
+  }:
     pkgs.writeShellScriptBin name ''
       #!/usr/bin/env bash
       set -xeuo pipefail

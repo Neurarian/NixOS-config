@@ -1,4 +1,3 @@
-
 {lib, ...}: {
   imports = [
     ./services
@@ -7,8 +6,8 @@
     ./mpd.nix
     ./wezterm.nix
   ];
-    mpd.enable = lib.mkDefault false; 
+  mpd.enable = lib.mkDefault false;
 
-    # Activate by default, only redundant for WSL  
-    wezterm.enable = lib.mkDefault true; 
-    }
+  # Activate by default, only redundant for WSL
+  wezterm.enable = lib.mkDefault true;
+}
