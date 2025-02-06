@@ -21,6 +21,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
   - `Loki`: Gaming PC / Workstation - 32GB RAM, R7 5800X3D , RX 6800XT.
   - `Medion`: Notebook: Medion Erazer X7853 - 16GB RAM, i7-7700HQ, GTX 1070M.
   - `Fujitsu`: Homelab: Fujitsu Esprimo 556/2 - 32GB RAM, G4560T (Not running NixOS yet).
+  - `Wsl`: Windows subsystem for Linux: Contains all core modules and mostly work related extras.
 - `home`: Home Manager configuration. Via the Home Manager NixOS module.
   - `Liqyid`: Currently the only user I need. Sudoer.
     - `common`: Shared configurations imported by the user-specific host configurations.
