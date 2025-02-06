@@ -27,9 +27,6 @@ in {
     };
   };
 
-  # Emulator is redundant & not required
-  wezterm.enable = false;
-
   # Host specific packages to install in user env
   home.packages = [
     R-custom

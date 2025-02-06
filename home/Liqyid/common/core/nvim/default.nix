@@ -12,6 +12,8 @@
     flake-path = inputs.self.outPath;
     systemCFGname = osConfig.networking.hostName;
   };
+
+  # Testing R integration. Use nix-shell & rix for important projects.
   R-custom = pkgs.rWrapper.override {
     packages = with pkgs.rPackages; [
       tidyverse
