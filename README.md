@@ -29,6 +29,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
       - `optional`: Optional configurations that only some hosts running that user require.
         - Optional modules are all implemented via toggleable options.
           These can easily be set in each host-specific file in the user directory.
+- `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.      
 
 ## 🖥️ Compositor & GUI
 
