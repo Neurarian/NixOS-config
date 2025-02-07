@@ -13,21 +13,13 @@
     systemCFGname = osConfig.networking.hostName;
   };
 
-  # Testing R integration. Use nix-shell & rix for important projects.
   R-custom = pkgs.rWrapper.override {
+  # Only core packages to manage rix. Use rix generated nix-shells for actual projects.
     packages = with pkgs.rPackages; [
-      tidyverse
+      rix
       here
-      ggstatsplot
-      ggsignif
-      readxl
-      rstatix
-      WRS2
-      lme4
-      languageserver
       pacman
-      svglite
-      styler
+      languageserver
     ];
   };
 in {
