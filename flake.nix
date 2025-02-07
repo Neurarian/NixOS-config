@@ -196,7 +196,6 @@
         saint = pkgs.callPackage ./packages/saint.nix {};
       in {
         inherit saint;
-        default = saint;
       };
 
       formatter = nixpkgs.legacyPackages.${system}.alejandra;
