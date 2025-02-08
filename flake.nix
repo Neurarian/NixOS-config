@@ -29,11 +29,11 @@
       url = "github:hyprwm/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    #Hyprspace = {
+    Hyprspace = {
 
-    # url = "github:KZDKM/Hyprspace";
-    # inputs.hyprland.follows = "hyprland";
-    #};
+    url = "github:KZDKM/Hyprspace";
+    inputs.hyprland.follows = "hyprland";
+    };
     /*
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
