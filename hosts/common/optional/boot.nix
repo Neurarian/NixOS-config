@@ -15,7 +15,8 @@
         enable = true;
         font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
         themePackages = [pkgs.catppuccin-plymouth];
-        theme = "catppuccin-mocha";
+        # mocha won't work for whatever reason
+        theme = "catppuccin-macchiato";
       };
 
       # Enable "Silent Boot"
