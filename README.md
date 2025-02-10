@@ -33,22 +33,19 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 
 ## 🖥️ Compositor & GUI
 
-Uses the [hyprland](https://github.com/hyprwm/Hyprland) window management ecosystem. Uses a modified [AGS](https://github.com/Aylur/ags) setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, [fuzzel](https://codeberg.org/dnkl/fuzzel), [wlogout](https://github.com/ArtsyMacaw/wlogout), hyprland and hyprlock are dynamically themed in a matching light or dark theme depending on the wallpaper.
+Uses the hyprland window management ecosystem. Uses a modified AGS setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, fuzzel, wlogout, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
 
-<details>
-  <summary><b>Screenshots</b></summary>
+### 📷 Screenshots
   
-### 🌚 Host: Medion - With dark colorscheme
+#### 🌚 Host: Medion - With dark colorscheme (single monitor)
 ![2024-11-02T21:11:34,395432515+01:00](https://github.com/user-attachments/assets/78b18a24-52f4-4581-816a-cad09019e564)
-### 🌞 Host: Loki - With light colorscheme
+#### 🌞 Host: Loki - With light colorscheme (dual monitor)
 ![2024-11-02T21:53:43,163376928+01:00](https://github.com/user-attachments/assets/02743d90-af2f-47bc-a61f-30ee4277744c)
 
 
-</details>
-
 ## 🧑‍💻 Neovim
 
-Custom lightweight [neovim](https://github.com/neovim/neovim) based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with [tmux](https://github.com/tmux/tmux).
+Custom lightweight neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux.
 
 ### ✨ Main Features
 
@@ -103,35 +100,40 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 ```
 
-## 💿 Other Software
+## 💿 Software List
 
-<details>
-  <summary>Show integrated</summary>
-
-- [zsh](https://www.zsh.org/)
-- [Starship](https://github.com/starship/starship)
-- [Wezterm](https://github.com/wez/wezterm)
-- Colorscheme for CLI & FF: [Catppuccin Mocha](https://github.com/catppuccin/nix)
-- For privacy: fully configured, custom hardened [Firefox](https://hg.mozilla.org/mozilla-central/), addons included
-- For work: [Zen Browser](https://github.com/zen-browser/desktop)
-- [custom](https://github.com/fufexan/dotfiles) AGS bar
-- [hyprspace](https://github.com/KZDKM/Hyprspace)
-- [fuzzel](https://codeberg.org/dnkl/fuzzel)
-- [wlogout](https://github.com/ArtsyMacaw/wlogout)
-- [CAVA](https://github.com/karlstav/cava)
-- Steam
-- [YouTube Music](https://github.com/th-ch/youtube-music)
-- [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)
-
-</details>
+| Type                     | Software                                                                              |
+| ------------------------ | :---------------------------------------------------------------------------------------------:
+| **Window Manager**       | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
+| **Bar**                  | [AGS v1](https://github.com/Aylur/ags) |
+| **App Launcher**         | [fuzzel](https://codeberg.org/dnkl/fuzzel) |
+| **Resource Monitor**     | [gnome-control-center](https://gitlab.gnome.org/GNOME/gnome-control-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
+| **File Manager**         | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
+| **Lockscreen**           | [hyprlock](https://github.com/hyprwm/hyprlock/) |
+| **Logout Menu**          | [wlogout](https://github.com/ArtsyMacaw/wlogout) |
+| **Browser**              | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
+| **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [CAVA](https://github.com/karlstav/cava) + [AGS v1](https://github.com/Aylur/ags) + [YouTube Music](https://github.com/th-ch/youtube-music) |
+| **Gaming**               | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
+| **Screenshot Software**  | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
+| **Clipboard**            | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |  
+| **Terminal Emulator**    | [WezTerm](https://github.com/wez/wezterm) |
+| **Terminal Multiplexer** | [tmux](https://github.com/tmux/tmux) |
+| **Shell**                | [zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship) |
+| **Editor**               | [neovim](https://github.com/neovim/neovim) |
+| **Secret Provisioning**  | [sops-nix](https://github.com/Mic92/sops-nix) |
+| **Fonts**                | [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) + [FiraCode](https://github.com/tonsky/FiraCode) |
+| **Color Scheme**         | [Catppuccin Mocha](https://github.com/catppuccin/nix) |
+| **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
 
 <details>
   <summary>Show planned</summary>
-
-- Implement impermanence
-- Obsidian
-- AGS widgets
-- Get VFIO to work properly on Notebook with Nvidia GPU (f\*\*\* them)
+  
+| Type                        | Software                                                                              |
+| --------------------------- | :---------------------------------------------------------------------------------------------:
+| **Ephemeral Root Storage**  | [Impermanence](https://github.com/nix-community/impermanence) |
+| **Notes**                   | [Obsidian](https://obsidian.md/) |
+| **Bar & Widgets**           | [Migrate to AGS v2](https://github.com/Aylur/ags) |
+| **VFIO**                    | Does not work on Notebook Nvidia GPU yet |
 
 </details>
 
