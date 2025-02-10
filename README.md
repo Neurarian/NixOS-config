@@ -44,7 +44,7 @@ Uses the hyprland window management ecosystem. Uses a modified AGS setup from [f
 
 ## 🧑‍💻 Neovim
 
-Custom lightweight neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux.
+Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux.
 
 ### ✨ Main Features
 
