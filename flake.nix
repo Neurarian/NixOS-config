@@ -17,7 +17,12 @@
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
     };
-    flake-utils.url = "github:numtide/flake-utils";
+    systems = {
+      url = "systems";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,9 +35,8 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     Hyprspace = {
-
-    url = "github:KZDKM/Hyprspace";
-    inputs.hyprland.follows = "hyprland";
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
     };
     /*
     hyprland-plugins = {
@@ -72,13 +76,7 @@
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
       # Workaround to avoid buildfailure due to outdated rust-overlay in wezterm flake
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay = {
-          url = "github:oxalica/rust-overlay/master";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Nvim
@@ -126,7 +124,7 @@
     nixpkgs,
     home-manager,
     catppuccin,
-    flake-utils,
+    flake-parts,
     pre-commit-hooks,
     ...
   } @ inputs: let
@@ -139,11 +137,75 @@
         saint = final.callPackage ./packages/saint.nix {};
       })
     ];
+
+    /*
+    *
+    Function creates a package set for a given system architecture
+    with custom overlays and unfree package support enabled.
+
+    # Example
+
+    ```nix
+    pkgs = mkPkgs "x86_64-linux"
+    ```
+
+    # Type
+
+    mkPkgs :: String -> PkgSet
+
+    # Arguments
+
+    system
+    : System architecture string
+
+    # Details
+
+    The function:
+    - Imports the nixpkgs package set
+    - Applies custom overlays defined in the outer scope above
+    - Enables unfree package installation
+    - Returns a configured package set for the specified architecture
+    */
     mkPkgs = system:
       import nixpkgs {
         inherit system overlays;
         config.allowUnfree = true;
       };
+
+    /*
+    *
+    Function creates a NixOS system configuration with integrated home-manager support and Catppuccin theme.
+    Allows for additional machine specific modules.
+
+    # Example
+
+    ``` nix
+    mkSystem "laptop" [ ./additonal-module.nix ] "x86_64-linux
+    ```
+
+    # Type
+
+    mkSystem :: String -> [Path] -> String -> NixosSystem
+
+    # Arguments
+
+    hostname
+    : The hostname of the target system
+    extraModules
+    : Additional NixOS modules to include
+    system
+    : The system architecture
+
+    # Details
+
+    The function combines:
+    - System-specific configuration from ./hosts/${hostname}
+    - Home-manager configuration from ./home/${user}/${hostname}.nix
+    - Catppuccin theme integration
+    - Any additional modules specified in extraModules
+
+    The resulting configuration inherits additional arguments defined in this flake (inputs, user).
+    */
     mkSystem = hostname: extraModules: system:
       lib.nixosSystem {
         inherit system;
@@ -172,51 +234,46 @@
           ++ extraModules;
       };
   in
-    flake-utils.lib.eachDefaultSystem (system: {
-      devShells = import ./shell.nix {
-        shellHook =
-          pre-commit-hooks.lib.${system}.run
-          {
-            src = ./.;
-            hooks = {
-              alejandra.enable = true;
-              statix.enable = true;
-              deadnix = {
-                enable = true;
-                args = ["--no-lambda-pattern-names"];
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import inputs.systems;
+
+      perSystem = {system, ...}: {
+        # For bootstrapping
+        devShells = import ./shell.nix {
+          shellHook =
+            pre-commit-hooks.lib.${system}.run
+            {
+              src = ./.;
+              hooks = {
+                alejandra.enable = true;
+                statix.enable = true;
+                deadnix = {
+                  enable = true;
+                  args = ["--no-lambda-pattern-names"];
+                };
               };
-            };
-          }
-          .shellHook;
-        pkgs = mkPkgs system;
-      };
-
-      packages = let
-        pkgs = mkPkgs system;
-      in {
-        saint = pkgs.callPackage ./packages/saint.nix {};
-      };
-
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-
-      checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          statix.enable = true;
-          deadnix = {
-            enable = true;
-            args = ["--no-lambda-pattern-names"];
-          };
+            }
+            .shellHook;
+          pkgs = mkPkgs system;
         };
+
+        # Custom packages or patched binaries not in nixpkgs
+        packages = let
+          pkgs = mkPkgs system;
+        in {
+          saint = pkgs.callPackage ./packages/saint.nix {};
+        };
+
+        formatter = nixpkgs.legacyPackages.${system}.alejandra;
       };
-    })
-    // {
-      nixosConfigurations = {
-        Loki = mkSystem "Loki" [] "x86_64-linux";
-        Medion = mkSystem "Medion" [] "x86_64-linux";
-        Fujitsu = mkSystem "Fujitsu" [] "x86_64-linux";
-        Wsl = mkSystem "Wsl" [] "x86_64-linux";
+
+      flake = {
+        nixosConfigurations = {
+          Loki = mkSystem "Loki" [] "x86_64-linux";
+          Medion = mkSystem "Medion" [] "x86_64-linux";
+          Fujitsu = mkSystem "Fujitsu" [] "x86_64-linux";
+          Wsl = mkSystem "Wsl" [] "x86_64-linux";
+        };
       };
     };
 }
