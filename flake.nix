@@ -193,9 +193,8 @@
 
       packages = let
         pkgs = mkPkgs system;
-        saint = pkgs.callPackage ./packages/saint.nix {};
       in {
-        inherit saint;
+        saint = pkgs.callPackage ./packages/saint.nix {};
       };
 
       formatter = nixpkgs.legacyPackages.${system}.alejandra;
