@@ -1,9 +1,8 @@
 # My NixOS config
 
-Actively working on improving and expanding functionality.
-Still needs work on structure/modularity of the config.
+Work in progress 🚧.
 
-Currently running on two hosts: Medion (Intel Notebook; Nvidia GPU) & Loki (AMD Workstation; AMD GPU)
+Currently running on three hosts: Medion (Intel Notebook; Nvidia GPU), Loki (AMD Workstation; AMD GPU), and WSL
 
 ______________________________________________________________________
 
