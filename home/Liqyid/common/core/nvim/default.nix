@@ -62,7 +62,6 @@ in {
             universal-ctags
             ripgrep
             fd
-            stdenv.cc.cc
             lua54Packages.jsregexp
           ];
           git = [
@@ -99,6 +98,7 @@ in {
             alejandra
           ];
           C = [
+            stdenv.cc.cc
             clang-tools
             valgrind
             cmake-language-server
@@ -324,7 +324,6 @@ in {
             customPlugins = true;
             ui_nav = true;
             lsp = true;
-            debug = true;
             lint = true;
             completion = true;
             rNvim = true;
