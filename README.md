@@ -110,7 +110,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 ## 💿 Software List
 
-<center>
+<div align="center">
 
 | Type                     | Software                                                                              |
 | ------------------------ | :---------------------------------------------------------------------------------------------:
@@ -135,12 +135,12 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Color Scheme**         | [Catppuccin Mocha](https://github.com/catppuccin/nix) |
 | **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
 
-</center>
+</div>
 
 <details>
   <summary>Show planned</summary>
 
-<center>
+<div align="center">
 
 | Type                        | Software                                                                              |
 | --------------------------- | :---------------------------------------------------------------------------------------------:
@@ -149,7 +149,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Bar & Widgets**           | [Migrate to AGS v2](https://github.com/Aylur/ags) |
 | **VFIO**                    | Does not work on Notebook Nvidia GPU yet |
 
-</center>
+</div>
 
 </details>
 
