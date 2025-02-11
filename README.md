@@ -28,23 +28,32 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
       - `optional`: Optional configurations that only some hosts running that user require.
         - Optional modules are all implemented via toggleable options.
           These can easily be set in each host-specific file in the user directory.
-- `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.      
+- `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
 
 ## 🖥️ Compositor & GUI
 
 Uses the hyprland window management ecosystem. Uses a modified AGS setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, fuzzel, wlogout, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
 
 ### 📷 Screenshots
-  
-#### 🌚 Host: Medion - With dark colorscheme (single monitor)
-![2024-11-02T21:11:34,395432515+01:00](https://github.com/user-attachments/assets/78b18a24-52f4-4581-816a-cad09019e564)
-#### 🌞 Host: Loki - With light colorscheme (dual monitor)
-![2024-11-02T21:53:43,163376928+01:00](https://github.com/user-attachments/assets/02743d90-af2f-47bc-a61f-30ee4277744c)
 
+#### 🌚 Host: Medion - With dark colorscheme (single monitor)
+
+![2024-11-02T21:11:34,395432515+01:00](https://github.com/user-attachments/assets/78b18a24-52f4-4581-816a-cad09019e564)
+
+#### 🌞 Host: Loki - With light colorscheme (dual monitor)
+
+![2024-11-02T21:53:43,163376928+01:00](https://github.com/user-attachments/assets/02743d90-af2f-47bc-a61f-30ee4277744c)
 
 ## 🧑‍💻 Neovim
 
-Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux.
+Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux. If you want to check out just this nvim distribution run:
+
+```bash
+nix run github:Neurarian/NixOS-config#nixCats
+
+```
+
+But be aware that it ships all tools necessary for C, Rust, JS, and R development by default which do take up quite some space.
 
 ### ✨ Main Features
 
@@ -114,7 +123,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [CAVA](https://github.com/karlstav/cava) + [AGS v1](https://github.com/Aylur/ags) + [YouTube Music](https://github.com/th-ch/youtube-music) |
 | **Gaming**               | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
 | **Screenshot Software**  | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
-| **Clipboard**            | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |  
+| **Clipboard**            | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |\
 | **Terminal Emulator**    | [WezTerm](https://github.com/wez/wezterm) |
 | **Terminal Multiplexer** | [tmux](https://github.com/tmux/tmux) |
 | **Shell**                | [zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship) |
@@ -126,7 +135,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 <details>
   <summary>Show planned</summary>
-  
+
 | Type                        | Software                                                                              |
 | --------------------------- | :---------------------------------------------------------------------------------------------:
 | **Ephemeral Root Storage**  | [Impermanence](https://github.com/nix-community/impermanence) |
