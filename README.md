@@ -53,7 +53,7 @@ nix run github:Neurarian/NixOS-config#nixCats
 
 ```
 
-But be aware that it ships all tools necessary for C, Rust, JS, and R development by default which do take up quite some space.
+But be aware that it ships all tools necessary for C, Rust, JS, and R development by default which do take up a lot of space. If you would like to test a more stripped down version, try `#nixCatsStripped` instead.
 
 ### ✨ Main Features
 

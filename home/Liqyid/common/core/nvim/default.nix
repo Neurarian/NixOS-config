@@ -44,7 +44,7 @@ in {
         [
           (utils.standardPluginOverlay inputs)
         ];
-      packageNames = ["nvim"];
+      packageNames = ["nvimFull" "nvimStripped"];
 
       luaPath = "${./.}";
       # you could also import lua from the flake though, by not including this.
@@ -138,7 +138,7 @@ in {
           arduino = [
             pkgs.neovimPlugins.arduino-nvim
           ];
-          R = [
+          rNvim = [
             pkgs.neovimPlugins.rNvim
           ];
           completion = [
@@ -156,7 +156,16 @@ in {
           ];
           tresitter = [
             otter-nvim
-            nvim-treesitter.withAllGrammars
+            (nvim-treesitter.withPlugins (p: with p;[
+              rust
+              nix
+              python
+              c
+              lua
+              r
+              bash
+              markdown
+            ]))
             nvim-treesitter-textobjects
           ];
           ui_nav = [
@@ -241,7 +250,7 @@ in {
       packageDefinitions.replace = {
         # These are the names of your packages
         # you can include as many as you wish.
-        nvim = _: {
+        nvimFull = _: {
           # they contain a settings set defined above
           # see :help nixCats.flake.outputs.settings
           settings = {
@@ -270,6 +279,7 @@ in {
             lint = true;
             completion = true;
             have_nerd_font = true;
+            rNvim = true;
             arduino = true;
 
             # additional packages
@@ -288,6 +298,52 @@ in {
             nixdExtras = extraNixdItems;
           };
         };
+
+        nvimStripped = _: {
+          # they contain a settings set defined above
+          # see :help nixCats.flake.outputs.settings
+          settings = {
+            wrapRc = true;
+            # IMPORTANT:
+            # your alias may not conflict with your other packages.
+            aliases = [
+              "vim"
+              "vi"
+              "e"
+            ];
+            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+          };
+          # and a set of categories that you want
+          # (and other information to pass to lua)
+          categories = {
+            general = true;
+
+            # nvim plugins
+            tresitter = true;
+            git = true;
+            customPlugins = true;
+            ui_nav = true;
+            lsp = true;
+            debug = true;
+            lint = true;
+            completion = true;
+            rNvim = true;
+            have_nerd_font = true;
+            arduino = true;
+
+            # additional packages
+            markdown = true;
+            bash = true;
+            lua = true;
+            nix = true;
+
+            test = true;
+
+            # Extra info to pass to lua
+            nixdExtras = extraNixdItems;
+          };
+        };
+        
       };
     };
   };

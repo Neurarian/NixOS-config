@@ -138,7 +138,8 @@
         saint = final.callPackage ./packages/saint.nix {};
         # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
         # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
-        nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvim;
+        nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
+        nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
       })
     ];
 
@@ -264,7 +265,8 @@
           pkgs = mkPkgs system;
         in {
           saint = pkgs.callPackage ./packages/saint.nix {};
-          nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvim;
+          nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
+          nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
         };
 
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
