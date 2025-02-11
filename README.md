@@ -110,6 +110,8 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 ## 💿 Software List
 
+<center>
+
 | Type                     | Software                                                                              |
 | ------------------------ | :---------------------------------------------------------------------------------------------:
 | **Window Manager**       | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
@@ -133,8 +135,12 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Color Scheme**         | [Catppuccin Mocha](https://github.com/catppuccin/nix) |
 | **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
 
+</center>
+
 <details>
   <summary>Show planned</summary>
+
+<center>
 
 | Type                        | Software                                                                              |
 | --------------------------- | :---------------------------------------------------------------------------------------------:
@@ -142,6 +148,8 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Notes**                   | [Obsidian](https://obsidian.md/) |
 | **Bar & Widgets**           | [Migrate to AGS v2](https://github.com/Aylur/ags) |
 | **VFIO**                    | Does not work on Notebook Nvidia GPU yet |
+
+</center>
 
 </details>
 
