@@ -307,9 +307,7 @@ in {
             # IMPORTANT:
             # your alias may not conflict with your other packages.
             aliases = [
-              "vim"
-              "vi"
-              "e"
+              "nixCats"
             ];
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
           };
