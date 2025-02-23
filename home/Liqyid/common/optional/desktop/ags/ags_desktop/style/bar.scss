@@ -34,28 +34,28 @@ $font: 1.1rem;
     box-shadow: inset -2px -2px 2px adjust_color($primaryMon, $lightness: -10%);
   }
   .monitor0:hover{
-    background: adjust_color($primaryMon, $lightness: +10%);
+    background: scale-color($primaryMon, $lightness: +10%);
   }
   .monitor1 {
     background: $secondaryMon;
     box-shadow: inset -2px -2px 2px adjust_color($secondaryMon, $lightness: -10%);
   }
   .monitor1:hover{
-    background: adjust_color($secondaryMon, $lightness: +10%);
+    background: scale-color($secondaryMon, $lightness: +10%);
   }
   .monitor2 {
     background: $thirdMon;
     box-shadow: inset -2px -2px 2px adjust_color($thirdMon, $lightness: -10%);
   }
   .monitor2:hover{
-    background: adjust_color($thirdMon, $lightness: +10%);
+    background: scale-color($thirdMon, $lightness: +10%);
   }
   .monitor3 {
     background: $fourthMon;
     box-shadow: inset -2px -2px 2px adjust_color($fourthMon, $lightness: -10%);
   }
   .monitor3:hover{
-    background: adjust_color($fourthMon, $lightness: +8%);
+    background: scale-color($fourthMon, $lightness: +10%);
   }
 }
 
@@ -138,7 +138,7 @@ menu {
   min-width: 2rem;
   min-height: 1.3rem;
   font-size: 0.3rem;
-  background: transparentize($surfaceDim, 0.5);
+  background: transparentize($surface_dim, 0.5);
 }
 
 .bar-hardware-progress-inner-circle {
@@ -149,7 +149,7 @@ menu {
 
 .cpu {
   @extend .bar-hardware-progress-circle;
-  color: $term1;
+  color: $on_primary_fixed_variant;
 }
 
 .cpu-inner {
@@ -158,7 +158,7 @@ menu {
 
 .ram {
   @extend .bar-hardware-progress-circle;
-  color: $term4;
+  color: $on_tertiary_fixed_variant;
 }
 
 .ram-inner {

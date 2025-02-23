@@ -12,7 +12,6 @@
     coreutils
     dart-sass
     gawk
-    imagemagick
     inotify-tools
     procps
     ripgrep

@@ -25,7 +25,7 @@
       # Enable GPU-specific wrapper scripts
       hyprlandWrapper.enable = lib.mkForce true;
       # Enable wallpaper colorgeneration of several main desktop applications
-      wallpaperColorgen.enable = lib.mkForce true;
+      wallpaperSetter.enable = lib.mkForce true;
     };
   };
 }

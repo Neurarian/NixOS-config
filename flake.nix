@@ -65,6 +65,10 @@
 
     # Color scheme
     catppuccin.url = "github:catppuccin/nix";
+    matugen = {
+      url = "github:Neurarian/matugen/add-vibrant-scheme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Secret provisioning
     sops-nix = {
@@ -136,10 +140,7 @@
       neovim-nightly-overlay.overlays.default
       (final: _prev: {
         saint = final.callPackage ./packages/saint.nix {};
-        # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
-        # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
-        nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
-        nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
+        image-hct = final.callPackage ./packages/image-hct {};
       })
     ];
 
@@ -255,9 +256,33 @@
                   args = ["--no-lambda-pattern-names"];
                 };
               };
-            }
-            .shellHook;
-          pkgs = mkPkgs system;
+            };
+          }
+          .shellHook;
+        pkgs = mkPkgs system;
+      };
+
+      packages = let
+        pkgs = mkPkgs system;
+        saint = pkgs.callPackage ./packages/saint.nix {};
+        img-hct = pkgs.callPackage ./packages/image-hct {};
+
+      in {
+        inherit saint;
+        inherit img-hct;
+      };
+
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
+
+      checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+          statix.enable = true;
+          deadnix = {
+            enable = true;
+            args = ["--no-lambda-pattern-names"];
+          };
         };
 
         # Custom packages or patched binaries not in nixpkgs

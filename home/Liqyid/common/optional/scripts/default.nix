@@ -1,11 +1,15 @@
-{lib, ...}: {
+{
+  lib,
+  ...
+}: {
   imports = [
     ./hyprlandWrapper
-    ./colorgen
+    ./wal_set.nix
   ];
 
   scripts = {
     hyprlandWrapper.enable = lib.mkDefault false;
-    wallpaperColorgen.enable = lib.mkDefault false;
+    wallpaperSetter.enable = lib.mkDefault false;
   };
+
 }

@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
@@ -33,6 +37,7 @@
     ytmusic.enable = true;
     cava.enable = true;
     arduino.enable = true;
+    matugen.enable = true;
   };
 
   # Music daemon

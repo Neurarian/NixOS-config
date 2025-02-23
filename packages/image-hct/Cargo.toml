@@ -1,0 +1,23 @@
+[package]
+name = "image-hct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ahash = "0.8.11"
+clap = {version = "4.5.30", features = ["derive"] }
+env_logger = "0.11.6"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "rayon"] }
+indexmap = "2.7.1"
+log = "0.4.26"
+material-color-utilities-rs = "0.2.1"
+material-colors = "0.3"
+rayon = "1.10.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = false
+incremental = false
