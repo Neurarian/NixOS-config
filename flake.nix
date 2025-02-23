@@ -139,37 +139,43 @@
       plugins-care-nvim.overlays.default
       neovim-nightly-overlay.overlays.default
       (final: _prev: {
+        # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
+        # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
+        nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
+        nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
+
         saint = final.callPackage ./packages/saint.nix {};
         image-hct = final.callPackage ./packages/image-hct {};
       })
     ];
 
-    /**
-      Function creates a package set for a given system architecture
-      with custom overlays and unfree package support enabled.
+    /*
+    *
+    Function creates a package set for a given system architecture
+    with custom overlays and unfree package support enabled.
 
-      # Example
+    # Example
 
-      ```nix
-      pkgs = mkPkgs "x86_64-linux"
-      ```
+    ```nix
+    pkgs = mkPkgs "x86_64-linux"
+    ```
 
-      # Type
+    # Type
 
-      mkPkgs :: String -> PkgSet
+    mkPkgs :: String -> PkgSet
 
-      # Arguments
+    # Arguments
 
-      system
-      : System architecture string
+    system
+    : System architecture string
 
-      # Details
+    # Details
 
-      The function:
-      - Imports the nixpkgs package set
-      - Applies custom overlays defined in the outer scope above
-      - Enables unfree package installation
-      - Returns a configured package set for the specified architecture
+    The function:
+    - Imports the nixpkgs package set
+    - Applies custom overlays defined in the outer scope above
+    - Enables unfree package installation
+    - Returns a configured package set for the specified architecture
     */
     mkPkgs = system:
       import nixpkgs {
@@ -177,38 +183,39 @@
         config.allowUnfree = true;
       };
 
-    /**
-      Function creates a NixOS system configuration with integrated home-manager support and Catppuccin theme.
-      Allows for additional machine specific modules.
+    /*
+    *
+    Function creates a NixOS system configuration with integrated home-manager support and Catppuccin theme.
+    Allows for additional machine specific modules.
 
-      # Example
+    # Example
 
-      ``` nix
-      mkSystem "laptop" [ ./additonal-module.nix ] "x86_64-linux
-      ```
+    ``` nix
+    mkSystem "laptop" [ ./additonal-module.nix ] "x86_64-linux
+    ```
 
-      # Type
+    # Type
 
-      mkSystem :: String -> [Path] -> String -> NixosSystem
+    mkSystem :: String -> [Path] -> String -> NixosSystem
 
-      # Arguments
+    # Arguments
 
-      hostname
-      : The hostname of the target system
-      extraModules
-      : Additional NixOS modules to include
-      system
-      : The system architecture
+    hostname
+    : The hostname of the target system
+    extraModules
+    : Additional NixOS modules to include
+    system
+    : The system architecture
 
-      # Details
+    # Details
 
-      The function combines:
-      - System-specific configuration from ./hosts/${hostname}
-      - Home-manager configuration from ./home/${user}/${hostname}.nix
-      - Catppuccin theme integration
-      - Any additional modules specified in extraModules
+    The function combines:
+    - System-specific configuration from ./hosts/${hostname}
+    - Home-manager configuration from ./home/${user}/${hostname}.nix
+    - Catppuccin theme integration
+    - Any additional modules specified in extraModules
 
-      The resulting configuration inherits additional arguments defined in this flake (inputs, user).
+    The resulting configuration inherits additional arguments defined in this flake (inputs, user).
     */
     mkSystem = hostname: extraModules: system:
       lib.nixosSystem {
@@ -243,58 +250,56 @@
 
       perSystem = {system, ...}: {
         # For bootstrapping
-        devShells = import ./shell.nix {
-          shellHook =
-            pre-commit-hooks.lib.${system}.run
-            {
-              src = ./.;
-              hooks = {
-                alejandra.enable = true;
-                statix.enable = true;
-                deadnix = {
-                  enable = true;
-                  args = ["--no-lambda-pattern-names"];
+        devShells =
+          import ./shell.nix
+          {
+            shellHook =
+              pre-commit-hooks.lib.${system}.run
+              {
+                src = ./.;
+                hooks = {
+                  alejandra.enable = true;
+                  statix.enable = true;
+                  deadnix = {
+                    enable = true;
+                    args = ["--no-lambda-pattern-names"];
+                  };
                 };
               };
-            };
           }
           .shellHook;
-        pkgs = mkPkgs system;
-      };
 
-      packages = let
-        pkgs = mkPkgs system;
-        saint = pkgs.callPackage ./packages/saint.nix {};
-        img-hct = pkgs.callPackage ./packages/image-hct {};
-
-      in {
-        inherit saint;
-        inherit img-hct;
-      };
-
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-
-      checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          statix.enable = true;
-          deadnix = {
-            enable = true;
-            args = ["--no-lambda-pattern-names"];
-          };
-        };
-
-        # Custom packages or patched binaries not in nixpkgs
         packages = let
           pkgs = mkPkgs system;
         in {
           saint = pkgs.callPackage ./packages/saint.nix {};
-          nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
-          nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
+          img-hct = pkgs.callPackage ./packages/image-hct {};
         };
 
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
+
+        checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            alejandra.enable = true;
+            statix.enable = true;
+            deadnix = {
+              enable = true;
+              args = ["--no-lambda-pattern-names"];
+            };
+          };
+
+          # Custom packages or patched binaries not in nixpkgs
+          packages = let
+            pkgs = mkPkgs system;
+          in {
+            saint = pkgs.callPackage ./packages/saint.nix {};
+            nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
+            nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
+          };
+
+          formatter = nixpkgs.legacyPackages.${system}.alejandra;
+        };
       };
 
       flake = {
