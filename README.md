@@ -29,12 +29,12 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
         - Optional modules are all implemented via toggleable options.
           These can easily be set in each host-specific file in the user directory.
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
-  - `image-hct`: Self made rust CLI utility to efficiently get hue, chroma and tone from a wallpaper for theming
+  - `image-hct`: Self made rust CLI utility to efficiently get main hue, chroma and tone from a wallpaper for theming
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533
 
 ## 🖥️ Compositor & GUI
 
-Uses the hyprland window management ecosystem. Uses a modified AGS setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Expands on [end-4](https://github.com/end-4/dots-hyprland)'s wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones). AGS, GTK, fuzzel, wlogout, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
+Uses the hyprland window management ecosystem. Uses a modified AGS setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones) via matugen and a custom rust cli utility to set light/dark theme and scheme based on main color HCT space. AGS, GTK, fuzzel, wlogout, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
 
 ### 📷 Screenshots
 
@@ -135,7 +135,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Secret Provisioning**  | [sops-nix](https://github.com/Mic92/sops-nix) |
 | **Fonts**                | [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) + [FiraCode](https://github.com/tonsky/FiraCode) |
 | **Color Scheme**         | [Catppuccin Mocha](https://github.com/catppuccin/nix) |
-| **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
+| **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) + [matugen](https://github.com/InioX/matugen)|
 
 </div>
 
