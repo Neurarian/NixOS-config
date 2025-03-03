@@ -1,12 +1,10 @@
-use ahash::AHashMap;
 use clap::{Parser, Subcommand};
-use image::imageops::FilterType;
-use image::GenericImageView;
+use image::{imageops::FilterType, GenericImageView, ImageReader};
 use log::{debug, info};
-use material_color_utilities_rs::score::score;
 use material_colors::{
     color::Argb,
     hct::Hct,
+    score::Score,
     quantize::{Quantizer, QuantizerCelebi},
 };
 use rayon::prelude::*;
@@ -69,18 +67,8 @@ fn calculate_optimal_size(width: u32, height: u32, bitmap_size: u32) -> (u32, u3
     (new_width, new_height)
 }
 
-fn convert_to_score_input(colors: &indexmap::IndexMap<Argb, u32>) -> AHashMap<[u8; 4], u32> {
-    colors
-        .iter()
-        .map(|(argb, count)| {
-            let bytes = [argb.alpha, argb.red, argb.green, argb.blue];
-            (bytes, *count)
-        })
-        .collect()
-}
-
 fn get_image_htc(path: &str, bitmap_size: u32) -> Result<(f64, f64, f64), Box<dyn Error>> {
-    let mut img = image::ImageReader::open(path)
+    let mut img = ImageReader::open(path)
         .map_err(|e| format!("Failed to open image: {e}"))?
         .with_guessed_format()
         .map_err(|e| format!("Failed to detect image format: {e}"))?
@@ -124,12 +112,11 @@ fn get_image_htc(path: &str, bitmap_size: u32) -> Result<(f64, f64, f64), Box<dy
         quant_result.color_to_count.len()
     );
 
-    let scored_colors = score(&convert_to_score_input(&quant_result.color_to_count));
+    let scored_colors = Score::score(&quant_result.color_to_count, Some(1), None, Some(false));
     let main_scored_color = scored_colors.first().unwrap();
     debug!("Top scored color: {:?}", main_scored_color);
 
-    let argb = Argb::from_u32(u32::from_be_bytes(*main_scored_color));
-    let hct = Hct::new(argb);
+    let hct = Hct::new(*main_scored_color);
 
     info!(
         "Calculated HCT values: H{:.1} C{:.1} T{:.1}",
