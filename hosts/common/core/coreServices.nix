@@ -1,4 +1,6 @@
 {
+  # For better pipewire performance
+  security.rtkit.enable = true;
   # Services
   services = {
     # Enable sound.
