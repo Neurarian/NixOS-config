@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./hyprlandWrapper
     ./wal_set.nix
@@ -11,5 +8,4 @@
     hyprlandWrapper.enable = lib.mkDefault false;
     wallpaperSetter.enable = lib.mkDefault false;
   };
-
 }

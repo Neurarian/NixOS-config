@@ -265,15 +265,19 @@
                     args = ["--no-lambda-pattern-names"];
                   };
                 };
-              };
-          }
-          .shellHook;
+              }
+              .shellHook;
+            pkgs = mkPkgs system;
+          };
 
+        # Custom packages or patched binaries not in nixpkgs
         packages = let
           pkgs = mkPkgs system;
         in {
           saint = pkgs.callPackage ./packages/saint.nix {};
           img-hct = pkgs.callPackage ./packages/image-hct {};
+          nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
+          nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
         };
 
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
@@ -288,17 +292,6 @@
               args = ["--no-lambda-pattern-names"];
             };
           };
-
-          # Custom packages or patched binaries not in nixpkgs
-          packages = let
-            pkgs = mkPkgs system;
-          in {
-            saint = pkgs.callPackage ./packages/saint.nix {};
-            nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
-            nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
-          };
-
-          formatter = nixpkgs.legacyPackages.${system}.alejandra;
         };
       };
 

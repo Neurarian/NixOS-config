@@ -14,7 +14,7 @@
   };
 
   R-custom = pkgs.rWrapper.override {
-  # Only core packages to manage rix. Use rix generated nix-shells for actual projects.
+    # Only core packages to manage rix. Use rix generated nix-shells for actual projects.
     packages = with pkgs.rPackages; [
       rix
       here
@@ -156,16 +156,17 @@ in {
           ];
           tresitter = [
             otter-nvim
-            (nvim-treesitter.withPlugins (p: with p;[
-              rust
-              nix
-              python
-              c
-              lua
-              r
-              bash
-              markdown
-            ]))
+            (nvim-treesitter.withPlugins (p:
+              with p; [
+                rust
+                nix
+                python
+                c
+                lua
+                r
+                bash
+                markdown
+              ]))
             nvim-treesitter-textobjects
           ];
           ui_nav = [
@@ -340,7 +341,6 @@ in {
             nixdExtras = extraNixdItems;
           };
         };
-        
       };
     };
   };

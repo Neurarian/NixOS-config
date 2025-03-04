@@ -10,7 +10,6 @@
     };
   };
   nix = {
-
     settings = {
       # Enable Flakes
       experimental-features = [

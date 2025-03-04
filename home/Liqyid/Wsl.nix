@@ -27,11 +27,6 @@ in {
     };
   };
 
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
-
   # Host specific packages to install in user env
   home.packages = [
     R-custom
