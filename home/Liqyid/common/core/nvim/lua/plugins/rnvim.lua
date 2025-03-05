@@ -11,11 +11,12 @@ return {
         on_filetype = function()
           vim.api.nvim_buf_set_keymap(0, 'n', '<Enter>', '<Plug>RDSendLine', {})
           vim.api.nvim_buf_set_keymap(0, 'v', '<Enter>', '<Plug>RSendSelection', {})
+          vim.api.nvim_buf_set_keymap(0, 'i', '<M-_>', '<Plug>RInsertPipe', { noremap = true })
         end,
       },
       R_args = { '--quiet', '--no-save' },
       min_editor_width = 72,
-      rconsole_width = 78,
+      rconsole_width = 0,
       specialplot = true,
       objbr_mappings = { -- Object browser keymap
         c = 'class', -- Call R functions

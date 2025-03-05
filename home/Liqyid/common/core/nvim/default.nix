@@ -165,6 +165,8 @@ in {
                 lua
                 r
                 bash
+                rnoweb
+                yaml
                 markdown
               ]))
             nvim-treesitter-textobjects
