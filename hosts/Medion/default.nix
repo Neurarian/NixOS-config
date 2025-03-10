@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
@@ -6,6 +10,7 @@
     ../common/optional
     inputs.disko.nixosModules.disko
   ];
+  environment.systemPackages = [pkgs.brightnessctl];
 
   networking = {
     hostName = "Medion"; # Define your hostname.
@@ -29,12 +34,14 @@
   security.pam.services.hyprlock = {};
   # Wayland support for chromium and electron apps
 
-  /* # Option to attach GPU to VFIO on boot
+  /*
+     # Option to attach GPU to VFIO on boot
   specialisation."VFIO".configuration = {
     libvirt.vfioNvidiaIntel.vfioOnBoot.enable = true;
     system.nixos.tags = ["with-vfio"];
     gpu_power_management.enable = true;
-  }; */
+  };
+  */
   # VMs
   libvirt = {
     enable = true;
