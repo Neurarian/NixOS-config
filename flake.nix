@@ -32,18 +32,12 @@
     # WM & GUI
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      # no follow (binary cache)
     };
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
     };
-    /*
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    */
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +47,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
-      url = "github:Aylur/ags/v1";
+      url = "github:Aylur/ags";
+      inputs.astal = {
+        url = "github:Aylur/astal";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    matshell = {
+      url = "github:Neurarian/matshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -79,7 +81,6 @@
     # Terminal
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
-      # Workaround to avoid buildfailure due to outdated rust-overlay in wezterm flake
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

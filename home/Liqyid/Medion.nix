@@ -28,6 +28,7 @@
     firefox.enable = true;
     zen-browser.enable = true;
     wlogout.enable = true;
+    matugen.enable = true;
     # Music 
     ytmusic.enable = true;
     cava.enable = true;
