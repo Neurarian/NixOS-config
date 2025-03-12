@@ -1,1 +1,0 @@
-../../../ags_desktop/windows/osd/main.js

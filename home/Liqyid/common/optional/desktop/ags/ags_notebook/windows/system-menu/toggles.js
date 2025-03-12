@@ -1,1 +1,0 @@
-../../../ags_desktop/windows/system-menu/toggles.js

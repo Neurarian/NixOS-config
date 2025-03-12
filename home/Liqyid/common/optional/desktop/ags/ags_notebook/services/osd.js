@@ -1,1 +1,0 @@
-../../ags_desktop/services/osd.js
