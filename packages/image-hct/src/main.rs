@@ -36,7 +36,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let (image_path, output_type, size) = parse_args()?;
 
     info!("Processing image: {}", image_path);
-    let (hue, chroma, tone) = get_image_htc(&image_path, size)?;
+    let (hue, chroma, tone) = get_image_hct(&image_path, size)?;
 
     debug!(
         "Final HCT values - Hue: {:.2}, Chroma: {:.2}, Tone: {:.2}",
@@ -67,7 +67,7 @@ fn calculate_optimal_size(width: u32, height: u32, bitmap_size: u32) -> (u32, u3
     (new_width, new_height)
 }
 
-fn get_image_htc(path: &str, bitmap_size: u32) -> Result<(f64, f64, f64), Box<dyn Error>> {
+fn get_image_hct(path: &str, bitmap_size: u32) -> Result<(f64, f64, f64), Box<dyn Error>> {
     let mut img = ImageReader::open(path)
         .map_err(|e| format!("Failed to open image: {e}"))?
         .with_guessed_format()
