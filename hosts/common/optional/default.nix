@@ -10,6 +10,7 @@
     ./gaming.nix
     ./services
     ./scripts
+    ./desktop.nix
   ];
   # This module should only be disabled for WSL
   bmboot.enable = lib.mkDefault true;
@@ -20,4 +21,5 @@
   libvirt.enable = lib.mkDefault false;
   hyprsys.enable = lib.mkDefault false;
   gaming.enable = lib.mkDefault false;
+  desktop.services.enable = lib.mkDefault false;
 }

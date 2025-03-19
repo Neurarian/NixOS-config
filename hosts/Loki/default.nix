@@ -27,6 +27,7 @@
     enable = true;
     launchCommand = "Hyprland";
   };
+  desktop.services.enable = true;
   # System cooling GUI
   coolercontrol.enable = true;
   # FOSS Airdrop alternative
