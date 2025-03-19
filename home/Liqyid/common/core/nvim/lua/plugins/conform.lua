@@ -3,19 +3,20 @@ return { -- Autoformat
   keys = { { '<leader>FF', desc = '[F]ormat [F]ile' } },
   after = function()
     local conform = require 'conform'
+    local js = { 'prettierd', 'prettier', stop_after_first = true }
 
     conform.setup {
       formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'alejandra' },
         go = { 'gofmt', 'golint' },
-        -- Conform will run multiple formatters sequentially
         python = { 'isort', 'black' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
         cmake = { 'cmake_format' },
-        -- Use a sub-list to run only the first available formatter
-        javascript = { { 'prettierd', 'prettier' } },
+        javascript = js,
+        typescript = js,
+        typescriptreact = js,
         markdown = { 'mdformat' },
       },
     }
