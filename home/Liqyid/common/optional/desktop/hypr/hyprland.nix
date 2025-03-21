@@ -201,7 +201,7 @@
             "$mod, A, exec, fuzzel"
             "$mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
             "$mod, B, exec, zen"
-            "$mod, Y, exec, youtube-music & wezterm -e cava"
+            "$mod, Y, exec, youtube-music"
             "$mod, G, exec, steam"
             "$mod, D, exec, discord"
             "$mod, C, exec, coolercontrol"
