@@ -117,8 +117,8 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | Type                     | Software                                                                              |
 | ------------------------ | :---------------------------------------------------------------------------------------------:
 | **Window Manager**       | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
-| **Bar**                  | [AGS v1](https://github.com/Aylur/ags) |
-| **App Launcher**         | [fuzzel](https://codeberg.org/dnkl/fuzzel) |
+| **Bar**                  | [Astal](https://github.com/Aylur/astal) |
+| **App Launcher**         | [Astal](https://github.com/Aylur/astal) |
 | **Resource Monitor**     | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
 | **File Manager**         | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
 | **Lockscreen**           | [hyprlock](https://github.com/hyprwm/hyprlock/) |
