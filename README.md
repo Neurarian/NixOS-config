@@ -48,7 +48,7 @@ Uses the hyprland window management ecosystem. Uses a modified AGS setup from [f
 
 ## 🧑‍💻 Neovim
 
-Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lz.n](https://github.com/nvim-neorocks/lz.n) for plugin lazy-loading. Integrated with tmux. If you want to check out just this nvim distribution run:
+Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lze](https://github.com/BirdeeHub/lze) for plugin lazy-loading. Integrated with tmux. If you want to check out just this nvim distribution run:
 
 ```bash
 nix run github:Neurarian/NixOS-config#nixCats
@@ -60,7 +60,7 @@ But be aware that it ships all tools necessary for C, Rust, JS, and R developmen
 ### ✨ Main Features
 
 - 🐱 [nixCats-nvim](https://github.com/BirdeeHub/nixCats-nvim) as an interface for managing installation of plugins and dependencies the Nix way, all while staying with lua for configuration.
-- 🦥 Nix friendly, dead simple plugin lazy-loading with [lz.n](https://github.com/nvim-neorocks/lz.n).
+- 🦥 Nix friendly, dead simple plugin lazy-loading with [lze](https://github.com/BirdeeHub/lze).
 - 💬 Modern and fast autocompletion with [care.nvim](https://github.com/max397574/care.nvim) & [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 - 🌎 Navigation to everywhere in the project with just a couple of keypresses using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim), [harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), & the occasional [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).
 - 🦦 Nix friendly syntax highlighting of nix-embedded code with [otter.nvim](https://github.com/jmbuhr/otter.nvim) & [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
