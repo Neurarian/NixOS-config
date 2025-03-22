@@ -83,7 +83,7 @@
             default = "Searx";
             order = [
               "Searx"
-              "Google"
+              "google"
             ];
             engines = {
               "Nix Packages" = {
@@ -113,7 +113,7 @@
               };
               "Searx" = {
                 urls = [{template = "https://searx.tiekoetter.com/search?q={searchTerms}";}];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                icon = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = ["@searx"];
               };
