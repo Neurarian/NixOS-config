@@ -273,6 +273,7 @@ in {
             # IMPORTANT:
             # your alias may not conflict with your other packages.
             aliases = [
+              "nvim"
               "vim"
               "vi"
               "e"

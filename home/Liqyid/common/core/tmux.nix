@@ -7,24 +7,6 @@
     keyMode = "vi";
     prefix = "C-a";
     clock24 = true;
-    /*
-       catppuccin = {
-      enable = true;
-      extraConfig = ''
-
-        set -g @catppuccin_flavor "mocha"
-
-        set -g @catppuccin_status_left_separator  " "
-        set -g @catppuccin_status_fill "icon"
-        set -g @catppuccin_status_connect_separator "yes"
-
-        set -g @catppuccin_directory_text "#{pane_current_path}"
-
-        set -g @catppuccin_status_modules_right "application host user directory session"
-
-      '';
-    };
-    */
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       {
@@ -37,7 +19,12 @@
 
           resurrect_dir="$HOME/.tmux/resurrect"
           set -g @resurrect-dir $resurrect_dir
-          set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g' $(readlink -f $resurrect_dir/last)"
+
+          set -g @resurrect-processes '~e ~nvim'
+
+          set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s|/home/Liqyid/.nix-profile/bin/e.*|e|g; s|/home/Liqyid/.nix-profile/bin/nvim.*|nvim|g" $target > tmp_file && mv tmp_file $target'
+
+          run-shell ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
 
         '';
       }
@@ -49,21 +36,29 @@
           set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
 
+          run-shell ${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/continuum.tmux
+
         '';
       }
       {
         plugin = catppuccin;
         extraConfig = ''
-
           set -g @catppuccin_flavor "mocha"
 
-          set -g @catppuccin_status_left_separator  " "
-          set -g @catppuccin_status_fill "icon"
-          set -g @catppuccin_status_connect_separator "yes"
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_window_current_text " #{b:pane_current_path}"
+          set -g @catppuccin_window_text " #{b:pane_current_path}"
+          set -g @catppuccin_window_number_position "right"
+          set -g @catppuccin_window_flags "icon"
 
-          set -g @catppuccin_directory_text "#{pane_current_path}"
+          run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
 
-          set -g @catppuccin_status_modules_right "application host user directory session"
+          set -g status-right-length 100
+          set -g status-right "#{E:@catppuccin_status_application}"
+          set -ag status-right "#{E:@catppuccin_status_host}"
+          set -ag status-right "#{E:@catppuccin_status_user}"
+          set -ag status-right "#{E:@catppuccin_status_session}"
+          set -g status-left ""
 
         '';
       }
