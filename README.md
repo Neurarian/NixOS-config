@@ -124,7 +124,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Lockscreen**           | [hyprlock](https://github.com/hyprwm/hyprlock/) |
 | **Logout Menu**          | [wlogout](https://github.com/ArtsyMacaw/wlogout) |
 | **Browser**              | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
-| **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [CAVA](https://github.com/karlstav/cava) + [AGS v1](https://github.com/Aylur/ags) + [YouTube Music](https://github.com/th-ch/youtube-music) |
+| **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [Astal](https://github.com/Aylur/astal) + [YouTube Music](https://github.com/th-ch/youtube-music) |
 | **Gaming**               | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
 | **Screenshot Software**  | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
 | **Clipboard**            | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |\
