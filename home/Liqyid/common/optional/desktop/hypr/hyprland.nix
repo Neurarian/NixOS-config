@@ -3,6 +3,7 @@
   lib,
   inputs,
   pkgs,
+  system,
   ...
 }: {
   options = {
@@ -11,6 +12,7 @@
 
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
     home.packages = with pkgs; [
+      inputs.matshell.packages.${system}.default
       wl-clipboard
       cliphist
       hyprcursor
@@ -198,8 +200,8 @@
             # Software & utils
             "$mod, Return, exec, wezterm"
             "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
-            "$mod, A, exec, fuzzel"
-            "$mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
+            "$mod, A, exec, ags toggle launcher --instance 'js'"
+            # "mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
             "$mod, B, exec, zen"
             "$mod, Y, exec, youtube-music"
             "$mod, G, exec, steam"

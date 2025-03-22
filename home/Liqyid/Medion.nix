@@ -23,7 +23,6 @@
     ags.enable = true;
     gtk-module.enable = true;
     nautilus.enable = true;
-    fuzzel.enable = true;
     overskride.enable = true;
     firefox.enable = true;
     zen-browser.enable = true;
