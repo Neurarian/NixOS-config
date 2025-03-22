@@ -9,12 +9,16 @@ ${{name}}: {{value.default.rgba}};
 $red:                  #d17678;
 $accent_green:         #afbea2;
 
-$primaryMon:           $primary_container;
-$primaryMonHover:      mix($primary_container, $on_primary_container, 30%);
-$primaryMonActive:     mix($primary_container, $on_primary_container, 100%);
-$secondaryMon:         $tertiary_container;
-$thirdMon:             $tertiary;
-$fourthMon:            $secondary;
+$os:                   $on_surface_variant;
+
+$primaryMon:           mix($primary_container, $on_primary_container, 70%, $method: rgb);
+$primaryMonHover:      mix($primary_container, $on_primary_container, 45%, $method: rgb);
+$secondaryMon:         mix($tertiary_container, $on_tertiary_container, 50%, $method: rgb);
+$secondaryMonHover:    mix($tertiary_container, $on_tertiary_container, 30%, $method: rgb);
+$tertiaryMon:          mix($secondary_container, $on_secondary_container, 70%, $method: rgb);
+$tertiaryMonHover:     mix($secondary_container, $on_secondary_container, 45%, $method: rgb);
+$fourthMon:            mix($secondary, $on_secondary, 70%, $method: rgb);
+$fourthMonHover:       mix($secondary, $on_secondary, 45%, $method: rgb);
 
 $tooltipBg:            $background;
 $fg:                   $on_background;
@@ -34,6 +38,7 @@ $buttonDisabled:       $surface;
 $buttonDisabledHover:  adjust_color($buttonDisabled, $alpha: +0.8);
 
 /* hw circular proc */
-$ramProc:              $on_primary_fixed_variant;
-$cpuProc:              $on_tertiary_fixed_variant;
+$ramProc:              mix($primary_fixed_dim, $on_primary_fixed_variant, 66%);
+$cpuProc:              mix($tertiary_fixed_dim, $on_tertiary_fixed_variant, 66%);
 $procBg:               $surface_dim;
+
