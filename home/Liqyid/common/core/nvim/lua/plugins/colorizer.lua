@@ -1,5 +1,6 @@
 return {
   'nvim-colorizer.lua',
+  for_cat = "ui_nav",
   ft = { 'config', 'conf', 'css', 'scss', 'sass', 'html', 'dosini', 'yaml', 'javascript', 'typescript', 'i3config' },
   after = function()
     require('colorizer').setup {

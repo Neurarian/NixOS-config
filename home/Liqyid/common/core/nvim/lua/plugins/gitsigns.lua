@@ -4,6 +4,7 @@
 
 return {
   'gitsigns.nvim',
+  for_cat = 'git',
   event = 'VimEnter',
   after = function()
     require('gitsigns').setup {

@@ -1,9 +1,9 @@
 return {
   {
-    "nvim-treesitter",
+    'nvim-treesitter',
+    for_cat = 'treesitter',
     event = 'VimEnter',
-    after = function ()
-
+    after = function()
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'

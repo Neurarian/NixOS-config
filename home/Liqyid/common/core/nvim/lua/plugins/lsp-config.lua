@@ -110,8 +110,11 @@ servers.lua_ls = {
   },
 }
 servers.r_language_server = {}
+servers.arduino_language_server = {}
 
 return {
+
+  for_cat = "lsp",
   'nvim-lspconfig',
   event = 'Filetype',
   after = function()

@@ -1201,22 +1201,6 @@
         "type": "github"
       }
     },
-    "plugins-arduino-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698523219,
-        "narHash": "sha256-+aIIg6VebT06VUKpXo2p9ykFzxGW+WspjxwR6FqouYE=",
-        "owner": "stevearc",
-        "repo": "vim-arduino",
-        "rev": "2ded67cdf09bb07c4805d9e93d478095ed3d8606",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stevearc",
-        "repo": "vim-arduino",
-        "type": "github"
-      }
-    },
     "plugins-care-cmp": {
       "flake": false,
       "locked": {
@@ -1394,7 +1378,6 @@
         "nixCats": "nixCats",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
-        "plugins-arduino-nvim": "plugins-arduino-nvim",
         "plugins-care-cmp": "plugins-care-cmp",
         "plugins-care-nvim": "plugins-care-nvim",
         "plugins-cmp-r": "plugins-cmp-r",

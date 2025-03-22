@@ -2,6 +2,7 @@ return {
 
   { -- Linting
     'nvim-lint',
+    for_cat = 'lint',
     event = 'Filetype',
     after = function()
       local lint = require 'lint'

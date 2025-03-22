@@ -117,44 +117,54 @@ in {
             gcc
             gnumake
           ];
+          arduino = [
+            arduino-cli
+            arduino-language-server
+          ];
         };
         startupPlugins = with pkgs.vimPlugins; {
           general = [
-            lz-n
+            lze
             vim-sleuth
             indent-blankline-nvim
             comment-nvim
             todo-comments-nvim
             which-key-nvim
             plenary-nvim
-            conform-nvim
             mini-nvim
             vim-startuptime
+          ];
+          format = [
+            conform-nvim
           ];
           git = [
             lazygit-nvim
             gitsigns-nvim
           ];
-          arduino = [
-            pkgs.neovimPlugins.arduino-nvim
-          ];
-          rNvim = [
+          R = [
             pkgs.neovimPlugins.rNvim
           ];
-          completion = [
-            care-nvim
-            pkgs.neovimPlugins.care-cmp
-            friendly-snippets
-            luasnip
-            cmp_luasnip
-            cmp-path
-            cmp-spell
-            cmp-buffer
-            # Not compatible with care.nvim
-            #pkgs.neovimPlugins.cmp-r
-            nvim-autopairs
-          ];
-          tresitter = [
+          completion = {
+            common = [
+              friendly-snippets
+              luasnip
+              cmp_luasnip
+              cmp-path
+              cmp-spell
+              cmp-buffer
+              nvim-autopairs
+            ];
+            care = [
+              care-nvim
+              pkgs.neovimPlugins.care-cmp
+            ];
+            # not implemented
+            cmp = [
+              nvim-cmp
+              pkgs.neovimPlugins.cmp-r
+            ];
+          };
+          treesitter = [
             otter-nvim
             (nvim-treesitter.withPlugins (p:
               with p; [
@@ -189,6 +199,8 @@ in {
           ];
           lsp = [
             nvim-lspconfig
+          ];
+          rust = [
             rustaceanvim
           ];
           debug = [
@@ -265,7 +277,9 @@ in {
               "vi"
               "e"
             ];
+            /*
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+            */
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -273,16 +287,19 @@ in {
             general = true;
 
             # nvim plugins
-            tresitter = true;
+            treesitter = true;
             git = true;
             customPlugins = true;
             ui_nav = true;
             lsp = true;
+            format = true;
             debug = true;
             lint = true;
-            completion = true;
+            completion = {
+              common = true;
+              care = true;
+            };
             have_nerd_font = true;
-            rNvim = true;
             arduino = true;
 
             # additional packages
@@ -312,7 +329,9 @@ in {
             aliases = [
               "nixCats"
             ];
+            /*
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+            */
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -325,9 +344,12 @@ in {
             customPlugins = true;
             ui_nav = true;
             lsp = true;
+            format = true;
             lint = true;
-            completion = true;
-            rNvim = true;
+            completion = {
+              common = true;
+              care = true;
+            };
             have_nerd_font = true;
             arduino = true;
 

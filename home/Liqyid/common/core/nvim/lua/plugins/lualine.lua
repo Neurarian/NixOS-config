@@ -1,6 +1,7 @@
 return {
   {
     'lualine.nvim',
+    for_cat = 'ui_nav',
     event = 'VimEnter',
     after = function()
       local rstt = {

@@ -3,6 +3,7 @@
 
 return {
   'nvim-autopairs',
+  for_cat = 'completion.common',
   event = 'InsertEnter',
   -- Optional dependency
   -- dependencies = { 'hrsh7th/nvim-cmp' },

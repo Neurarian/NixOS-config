@@ -1,6 +1,6 @@
 return {
   'harpoon',
-
+  for_cat = 'ui_nav',
   keys = {
     '<leader>m1',
     '<leader>m2',

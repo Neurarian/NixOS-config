@@ -1,5 +1,6 @@
 return {
   'neo-tree.nvim',
+  for_cat = "ui_nav",
   keys = [[\]],
 
   -- dependencies = {

@@ -9,6 +9,7 @@
 return {
   -- NOTE: Yes, you can install new plugins here!
   'nvim-dap',
+  for_cat = "debug",
   -- NOTE: And you can specify dependencies as well
   -- Creates a beautiful debugger UI
   -- 'rcarriga/nvim-dap-ui',

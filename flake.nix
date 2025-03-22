@@ -111,10 +111,6 @@
       url = "github:benfowler/telescope-luasnip.nvim";
       flake = false;
     };
-    plugins-arduino-nvim = {
-      url = "github:stevearc/vim-arduino";
-      flake = false;
-    };
     plugins-rNvim = {
       url = "github:R-nvim/R.nvim";
       flake = false;
@@ -138,7 +134,7 @@
     user = "Liqyid";
     overlays = with inputs; [
       plugins-care-nvim.overlays.default
-      neovim-nightly-overlay.overlays.default
+      /* neovim-nightly-overlay.overlays.default */
       (final: _prev: {
         # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
         # But I want to have it easily available in pure nix-shells and keep it integrated as a module.

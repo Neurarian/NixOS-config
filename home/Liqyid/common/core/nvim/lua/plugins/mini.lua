@@ -1,5 +1,6 @@
 return { -- Collection of various small independent plugins/modules
   'mini.nvim',
+  for_cat = 'general',
   event = "VimEnter",
   after = function()
     -- Better Around/Inside textobjects

@@ -2,6 +2,7 @@ return {
 
   {
     'Comment.nvim',
+    for_cat = 'general',
     event = 'BufEnter',
     after = function()
       require('Comment').setup()
@@ -10,6 +11,7 @@ return {
 
   {
     'todo-comments.nvim',
+    for_cat = 'general',
     event = 'BufEnter',
     after = function()
       require('todo-comments').setup()
@@ -18,6 +20,7 @@ return {
 
   {
     'fidget.nvim',
+    for_cat = 'ui_nav',
     event = 'VimEnter',
     after = function()
       require('fidget').setup()

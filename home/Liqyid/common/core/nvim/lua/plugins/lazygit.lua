@@ -1,5 +1,6 @@
 return {
   'lazygit.nvim',
+  for_cat = 'git',
   keys = {
     '<leader>lg',
   },

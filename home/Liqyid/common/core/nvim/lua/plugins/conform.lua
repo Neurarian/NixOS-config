@@ -1,5 +1,6 @@
 return { -- Autoformat
   'conform.nvim',
+  for_cat = 'format',
   keys = { { '<leader>FF', desc = '[F]ormat [F]ile' } },
   after = function()
     local conform = require 'conform'

@@ -1,5 +1,6 @@
 return { -- Useful plugin to show you pending keybinds.
   'which-key.nvim',
+  for_cat = 'general',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
 
   after = function()

@@ -1,13 +1,14 @@
 return {
   'catppuccin-nvim',
+  for_cat = 'ui_nav',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   after = function()
     require('catppuccin').setup {
 
       integrations = {
-          neotree = true,
-        },
-      }
+        neotree = true,
+      },
+    }
     vim.cmd.colorscheme 'catppuccin-mocha'
     vim.cmd.hi 'Comment gui=none'
     vim.g.rout_follow_colorscheme = true

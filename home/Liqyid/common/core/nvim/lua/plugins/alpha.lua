@@ -1,5 +1,6 @@
 return {
   'alpha-nvim',
+  for_cat = "ui_nav",
   event = 'VimEnter',
   after = function()
     local theta = require 'alpha.themes.theta'

@@ -1,2 +1,5 @@
-require('completion.care')
-require('completion.luasnip')
+return {
+  { import = 'completion.friendly-snippets' },
+  { import = 'completion.luasnip' },
+  { import = 'completion.care' },
+}

@@ -1,8 +1,7 @@
 return {
   'rNvim',
-
+  for_cat = 'R',
   lazy = false,
-
   after = function()
     -- Create a table with the options to be passed to setup()
     ---@type RConfigUserOpts
