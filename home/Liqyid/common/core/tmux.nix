@@ -10,6 +10,28 @@
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor "mocha"
+
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_window_current_text " #{b:pane_current_path}"
+          set -g @catppuccin_window_text " #{b:pane_current_path}"
+          set -g @catppuccin_window_number_position "right"
+          set -g @catppuccin_window_flags "icon"
+
+          run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+
+          set -g status-right-length 100
+          set -g status-right "#{E:@catppuccin_status_application}"
+          set -ag status-right "#{E:@catppuccin_status_host}"
+          set -ag status-right "#{E:@catppuccin_status_user}"
+          set -ag status-right "#{E:@catppuccin_status_session}"
+          set -g status-left ""
+
+        '';
+      }
+      {
         plugin = resurrect;
         extraConfig = ''
 
@@ -37,28 +59,6 @@
           set -g @continuum-save-interval '10'
 
           run-shell ${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/continuum.tmux
-
-        '';
-      }
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavor "mocha"
-
-          set -g @catppuccin_window_status_style "rounded"
-          set -g @catppuccin_window_current_text " #{b:pane_current_path}"
-          set -g @catppuccin_window_text " #{b:pane_current_path}"
-          set -g @catppuccin_window_number_position "right"
-          set -g @catppuccin_window_flags "icon"
-
-          run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
-
-          set -g status-right-length 100
-          set -g status-right "#{E:@catppuccin_status_application}"
-          set -ag status-right "#{E:@catppuccin_status_host}"
-          set -ag status-right "#{E:@catppuccin_status_user}"
-          set -ag status-right "#{E:@catppuccin_status_session}"
-          set -g status-left ""
 
         '';
       }
