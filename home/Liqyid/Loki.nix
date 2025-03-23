@@ -31,7 +31,6 @@
     overskride.enable = true;
     firefox.enable = true;
     zen-browser.enable = true;
-    wlogout.enable = true;
     # Music
     ytmusic.enable = true;
     cava.enable = true;

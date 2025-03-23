@@ -26,7 +26,6 @@
     overskride.enable = true;
     firefox.enable = true;
     zen-browser.enable = true;
-    wlogout.enable = true;
     matugen.enable = true;
     # Music 
     ytmusic.enable = true;

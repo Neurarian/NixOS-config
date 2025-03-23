@@ -18,7 +18,6 @@
       hyprcursor
       grimblast
       catppuccin-cursors.macchiatoDark
-      wlogout
       glib
       libnotify
     ];
@@ -208,7 +207,7 @@
             "$mod, D, exec, discord"
             "$mod, C, exec, coolercontrol"
             "$mod, S, exec, localsend_app"
-            "$mod SHIFT, Q, exec, wlogout"
+            "$mod SHIFT, Q, exec, ags toggle logout-menu --instance 'js'"
             "$mod SHIFT, W, exec, wal_set"
             "$mod SHIFT, V, exec, virsh --connect qemu:///system start win10"
             "$mod, P, exec, grimblast --notify --freeze copysave area"
