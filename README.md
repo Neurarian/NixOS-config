@@ -34,7 +34,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 
 ## 🖥️ Compositor & GUI
 
-Uses the hyprland window management ecosystem. Uses a modified AGS setup from [fufexan](https://github.com/fufexan/dotfiles)'s config. Wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones) via matugen and a custom rust cli utility to set light/dark theme and scheme based on main color HCT space. AGS, GTK, fuzzel, wlogout, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
+Uses the hyprland window management ecosystem. Uses an Astal/Ags setup inspired by [fufexan](https://github.com/fufexan/dotfiles)'s Agsv1 config. Wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones) via matugen and a custom rust cli utility to set light/dark theme and scheme based on main color HCT space. Astal, GTK, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
 
 ### 📷 Screenshots
 
@@ -122,7 +122,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 | **Resource Monitor**     | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
 | **File Manager**         | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
 | **Lockscreen**           | [hyprlock](https://github.com/hyprwm/hyprlock/) |
-| **Logout Menu**          | [wlogout](https://github.com/ArtsyMacaw/wlogout) |
+| **Logout Menu**          | [Astal](https://github.com/Aylur/astal) |
 | **Browser**              | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
 | **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [Astal](https://github.com/Aylur/astal) + [YouTube Music](https://github.com/th-ch/youtube-music) |
 | **Gaming**               | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
