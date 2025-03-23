@@ -55,7 +55,7 @@
         fi
 
         if [ "$(image-hct "$wallpaper_path" chroma)" -lt 20 ]; then
-          scheme="scheme-content"
+          scheme="scheme-neutral"
         else
           scheme="scheme-vibrant"
         fi
