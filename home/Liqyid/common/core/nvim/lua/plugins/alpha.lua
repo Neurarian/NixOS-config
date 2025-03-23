@@ -6,7 +6,7 @@ return {
     local theta = require 'alpha.themes.theta'
     local dashboard = require 'alpha.themes.dashboard'
     vim.api.nvim_set_hl(0, 'Type', { fg = '#89B4FA' })
-    vim.api.nvim_set_hl(0, 'SpecialComment', { fg = '#A6E3A1' })
+    vim.api.nvim_set_hl(0, 'SpecialComment', { fg = '#94e2d5' })
 
     theta.header.val = {
       [[                                                                     ]],
