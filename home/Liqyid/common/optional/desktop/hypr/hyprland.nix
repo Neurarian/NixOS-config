@@ -37,7 +37,6 @@
         windowrulev2 = [
           "bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1"
           "workspace 2, class:YouTube Music"
-          "workspace 2, initialTitle:wezterm"
           "workspace 4, class:firefox"
           "workspace 4, class:zen"
           "workspace 5 silent, class:steam"
