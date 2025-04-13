@@ -13,6 +13,7 @@
     ./looking-glass-client.nix
     ./cad.nix
     ./arduino.nix
+    ./obs.nix
     ./ags
     ./hypr
     ./matugen
@@ -33,5 +34,6 @@
     zen-browser.enable = lib.mkDefault false;
     cad.enable = lib.mkDefault false;
     arduino.enable = lib.mkDefault false;
+    obs.enable = lib.mkDefault false;
   };
 }

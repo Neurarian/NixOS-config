@@ -67,8 +67,9 @@
 
     # Color scheme
     catppuccin.url = "github:catppuccin/nix";
+
     matugen = {
-      url = "github:Neurarian/matugen/add-vibrant-scheme";
+      url = "github:InioX/matugen";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -233,7 +234,7 @@
                 users.${user} = {
                   imports = [
                     ./home/${user}/${hostname}.nix
-                    catppuccin.homeManagerModules.catppuccin
+                    catppuccin.homeModules.catppuccin
                   ];
                 };
               };

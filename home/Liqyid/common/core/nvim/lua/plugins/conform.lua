@@ -10,14 +10,16 @@ return { -- Autoformat
       formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'alejandra' },
-        go = { 'gofmt', 'golint' },
-        python = { 'isort', 'black' },
+        go = { 'gofmt' },
+        python = { 'isort' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
         cmake = { 'cmake_format' },
         javascript = js,
         typescript = js,
         typescriptreact = js,
+        scss = { 'prettierd' },
+        css = { 'prettierd' },
         markdown = { 'mdformat' },
       },
     }

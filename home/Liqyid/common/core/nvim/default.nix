@@ -251,7 +251,7 @@ in {
         # in your lua config via
         # vim.g.python3_host_prog
         # or run from nvim terminal via :!<packagename>-python3
-        extraPython3Packages = {
+        python3.libraries = {
           test = _: [];
         };
         # populates $LUA_PATH and $LUA_CPATH
@@ -278,9 +278,9 @@ in {
               "vi"
               "e"
             ];
-            /*
+            
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-            */
+           
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -330,9 +330,9 @@ in {
             aliases = [
               "nixCats"
             ];
-            /*
+            
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-            */
+           
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
