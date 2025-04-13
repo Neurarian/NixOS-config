@@ -25,7 +25,8 @@
       # Enable GPU-specific wrapper scripts
       hyprlandWrapper.enable = lib.mkForce true;
       # Enable wallpaper colorgeneration of several main desktop applications
-      wallpaperSetter.enable = lib.mkForce true;
+      # Currently handled via matshell
+      # wallpaperSetter.enable = lib.mkForce true;
     };
   };
 }

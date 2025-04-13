@@ -23,9 +23,8 @@
         hyprpaper
         fd
         ripgrep
-        vips
         inputs.matugen.packages.${pkgs.system}.default
-        image-hct
+        inputs.image-hct.packages.${pkgs.system}.default
       ];
       text = ''
         #!/bin/bash

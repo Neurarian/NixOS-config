@@ -1,4 +1,5 @@
 # Not in use for now
+# handled by matshell
 {
   inputs,
   config,
@@ -21,8 +22,6 @@
       agsTemplate = builtins.path {path = ./templates/ags.scss;};
       hyprTemplate = builtins.path {path = ./templates/hyprland_colors.conf;};
       hyprlockTemplate = builtins.path {path = ./templates/hyprlock_colors.conf;};
-      fuzzelTemplate = builtins.path {path = ./templates/fuzzel.ini;};
-      wlogoutTemplate = builtins.path {path = ./templates/wlogout.css;};
     in ''
       [templates.gtk3]
       input_path = "${gtkTemplate}"
@@ -43,14 +42,6 @@
       [templates.hyprlock]
       input_path = "${hyprlockTemplate}"
       output_path = "~/.config/hypr/hyprlock_colors.conf"
-
-      [templates.fuzzel]
-      input_path = "${fuzzelTemplate}"
-      output_path = "~/.config/fuzzel/fuzzel.ini"
-
-      [templates.wlogout]
-      input_path = "${wlogoutTemplate}"
-      output_path = "~/.config/wlogout/style.css"
 
       [config.custom_colors]
     '';

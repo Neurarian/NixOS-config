@@ -55,7 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matshell = {
-      url = "github:Neurarian/matshell";
+      url = "path:/home/Liqyid/.config/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -70,6 +70,11 @@
 
     matugen = {
       url = "github:InioX/matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    image-hct = {
+      url = "github:Neurarian/image-hct";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -135,7 +140,9 @@
     user = "Liqyid";
     overlays = with inputs; [
       plugins-care-nvim.overlays.default
-      /* neovim-nightly-overlay.overlays.default */
+      /*
+      neovim-nightly-overlay.overlays.default
+      */
       (final: _prev: {
         # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
         # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
@@ -143,7 +150,6 @@
         nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
 
         saint = final.callPackage ./packages/saint.nix {};
-        image-hct = final.callPackage ./packages/image-hct {};
       })
     ];
 
@@ -273,7 +279,6 @@
           pkgs = mkPkgs system;
         in {
           saint = pkgs.callPackage ./packages/saint.nix {};
-          img-hct = pkgs.callPackage ./packages/image-hct {};
           nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
           nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
         };
