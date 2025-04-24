@@ -160,8 +160,9 @@ in {
               pkgs.neovimPlugins.care-cmp
             ];
             # not implemented
-            cmp = [
-              nvim-cmp
+            blink = [
+              blink-cmp
+              blink-compat
               pkgs.neovimPlugins.cmp-r
             ];
           };
@@ -276,9 +277,8 @@ in {
               "vi"
               "e"
             ];
-            
+
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-           
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -295,7 +295,8 @@ in {
             lint = true;
             completion = {
               common = true;
-              care = true;
+              #care = true;
+              blink = true;
             };
             have_nerd_font = true;
             arduino = true;
@@ -327,9 +328,8 @@ in {
             aliases = [
               "nixCats"
             ];
-            
+
             neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-           
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -345,7 +345,8 @@ in {
             lint = true;
             completion = {
               common = true;
-              care = true;
+              #care = true;
+              blink = true;
             };
             have_nerd_font = true;
             arduino = true;

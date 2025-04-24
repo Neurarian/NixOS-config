@@ -1,9 +1,10 @@
 return {
   'luasnip',
   for_cat = 'completion.common',
+  dep_of = { 'blink-cmp.nvim' },
   after = function()
     local ls = require 'luasnip'
-    require('lze').trigger_load("friendly-snippets")
+    require('lze').trigger_load 'friendly-snippets'
     ls.config.setup {}
     vim.tbl_map(function(type)
       require('luasnip.loaders.from_' .. type).lazy_load()

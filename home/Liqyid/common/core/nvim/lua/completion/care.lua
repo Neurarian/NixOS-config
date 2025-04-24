@@ -44,33 +44,7 @@ return {
           scrollbar = '█',
           position = 'auto',
         },
-        type_icons = {
-          Class = '',
-          Color = '',
-          Constant = '',
-          Constructor = '',
-          Enum = '',
-          EnumMember = '',
-          Event = '',
-          Field = '󰜢',
-          File = '',
-          Folder = '',
-          Function = '',
-          Interface = '',
-          Keyword = '',
-          Method = 'ƒ',
-          Module = '',
-          Operator = '󰆕',
-          Property = '',
-          Reference = '',
-          Snippet = '',
-          Struct = '',
-          Text = '',
-          TypeParameter = '',
-          Unit = '󰑭',
-          Value = '󰎠',
-          Variable = '󰫧',
-        },
+        type_icons = require 'icons',
         ghost_text = {
           enabled = true,
           position = 'inline',
@@ -107,8 +81,12 @@ return {
       debug = false,
     }
 
-    vim.keymap.set('i', '<S-Tab>', function()
-      care.api.complete()
+    vim.keymap.set('i', '<Tab>', function()
+      if care.api.is_open() then
+        care.api.complete()
+      else
+        vim.api.nvim_feedkeys(vim.keycode '<Tab>', 'n', false)
+      end
     end)
     vim.keymap.set('i', '<c-p>', '<Plug>(CareSelectPrev)')
     vim.keymap.set('i', '<c-n>', '<Plug>(CareSelectNext)')
@@ -179,7 +157,7 @@ return {
     end)
 
     vim.api.nvim_create_augroup('AutoComplete', { clear = true })
-    vim.api.nvim_create_autocmd('InsertEnter', {
+    vim.api.nvim_create_autocmd('TextChangedI', {
       group = 'AutoComplete',
       callback = function()
         local function is_right_to_dot()
