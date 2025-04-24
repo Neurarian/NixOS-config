@@ -1004,14 +1004,17 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1744553205,
-        "narHash": "sha256-mJL+k9Qwrb+Sy7Dn/99nKjusR1pcp6SKu/KLLSksCNY=",
-        "path": "/home/Liqyid/.config/ags",
-        "type": "path"
+        "lastModified": 1745069168,
+        "narHash": "sha256-iVdfQpFwFG256chySPMw7Yyrrk7L/zZT1/jLqgWlLxM=",
+        "owner": "Neurarian",
+        "repo": "matshell",
+        "rev": "a778c1d2a38d7226c4703b903b3d4887444d473c",
+        "type": "github"
       },
       "original": {
-        "path": "/home/Liqyid/.config/ags",
-        "type": "path"
+        "owner": "Neurarian",
+        "repo": "matshell",
+        "type": "github"
       }
     },
     "matugen": {
