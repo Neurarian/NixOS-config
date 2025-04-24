@@ -125,6 +125,7 @@ in {
         startupPlugins = with pkgs.vimPlugins; {
           general = [
             lze
+            lzextras
             vim-sleuth
             indent-blankline-nvim
             comment-nvim
@@ -196,9 +197,6 @@ in {
             neo-tree-nvim
             nui-nvim
             lualine-nvim
-          ];
-          lsp = [
-            nvim-lspconfig
           ];
           rust = [
             rustaceanvim
@@ -292,7 +290,6 @@ in {
             git = true;
             customPlugins = true;
             ui_nav = true;
-            lsp = true;
             format = true;
             debug = true;
             lint = true;
@@ -344,7 +341,6 @@ in {
             git = true;
             customPlugins = true;
             ui_nav = true;
-            lsp = true;
             format = true;
             lint = true;
             completion = {
