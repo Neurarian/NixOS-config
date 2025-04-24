@@ -28,9 +28,11 @@
     in {
       enable = true; # enable Hyprland
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      plugins = [
+      /*
+         plugins = [
         inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       ];
+      */
       systemd.enable = true;
       settings = {
         source = "hyprland_colors.conf";
@@ -232,8 +234,10 @@
             "CONTROL_ALT, right, workspace, m+1"
             "CONTROL_ALT, left, workspace, m-1"
 
-            # Plugins
+            /*
+               # Plugins
             "$mod, W, overview:toggle"
+            */
 
             # Mouse side buttons
             ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected text
