@@ -10,15 +10,24 @@ return {
     for_cat = 'completion.blink',
     event = 'InsertEnter',
     after = function()
+      local keymap = {
+        preset = 'super-tab',
+        ['<C-i>'] = { 'select_and_accept' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-d>'] = { 'scroll_documentation_up', 'fallback' },
+      }
+      for i = 1, 9 do
+        keymap['<A-' .. i .. '>'] = {
+          function(cmp)
+            cmp.accept { index = i }
+          end,
+        }
+      end
+      
       require('blink.cmp').setup {
 
-        keymap = {
-          preset = 'super-tab',
-          ['<C-i>'] = { 'select_and_accept' },
-          ['<CR>'] = { 'accept', 'fallback' },
-          ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-          ['<C-d>'] = { 'scroll_documentation_up', 'fallback' },
-        },
+        keymap = keymap,
 
         appearance = {
           nerd_font_variant = 'mono',
@@ -38,7 +47,15 @@ return {
             border = 'rounded',
             scrollbar = false,
             draw = {
-              columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon' } },
+              columns = { { 'item_idx' }, { 'label', 'label_description', gap = 1 }, { 'kind_icon' } },
+              components = {
+                item_idx = {
+                  text = function(ctx)
+                    return tostring(ctx.idx)
+                  end,
+                  highlight = 'BlinkCmpItemIdx',
+                },
+              },
             },
           },
 
