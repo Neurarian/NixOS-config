@@ -1,7 +1,7 @@
 return {
-
   {
     -- For adding addtional sources in the future
+    -- For
     'blink.compat',
     for_cat = 'completion.blink',
   },
@@ -17,14 +17,18 @@ return {
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_up', 'fallback' },
       }
-      for i = 1, 9 do
-        keymap['<A-' .. i .. '>'] = {
+      for i = 0, 9 do
+        local index = (i + 1)
+        local c = math.floor(index / 10)
+        local numkey = (index - (c * 10))
+
+        keymap['<A-' .. numkey .. '>'] = {
           function(cmp)
-            cmp.accept { index = i }
+            cmp.accept { index = index }
           end,
         }
       end
-      
+
       require('blink.cmp').setup {
 
         keymap = keymap,
@@ -51,7 +55,8 @@ return {
               components = {
                 item_idx = {
                   text = function(ctx)
-                    return tostring(ctx.idx)
+                    local c = math.floor(ctx.idx / 10)
+                    return ctx.idx > 10 and ' ' or tostring(ctx.idx - (c * 10))
                   end,
                   highlight = 'BlinkCmpItemIdx',
                 },
