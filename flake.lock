@@ -51,11 +51,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738087375,
-        "narHash": "sha256-GLyNtU9A2VN22jNRHZ2OXuFfTJLh8uEVVt+ftsKUX0c=",
+        "lastModified": 1744557573,
+        "narHash": "sha256-XAyj0iDuI51BytJ1PwN53uLpzTDdznPDQFG4RwihlTQ=",
         "owner": "aylur",
         "repo": "ags",
-        "rev": "a6a7a0adb17740f4c34a59902701870d46fbb6a4",
+        "rev": "3ed9737bdbc8fc7a7c7ceef2165c9109f336bff6",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737670815,
-        "narHash": "sha256-ZCxxshGN7XooabArcoGkYSNx5yVunqjKJi2aTv6cznI=",
+        "lastModified": 1742571008,
+        "narHash": "sha256-5WgfJAeBpxiKbTR/gJvxrGYfqQRge5aUDcGKmU1YZ1Q=",
         "owner": "aylur",
         "repo": "astal",
-        "rev": "127e9cdcbf173846a3c40ddc0abfbb038df48042",
+        "rev": "dc0e5d37abe9424c53dcbd2506a4886ffee6296e",
         "type": "github"
       },
       "original": {
@@ -962,11 +962,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1744464890,
-        "narHash": "sha256-1GsZ2jLvb4b5CoBpsUmHmc5gdpSDiQnK/qo9qgPksNo=",
+        "lastModified": 1744479791,
+        "narHash": "sha256-eIz1Eb6valN7f7/Tc1Zx7wTVjPyHufTBrEzxvjS/gH0=",
         "owner": "Neurarian",
         "repo": "image-hct",
-        "rev": "f47f22c5bf0f18c25e7a3a97e0e51df61db31552",
+        "rev": "6abf4ead23ddf400ab09a59c62f2eb391ff886d3",
         "type": "github"
       },
       "original": {
@@ -1004,11 +1004,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1745069168,
-        "narHash": "sha256-iVdfQpFwFG256chySPMw7Yyrrk7L/zZT1/jLqgWlLxM=",
+        "lastModified": 1745528887,
+        "narHash": "sha256-k3RwhH/utPUsllykFDg3z4SYeKtFifyAYUPV28QEt2U=",
         "owner": "Neurarian",
         "repo": "matshell",
-        "rev": "a778c1d2a38d7226c4703b903b3d4887444d473c",
+        "rev": "42f3fd3fb28849468386688886380978b81e0605",
         "type": "github"
       },
       "original": {

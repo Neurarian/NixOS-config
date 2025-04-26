@@ -14,13 +14,11 @@ in {
   };
 
   config = lib.mkIf config.desktop.ags.enable {
-    programs.ags = {
-      matshell = {
-        enable = true;
-        service = true;
-        matugenThemeSetter= true;
-        matugenConfig = true;
-      };
+    programs.matshell = {
+      enable = true;
+      autostart = true;
+      matugenThemeSetter = true;
+      matugenConfig = true;
     };
   };
 }
