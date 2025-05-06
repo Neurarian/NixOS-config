@@ -43,7 +43,9 @@
           resurrect_dir="$HOME/.tmux/resurrect"
           set -g @resurrect-dir $resurrect_dir
 
-          set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g" $target | sponge $target'
+
+
+          set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s|/home/Liqyid/.nix-profile/bin/e.*|e|g; s|/home/Liqyid/.nix-profile/bin/nvim.*|nvim|g" $target > tmp_file && mv tmp_file $target'
 
           run-shell ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
 
