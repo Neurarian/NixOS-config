@@ -28,13 +28,11 @@
     cad.enable = true;
     gtk-module.enable = true;
     nautilus.enable = true;
-    overskride.enable = true;
     firefox.enable = true;
     zen-browser.enable = true;
     obs.enable = true;
     # Music
     ytmusic.enable = true;
-    cava.enable = true;
     arduino.enable = true;
   };
 
