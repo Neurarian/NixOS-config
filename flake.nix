@@ -55,7 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matshell = {
-      url = "github:Neurarian/matshell";
+      url = "github:Neurarian/matshell/experimental";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
