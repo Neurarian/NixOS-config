@@ -13,6 +13,7 @@
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
     home.packages = with pkgs; [
       inputs.matshell.packages.${system}.default
+      ags
       wl-clipboard
       cliphist
       hyprcursor
@@ -200,7 +201,7 @@
             # Software & utils
             "$mod, Return, exec, wezterm"
             "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
-            "$mod, A, exec, ags toggle launcher --instance 'js'"
+            "$mod, A, exec, ags toggle launcher --instance 'matshell'"
             # "mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
             "$mod, B, exec, zen"
             "$mod, Y, exec, youtube-music"
@@ -208,7 +209,7 @@
             "$mod, D, exec, discord"
             "$mod, C, exec, coolercontrol"
             "$mod, S, exec, localsend_app"
-            "$mod SHIFT, Q, exec, ags toggle logout-menu --instance 'js'"
+            "$mod SHIFT, Q, exec, ags toggle logout-menu --instance 'matshell'"
             "$mod SHIFT, W, exec, wal_set"
             "$mod SHIFT, V, exec, virsh --connect qemu:///system start win10"
             "$mod, P, exec, grimblast --notify --freeze copysave area"
