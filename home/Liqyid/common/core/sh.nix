@@ -30,7 +30,7 @@
       ];
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      initExtra = ''
+      initContent = ''
         fastfetch
         bindkey '^y' autosuggest-accept
         bindkey '^e' autosuggest-execute
@@ -81,9 +81,6 @@
         # ---- Zoxide (better cd) ----
         eval "$(zoxide init zsh)"
 
-        # thefuck alias
-        eval $(thefuck --alias)
-        eval $(thefuck --alias fk)
       '';
       # loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
     };
@@ -113,12 +110,6 @@
 
     # Improved cd
     zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    # Correct typos
-    thefuck = {
       enable = true;
       enableZshIntegration = true;
     };
