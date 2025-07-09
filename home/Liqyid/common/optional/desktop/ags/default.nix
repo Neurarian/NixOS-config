@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}: let
-in {
+}: {
   imports = [
     inputs.matshell.homeManagerModules.default
   ];
