@@ -190,7 +190,9 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
 
-      perSystem = {system, ...}: {
+      perSystem = {system, ...}: let
+        pkgs = mkPkgs system;
+      in {
         # For bootstrapping
         devShells =
           import ./shell.nix
@@ -209,17 +211,15 @@
                 };
               }
               .shellHook;
-            pkgs = mkPkgs system;
+            inherit pkgs;
           };
 
         # Custom packages or patched binaries not in nixpkgs
-        packages = let
-          pkgs = mkPkgs system;
-        in {
+        packages = {
           inherit (pkgs) saint nixCats nixCatsStripped;
         };
 
-        formatter = nixpkgs.legacyPackages.${system}.alejandra;
+        formatter = pkgs.alejandra;
 
         checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
