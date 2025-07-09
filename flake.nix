@@ -153,74 +153,12 @@
       })
     ];
 
-    /*
-    *
-    Function creates a package set for a given system architecture
-    with custom overlays and unfree package support enabled.
-
-    # Example
-
-    ```nix
-    pkgs = mkPkgs "x86_64-linux"
-    ```
-
-    # Type
-
-    mkPkgs :: String -> PkgSet
-
-    # Arguments
-
-    system
-    : System architecture string
-
-    # Details
-
-    The function:
-    - Imports the nixpkgs package set
-    - Applies custom overlays defined in the outer scope above
-    - Enables unfree package installation
-    - Returns a configured package set for the specified architecture
-    */
     mkPkgs = system:
       import nixpkgs {
         inherit system overlays;
         config.allowUnfree = true;
       };
 
-    /*
-    *
-    Function creates a NixOS system configuration with integrated home-manager support and Catppuccin theme.
-    Allows for additional machine specific modules.
-
-    # Example
-
-    ``` nix
-    mkSystem "laptop" [ ./additonal-module.nix ] "x86_64-linux
-    ```
-
-    # Type
-
-    mkSystem :: String -> [Path] -> String -> NixosSystem
-
-    # Arguments
-
-    hostname
-    : The hostname of the target system
-    extraModules
-    : Additional NixOS modules to include
-    system
-    : The system architecture
-
-    # Details
-
-    The function combines:
-    - System-specific configuration from ./hosts/${hostname}
-    - Home-manager configuration from ./home/${user}/${hostname}.nix
-    - Catppuccin theme integration
-    - Any additional modules specified in extraModules
-
-    The resulting configuration inherits additional arguments defined in this flake (inputs, user).
-    */
     mkSystem = hostname: extraModules: system:
       lib.nixosSystem {
         inherit system;
@@ -278,9 +216,7 @@
         packages = let
           pkgs = mkPkgs system;
         in {
-          saint = pkgs.callPackage ./packages/saint.nix {};
-          nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
-          nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
+          inherit (pkgs) saint nixCats nixCatsStripped;
         };
 
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
