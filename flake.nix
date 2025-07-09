@@ -159,7 +159,10 @@
         config.allowUnfree = true;
       };
 
-    mkSystem = hostname: extraModules: system:
+    mkSystem = hostname: {
+      system ? "x86_64-linux",
+      extraModules ? [],
+    }:
       lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -236,10 +239,10 @@
 
       flake = {
         nixosConfigurations = {
-          Loki = mkSystem "Loki" [] "x86_64-linux";
-          Medion = mkSystem "Medion" [] "x86_64-linux";
-          Fujitsu = mkSystem "Fujitsu" [] "x86_64-linux";
-          Wsl = mkSystem "Wsl" [] "x86_64-linux";
+          Loki = mkSystem "Loki" {};
+          Medion = mkSystem "Medion" {};
+          Fujitsu = mkSystem "Fujitsu" {};
+          Wsl = mkSystem "Wsl" {};
         };
       };
     };
