@@ -23,5 +23,6 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     cp */Precompiled_binaries/Linux64/SAINTexpress-spc $out/bin/
     cp */Precompiled_binaries/Linux64/SAINTexpress-int $out/bin/
+    ln -s SAINTexpress-int $out/bin/saint
   '';
 }
