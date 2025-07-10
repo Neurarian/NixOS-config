@@ -34,7 +34,7 @@
   localsend.enable = true;
   # Gaming
   gaming.enable = true;
-  # Enable CUPS to print documents.
+  vr.enable = true;
   # Undervolt 5800x3d
   services.vermeer-undervolt = {
     enable = true;
