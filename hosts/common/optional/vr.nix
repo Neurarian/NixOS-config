@@ -13,8 +13,8 @@
     services = {
       monado = {
         enable = true;
-        defaultRuntime = true;
         /*
+        # Rift S controller overlay
          package = with pkgs;
         monado.overrideAttrs (
           finalAttrs: previousAttrs: {
@@ -35,15 +35,11 @@
         enable = true;
         openFirewall = true;
 
-        # Write information to /etc/xdg/openxr/1/active_runtime.json, VR applications
-        # will automatically read this and work with WiVRn (Note: This does not currently
-        # apply for games run in Valve's Proton)
         defaultRuntime = true;
 
         # Run WiVRn as a systemd service on startup
         autoStart = true;
 
-        # Config for WiVRn (https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
         config = {
           enable = true;
           json = {
@@ -66,10 +62,12 @@
         };
       };
     };
-    /* # Add basalt-monado package
+    /*
+       # Add basalt-monado package (SLAM)
     environment.systemPackages = with pkgs; [
       basalt-monado
-    ]; */
+    ];
+    */
     systemd.user.services.monado.environment = {
       STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
@@ -78,6 +76,7 @@
     };
     # OpenXR discovery
     /*
+       # Rift S related fixes
        home-manager.users."${user}" = {
       xdg.configFile."openxr/1/active_runtime.json".source = "${config.services.monado.package}/share/openxr/1/openxr_monado.json";
 
@@ -98,5 +97,8 @@
       };
     };
     */
+    # Required for developer mode & wired PCVR
+    programs.adb.enable = true;
+    users.users.${user}.extraGroups = ["adbusers"];
   };
 }
