@@ -11,10 +11,10 @@
     inputs.matugen.nixosModules.default
   ];
   options = {
-    desktop.matugen.enable = lib.mkEnableOption "enable matugen colorgen";
+    desktop.theming.matugen.enable = lib.mkEnableOption "enable matugen colorgen";
   };
 
-  config = lib.mkIf config.desktop.matugen.enable {
+  config = lib.mkIf config.desktop.theming.matugen.enable {
     home.packages = [inputs.matugen.packages.${pkgs.system}.default];
 
     home.file.".config/matugen/config.toml".text = let

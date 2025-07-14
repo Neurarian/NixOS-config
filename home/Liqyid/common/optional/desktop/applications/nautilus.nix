@@ -8,7 +8,7 @@
     desktop.applications.nautilus.enable = lib.mkEnableOption "enable nautilus file manager";
   };
 
-  config = lib.mkIf config.desktop.applicaitons.nautilus.enable {
+  config = lib.mkIf config.desktop.applications.nautilus.enable {
     home.packages = with pkgs; [
       nautilus
     ];
