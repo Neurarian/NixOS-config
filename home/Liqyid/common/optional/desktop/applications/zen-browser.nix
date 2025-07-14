@@ -6,10 +6,10 @@
   ...
 }: {
   options = {
-    desktop.zen-browser.enable = lib.mkEnableOption "enable zen browser";
+    desktop.zen-browser.applications.enable = lib.mkEnableOption "enable zen browser";
   };
 
-  config = lib.mkIf config.desktop.zen-browser.enable {
+  config = lib.mkIf config.desktop.zen-browser.applications.enable {
     home.packages = [
       inputs.zen-browser.packages.${system}.default
     ];

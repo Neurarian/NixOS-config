@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    desktop.wlogout.enable = lib.mkEnableOption "enable wlogout";
+    desktop.applications.wlogout.enable = lib.mkEnableOption "enable wlogout";
   };
 
-  config = lib.mkIf config.desktop.wlogout.enable {
+  config = lib.mkIf config.desktop.applications.wlogout.enable {
     programs.wlogout = {
       enable = true;
       layout = [

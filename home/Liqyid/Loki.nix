@@ -24,16 +24,22 @@
     # Enable entire hypr-ecosystem
     hypr.enable = true;
     # GUI
-    ags.enable = true;
-    cad.enable = true;
-    gtk-module.enable = true;
-    nautilus.enable = true;
-    firefox.enable = true;
-    zen-browser.enable = true;
-    obs.enable = true;
-    # Music
-    ytmusic.enable = true;
-    arduino.enable = true;
+    applications = {
+      ags.enable = true;
+      cad.enable = true;
+      nautilus.enable = true;
+      firefox.enable = true;
+      zen-browser.enable = true;
+      obs.enable = true;
+      # Music
+      ytmusic.enable = true;
+    };
+    development = {
+      arduino.enable = true;
+    };
+    theming = {
+      gtk.enable = true;
+    };
   };
 
   # Music daemon

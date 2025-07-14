@@ -9,10 +9,10 @@
   ];
 
   options = {
-    desktop.ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
+    desktop.applications.ags.enable = lib.mkEnableOption "enable aylurs gtk shell";
   };
 
-  config = lib.mkIf config.desktop.ags.enable {
+  config = lib.mkIf config.desktop.applications.ags.enable {
     programs.matshell = {
       enable = true;
       autostart = true;

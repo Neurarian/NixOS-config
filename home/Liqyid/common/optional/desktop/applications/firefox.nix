@@ -7,10 +7,10 @@
   ...
 }: {
   options = {
-    desktop.firefox.enable = lib.mkEnableOption "enable firefox browser";
+    desktop.applications.firefox.enable = lib.mkEnableOption "enable firefox browser";
   };
 
-  config = lib.mkIf config.desktop.firefox.enable {
+  config = lib.mkIf config.desktop.applicaitons.firefox.enable {
     home.sessionVariables = {
       MOZ_ENABLE_WAYLAND = 1;
       GDK_BACKEND = "wayland";

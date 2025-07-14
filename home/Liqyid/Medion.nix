@@ -20,15 +20,19 @@
     # Enable entire hypr-ecosystem
     hypr.enable = true;
     # GUI
-    ags.enable = true;
-    gtk-module.enable = true;
-    nautilus.enable = true;
-    firefox.enable = true;
-    zen-browser.enable = true;
-    # Music 
-    ytmusic.enable = true;
-    # VFIO
-    looking-glass.enable = true;
+    applications = {
+      ags.enable = true;
+      nautilus.enable = true;
+      firefox.enable = true;
+      zen-browser.enable = true;
+      # Music
+      ytmusic.enable = true;
+      # VFIO
+      looking-glass.enable = true;
+    };
+    theming = {
+      gtk.enable = true;
+    };
   };
 
   # Music daemon

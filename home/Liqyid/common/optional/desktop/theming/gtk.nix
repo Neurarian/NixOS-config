@@ -6,10 +6,10 @@
   ...
 }: {
   options = {
-    desktop.gtk-module.enable = lib.mkEnableOption "enable gtk";
+    desktop.theming.gtk.enable = lib.mkEnableOption "enable & theme gtk";
   };
 
-  config = lib.mkIf config.desktop.gtk-module.enable {
+  config = lib.mkIf config.desktop.theming.gtk.enable {
     gtk = {
       enable = true;
 
