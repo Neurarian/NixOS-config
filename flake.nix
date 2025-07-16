@@ -197,24 +197,11 @@
         pkgs = mkPkgs system;
       in {
         # For bootstrapping
-        devShells =
-          import ./shell.nix
-          {
-            shellHook =
-              pre-commit-hooks.lib.${system}.run
-              {
-                src = ./.;
-                hooks = {
-                  alejandra.enable = true;
-                  statix.enable = true;
-                  deadnix = {
-                    enable = true;
-                    args = ["--no-lambda-pattern-names"];
-                  };
-                };
-              }
-              .shellHook;
-            inherit pkgs;
+        devShells = let
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+        in
+          import ./shell.nix {
+            inherit pkgs shellHook;
           };
 
         # Custom packages or patched binaries not in nixpkgs
