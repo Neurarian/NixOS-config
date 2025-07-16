@@ -196,13 +196,16 @@
       perSystem = {system, ...}: let
         pkgs = mkPkgs system;
       in {
+        devShells = {
         # For bootstrapping
-        devShells = let
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-        in
-          import ./shell.nix {
-            inherit pkgs shellHook;
-          };
+          default = let
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
+          in
+            import ./shell.nix {
+              inherit pkgs shellHook;
+            };
+          cellpose = import ./devshells/projects/cellpose {inherit pkgs;};
+        };
 
         # Custom packages or patched binaries not in nixpkgs
         packages = {
