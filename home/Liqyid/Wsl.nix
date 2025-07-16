@@ -31,5 +31,6 @@ in {
   home.packages = [
     R-custom
     pkgs.saint
+    pkgs.cudatoolkit
   ];
 }

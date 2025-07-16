@@ -3,7 +3,11 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     # include NixOS-WSL modules
     ../common/core
@@ -16,7 +20,12 @@
   bmboot.enable = false;
   wsl.enable = true;
   wsl.defaultUser = "Liqyid";
+  wsl.useWindowsDriver = true;
 
+  programs.nix-ld.enable = true;
+    environment.variables = {
+    LD_LIBRARY_PATH = lib.mkAfter ":/usr/lib/wsl/lib";
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
