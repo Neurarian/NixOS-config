@@ -2,14 +2,11 @@
   pythonEnv = pkgs.python311.withPackages (ps:
     with ps; [
       pip
-      setuptools
-      wheel
     ]);
 in
   pkgs.mkShell {
     buildInputs = with pkgs; [
       pythonEnv
-      pkg-config
       stdenv.cc.cc.lib
       glibc
     ];
