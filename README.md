@@ -31,7 +31,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
   - `image-hct`: Self made rust CLI utility to efficiently get main hue, chroma and tone from a wallpaper for theming.
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533.
-  - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only) PMID: 39939718.
+  - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
 - `devshells`: Place for project / analysis or framework specific nix shells.
 
 ## 🖥️ Compositor & GUI
