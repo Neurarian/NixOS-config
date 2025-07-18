@@ -2,7 +2,7 @@
   lib,
   buildPythonPackage,
   fetchFromGitHub,
-  # List each Python package as a separate argument
+  # Deps
   numpy,
   scipy,
   natsort,
@@ -58,6 +58,7 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     pytestCheckHook
   ];
+
   # Disable tests that require home directory access
   disabledTests = [
     # Tests that fail due to /homeless-shelter permission issues
