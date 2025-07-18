@@ -143,13 +143,19 @@
       /*
       neovim-nightly-overlay.overlays.default
       */
-      (final: _prev: {
+      (final: prev: {
         # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
         # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
         nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
         nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
 
-        saint = final.callPackage ./packages/saint.nix {};
+        saint = prev.callPackage ./packages/saint.nix {};
+        roifile = prev.python312Packages.callPackage (self + /packages/python/roifile.nix) {};
+        fill-voids = prev.python312Packages.callPackage (self + /packages/python/fill-voids.nix) {};
+        segment-anything = prev.python312Packages.callPackage (self + /packages/python/segment-anything.nix) {};
+        cellpose = prev.python312Packages.callPackage (self + /packages/python/cellpose.nix) {
+          inherit (final) roifile fill-voids segment-anything;
+        };
       })
     ];
 
@@ -197,7 +203,7 @@
         pkgs = mkPkgs system;
       in {
         devShells = {
-        # For bootstrapping
+          # For bootstrapping
           default = let
             inherit (self.checks.${system}.pre-commit-check) shellHook;
           in
@@ -209,7 +215,7 @@
 
         # Custom packages or patched binaries not in nixpkgs
         packages = {
-          inherit (pkgs) saint nixCats nixCatsStripped;
+          inherit (pkgs) saint nixCats nixCatsStripped cellpose;
         };
 
         formatter = pkgs.alejandra;
