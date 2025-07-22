@@ -45,6 +45,7 @@ buildPythonPackage rec {
     natsort
     tifffile
     tqdm
+    # CUDA support only.
     torch-bin
     torchvision-bin
     imagecodecs
