@@ -6,7 +6,7 @@
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
-    package = inputs.wezterm.packages.${pkgs.system}.default;
+    package = pkgs.wezterm;
     extraConfig = ''
                  local config = {
                    enable_wayland = true,
