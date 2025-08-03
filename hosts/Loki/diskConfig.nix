@@ -8,7 +8,7 @@
           type = "gpt";
           partitions = {
             ESP = {
-              size = "1024M";
+              size = "4096M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -38,8 +38,8 @@
                         "noatime"
                       ];
                     };
-                    "/home" = {
-                      mountpoint = "/home";
+                    "/persistent" = {
+                      mountpoint = "/persistent";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
@@ -92,7 +92,7 @@
       };
       samsung_ssd_850 = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/sdb";
         content = {
           type = "gpt";
           partitions = {
