@@ -41,7 +41,7 @@
     cores = 8;
     milivolts = 30;
   };
-  # Local SSH 
+  # Local SSH
   homessh.enable = true;
 
   # VFIO: single GPU passthrough for 6800XT

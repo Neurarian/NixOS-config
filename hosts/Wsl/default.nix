@@ -18,12 +18,14 @@
   # Don't use custom boot parameters on WSL
 
   bmboot.enable = false;
-  wsl.enable = true;
-  wsl.defaultUser = "Liqyid";
-  wsl.useWindowsDriver = true;
+  wsl = {
+    enable = true;
+    defaultUser = "Liqyid";
+    useWindowsDriver = true;
+  };
 
   programs.nix-ld.enable = true;
-    environment.variables = {
+  environment.variables = {
     LD_LIBRARY_PATH = lib.mkAfter ":/usr/lib/wsl/lib";
   };
   # This value determines the NixOS release from which the default
