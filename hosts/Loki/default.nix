@@ -41,6 +41,8 @@
     cores = 8;
     milivolts = 30;
   };
+  # Local SSH 
+  homessh.enable = true;
 
   # VFIO: single GPU passthrough for 6800XT
   libvirt = {
