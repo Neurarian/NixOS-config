@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    libvirt = {
+    virtualisation.libvirt = {
       enable = lib.mkEnableOption "Enable libvirt module";
 
       # Hook to detach & reattach GPU
@@ -57,17 +57,17 @@
   };
 
   config = let
-    hookCfg = config.libvirt.qemuHook;
+    hookCfg = config.virtualisation.libvirt.qemuHook;
   in
-    lib.mkIf config.libvirt.enable {
+    lib.mkIf config.virtualisation.libvirt.enable {
       programs.virt-manager.enable = true;
       hardware.graphics.enable = true;
 
       # Service to declaratively start VFIO networking
-      virsh_netstart_service.enable = true;
       virtualisation = {
         libvirtd = {
           enable = true;
+          services.netstart.enable = true; #hosts/common/optional/virshNetstart.nix
           qemu = {
             package = pkgs.qemu_kvm;
             runAsRoot = true;
@@ -119,7 +119,7 @@
         spiceUSBRedirection.enable = true;
       };
       boot = let
-        cfgNvidiaIntel = config.libvirt.vfioNvidiaIntel;
+        cfgNvidiaIntel = config.virtualisation.libvirt.vfioNvidiaIntel;
       in
         lib.mkIf cfgNvidiaIntel.enable {
           extraModulePackages = with config.boot.kernelPackages; [kvmfr];

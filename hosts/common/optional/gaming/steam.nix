@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: {
-  options.gaming.enable = lib.mkEnableOption "Enable steam and related software";
+  options.gaming.steam.enable = lib.mkEnableOption "Enable steam and related software";
 
-  config = lib.mkIf config.gaming.enable {
+  config = lib.mkIf config.gaming.steam.enable {
     programs = {
       gamescope = {
         enable = true;
@@ -20,15 +20,15 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [
-        mangohud
-        protonup
+      systemPackages = [
+        pkgs.mangohud
+        pkgs.protonup
       ];
       loginShellInit = ''
         [[ "$(tty)" = "dev/tty2" ]] && gs.sh
       '';
     };
 
-    scripts.gamescope.enable = true;
+    gaming.scripts.gamescope.enable = true;
   };
 }

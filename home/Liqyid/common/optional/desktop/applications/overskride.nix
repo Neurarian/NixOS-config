@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.desktop.applications.overskride.enable {
-    home.packages = with pkgs; [
-      overskride
+    home.packages = [
+      pkgs.overskride
     ];
   };
 }

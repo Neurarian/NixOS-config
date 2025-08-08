@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    actkbd.enable = lib.mkEnableOption "Enable fn key volumen control";
+    hardware.services.actkbd.enable = lib.mkEnableOption "Enable fn key volumen control";
   };
 
-  config = lib.mkIf config.actkbd.enable {
+  config = lib.mkIf config.hardware.services.actkbd.enable {
     services.actkbd = {
       enable = true;
       bindings = [

@@ -20,7 +20,7 @@
           set -g @catppuccin_window_number_position "right"
           set -g @catppuccin_window_flags "icon"
 
-          run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+          run-shell ${catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
 
           set -g status-right-length 100
           set -g status-right "#{E:@catppuccin_status_application}"
@@ -46,7 +46,7 @@
 
           set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s|/home/Liqyid/.nix-profile/bin/e.*|e|g; s|/home/Liqyid/.nix-profile/bin/nvim.*|nvim|g" $target > tmp_file && mv tmp_file $target'
 
-          run-shell ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
+          run-shell ${resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
 
         '';
       }
@@ -58,7 +58,7 @@
           set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
 
-          run-shell ${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/continuum.tmux
+          run-shell ${continuum}/share/tmux-plugins/continuum/continuum.tmux
 
         '';
       }

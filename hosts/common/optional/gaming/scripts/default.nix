@@ -3,7 +3,7 @@
     ./gamescope.nix
   ];
 
-  scripts = {
+  gaming.scripts = {
     gamescope.enable = lib.mkDefault false;
   };
 }

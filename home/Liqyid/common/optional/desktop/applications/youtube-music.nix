@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.desktop.applications.ytmusic.enable {
-    home.packages = with pkgs; [
-      youtube-music
+    home.packages = [
+      pkgs.youtube-music
     ];
   };
 }

@@ -14,38 +14,43 @@
   networking = {
     hostName = "Loki"; # Define your hostname.
     networkmanager.ensureProfiles.profiles.ChArian_Inet.connection.interface-name = "wlp5s0";
+    # FOSS Airdrop alternative
+    localsend.enable = true;
+    # Local SSH
+    services.ssh.enable = true;
   };
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    bluetooth.enable = true;
+    # System cooling GUI
+    services.coolercontrol.enable = true;
+  };
 
-  # Enable TRIM
-  services.fstrim.enable = true;
+  services = {
+    # Enable TRIM
+    fstrim.enable = true;
+    # Undervolt 5800x3d
+    vermeer-undervolt = {
+      enable = true;
+      cores = 8;
+      milivolts = 30;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
-  # Hyprland specific system configurations
-  hyprsys = {
-    enable = true;
-    launchCommand = "Hyprland";
-  };
-  desktop.services.enable = true;
-  # System cooling GUI
-  coolercontrol.enable = true;
-  # FOSS Airdrop alternative
-  localsend.enable = true;
-  # Gaming
-  gaming.enable = true;
-  vr.enable = true;
-  # Undervolt 5800x3d
-  services.vermeer-undervolt = {
-    enable = true;
-    cores = 8;
-    milivolts = 30;
-  };
-  # Local SSH
-  homessh.enable = true;
 
+  # Hyprland specific system configurations
+  desktop = {
+    enable = true;
+    hyprlandLaunchCommand = "Hyprland";
+  };
+  # Gaming
+  gaming = {
+    steam.enable = true;
+    vr.enable = true;
+  };
   # VFIO: single GPU passthrough for 6800XT
-  libvirt = {
+  virtualisation.libvirt = {
     enable = true;
     qemuHook = {
       enable = true;

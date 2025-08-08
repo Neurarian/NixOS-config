@@ -29,9 +29,9 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
         - Optional modules are all implemented via toggleable options.
           These can easily be set in each host-specific file in the user directory.
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
-  - `image-hct`: Self made rust CLI utility to efficiently get main hue, chroma and tone from a wallpaper for theming.
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533.
   - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
+  - `R/nvimcom`: R package allowing nvim <-> R communication. Used in my nvim config.
 - `devshells`: Place for project / analysis or framework specific nix shells.
 
 ## 🖥️ Compositor & GUI
@@ -116,28 +116,28 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 <div align="center">
 
-| Type                     | Software                                                                              |
+| Type | Software |
 | ------------------------ | :---------------------------------------------------------------------------------------------:
-| **Window Manager**       | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
-| **Bar**                  | [Astal](https://github.com/Aylur/astal) |
-| **App Launcher**         | [Astal](https://github.com/Aylur/astal) |
-| **Resource Monitor**     | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
-| **File Manager**         | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
-| **Lockscreen**           | [hyprlock](https://github.com/hyprwm/hyprlock/) |
-| **Logout Menu**          | [Astal](https://github.com/Aylur/astal) |
-| **Browser**              | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
-| **Media Player**         | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [Astal](https://github.com/Aylur/astal) + [YouTube Music](https://github.com/th-ch/youtube-music) |
-| **Gaming**               | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
-| **Screenshot Software**  | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
-| **Clipboard**            | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |\
-| **Terminal Emulator**    | [WezTerm](https://github.com/wez/wezterm) |
+| **Window Manager** | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
+| **Bar** | [Astal](https://github.com/Aylur/astal) |
+| **App Launcher** | [Astal](https://github.com/Aylur/astal) |
+| **Resource Monitor** | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
+| **File Manager** | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
+| **Lockscreen** | [hyprlock](https://github.com/hyprwm/hyprlock/) |
+| **Logout Menu** | [Astal](https://github.com/Aylur/astal) |
+| **Browser** | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
+| **Media Player** | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [Astal](https://github.com/Aylur/astal) + [YouTube Music](https://github.com/th-ch/youtube-music) |
+| **Gaming** | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
+| **Screenshot Software** | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
+| **Clipboard** | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |\
+| **Terminal Emulator** | [WezTerm](https://github.com/wez/wezterm) |
 | **Terminal Multiplexer** | [tmux](https://github.com/tmux/tmux) |
-| **Shell**                | [zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship) |
-| **Editor**               | [neovim](https://github.com/neovim/neovim) |
-| **Secret Provisioning**  | [sops-nix](https://github.com/Mic92/sops-nix) |
-| **Fonts**                | [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) + [FiraCode](https://github.com/tonsky/FiraCode) |
-| **Color Scheme**         | [Catppuccin Mocha](https://github.com/catppuccin/nix) |
-| **Cursor**               | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) + [matugen](https://github.com/InioX/matugen)|
+| **Shell** | [zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship) |
+| **Editor** | [neovim](https://github.com/neovim/neovim) |
+| **Secret Provisioning** | [sops-nix](https://github.com/Mic92/sops-nix) |
+| **Fonts** | [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) + [FiraCode](https://github.com/tonsky/FiraCode) |
+| **Color Scheme** | [Catppuccin Mocha](https://github.com/catppuccin/nix) + [matugen](https://github.com/InioX/matugen) |
+| **Cursor** | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
 
 </div>
 
@@ -146,12 +146,12 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 <div align="center">
 
-| Type                        | Software                                                                              |
+| Type | Software |
 | --------------------------- | :---------------------------------------------------------------------------------------------:
-| **Ephemeral Root Storage**  | [Impermanence](https://github.com/nix-community/impermanence) |
-| **Notes**                   | [Obsidian](https://obsidian.md/) |
-| **Bar & Widgets**           | [Migrate to AGS v2](https://github.com/Aylur/ags) |
-| **VFIO**                    | Does not work on Notebook Nvidia GPU yet |
+| **Ephemeral Root Storage** | [Impermanence](https://github.com/nix-community/impermanence) |
+| **Notes** | [Obsidian](https://obsidian.md/) |
+| **Bar & Widgets** | [Migrate to AGS v2](https://github.com/Aylur/ags) |
+| **VFIO** | Does not work on Notebook Nvidia GPU yet |
 
 </div>
 

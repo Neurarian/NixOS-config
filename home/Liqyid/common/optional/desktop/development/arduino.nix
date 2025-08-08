@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.desktop.development.arduino.enable {
-    home.packages = with pkgs; [
-      arduino-cli
+    home.packages = [
+      pkgs.arduino-cli
     ];
   };
 }

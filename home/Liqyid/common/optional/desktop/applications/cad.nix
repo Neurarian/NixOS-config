@@ -9,9 +9,9 @@
   };
 
   config = lib.mkIf config.desktop.applications.cad.enable {
-    home.packages = with pkgs; [
-      freecad-wayland
-      prusa-slicer
+    home.packages = [
+      pkgs.freecad-wayland
+      pkgs.prusa-slicer
     ];
 
     programs = {

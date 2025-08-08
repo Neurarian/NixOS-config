@@ -11,16 +11,16 @@
   };
 
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
-    home.packages = with pkgs; [
+    home.packages = [
       inputs.matshell.packages.${system}.default
-      ags
-      wl-clipboard
-      cliphist
-      hyprcursor
-      grimblast
-      catppuccin-cursors.macchiatoDark
-      glib
-      libnotify
+      pkgs.ags
+      pkgs.wl-clipboard
+      pkgs.cliphist
+      pkgs.hyprcursor
+      pkgs.grimblast
+      pkgs.catppuccin-cursors.macchiatoDark
+      pkgs.glib
+      pkgs.libnotify
     ];
 
     wayland.windowManager.hyprland = let
@@ -29,11 +29,6 @@
     in {
       enable = true; # enable Hyprland
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      /*
-         plugins = [
-        inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      ];
-      */
       systemd.enable = true;
       settings = {
         source = "hyprland_colors.conf";
@@ -150,24 +145,6 @@
         };
         xwayland.force_zero_scaling = true;
         render.direct_scanout = true;
-        plugin = {
-          overview = {
-            workspaceActiveBorder = "$activeBorder";
-            workspaceInactiveBorder = "$inactiveBorder";
-            workspaceBorderSize = 2;
-          };
-          hyprexpo = {
-            columns = 1;
-            gap_size = 2;
-            bg_col = "rgb(111111)";
-            workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
-
-            enable_gesture = true; # laptop touchpad
-            gesture_fingers = 3; # 3 or 4
-            gesture_distance = 300; # how far is the "max"
-            gesture_positive = true; # positive = swipe down. Negative = swipe up.
-          };
-        };
         "$mod" = "SUPER";
         # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
         bind = let
@@ -234,11 +211,6 @@
             # Next workspace on monitor
             "CONTROL_ALT, right, workspace, m+1"
             "CONTROL_ALT, left, workspace, m-1"
-
-            /*
-               # Plugins
-            "$mod, W, overview:toggle"
-            */
 
             # Mouse side buttons
             ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected text

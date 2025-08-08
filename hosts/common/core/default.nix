@@ -1,14 +1,14 @@
 {
   imports = [
-    ./corePackages.nix
-    ./coreFonts.nix
-    ./coreUsers.nix
-    ./coreNixSettings.nix
-    ./coreServices.nix
+    ./packages.nix
+    ./fonts.nix
+    ./users.nix
+    ./nixSettings.nix
+    ./services.nix
     ./locale.nix
     ./sops.nix
     ./networking.nix
-    ./globalEnvVars.nix
+    ./envVars.nix
     ./nixHelper.nix
   ];
 }

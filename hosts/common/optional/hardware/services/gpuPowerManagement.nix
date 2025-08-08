@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    gpu_power_management.enable = lib.mkEnableOption "disable gpu_power_management";
+    hardware.services.gpuPowerManagement.disable = lib.mkEnableOption "disable gpu power management";
   };
 
-  config = lib.mkIf config.gpu_power_management.enable {
+  config = lib.mkIf config.hardware.services.gpuPowerManagement.disable {
     systemd.services."gpu-power-management" = {
       description = "Disable runtime gpu power management";
       wantedBy = ["graphical.target"];

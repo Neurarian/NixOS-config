@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    powermanagement.enable = lib.mkEnableOption "Enable notebook powermanagement module";
+    hardware.services.powermanagement.enable = lib.mkEnableOption "Enable notebook powermanagement module";
   };
 
-  config = lib.mkIf config.powermanagement.enable {
+  config = lib.mkIf config.hardware.services.powermanagement.enable {
     powerManagement = {
       enable = true;
       powertop.enable = true;
@@ -17,6 +17,6 @@
       power-profiles-daemon.enable = true;
       upower.enable = true;
     };
-    backlight.enable = true;
+    hardware.services.backlight.enable = true;
   };
 }

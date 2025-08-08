@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    bmboot.enable = lib.mkEnableOption "enable basic bare metal boot options";
+    hardware.bmboot.enable = lib.mkEnableOption "enable basic bare metal boot options";
   };
 
-  config = lib.mkIf config.bmboot.enable {
+  config = lib.mkIf config.hardware.bmboot.enable {
     boot = {
       kernelPackages = pkgs.linuxPackages_zen;
       plymouth = {

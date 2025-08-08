@@ -20,6 +20,7 @@
       here
       pacman
       languageserver
+      nvimcom
     ];
   };
 in {
@@ -57,118 +58,118 @@ in {
         name,
         ...
       }: {
-        lspsAndRuntimeDeps = with pkgs; {
+        lspsAndRuntimeDeps = {
           general = [
-            universal-ctags
-            ripgrep
-            fd
-            lua54Packages.jsregexp
+            pkgs.universal-ctags
+            pkgs.ripgrep
+            pkgs.fd
+            pkgs.lua54Packages.jsregexp
           ];
           git = [
-            git
-            lazygit
+            pkgs.git
+            pkgs.lazygit
           ];
           debug = [
-            lldb
+            pkgs.lldb
           ];
           bash = [
-            bash-language-server
+            pkgs.bash-language-server
           ];
           markdown = [
-            marksman
-            python311Packages.pylatexenc
-            harper
-            markdownlint-cli
-            mdformat
+            pkgs.marksman
+            pkgs.python311Packages.pylatexenc
+            pkgs.harper
+            pkgs.markdownlint-cli
+            pkgs.mdformat
           ];
           rust = [
-            rust-analyzer
-            cargo
-            rustc
-            rustfmt
+            pkgs.rust-analyzer
+            pkgs.cargo
+            pkgs.rustc
+            pkgs.rustfmt
           ];
           lua = [
-            lua-language-server
-            stylua
+            pkgs.lua-language-server
+            pkgs.stylua
           ];
           nix = [
-            nix-doc
-            nil
-            nixd
-            alejandra
+            pkgs.nix-doc
+            pkgs.nil
+            pkgs.nixd
+            pkgs.alejandra
           ];
           C = [
-            stdenv.cc.cc
-            clang-tools
-            valgrind
-            cmake-language-server
-            cpplint
-            cmake
-            cmake-format
+            pkgs.stdenv.cc.cc
+            pkgs.clang-tools
+            pkgs.valgrind
+            pkgs.cmake-language-server
+            pkgs.cpplint
+            pkgs.cmake
+            pkgs.cmake-format
           ];
           javascript = [
-            eslint
-            typescript
-            typescript-language-server
-            prettierd
+            pkgs.eslint
+            pkgs.typescript
+            pkgs.typescript-language-server
+            pkgs.prettierd
           ];
           R = [
             R-custom
-            gcc
-            gnumake
+            pkgs.gcc
+            pkgs.gnumake
           ];
           arduino = [
-            arduino-cli
-            arduino-language-server
+            pkgs.arduino-cli
+            pkgs.arduino-language-server
           ];
         };
-        startupPlugins = with pkgs.vimPlugins; {
+        startupPlugins = {
           general = [
-            lze
-            lzextras
-            vim-sleuth
-            indent-blankline-nvim
-            comment-nvim
-            todo-comments-nvim
-            which-key-nvim
-            plenary-nvim
-            mini-nvim
-            vim-startuptime
+            pkgs.vimPlugins.lze
+            pkgs.vimPlugins.lzextras
+            pkgs.vimPlugins.vim-sleuth
+            pkgs.vimPlugins.indent-blankline-nvim
+            pkgs.vimPlugins.comment-nvim
+            pkgs.vimPlugins.todo-comments-nvim
+            pkgs.vimPlugins.which-key-nvim
+            pkgs.vimPlugins.plenary-nvim
+            pkgs.vimPlugins.mini-nvim
+            pkgs.vimPlugins.vim-startuptime
           ];
           format = [
-            conform-nvim
+            pkgs.vimPlugins.conform-nvim
           ];
           git = [
-            lazygit-nvim
-            gitsigns-nvim
+            pkgs.vimPlugins.lazygit-nvim
+            pkgs.vimPlugins.gitsigns-nvim
           ];
           R = [
             pkgs.neovimPlugins.rNvim
           ];
           completion = {
             common = [
-              friendly-snippets
-              luasnip
-              cmp_luasnip
-              cmp-path
-              cmp-spell
-              cmp-buffer
-              nvim-autopairs
+              pkgs.vimPlugins.friendly-snippets
+              pkgs.vimPlugins.luasnip
+              pkgs.vimPlugins.cmp_luasnip
+              pkgs.vimPlugins.cmp-path
+              pkgs.vimPlugins.cmp-spell
+              pkgs.vimPlugins.cmp-buffer
+              pkgs.vimPlugins.nvim-autopairs
             ];
+            # broken
             care = [
-              care-nvim
+              pkgs.vimPlugins.care-nvim
               pkgs.neovimPlugins.care-cmp
             ];
-            # not implemented
             blink = [
-              blink-cmp
-              blink-compat
+              pkgs.vimPlugins.blink-cmp
+              pkgs.vimPlugins.blink-compat
               pkgs.neovimPlugins.cmp-r
             ];
           };
           treesitter = [
-            otter-nvim
-            (nvim-treesitter.withPlugins (p:
+            pkgs.vimPlugins.otter-nvim
+            (pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
               with p; [
                 rust
                 nix
@@ -181,47 +182,36 @@ in {
                 yaml
                 markdown
               ]))
-            nvim-treesitter-textobjects
+            pkgs.vimPlugins.nvim-treesitter-textobjects
           ];
           ui_nav = [
             pkgs.neovimPlugins.telescope-luasnip
-            alpha-nvim
-            tmux-navigator
-            telescope-nvim
-            telescope-fzf-native-nvim
-            telescope-ui-select-nvim
-            harpoon2
-            nvim-colorizer-lua
-            nvim-web-devicons
-            catppuccin-nvim
-            fidget-nvim
-            neo-tree-nvim
-            nui-nvim
-            lualine-nvim
+            pkgs.vimPlugins.alpha-nvim
+            pkgs.vimPlugins.tmux-navigator
+            pkgs.vimPlugins.telescope-nvim
+            pkgs.vimPlugins.telescope-fzf-native-nvim
+            pkgs.vimPlugins.telescope-ui-select-nvim
+            pkgs.vimPlugins.harpoon2
+            pkgs.vimPlugins.nvim-colorizer-lua
+            pkgs.vimPlugins.nvim-web-devicons
+            pkgs.vimPlugins.catppuccin-nvim
+            pkgs.vimPlugins.fidget-nvim
+            pkgs.vimPlugins.neo-tree-nvim
+            pkgs.vimPlugins.nui-nvim
+            pkgs.vimPlugins.lualine-nvim
           ];
           rust = [
-            rustaceanvim
+            pkgs.vimPlugins.rustaceanvim
           ];
           debug = [
-            nvim-dap
-            nvim-dap-ui
-            nvim-dap-go
-            nvim-nio
+            pkgs.vimPlugins.nvim-dap
+            pkgs.vimPlugins.nvim-dap-ui
+            pkgs.vimPlugins.nvim-dap-go
+            pkgs.vimPlugins.nvim-nio
           ];
           lint = [
-            nvim-lint
+            pkgs.vimPlugins.nvim-lint
           ];
-          # themer = with pkgs; [
-          #   # you can even make subcategories based on categories and settings sets!
-          #   (builtins.getAttr packageDef.categories.colorscheme {
-          #       "onedark" = onedark-vim;
-          #       "catppuccin" = catppuccin-nvim;
-          #       "catppuccin-mocha" = catppuccin-nvim;
-          #       "tokyonight" = tokyonight-nvim;
-          #       "tokyonight-day" = tokyonight-nvim;
-          #     }
-          #   )
-          # ];
         };
         optionalPlugins = {
           general = [];
@@ -229,8 +219,8 @@ in {
         # shared libraries to be added to LD_LIBRARY_PATH
         # variable available to nvim runtime
         sharedLibraries = {
-          general = with pkgs; [
-            # libgit2
+          general = [
+            # pgks.libgit2
           ];
         };
         environmentVariables = {
@@ -277,8 +267,6 @@ in {
               "vi"
               "e"
             ];
-
-            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
@@ -305,7 +293,7 @@ in {
             markdown = true;
             bash = true;
             lua = true;
-            rust = true;
+            # rust = true;
             nix = true;
             C = true;
             javascript = true;
@@ -328,8 +316,6 @@ in {
             aliases = [
               "nixCats"
             ];
-
-            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
           };
           # and a set of categories that you want
           # (and other information to pass to lua)

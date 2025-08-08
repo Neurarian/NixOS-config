@@ -27,16 +27,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #inputs.nur.url = github:nix-community/NUR;
 
     # WM & GUI
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # no follow (binary cache)
-    };
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -138,24 +133,35 @@
   } @ inputs: let
     inherit (nixpkgs) lib;
     user = "Liqyid";
-    overlays = with inputs; [
-      plugins-care-nvim.overlays.default
-      /*
-      neovim-nightly-overlay.overlays.default
-      */
+    overlays = [
+      inputs.plugins-care-nvim.overlays.default
+      inputs.neovim-nightly-overlay.overlays.default
       (final: prev: {
+        # Nvim packages
         # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
         # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
         nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
         nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
 
+        # Patched binaries
         saint = prev.callPackage ./packages/saint.nix {};
-        roifile = prev.python312Packages.callPackage (self + /packages/python/roifile.nix) {};
-        fill-voids = prev.python312Packages.callPackage (self + /packages/python/fill-voids.nix) {};
-        segment-anything = prev.python312Packages.callPackage (self + /packages/python/segment-anything.nix) {};
-        cellpose = prev.python312Packages.callPackage (self + /packages/python/cellpose.nix) {
+
+        # Python packages
+        roifile = prev.python312Packages.callPackage ./packages/python/roifile.nix {};
+        fill-voids = prev.python312Packages.callPackage ./packages/python/fill-voids.nix {};
+        segment-anything = prev.python312Packages.callPackage ./packages/python/segment-anything.nix {};
+        cellpose = prev.python312Packages.callPackage ./packages/python/cellpose.nix {
           inherit (final) roifile fill-voids segment-anything;
         };
+
+        # R packages
+        rPackages =
+          prev.rPackages
+          // {
+            nvimcom = prev.callPackage ./packages/R/nvimcom.nix {
+              rNvim = inputs.plugins-rNvim;
+            };
+          };
       })
     ];
 
@@ -203,19 +209,17 @@
         pkgs = mkPkgs system;
       in {
         devShells = {
-          # For bootstrapping
           default = let
             inherit (self.checks.${system}.pre-commit-check) shellHook;
           in
-            import ./shell.nix {
-              inherit pkgs shellHook;
-            };
+            import ./devshells/bootstrap {inherit pkgs shellHook;};
           cellpose = import ./devshells/projects/cellpose {inherit pkgs;};
         };
 
         # Custom packages or patched binaries not in nixpkgs
         packages = {
           inherit (pkgs) saint nixCats nixCatsStripped cellpose;
+          inherit (pkgs.rPackages) nvimcom;
         };
 
         formatter = pkgs.alejandra;

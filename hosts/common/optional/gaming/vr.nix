@@ -6,17 +6,16 @@
   ...
 }: {
   options = {
-    vr.enable = lib.mkEnableOption "enable OpenVR";
+    gaming.vr.enable = lib.mkEnableOption "enable OpenVR";
   };
 
-  config = lib.mkIf config.vr.enable {
+  config = lib.mkIf config.gaming.vr.enable {
     services = {
       monado = {
         enable = true;
         /*
         # Rift S controller overlay
-         package = with pkgs;
-        monado.overrideAttrs (
+         package = pkgs.monado.overrideAttrs (
           finalAttrs: previousAttrs: {
             src = fetchFromGitLab {
               domain = "gitlab.freedesktop.org";
@@ -64,8 +63,8 @@
     };
     /*
        # Add basalt-monado package (SLAM)
-    environment.systemPackages = with pkgs; [
-      basalt-monado
+    environment.systemPackages = [
+      pkgs.basalt-monado
     ];
     */
     systemd.user.services.monado.environment = {

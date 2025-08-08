@@ -16,8 +16,8 @@
   ];
 
   # Don't use custom boot parameters on WSL
+  hardware.bmboot.enable = false;
 
-  bmboot.enable = false;
   wsl = {
     enable = true;
     defaultUser = "Liqyid";

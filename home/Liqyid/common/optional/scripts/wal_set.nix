@@ -19,10 +19,10 @@
   config = lib.mkIf config.scripts.wallpaperSetter.enable {
     scripts.wallpaperSetter.output.wal_set = pkgs.writeShellApplication {
       name = "wal_set";
-      runtimeInputs = with pkgs; [
-        hyprpaper
-        fd
-        ripgrep
+      runtimeInputs = [
+        pkgs.hyprpaper
+        pkgs.fd
+        pkgs.ripgrep
         inputs.matugen.packages.${pkgs.system}.default
         inputs.image-hct.packages.${pkgs.system}.default
       ];

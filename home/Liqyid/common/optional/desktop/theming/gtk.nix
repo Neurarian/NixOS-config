@@ -32,7 +32,7 @@
       };
       # needed for virt-manager setup, factor this out?
       "org/virt-manager/virt-manager/connections" =
-        if osConfig.libvirt.enable
+        if osConfig.virtualisation.libvirt.enable
         then {
           autoconnect = ["qemu:///system"];
           uris = ["qemu:///system"];

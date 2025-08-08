@@ -4,8 +4,8 @@
   user,
   ...
 }: {
-  options.homessh.enable = lib.mkEnableOption "Enable SSH common access config";
-  config = lib.mkIf config.homessh.enable {
+  options.networking.services.ssh.enable = lib.mkEnableOption "Enable SSH common access config";
+  config = lib.mkIf config.networking.services.ssh.enable {
     services.openssh = {
       enable = true;
       openFirewall = true;

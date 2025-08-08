@@ -9,8 +9,8 @@
   };
 
   config = lib.mkIf config.desktop.applications.nautilus.enable {
-    home.packages = with pkgs; [
-      nautilus
+    home.packages = [
+      pkgs.nautilus
     ];
   };
 }

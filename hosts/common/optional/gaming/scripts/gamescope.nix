@@ -64,9 +64,9 @@
     };
   };
 in {
-  options.scripts.gamescope.enable = lib.mkEnableOption "enable steam gamescope wrapper scripts";
+  options.gaming.scripts.gamescope.enable = lib.mkEnableOption "enable steam gamescope wrapper scripts";
 
-  config = lib.mkIf config.scripts.gamescope.enable {
+  config = lib.mkIf config.gaming.scripts.gamescope.enable {
     environment.systemPackages = builtins.attrValues gamescopeScripts;
   };
 }
