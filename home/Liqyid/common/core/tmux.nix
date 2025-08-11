@@ -35,8 +35,6 @@
         plugin = resurrect;
         extraConfig = ''
 
-          set -g @resurrect-strategy-nvim 'session'
-          set -g @resurrect-strategy-vim 'session'
           set -g @resurrect-capture-pane-contents 'on'
 
           resurrect_dir="$HOME/.tmux/resurrect"
@@ -44,7 +42,7 @@
 
           set -g @resurrect-processes '~e -> nvim'
 
-          set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s|/home/Liqyid/.nix-profile/bin/e.*|e|g; s|/home/Liqyid/.nix-profile/bin/nvim.*|nvim|g" $target > tmp_file && mv tmp_file $target'
+          set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/nix/store/.*/bin/||g' $(readlink -f $resurrect_dir/last)"
 
           run-shell ${resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
 

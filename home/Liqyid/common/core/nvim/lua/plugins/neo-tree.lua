@@ -1,13 +1,13 @@
 return {
   'neo-tree.nvim',
-  for_cat = "ui_nav",
+  for_cat = 'ui_nav',
   keys = [[\]],
 
   -- dependencies = {
-    -- 'nvim-lua/plenary.nvim',
-    -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    -- 'MunifTanjim/nui.nvim',
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+  -- 'nvim-lua/plenary.nvim',
+  -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+  -- 'MunifTanjim/nui.nvim',
+  -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   -- },
   before = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -15,8 +15,7 @@ return {
     vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
-
-    end,
+  end,
   after = function()
     require('neo-tree').setup {
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -286,6 +285,7 @@ return {
           },
         },
       },
+      auto_clean_after_session_restore = false,
     }
 
     vim.cmd [[nnoremap \ :Neotree reveal<cr>]]

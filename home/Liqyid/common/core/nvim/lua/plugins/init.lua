@@ -1,6 +1,7 @@
 return {
   { import = 'plugins.alpha' },
   { import = 'plugins.autopairs' },
+  { import = 'plugins.autosession' },
   { import = 'plugins.colorizer' },
   { import = 'plugins.colorscheme' },
   { import = 'plugins.conform' },

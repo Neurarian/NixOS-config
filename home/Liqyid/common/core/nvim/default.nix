@@ -135,6 +135,7 @@ in {
             pkgs.vimPlugins.plenary-nvim
             pkgs.vimPlugins.mini-nvim
             pkgs.vimPlugins.vim-startuptime
+            pkgs.vimPlugins.auto-session
           ];
           format = [
             pkgs.vimPlugins.conform-nvim
