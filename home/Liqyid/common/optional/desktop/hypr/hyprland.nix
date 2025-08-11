@@ -32,15 +32,21 @@
       systemd.enable = true;
       settings = {
         source = "hyprland_colors.conf";
-        windowrulev2 = [
+        windowrule = [
           "bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1"
-          "workspace 2, class:YouTube Music"
+          "workspace 2, class:com.github.th_ch.youtube_music"
           "workspace 4, class:firefox"
-          "workspace 4, class:zen"
+          "workspace 4, class:zen-beta"
           "workspace 5 silent, class:steam"
           "workspace 6 silent, class:discord"
           "idleinhibit fullscreen, class:firefox"
           "idleinhibit fullscreen, class:zen"
+        ];
+        layerrule = [
+        "blur, bar"
+        "blur, gtk4-layer-shell"
+        "ignorealpha 0.2, bar"
+        "ignorealpha 0.2, gtk4-layer-shell"
         ];
         env = [
           ""
@@ -89,12 +95,12 @@
           };
           blur = {
             enabled = true;
-            size = 10;
+            size = 5;
             new_optimizations = true;
             passes = 2;
             brightness = 1.0;
             contrast = 1.0;
-            noise = 0.1;
+            noise = 0.01;
             vibrancy = 0.2;
             vibrancy_darkness = 0.5;
             popups = true;
