@@ -8,7 +8,7 @@ ______________________________________________________________________
 
 ## ⚙️ Structure
 
-Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
+Inspired by [Misterio77](https://github.com/Misterio77/nix-config), but using [flake-parts](https://github.com/hercules-ci/flake-parts).
 
 - `flake.nix`: Entrypoint for all hosts.
 - `hosts`: NixOS Configurations, rebuild via `nh os switch -H <hostname>` after bootstrapping.
@@ -31,7 +31,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533.
   - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
-  - `R/nvimcom`: R package allowing nvim <-> R communication. Used in my nvim config.
+  - `R/nvimcom`: R package allowing nvim \<-> R communication. Used in my nvim config.
 - `devshells`: Place for project / analysis or framework specific nix shells.
 - `overlays`: Custom overlays applied to nixpkgs.
 - `lib`: Nix functions and constants used in different parts of the flake.
@@ -66,11 +66,11 @@ But be aware that it ships all tools necessary for C, Rust, JS, and R developmen
 
 - 🐱 [nixCats-nvim](https://github.com/BirdeeHub/nixCats-nvim) as an interface for managing installation of plugins and dependencies the Nix way, all while staying with lua for configuration.
 - 🦥 Nix friendly, dead simple plugin lazy-loading with [lze](https://github.com/BirdeeHub/lze).
-- 💬 Modern and fast autocompletion with [care.nvim](https://github.com/max397574/care.nvim) & [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
+- 💬 Modern and fast autocompletion with [blink.cmp](https://github.com/Saghen/blink.cmp) & [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 - 🌎 Navigation to everywhere in the project with just a couple of keypresses using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim), [harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), & the occasional [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).
 - 🦦 Nix friendly syntax highlighting of nix-embedded code with [otter.nvim](https://github.com/jmbuhr/otter.nvim) & [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - ♻️ Integration with git via [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) & [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
-- 🔌 Running the amazing [nixd](https://github.com/nix-community/nixd) LSP via [lspconfig](https://github.com/neovim/nvim-lspconfig) making configuration a breeze.
+- 🔌 Running the amazing [nixd](https://github.com/nix-community/nixd) LSP, making configuration a breeze.
 - 🐞 Integrated debugger via [nvim-dap](https://github.com/mfussenegger/nvim-dap).
 - 🎨 Harmonizing pastel aesthetics across the entire terminal via [Catppuccin](https://github.com/catppuccin/catppuccin) Dark Mocha and a pretty [alpha-nvim](https://github.com/goolord/alpha-nvim) splash screen.
 
