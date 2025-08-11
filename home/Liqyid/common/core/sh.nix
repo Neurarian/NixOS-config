@@ -4,7 +4,7 @@
       enable = true;
       shellAliases = {
         update = "nix flake update";
-        rebuild = "nh os switch --ask && nh home switch --ask";
+        rebuild = "nh os switch --ask";
         upgrade = "cd ~/.dotfiles/NixOS-config && update && rebuild";
         ls = "eza --icons=always";
         cd = "z";
@@ -20,52 +20,56 @@
           "docker"
         ];
       };
-      # zsh vim motions for command line
       plugins = [
         {
+          # zsh vim motions for command line
           name = "vi-mode";
           src = pkgs.zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+        {
+          name = "fzf-tab";
+          src = pkgs.zsh-fzf-tab;
+          file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
       ];
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initContent = ''
         fastfetch
-        bindkey '^y' autosuggest-accept
+
         bindkey '^e' autosuggest-execute
+        bindkey '^p' history-search-backward
+        bindkey '^n' history-search-forward
+
+        export KEYTIMEOUT=100
+
+        setopt hist_ignore_space
+        setopt hist_find_no_dups
+
 
         # ---- FZF -----
-
-        # Set up fzf key bindings and fuzzy completion
         eval "$(fzf --zsh)"
 
         export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
         export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-        # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-        # - The first argument to the function ($1) is the base path to start traversal
-        # - See the source code (completion.{bash,zsh}) for the details.
         _fzf_compgen_path() {
           fd --hidden --exclude .git . "$1"
         }
 
-        # Use fd to generate the list for directory completion
         _fzf_compgen_dir() {
           fd --type=d --hidden --exclude .git . "$1"
         }
 
-        source fzf-git
+        source "$(which fzf-git)"
 
         show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
         export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
         export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-        # Advanced customization of fzf options via _fzf_comprun function
-        # - The first argument to the function is the name of the command.
-        # - You should make sure to pass the rest of the arguments to fzf.
         _fzf_comprun() {
           local command=$1
           shift
@@ -78,9 +82,14 @@
           esac
         }
 
+        # ---- FZF-TAB -----
+        zstyle ':completion:*' menu no
+        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $realpath'
+        zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
         # ---- Zoxide (better cd) ----
         eval "$(zoxide init zsh)"
-
       '';
       # loginExtra = ''[[ "$(tty)" == /dev/tty2 ]] && hyprwrapper '';
     };
