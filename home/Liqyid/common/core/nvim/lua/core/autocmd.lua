@@ -13,7 +13,3 @@ autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
-autocmd('VimLeavePre', {
-  command = ':Neotree close',
-})

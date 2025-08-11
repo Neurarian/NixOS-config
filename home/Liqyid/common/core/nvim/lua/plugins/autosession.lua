@@ -4,8 +4,9 @@ return {
   lazy = false,
   after = function()
     require('auto-session').setup {
-      opts = {
-        suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      ignore_filetypes_on_save = {
+        'neo-tree',
       },
     }
   end,
