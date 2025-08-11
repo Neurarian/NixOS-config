@@ -7,7 +7,6 @@ return {
   { import = 'plugins.conform' },
   { import = 'plugins.debug' },
   { import = 'plugins.gitsigns' },
-  { import = 'plugins.harpoon' },
   { import = 'plugins.indent_line' },
   { import = 'plugins.lazygit' },
   { import = 'plugins.lint' },

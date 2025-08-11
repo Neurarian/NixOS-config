@@ -192,7 +192,6 @@ in {
             pkgs.vimPlugins.telescope-nvim
             pkgs.vimPlugins.telescope-fzf-native-nvim
             pkgs.vimPlugins.telescope-ui-select-nvim
-            pkgs.vimPlugins.harpoon2
             pkgs.vimPlugins.nvim-colorizer-lua
             pkgs.vimPlugins.nvim-web-devicons
             pkgs.vimPlugins.catppuccin-nvim
