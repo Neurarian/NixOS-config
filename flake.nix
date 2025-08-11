@@ -1,5 +1,19 @@
 {
-  description = "NeurNix Flake";
+  description = "Neurarian's NixOS Flake";
+
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import inputs.systems;
+
+      imports = [
+        ./devshells # Development environments
+        ./formatting # Linting and formatting tools
+        ./hosts # NixOS configurations
+        ./lib # Utility fuctions and constants
+        ./overlays # Custom package overlays
+        ./packages # Package exports
+      ];
+    };
 
   inputs = {
     # Core inputs
@@ -121,129 +135,4 @@
       flake = false;
     };
   };
-
-  outputs = {
-    nixpkgs,
-    home-manager,
-    catppuccin,
-    flake-parts,
-    pre-commit-hooks,
-    self,
-    ...
-  } @ inputs: let
-    inherit (nixpkgs) lib;
-    user = "Liqyid";
-    overlays = [
-      inputs.plugins-care-nvim.overlays.default
-      inputs.neovim-nightly-overlay.overlays.default
-      (final: prev: {
-        # Nvim packages
-        # I think this is a kinda ugly, hacky way of calling and overlaying the custom nixCats package.
-        # But I want to have it easily available in pure nix-shells and keep it integrated as a module.
-        nixCats = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimFull;
-        nixCatsStripped = self.nixosConfigurations.Loki.config.home-manager.users.${user}.nixCats.out.packages.nvimStripped;
-
-        # Patched binaries
-        saint = prev.callPackage ./packages/saint.nix {};
-
-        # Python packages
-        roifile = prev.python312Packages.callPackage ./packages/python/roifile.nix {};
-        fill-voids = prev.python312Packages.callPackage ./packages/python/fill-voids.nix {};
-        segment-anything = prev.python312Packages.callPackage ./packages/python/segment-anything.nix {};
-        cellpose = prev.python312Packages.callPackage ./packages/python/cellpose.nix {
-          inherit (final) roifile fill-voids segment-anything;
-        };
-
-        # R packages
-        rPackages =
-          prev.rPackages
-          // {
-            nvimcom = prev.callPackage ./packages/R/nvimcom.nix {
-              rNvim = inputs.plugins-rNvim;
-            };
-          };
-      })
-    ];
-
-    mkPkgs = system:
-      import nixpkgs {
-        inherit system overlays;
-        config.allowUnfree = true;
-      };
-
-    mkSystem = hostname: {
-      system ? "x86_64-linux",
-      extraModules ? [],
-    }:
-      lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs user;
-        };
-        modules =
-          [
-            ./hosts/${hostname}
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                extraSpecialArgs = {
-                  inherit inputs system user;
-                  pkgs = mkPkgs system;
-                };
-                users.${user} = {
-                  imports = [
-                    ./home/${user}/${hostname}.nix
-                    catppuccin.homeModules.catppuccin
-                  ];
-                };
-              };
-            }
-          ]
-          ++ extraModules;
-      };
-  in
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import inputs.systems;
-
-      perSystem = {system, ...}: let
-        pkgs = mkPkgs system;
-      in {
-        devShells = {
-          default = let
-            inherit (self.checks.${system}.pre-commit-check) shellHook;
-          in
-            import ./devshells/bootstrap {inherit pkgs shellHook;};
-          cellpose = import ./devshells/projects/cellpose {inherit pkgs;};
-        };
-
-        # Custom packages or patched binaries not in nixpkgs
-        packages = {
-          inherit (pkgs) saint nixCats nixCatsStripped cellpose;
-          inherit (pkgs.rPackages) nvimcom;
-        };
-
-        formatter = pkgs.alejandra;
-
-        checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            alejandra.enable = true;
-            statix.enable = true;
-            deadnix = {
-              enable = true;
-              args = ["--no-lambda-pattern-names"];
-            };
-          };
-        };
-      };
-
-      flake = {
-        nixosConfigurations = {
-          Loki = mkSystem "Loki" {};
-          Medion = mkSystem "Medion" {};
-          Fujitsu = mkSystem "Fujitsu" {};
-          Wsl = mkSystem "Wsl" {};
-        };
-      };
-    };
 }
