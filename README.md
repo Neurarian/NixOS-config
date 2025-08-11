@@ -33,6 +33,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config)
   - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
   - `R/nvimcom`: R package allowing nvim <-> R communication. Used in my nvim config.
 - `devshells`: Place for project / analysis or framework specific nix shells.
+- `overlays`: Custom overlays applied to nixpkgs.
 - `lib`: Nix functions and constants used in different parts of the flake.
 - `formatting`: Setting formatter and pre-commit-checks for the flake.
 
