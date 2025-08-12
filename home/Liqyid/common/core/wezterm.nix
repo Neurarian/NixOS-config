@@ -1,13 +1,11 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
     package = pkgs.wezterm;
     extraConfig = ''
+      local wezterm = require 'wezterm'
+
       local config = {
         enable_wayland = true,
         font = wezterm.font 'JetBrainsMono NF',
@@ -23,18 +21,13 @@
           bottom = 0,
         },
         default_prog = {
-          '${pkgs.zsh}/bin/zsh',
-          '--login',
-          '-c',
-                [[
-          if command -v tmux >/dev/null 2>&1; then
-            tmux attach || tmux new;
-          else
-            exec zsh;
-          fi
-               ]],
-          },
+          "${pkgs.zsh}/bin/zsh",
+          "--login",
+          "-c",
+          "if command -v tmux >/dev/null 2>&1; then tmux new-session -A -s NixOS; else exec zsh; fi"
+        },
       }
-      return config'';
+      return config
+    '';
   };
 }

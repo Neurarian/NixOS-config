@@ -43,10 +43,10 @@
           "idleinhibit fullscreen, class:zen"
         ];
         layerrule = [
-        "blur, bar"
-        "blur, gtk4-layer-shell"
-        "ignorealpha 0.2, bar"
-        "ignorealpha 0.2, gtk4-layer-shell"
+          "blur, bar"
+          "blur, gtk4-layer-shell"
+          "ignorealpha 0.2, bar"
+          "ignorealpha 0.2, gtk4-layer-shell"
         ];
         env = [
           ""
@@ -59,9 +59,8 @@
           # set cursor for HL itself
           "hyprctl setcursor ${cursorName} ${toString pointer.size}"
           "wl-paste --watch cliphist store"
-          "[workspace 1 silent] wezterm "
           "sleep 1s && wal_set"
-          ""
+          "[workspace 1 silent] wezterm"
         ];
         input = {
           kb_layout = "us, de";

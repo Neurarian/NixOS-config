@@ -20,21 +20,17 @@
           set -g @catppuccin_window_number_position "right"
           set -g @catppuccin_window_flags "icon"
 
-          run-shell ${catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
-
           set -g status-right-length 100
           set -g status-right "#{E:@catppuccin_status_application}"
           set -ag status-right "#{E:@catppuccin_status_host}"
           set -ag status-right "#{E:@catppuccin_status_user}"
           set -ag status-right "#{E:@catppuccin_status_session}"
           set -g status-left ""
-
         '';
       }
       {
         plugin = resurrect;
         extraConfig = ''
-
           set -g @resurrect-capture-pane-contents 'on'
 
           resurrect_dir="$HOME/.tmux/resurrect"
@@ -43,21 +39,13 @@
           set -g @resurrect-processes '~e -> nvim'
 
           set -g @resurrect-hook-post-save-all "sed -i 's| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/nix/store/.*/bin/||g' $(readlink -f $resurrect_dir/last)"
-
-          run-shell ${resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
-
         '';
       }
       {
         plugin = continuum;
         extraConfig = ''
-
           set -g @continuum-restore 'on'
-          set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
-
-          run-shell ${continuum}/share/tmux-plugins/continuum/continuum.tmux
-
         '';
       }
     ];
