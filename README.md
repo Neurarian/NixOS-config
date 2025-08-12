@@ -10,7 +10,7 @@ ______________________________________________________________________
 
 Inspired by [Misterio77](https://github.com/Misterio77/nix-config), but using [flake-parts](https://github.com/hercules-ci/flake-parts).
 
-- `flake.nix`: Entrypoint for all hosts.
+- `flake.nix`: Entrypoint.
 - `hosts`: NixOS Configurations, rebuild via `nh os switch -H <hostname>` after bootstrapping.
   - `common`: Shared configurations imported by the host configurations.
     - `core`: Core configurations that every host requires.
@@ -31,7 +31,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config), but using [f
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533.
   - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
-  - `R/nvimcom`: R package allowing nvim \<-> R communication. Used in my nvim config.
+  - `R/nvimcom`: R package allowing nvim <-> R communication. Used in my nvim config.
 - `devshells`: Place for project / analysis or framework specific nix shells.
 - `overlays`: Custom overlays applied to nixpkgs.
 - `lib`: Nix functions and constants used in different parts of the flake.
