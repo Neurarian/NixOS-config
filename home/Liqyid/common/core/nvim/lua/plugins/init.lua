@@ -12,7 +12,6 @@ return {
   { import = 'plugins.lint' },
   { import = 'plugins.lualine' },
   { import = 'plugins.mini' },
-  { import = 'plugins.neo-tree' },
   { import = 'plugins.otter' },
   { import = 'plugins.rnvim' },
   { import = 'plugins.rustaceanvim' },

@@ -6,7 +6,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
   keys = {
     '<leader>sp',
     '<leader>sn',
-    '<leader>/',
     '<leader><leader>',
     '<leader>s.',
     '<leader>sr',
@@ -17,9 +16,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     '<leader>sf',
     '<leader>sk',
     '<leader>sh',
-    '<leader>sM',
     '<leader>sb',
     '<leader>sl',
+    '<leader>st',
+    '<leader>sc',
+    '\\',
   },
   -- dependencies = {
   -- 'nvim-lua/plenary.nvim',
@@ -87,23 +88,27 @@ return { -- Fuzzy Finder (files, lsp, etc)
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
-    pcall(require('telescope').load_extension 'harpoon')
+    pcall(require('telescope').load_extension 'fzf')
+    pcall(require('telescope').load_extension 'ui-select')
     pcall(require('telescope').load_extension 'luasnip')
     pcall(require('telescope').load_extension 'lazygit')
+    pcall(require('telescope').load_extension 'file_browser')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch select [T]elescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader>ss', '<cmd>SessionSearch<CR>', { desc = '[S]earch [Sessions]' })
+    vim.keymap.set('n', '<leader>sc', require('telescope').extensions.luasnip.luasnip, { desc = '[S]earch [C]ode snippets' })
+    vim.keymap.set('n', '<leader>sl', require('telescope').extensions.lazygit.lazygit, { desc = '[S]earch visited git repos via [L]azygit)' })
+    vim.keymap.set('n', '\\', require('telescope').extensions.file_browser.file_browser, { desc = 'Telescope File Browser' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme

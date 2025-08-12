@@ -192,11 +192,11 @@ in {
             pkgs.vimPlugins.telescope-nvim
             pkgs.vimPlugins.telescope-fzf-native-nvim
             pkgs.vimPlugins.telescope-ui-select-nvim
+            pkgs.vimPlugins.telescope-file-browser-nvim
             pkgs.vimPlugins.nvim-colorizer-lua
             pkgs.vimPlugins.nvim-web-devicons
             pkgs.vimPlugins.catppuccin-nvim
             pkgs.vimPlugins.fidget-nvim
-            pkgs.vimPlugins.neo-tree-nvim
             pkgs.vimPlugins.nui-nvim
             pkgs.vimPlugins.lualine-nvim
           ];
