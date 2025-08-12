@@ -56,8 +56,17 @@
   polkit_gnome.enable = true;
 
   wayland.windowManager.hyprland.settings = {
+    monitorv2 = {
+      output = "DP-1";
+      mode = "3440x1440@100";
+      position = "0x0";
+      scale = 1;
+      bitdepth = 10;
+      cm = "hdr";
+      sdrbrightness = 1.2;
+      sdrsaturation = 1.0;
+    };
     monitor = [
-      "DP-1,3440x1440@100,0x0,1"
       "DP-2,2560x1440@144,3440x0,1"
     ];
 
