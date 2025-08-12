@@ -67,7 +67,7 @@ But be aware that it ships all tools necessary for C, Rust, JS, and R developmen
 - 🐱 [nixCats-nvim](https://github.com/BirdeeHub/nixCats-nvim) as an interface for managing installation of plugins and dependencies the Nix way, all while staying with lua for configuration.
 - 🦥 Nix friendly, dead simple plugin lazy-loading with [lze](https://github.com/BirdeeHub/lze).
 - 💬 Modern and fast autocompletion with [blink.cmp](https://github.com/Saghen/blink.cmp) & [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
-- 🌎 Navigation to everywhere in the project with just a couple of keypresses using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) & [Neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).
+- 🌎 Navigation to everywhere in the project with just a couple of keypresses using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - 🦦 Nix friendly syntax highlighting of nix-embedded code with [otter.nvim](https://github.com/jmbuhr/otter.nvim) & [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - ♻️ Integration with git via [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) & [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
 - 🔌 Running the amazing [nixd](https://github.com/nix-community/nixd) LSP, making configuration a breeze.
@@ -121,7 +121,7 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 
 | Type | Software |
 | ------------------------ | :---------------------------------------------------------------------------------------------:
-| **Window Manager** | [hyprland](https://github.com/hyprwm/Hyprland) + [hyprspace](https://github.com/KZDKM/Hyprspace) |
+| **Window Manager** | [hyprland](https://github.com/hyprwm/Hyprland) |
 | **Bar** | [Astal](https://github.com/Aylur/astal) |
 | **App Launcher** | [Astal](https://github.com/Aylur/astal) |
 | **Resource Monitor** | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
