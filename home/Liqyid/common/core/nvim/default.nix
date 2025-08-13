@@ -128,7 +128,6 @@ in {
             pkgs.vimPlugins.lze
             pkgs.vimPlugins.lzextras
             pkgs.vimPlugins.vim-sleuth
-            pkgs.vimPlugins.indent-blankline-nvim
             pkgs.vimPlugins.comment-nvim
             pkgs.vimPlugins.todo-comments-nvim
             pkgs.vimPlugins.which-key-nvim
@@ -180,13 +179,7 @@ in {
             pkgs.vimPlugins.nvim-treesitter-textobjects
           ];
           ui_nav = [
-            #pkgs.neovimPlugins.telescope-luasnip
-            pkgs.vimPlugins.alpha-nvim
             pkgs.vimPlugins.tmux-navigator
-            #pkgs.vimPlugins.telescope-nvim
-            #pkgs.vimPlugins.telescope-fzf-native-nvim
-            #pkgs.vimPlugins.telescope-ui-select-nvim
-            #pkgs.vimPlugins.telescope-file-browser-nvim
             pkgs.vimPlugins.nvim-colorizer-lua
             pkgs.vimPlugins.nvim-web-devicons
             pkgs.vimPlugins.catppuccin-nvim
