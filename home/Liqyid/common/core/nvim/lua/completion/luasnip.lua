@@ -22,7 +22,16 @@ return {
     ls.filetype_extend('kotlin', { 'kdoc' })
     ls.filetype_extend('ruby', { 'rdoc' })
     ls.filetype_extend('sh', { 'shelldoc' })
-    vim.keymap.set({ 'i', 's' }, '<M-n>', function()
+
+    vim.keymap.set({ 'i', 's' }, '<A-Tab>', function()
+      ls.jump(1)
+    end, { silent = true })
+
+    vim.keymap.set({ 'i', 's' }, '<A-S-Tab>', function()
+      ls.jump(-1)
+    end, { silent = true })
+
+    vim.keymap.set({ 'i', 's' }, '<A-n>', function()
       if ls.choice_active() then
         ls.change_choice(1)
       end

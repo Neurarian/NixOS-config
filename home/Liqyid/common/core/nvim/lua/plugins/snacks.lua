@@ -92,8 +92,8 @@ return {
     },
 
     after = function(_)
-      vim.api.nvim_set_hl(0, 'Blue', { fg = '#89B4FA' })
-      vim.api.nvim_set_hl(0, 'Green', { fg = '#94e2d5' })
+      vim.api.nvim_set_hl(0, 'Lavender', { fg = '#89B4FA' })
+      vim.api.nvim_set_hl(0, 'Teal', { fg = '#94e2d5' })
       Snacks.setup {
         -- bigfile = {},
         quickfile = {},
@@ -169,17 +169,17 @@ return {
                 '                                                                       ',
               }
               local highlight_map = {
-                { { 'Blue', 0, 195 } },
-                { { 'Green', 0, 61 }, { 'Blue', 61, 195 } },
-                { { 'Green', 0, 64 }, { 'Blue', 64, 195 } },
-                { { 'Green', 0, 91 }, { 'Blue', 91, 195 } },
-                { { 'Green', 0, 86 }, { 'Blue', 86, 195 } },
-                { { 'Green', 0, 99 }, { 'Blue', 99, 195 } },
-                { { 'Green', 0, 98 }, { 'Blue', 98, 195 } },
-                { { 'Green', 0, 109 }, { 'Blue', 109, 195 } },
-                { { 'Green', 0, 195 } },
-                { { 'Green', 0, 195 } },
-                { { 'Green', 0, 195 } },
+                { { 'Lavender', 0, 195 } },
+                { { 'Teal', 0, 61 }, { 'Lavender', 61, 195 } },
+                { { 'Teal', 0, 64 }, { 'Lavender', 64, 195 } },
+                { { 'Teal', 0, 91 }, { 'Lavender', 91, 195 } },
+                { { 'Teal', 0, 86 }, { 'Lavender', 86, 195 } },
+                { { 'Teal', 0, 99 }, { 'Lavender', 99, 195 } },
+                { { 'Teal', 0, 98 }, { 'Lavender', 98, 195 } },
+                { { 'Teal', 0, 109 }, { 'Lavender', 109, 195 } },
+                { { 'Teal', 0, 195 } },
+                { { 'Teal', 0, 195 } },
+                { { 'Teal', 0, 195 } },
               }
 
               local header_sections = {}
@@ -198,7 +198,7 @@ return {
                     end
                   end
                 else
-                  table.insert(text_parts, { line, hl = 'Blue' })
+                  table.insert(text_parts, { line, hl = 'Lavender' })
                 end
 
                 table.insert(header_sections, {
@@ -211,36 +211,36 @@ return {
             end,
 
             {
-              text = { { 'Recent files', hl = 'Green' } },
+              text = { { 'Recent files', hl = 'Teal' } },
               align = 'center',
-              padding = 2,
+              padding = 1,
             },
             { section = 'recent_files' },
             {
-              text = { { 'Quick links', hl = 'Blue' } },
+              text = { { 'Quick links', hl = 'Lavender' } },
               align = 'center',
-              padding = { 2, 2 },
+              padding = { 1, 2 },
             },
             { section = 'keys' },
           },
           formats = {
             icon = function(item)
-              if item.file and (item.icon == 'file' or item.icon == 'directory') then
+              if item.file and (item.icon == 'file') then
                 return Snacks.dashboard.icon(item.file, item.icon)
               else
-                return { item.icon, width = 2, hl = 'Blue' }
+                return { item.icon, width = 2, hl = 'Lavender' }
               end
             end,
 
             key = function(item)
-              if item.file and (item.icon == 'file' or item.icon == 'directory') then
-                return { { item.key, hl = 'Green' } }
+              if item.file and (item.icon == 'file') then
+                return { { item.key, hl = 'Teal' } }
               else
-                return { item.key, hl = 'Blue' }
+                return { item.key, hl = 'Lavender' }
               end
             end,
             desc = function(item)
-              return { item.desc, hl = 'Normal' }
+              return { item.desc, hl = 'SnacksPickerFile' }
             end,
             file = function(item, ctx)
               local fname = vim.fn.fnamemodify(item.file, ':~')
@@ -254,7 +254,7 @@ return {
                 end
               end
               local dir, file = fname:match '^(.*)/(.+)$'
-              return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'Normal' } } or { { fname, hl = 'Normal' } }
+              return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'SnacksPickerFile' } } or { { fname, hl = 'SnacksPickerFile' } }
             end,
           },
         },

@@ -135,6 +135,7 @@
       flake = false;
     };
     plugins-snacks-luasnip = {
+      # url = "path:/home/Liqyid/Documents/snacks-luasnip.nvim";
       url = "github:Neurarian/snacks-luasnip.nvim";
       flake = false;
     };

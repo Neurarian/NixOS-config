@@ -122,6 +122,10 @@ in {
             pkgs.arduino-cli
             pkgs.arduino-language-server
           ];
+          ui_nav = [
+            # Snacks Picker
+            pkgs.sqlite
+          ];
         };
         startupPlugins = {
           general = [
@@ -175,6 +179,7 @@ in {
                 rnoweb
                 yaml
                 markdown
+                regex
               ]))
             pkgs.vimPlugins.nvim-treesitter-textobjects
           ];
@@ -209,6 +214,9 @@ in {
         sharedLibraries = {
           general = [
             # pgks.libgit2
+          ];
+          ui_nav = [
+            pkgs.sqlite.out
           ];
         };
         environmentVariables = {

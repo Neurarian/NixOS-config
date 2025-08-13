@@ -1315,11 +1315,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1754725699,
-        "narHash": "sha256-iAcj9T/Y+3DBy2J0N+yF9XQQQ8IEb5swLFzs23CdP88=",
+        "lastModified": 1755027561,
+        "narHash": "sha256-IVft239Bc8p8Dtvf7UAACMG5P3ZV+3/aO28gXpGtMXI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+        "rev": "005433b926e16227259a1843015b5b2b7f7d1fc3",
         "type": "github"
       },
       "original": {
@@ -1480,11 +1480,11 @@
     "plugins-snacks-luasnip": {
       "flake": false,
       "locked": {
-        "lastModified": 1755097772,
-        "narHash": "sha256-HR54lUwaqEUh8JkrEg2JNdnpRwtJGxKtD4ugHYWZxqI=",
+        "lastModified": 1755114623,
+        "narHash": "sha256-gI57RbZ/NRZUUhe/ukAVHxTcEogORZfOlTYBEzAQk0I=",
         "owner": "Neurarian",
         "repo": "snacks-luasnip.nvim",
-        "rev": "e29b8b95326e9edb625e7df9636bb494d36698b3",
+        "rev": "f3ae52840966461a1fd936b86f08c83abb0ca6d1",
         "type": "github"
       },
       "original": {
