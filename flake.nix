@@ -78,17 +78,6 @@
     # Color scheme
     catppuccin.url = "github:catppuccin/nix";
 
-    # matshell handles theming
-       /* matugen = {
-      url = "github:InioX/matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    image-hct = {
-      url = "github:Neurarian/image-hct";
-      inputs.nixpkgs.follows = "nixpkgs";
-    }; */
-
     # Secret provisioning
     sops-nix = {
       url = "github:Mic92/sops-nix";
