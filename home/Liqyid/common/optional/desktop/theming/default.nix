@@ -1,10 +1,10 @@
 {lib, ...}: {
   imports = [
     ./gtk.nix
-    ./matugen
+    # ./matugen
   ];
   desktop.theming = {
     gtk.enable = lib.mkDefault false;
-    matugen.enable = lib.mkDefault false;
+    # matugen.enable = lib.mkDefault false;
   };
 }

@@ -65,6 +65,7 @@
     };
     matshell = {
       url = "github:Neurarian/matshell";
+      # url = "path:/home/Liqyid/Documents/matshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -77,7 +78,8 @@
     # Color scheme
     catppuccin.url = "github:catppuccin/nix";
 
-    matugen = {
+    # matshell handles theming
+       /* matugen = {
       url = "github:InioX/matugen";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -85,7 +87,7 @@
     image-hct = {
       url = "github:Neurarian/image-hct";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; */
 
     # Secret provisioning
     sops-nix = {
@@ -105,26 +107,6 @@
     };
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
-    };
-    plugins-care-nvim = {
-      url = "github:max397574/care.nvim";
-      flake = true;
-    };
-    plugins-care-cmp = {
-      url = "github:max397574/care-cmp";
-      flake = false;
-    };
-    plugins-fzy-lua-native = {
-      url = "github:romgrk/fzy-lua-native";
-      flake = false;
-    };
-    plugins-friendly-snippets = {
-      url = "github:rafamadriz/friendly-snippets";
-      flake = false;
-    };
-    plugins-telescope-luasnip = {
-      url = "github:benfowler/telescope-luasnip.nvim";
-      flake = false;
     };
     plugins-rNvim = {
       url = "github:R-nvim/R.nvim";

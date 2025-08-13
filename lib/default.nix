@@ -10,7 +10,6 @@
       import inputs.nixpkgs {
         inherit system;
         overlays = [
-          inputs.plugins-care-nvim.overlays.default
           inputs.neovim-nightly-overlay.overlays.default
           self.overlays.default
         ];
