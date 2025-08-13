@@ -141,7 +141,6 @@ in {
             pkgs.vimPlugins.conform-nvim
           ];
           git = [
-            pkgs.vimPlugins.lazygit-nvim
             pkgs.vimPlugins.gitsigns-nvim
           ];
           R = [
@@ -156,11 +155,6 @@ in {
               pkgs.vimPlugins.cmp-spell
               pkgs.vimPlugins.cmp-buffer
               pkgs.vimPlugins.nvim-autopairs
-            ];
-            # broken
-            care = [
-              pkgs.vimPlugins.care-nvim
-              pkgs.neovimPlugins.care-cmp
             ];
             blink = [
               pkgs.vimPlugins.blink-cmp
@@ -186,18 +180,19 @@ in {
             pkgs.vimPlugins.nvim-treesitter-textobjects
           ];
           ui_nav = [
-            pkgs.neovimPlugins.telescope-luasnip
+            #pkgs.neovimPlugins.telescope-luasnip
             pkgs.vimPlugins.alpha-nvim
             pkgs.vimPlugins.tmux-navigator
-            pkgs.vimPlugins.telescope-nvim
-            pkgs.vimPlugins.telescope-fzf-native-nvim
-            pkgs.vimPlugins.telescope-ui-select-nvim
-            pkgs.vimPlugins.telescope-file-browser-nvim
+            #pkgs.vimPlugins.telescope-nvim
+            #pkgs.vimPlugins.telescope-fzf-native-nvim
+            #pkgs.vimPlugins.telescope-ui-select-nvim
+            #pkgs.vimPlugins.telescope-file-browser-nvim
             pkgs.vimPlugins.nvim-colorizer-lua
             pkgs.vimPlugins.nvim-web-devicons
             pkgs.vimPlugins.catppuccin-nvim
             pkgs.vimPlugins.fidget-nvim
-            pkgs.vimPlugins.nui-nvim
+            pkgs.vimPlugins.snacks-nvim
+            pkgs.neovimPlugins.snacks-luasnip
             pkgs.vimPlugins.lualine-nvim
           ];
           rust = [

@@ -1,5 +1,5 @@
 return {
-  { import = 'plugins.alpha' },
+  -- { import = 'plugins.alpha' },
   { import = 'plugins.autopairs' },
   { import = 'plugins.autosession' },
   { import = 'plugins.colorizer' },
@@ -7,8 +7,6 @@ return {
   { import = 'plugins.conform' },
   { import = 'plugins.debug' },
   { import = 'plugins.gitsigns' },
-  { import = 'plugins.indent_line' },
-  { import = 'plugins.lazygit' },
   { import = 'plugins.lint' },
   { import = 'plugins.lualine' },
   { import = 'plugins.mini' },
@@ -16,7 +14,7 @@ return {
   { import = 'plugins.rnvim' },
   { import = 'plugins.rustaceanvim' },
   { import = 'plugins.small_misc' },
-  { import = 'plugins.telescope' },
+  { import = 'plugins.snacks' },
   { import = 'plugins.treesitter' },
   { import = 'plugins.whichkey' },
 }

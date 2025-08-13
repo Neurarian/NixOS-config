@@ -134,5 +134,9 @@
       url = "github:R-nvim/cmp-r";
       flake = false;
     };
+    plugins-snacks-luasnip = {
+      url = "github:Neurarian/snacks-luasnip.nvim";
+      flake = false;
+    };
   };
 }

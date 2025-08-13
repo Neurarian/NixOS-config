@@ -6,20 +6,27 @@ local function on_attach(_, bufnr)
     vim.keymap.set(mode or 'n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  local pickpick = function(name, args)
+    return function()
+      Snacks.picker[name](args)
+    end
+  end
+
   -- Core LSP functionality
   map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   map('K', vim.lsp.buf.hover, 'Hover Documentation')
   map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
   -- Telescope integrations
-  map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-  map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-  map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  map('gd', pickpick 'lsp_definitions', '[G]oto [D]efinition')
+  map('gr', pickpick 'lsp_references', '[G]oto [R]eferences')
+  map('gI', pickpick 'lsp_implementations', '[G]oto [I]mplementation')
+  map('<leader>D', pickpick 'lsp_type_definitions', 'Type [D]efinition')
+  map('<leader>ds', pickpick 'lsp_symbols', '[D]ocument [S]ymbols')
+  map('<leader>ws', pickpick 'lsp_workspace_symbols', '[W]orkspace [S]ymbols')
+  map('gD', pickpick 'lsp_declarations', '[G]oto [D]eclaration')
 
   -- Create a Format command
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
