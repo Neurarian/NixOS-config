@@ -47,9 +47,9 @@ Uses the hyprland window management ecosystem. Uses an Astal/Ags setup inspired 
 
 ![2024-11-02T21:11:34,395432515+01:00](https://github.com/user-attachments/assets/78b18a24-52f4-4581-816a-cad09019e564)
 
-#### 🌞 Host: Loki - With light colorscheme (dual monitor)
+#### 🌞 Host: Loki - With light colorscheme, floating bar (dual monitor)
 
-![2024-11-02T21:53:43,163376928+01:00](https://github.com/user-attachments/assets/02743d90-af2f-47bc-a61f-30ee4277744c)
+<img width="3439" height="1441" alt="2025-08-15T23:38:52,029529651+02:00" src="https://github.com/user-attachments/assets/aa5d6b14-400b-4bcf-8a2f-5b06230b75b6" />
 
 ## 🧑‍💻 Neovim
 
