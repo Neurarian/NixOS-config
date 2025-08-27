@@ -188,17 +188,10 @@ return {
                 local line_highlights = highlight_map[line_idx]
                 local text_parts = {}
 
-                if line_highlights and #line > 0 then
-                  for _, hl_spec in ipairs(line_highlights) do
-                    local hl_group, start_pos, end_pos = hl_spec[1], hl_spec[2], hl_spec[3]
-                    local text_part = line:sub(start_pos + 1, math.min(end_pos, #line))
-
-                    if #text_part > 0 then
-                      table.insert(text_parts, { text_part, hl = hl_group })
-                    end
-                  end
-                else
-                  table.insert(text_parts, { line, hl = 'Lavender' })
+                for _, hl_spec in ipairs(line_highlights) do
+                  local hl_group, start_pos, end_pos = hl_spec[1], hl_spec[2], hl_spec[3]
+                  local text_part = line:sub(start_pos + 1, math.min(end_pos, #line))
+                  table.insert(text_parts, { text_part, hl = hl_group })
                 end
 
                 table.insert(header_sections, {
@@ -206,7 +199,6 @@ return {
                   align = 'center',
                 })
               end
-
               return header_sections
             end,
 
@@ -225,26 +217,25 @@ return {
           },
           formats = {
             icon = function(item)
-              if item.file and (item.icon == 'file') then
+              if item.file and item.icon == 'file' then
                 return Snacks.dashboard.icon(item.file, item.icon)
-              else
-                return { item.icon, width = 2, hl = 'Lavender' }
               end
+              return { item.icon, width = 2, hl = 'Lavender' }
             end,
 
             key = function(item)
-              if item.file and (item.icon == 'file') then
-                return { { item.key, hl = 'Teal' } }
-              else
-                return { item.key, hl = 'Lavender' }
-              end
+              local hl = item.file and 'Teal' or 'Lavender'
+              return { item.key, hl = hl }
             end,
+
             desc = function(item)
               return { item.desc, hl = 'SnacksPickerFile' }
             end,
+
             file = function(item, ctx)
               local fname = vim.fn.fnamemodify(item.file, ':~')
               fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+
               if #fname > ctx.width then
                 local dir = vim.fn.fnamemodify(fname, ':h')
                 local file = vim.fn.fnamemodify(fname, ':t')
@@ -253,6 +244,7 @@ return {
                   fname = dir .. '/…' .. file
                 end
               end
+
               local dir, file = fname:match '^(.*)/(.+)$'
               return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'SnacksPickerFile' } } or { { fname, hl = 'SnacksPickerFile' } }
             end,
