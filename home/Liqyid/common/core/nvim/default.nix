@@ -279,7 +279,6 @@ in {
             lint = true;
             completion = {
               common = true;
-              #care = true;
               blink = true;
             };
             have_nerd_font = true;
@@ -289,7 +288,7 @@ in {
             markdown = true;
             bash = true;
             lua = true;
-            # rust = true;
+            rust = true;
             nix = true;
             C = true;
             javascript = true;
@@ -327,7 +326,6 @@ in {
             lint = true;
             completion = {
               common = true;
-              #care = true;
               blink = true;
             };
             have_nerd_font = true;
