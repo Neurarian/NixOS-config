@@ -49,10 +49,7 @@
         {
           type = "sound";
           key = "  ";
-        }
-        {
-          type = "gamepad";
-          key = "  ";
+          format = "{2:-38} ({3})";
         }
         {
           type = "battery";
@@ -95,7 +92,6 @@
         {
           type = "terminalfont";
           key = "  ";
-          format = "{/2}{-}{/}{2}{?3} {3}{?}";
         }
         {
           type = "packages";
@@ -109,6 +105,7 @@
         {
           type = "media";
           key = "  󰝚";
+          format = "{1:-20} - {3:-10} ({5})";
         }
         {
           type = "locale";
