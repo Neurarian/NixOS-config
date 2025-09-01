@@ -13,7 +13,7 @@
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
     home.packages = [
       inputs.matshell.packages.${system}.default
-      pkgs.ags
+      inputs.ags.packages.${system}.default
       pkgs.wl-clipboard
       pkgs.cliphist
       pkgs.hyprcursor
@@ -45,11 +45,11 @@
         layerrule = [
           "blur, bar"
           "blur, gtk4-layer-shell"
+          "xray 1, bar" # Required for the matshell corners style to be blurred homogeneously
           "ignorealpha 0.2, bar"
           "ignorealpha 0.2, gtk4-layer-shell"
         ];
         env = [
-          ""
           "HYPRCURSOR_THEME,${cursorName}"
           "XCURSOR_THEME,${cursorName}"
           "HYPRCURSOR_SIZE,${toString pointer.size}"
@@ -123,7 +123,6 @@
           preserve_split = true;
         };
         gestures = {
-          workspace_swipe = true;
           workspace_swipe_invert = false;
           workspace_swipe_forever = true;
           workspace_swipe_cancel_ratio = 0.1;
