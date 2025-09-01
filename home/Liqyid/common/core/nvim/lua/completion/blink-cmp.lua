@@ -1,7 +1,6 @@
 return {
   {
-    -- For adding addtional sources in the future
-    -- For
+    -- Compat for adding addtional sources
     'blink.compat',
     for_cat = 'completion.blink',
   },
