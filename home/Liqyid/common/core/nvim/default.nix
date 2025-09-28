@@ -288,7 +288,7 @@ in {
             markdown = true;
             bash = true;
             lua = true;
-            rust = true;
+            # rust = true;
             nix = true;
             C = true;
             javascript = true;
