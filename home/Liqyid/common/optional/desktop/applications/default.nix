@@ -10,8 +10,10 @@
     ./wlogout.nix
     ./cava.nix
     ./looking-glass-client.nix
+    ./gnome-control-center.nix
     ./cad.nix
     ./obs.nix
+    ./resources.nix
     ./ags
   ];
   desktop.applications = {
@@ -26,6 +28,8 @@
     nautilus.enable = lib.mkDefault false;
     firefox.enable = lib.mkDefault false;
     zen-browser.enable = lib.mkDefault false;
+    gnome-control-center.enable = lib.mkDefault false;
+    resources.enable = lib.mkDefault false;
     cad.enable = lib.mkDefault false;
     obs.enable = lib.mkDefault false;
   };

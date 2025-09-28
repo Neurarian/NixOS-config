@@ -31,6 +31,8 @@
       firefox.enable = true;
       zen-browser.enable = true;
       obs.enable = true;
+      resources.enable = true;
+      gnome-control-center.enable = true;
       # Music
       ytmusic.enable = true;
     };

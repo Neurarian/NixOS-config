@@ -25,6 +25,8 @@
       nautilus.enable = true;
       firefox.enable = true;
       zen-browser.enable = true;
+      resources.enable = true;
+      gnome-control-center.enable = true;
       # Music
       ytmusic.enable = true;
       # VFIO

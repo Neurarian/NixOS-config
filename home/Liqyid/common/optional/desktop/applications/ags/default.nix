@@ -16,7 +16,6 @@
     programs.matshell = {
       enable = true;
       autostart = true;
-      matugenThemeSetter = true;
       matugenConfig = true;
     };
   };
