@@ -17,8 +17,13 @@
         Type = "oneshot";
         RemainAfterExit = true;
         User = "root";
-        ExecStart = ''
+        ExecStart = pkgs.writeShellScript "start-libvirt-network" ''
+          if ${pkgs.libvirt}/bin/virsh net-list --name | grep -q "^default$"; then
+            echo "Default network is already active"
+            exit 0
+          fi
           ${pkgs.libvirt}/bin/virsh net-start default
+          exit 0
         '';
       };
     };
