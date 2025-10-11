@@ -72,10 +72,6 @@
             package = pkgs.qemu_kvm;
             runAsRoot = true;
             swtpm.enable = true;
-            ovmf = {
-              enable = true;
-              packages = [pkgs.OVMFFull.fd];
-            };
           };
           hooks.qemu = lib.mkIf hookCfg.enable {
             "gpuPassthrough" = pkgs.writers.writeBash "gpuPassthrough" ''

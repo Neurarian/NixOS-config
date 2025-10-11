@@ -13,8 +13,8 @@
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
     home.packages = [
       inputs.matshell.packages.${system}.default
-      pkgs.wl-clipboard
-      pkgs.cliphist
+      # pkgs.wl-clipboard
+      # pkgs.cliphist
       pkgs.hyprcursor
       pkgs.grimblast
       pkgs.catppuccin-cursors.macchiatoDark
@@ -57,8 +57,9 @@
         exec-once = [
           # set cursor for HL itself
           "hyprctl setcursor ${cursorName} ${toString pointer.size}"
-          "wl-paste --watch cliphist store"
-          "sleep 1s && wal_set"
+          # handled by matshell
+          # "wl-paste --watch cliphist store"
+          "sleep 1s && matshell wall-rand"
           "[workspace 1 silent] wezterm"
         ];
         input = {
