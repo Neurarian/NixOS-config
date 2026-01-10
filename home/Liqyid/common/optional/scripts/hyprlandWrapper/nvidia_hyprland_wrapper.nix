@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  system,
   lib,
   ...
 }: let
@@ -11,7 +12,7 @@ in {
     scripts.hyprlandWrapper.output.hyprwrapperNvidia = pkgs.writeShellApplication {
       name = "hyprwrapperNvidia";
 
-      runtimeInputs = [inputs.hyprland.packages.${pkgs.system}.default];
+      runtimeInputs = [inputs.hyprland.packages.${system}.default];
 
       text = ''
         #!/bin/bash

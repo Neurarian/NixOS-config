@@ -7,7 +7,7 @@
   inherit (inputs.nixCats) utils;
 
   extraNixdItems = {
-    inherit (pkgs) system;
+    inherit (pkgs.stdenv.hostPlatform) system;
     nixpkgs = inputs.nixpkgs.outPath;
     flake-path = inputs.self.outPath;
     systemCFGname = osConfig.networking.hostName;

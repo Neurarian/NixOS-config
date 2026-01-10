@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.desktop.applications.ytmusic.enable {
     home.packages = [
-      pkgs.youtube-music
+      pkgs.pear-desktop
     ];
   };
 }

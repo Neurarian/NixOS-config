@@ -27,26 +27,26 @@
       cursorName = "catppuccin-macchiato-dark-cursors";
     in {
       enable = true; # enable Hyprland
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = inputs.hyprland.packages.${system}.hyprland;
       systemd.enable = true;
       settings = {
         source = "hyprland_colors.conf";
         windowrule = [
-          "bordercolor $pinnedWindow $pinnedWindowGrad 45deg,pinned:1"
-          "workspace 2, class:com.github.th_ch.youtube_music"
-          "workspace 4, class:firefox"
-          "workspace 4, class:zen-beta"
-          "workspace 5 silent, class:steam"
-          "workspace 6 silent, class:discord"
-          "idleinhibit fullscreen, class:firefox"
-          "idleinhibit fullscreen, class:zen"
+          "border_color $pinnedWindow $pinnedWindowGrad 45deg, match:pin 1"
+          "workspace 2, match:class com.github.th_ch.youtube_music"
+          "workspace 4, match:class firefox"
+          "workspace 4, match:class zen-beta"
+          "workspace 5 silent, match:class steam"
+          "workspace 6 silent, match:class discord"
+          "idle_inhibit fullscreen, match:class firefox"
+          "idle_inhibit fullscreen, match:class zen"
         ];
         layerrule = [
-          "blur, bar"
-          "blur, gtk4-layer-shell"
-          "xray 1, bar" # Required for the matshell corners style to be blurred homogeneously
-          "ignorealpha 0.2, bar"
-          "ignorealpha 0.2, gtk4-layer-shell"
+          "blur on, match:namespace bar"
+          "blur on, match:namespace gtk4-layer-shell"
+          "xray 1, match:namespace bar" # Required for the matshell corners style to be blurred homogeneously
+          "ignore_alpha 0.2, match:namespace bar"
+          "ignore_alpha 0.2, match:namespace gtk4-layer-shell"
         ];
         env = [
           "HYPRCURSOR_THEME,${cursorName}"
@@ -185,7 +185,7 @@
             "$mod, A, exec, matshell picker"
             # "mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
             "$mod, B, exec, zen"
-            "$mod, Y, exec, youtube-music"
+            "$mod, Y, exec, pear-desktop"
             "$mod, G, exec, steam"
             "$mod, D, exec, discord"
             "$mod, C, exec, coolercontrol"

@@ -22,7 +22,7 @@
     environment = {
       systemPackages = [
         pkgs.mangohud
-        pkgs.protonup
+        pkgs.protonup-ng
       ];
       loginShellInit = ''
         [[ "$(tty)" = "dev/tty2" ]] && gs.sh

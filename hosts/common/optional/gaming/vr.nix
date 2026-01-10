@@ -97,7 +97,9 @@
     };
     */
     # Required for developer mode & wired PCVR
-    programs.adb.enable = true;
+    environment.systemPackages = [
+      pkgs.android-tools
+    ];
     users.users.${user}.extraGroups = ["adbusers"];
   };
 }

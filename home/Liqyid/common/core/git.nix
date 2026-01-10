@@ -1,12 +1,14 @@
 {
   programs.git = {
     enable = true;
-    userName = "Neurarian";
-    userEmail = "110474238+Neurarian@users.noreply.github.com";
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      s = "status";
+    settings = {
+      user.name = "Neurarian";
+      user.email = "110474238+Neurarian@users.noreply.github.com";
+      aliases = {
+        ci = "commit";
+        co = "checkout";
+        s = "status";
+      };
     };
   };
   programs.gh = {
