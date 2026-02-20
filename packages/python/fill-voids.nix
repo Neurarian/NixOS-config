@@ -2,7 +2,6 @@
   lib,
   buildPythonPackage,
   fetchPypi,
-  # Dependencies for roifile
   numpy,
   fastremap,
   cython,
@@ -13,12 +12,12 @@
 }:
 buildPythonPackage rec {
   pname = "fill_voids";
-  version = "2.1.0";
+  version = "2.1.1";
   pyproject = true;
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-Y/dvfb3Yy18w6ihBoxYk66RhLZEhHW/3TSMX9E1EmGA=";
+    sha256 = "sha256-Rp9UPkqyNs8Rqs7xBq+Oc8cw8qkPG/rnYNyN4p1NZjQ=";
   };
 
   propagatedBuildInputs = [
