@@ -1,6 +1,6 @@
 {
   lib,
-  buildPythonPackage,
+  buildPythonApplication, # ← changed from buildPythonPackage
   fetchFromGitHub,
   # Deps
   numpy,
@@ -16,22 +16,29 @@
   fill-voids,
   segment-anything,
   opencv-python-headless,
+  # GUI dependencies
+  qtpy,
+  pyqtgraph,
+  pyqt6,
+  superqt,
+  # Qt wrapping infrastructure
+  qt6,
   # Build system requirements
   setuptools,
   setuptools-scm,
   # Test requirements
   pytestCheckHook,
 }:
-buildPythonPackage rec {
+buildPythonApplication rec {
   pname = "cellpose";
-  version = "4.0.6";
+  version = "4.0.8";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "MouseLand";
     repo = "cellpose";
     tag = "v${version}";
-    sha256 = "sha256-V+O+PQ3bWngy8VW9NANoIJ5mYFe9akBaU/HPYkLzyeE=";
+    sha256 = "sha256-04W474r/FBKUMYOSiGL8vkV7nulppo/b2Ux5kWQ6c3k=";
   };
 
   build-system = [
@@ -54,11 +61,41 @@ buildPythonPackage rec {
     fill-voids
     opencv-python-headless
     segment-anything
+    # GUI extras
+    qtpy
+    pyqtgraph
+    pyqt6
+    superqt
+  ];
+
+  # wrapQtAppsHook sets up QT_PLUGIN_PATH, QML2_IMPORT_PATH, etc.
+  nativeBuildInputs = [
+    qt6.wrapQtAppsHook
+  ];
+
+  buildInputs = [
+    qt6.qtbase
   ];
 
   nativeCheckInputs = [
     pytestCheckHook
   ];
+
+  qtWrapperArgs = [
+    "--set QT_API pyqt6" # Force qtpy to use PyQt6
+  ];
+
+  # wrapQtAppsHook skips non-ELF files (i.e. Python scripts) automatically
+  # so we must disable auto-wrap and do it manually in preFixup
+  dontWrapQtApps = true;
+
+  preFixup = ''
+    wrapQtApp "$out/bin/cellpose"
+  '';
+
+  postPatch = ''
+    substituteInPlace setup.py --replace "'pytest-runner'," ""
+  '';
 
   # Disable tests that require home directory access
   disabledTests = [
@@ -89,15 +126,12 @@ buildPythonPackage rec {
     "test_normalize_img_with_lowhigh_and_invert"
     "test_normalize_img_exceptions"
     "test_resize"
+
+    # Requires network access - fails in Nix sandbox
+    "test_load_cp3_fail"
   ];
 
   pythonImportsCheck = ["cellpose"];
-
-  postPatch = ''
-    # Remove pytest-runner from setup requirements
-    substituteInPlace setup.py \
-      --replace "'pytest-runner'," "" \
-  '';
 
   meta = with lib; {
     description = "Anatomical segmentation algorithm";

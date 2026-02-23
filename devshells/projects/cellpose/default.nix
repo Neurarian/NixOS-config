@@ -26,6 +26,7 @@ pkgs.mkShell {
     echo "GPU acceleration: $(python -c "import torch; print('Available' if torch.cuda.is_available() else 'Not available')")"
     echo ""
     echo "Available commands:"
-    echo "  python -m cellpose --help   # See CLI options"
+    echo "  cellpose --help   # See CLI options"
+    echo "  cellpose          # Launch cellpose GUI"
   '';
 }
