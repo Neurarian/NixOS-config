@@ -1,6 +1,6 @@
 {
   lib,
-  buildPythonApplication, # ← changed from buildPythonPackage
+  buildPythonApplication,
   fetchFromGitHub,
   # Deps
   numpy,
@@ -85,8 +85,6 @@ buildPythonApplication rec {
     "--set QT_API pyqt6" # Force qtpy to use PyQt6
   ];
 
-  # wrapQtAppsHook skips non-ELF files (i.e. Python scripts) automatically
-  # so we must disable auto-wrap and do it manually in preFixup
   dontWrapQtApps = true;
 
   preFixup = ''

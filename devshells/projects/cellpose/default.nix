@@ -10,15 +10,6 @@ pkgs.mkShell {
 
   shellHook = ''
     export CELLPOSE_LOCAL_MODELS_PATH="$HOME/.cellpose/models"
-    # Detect WSL and apply workaround conditionally. Otherwise gets deadlocked at ROI saving.
-    if [[ -f /proc/version ]] && grep -qi microsoft /proc/version; then
-      export LD_LIBRARY_PATH="/usr/lib/wsl/lib:/lib:$LD_LIBRARY_PATH"
-      echo "🔧 WSL detected - applying multiprocessing workaround"
-      export OMP_NUM_THREADS=1
-      echo "⚠️  WSL compatibility mode: multiprocessing disabled"
-    else
-      echo "🚀 Native Linux detected - multiprocessing enabled"
-    fi
 
     echo ""
     echo "🔬 Cellpose environment ready!"
