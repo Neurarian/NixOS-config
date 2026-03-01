@@ -41,7 +41,7 @@ return {
       {
         '<leader>ss',
         function()
-          vim.cmd 'SessionSearch'
+          vim.cmd 'AutoSession search'
         end,
         desc = '[S]earch [Sessions]',
       },

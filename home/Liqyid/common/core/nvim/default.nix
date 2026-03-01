@@ -184,7 +184,7 @@ in {
             pkgs.vimPlugins.nvim-treesitter-textobjects
           ];
           ui_nav = [
-            pkgs.vimPlugins.tmux-navigator
+            pkgs.vimPlugins.vim-tmux-navigator
             pkgs.vimPlugins.nvim-colorizer-lua
             pkgs.vimPlugins.nvim-web-devicons
             pkgs.vimPlugins.catppuccin-nvim

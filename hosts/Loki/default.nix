@@ -42,7 +42,7 @@
   # Hyprland specific system configurations
   desktop = {
     enable = true;
-    hyprlandLaunchCommand = "Hyprland";
+    hyprlandLaunchCommand = "hyprwrapperAmd";
   };
   # Gaming
   gaming = {

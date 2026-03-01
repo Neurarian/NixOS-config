@@ -11,6 +11,10 @@
   config = lib.mkIf config.hardware.bmboot.enable {
     boot = {
       kernelPackages = pkgs.linuxPackages_zen;
+      supportedFilesystems = {
+        btrfs = true;
+        ntfs = true;
+      };
       plymouth = {
         enable = true;
         font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
