@@ -17,7 +17,7 @@
     desktop.hypr = {
       hyprland.enable = lib.mkDefault true;
       hyprlock.enable = lib.mkDefault true;
-      hyprpaper.enable = lib.mkDefault true;
+      hyprpaper.enable = lib.mkDefault false;
     };
 
     # See ../../scripts/

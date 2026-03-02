@@ -184,7 +184,7 @@
             "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
             "$mod, A, exec, matshell picker"
             # "mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
-            "$mod, B, exec, zen"
+            "$mod, B, exec, zen-beta"
             "$mod, Y, exec, pear-desktop"
             "$mod, G, exec, steam"
             "$mod, D, exec, discord"
