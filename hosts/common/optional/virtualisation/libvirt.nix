@@ -85,6 +85,7 @@
                 if [ "$OPERATION" == "prepare" ]; then
                   if [ "$SUB_OPERATION" == "begin" ]; then
                     systemctl stop greetd
+                    systemctl stop coolercontrold
                     sleep 4
 
                     # Detach PCI devices
@@ -106,6 +107,7 @@
                     modprobe ${hookCfg.gpuModule}
 
                     systemctl start greetd
+                    systemctl start coolercontrold
                   fi
                 fi
               fi
