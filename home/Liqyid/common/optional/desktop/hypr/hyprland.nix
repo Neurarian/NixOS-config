@@ -160,8 +160,8 @@
                   c = (x + 1) / 10;
                 in
                   # 1-9 for ws 1-9 & 0 for ws 10
-                  builtins.toString (x + 1 - (c * 10));
-                ws = builtins.toString (x + 1);
+                  toString (x + 1 - (c * 10));
+                ws = toString (x + 1);
               in [
                 "$mod, ${wsKey}, workspace, ${ws}"
                 "$mod SHIFT, ${wsKey}, movetoworkspace, ${ws}"
