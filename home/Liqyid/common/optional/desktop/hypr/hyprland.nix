@@ -177,7 +177,6 @@
             "$mod, F, fullscreen"
             "$mod, Q, pseudo, # dwindle"
             "CONTROL, Space, togglefloating,"
-            "ALT, J, togglesplit, # dwindle"
 
             # Software & utils
             "$mod, Return, exec, wezterm"
