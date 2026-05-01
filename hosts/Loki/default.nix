@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
   imports = [
     ./diskConfig.nix
     ./hardware-configuration.nix
@@ -8,8 +12,18 @@
     inputs.vermeer-undervolt.nixosModules.vermeer-undervolt
   ];
 
-  # Scale plymouth to 2k
-  boot.plymouth.extraConfig = "DeviceScale=1";
+  boot = {
+    # Scale plymouth to 2k
+    plymouth.extraConfig = "DeviceScale=1";
+    # Thrustmaster Force Feedback support
+    extraModulePackages = [config.boot.kernelPackages.hid-tmff2];
+    kernelModules = ["hid_tmff_new"];
+    blacklistedKernelModules = [
+      "hid_thrustmaster"
+      "xpad"
+    ];
+  };
+  services.udev.packages = [config.boot.kernelPackages.hid-tmff2];
 
   networking = {
     hostName = "Loki"; # Define your hostname.
@@ -46,7 +60,10 @@
   };
   # Gaming
   gaming = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      ckan.enable = true;
+    };
     vr.enable = true;
   };
   # VFIO: single GPU passthrough for 6800XT
@@ -57,6 +74,9 @@
       vmName = "win10";
       pciDevices = [
         "pci_0000_0b_00_0"
+        "pci_0000_0b_00_1"
+        "pci_0000_0b_00_2"
+        "pci_0000_0b_00_3"
       ];
       gpuModule = "amdgpu";
       vfioModule = "vfio-pci";

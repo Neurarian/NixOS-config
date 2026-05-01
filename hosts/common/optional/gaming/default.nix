@@ -2,6 +2,7 @@
   imports = [
     ./scripts
     ./steam.nix
+    ./oversteer.nix
     ./vr.nix
   ];
 

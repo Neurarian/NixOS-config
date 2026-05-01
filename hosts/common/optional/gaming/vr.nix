@@ -33,12 +33,7 @@
       wivrn = {
         enable = true;
         openFirewall = true;
-
-        defaultRuntime = true;
-
-        # Run WiVRn as a systemd service on startup
         autoStart = true;
-
         config = {
           enable = true;
           json = {
