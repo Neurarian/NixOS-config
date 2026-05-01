@@ -32,5 +32,17 @@
             rNvim = inputs.plugins-rNvim;
           };
         };
+      # Workaround: liquidctl 1.16.0 has a flaky inter-process file-locking
+      # test that fails in the Nix sandbox (fcntl locks unreliable on sandbox
+      # tmpfs across forked processes), blocking coolercontrold from building.
+      python313Packages = prev.python313Packages.overrideScope (pyFinal: pyPrev: {
+        liquidctl = pyPrev.liquidctl.overrideAttrs (old: {
+          disabledTests =
+            (old.disabledTests or [])
+            ++ [
+              "test_fs_backend_stores_honor_load_store_locking"
+            ];
+        });
+      });
     };
 }

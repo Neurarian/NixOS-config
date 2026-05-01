@@ -28,10 +28,12 @@
       ags.enable = true;
       cad.enable = true;
       nautilus.enable = true;
+      mumble.enable = true;
       firefox.enable = true;
       zen-browser.enable = true;
       obs.enable = true;
       resources.enable = true;
+      oversteer.enable = true;
       gnome-control-center.enable = true;
       # Music
       ytmusic.enable = true;

@@ -5,6 +5,8 @@
     ./zen-browser.nix
     ./overskride.nix
     ./nautilus.nix
+    ./mumble.nix
+    ./oversteer.nix
     ./youtube-music.nix
     ./fuzzel.nix
     ./wlogout.nix
@@ -18,6 +20,7 @@
   ];
   desktop.applications = {
     discord.enable = lib.mkDefault false;
+    mumble.enable = lib.mkDefault false;
     overskride.enable = lib.mkDefault false;
     ytmusic.enable = lib.mkDefault false;
     ags.enable = lib.mkDefault false;
@@ -30,6 +33,7 @@
     zen-browser.enable = lib.mkDefault false;
     gnome-control-center.enable = lib.mkDefault false;
     resources.enable = lib.mkDefault false;
+    oversteer.enable = lib.mkDefault false;
     cad.enable = lib.mkDefault false;
     obs.enable = lib.mkDefault false;
   };
