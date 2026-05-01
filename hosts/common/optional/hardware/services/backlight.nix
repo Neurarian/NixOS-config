@@ -9,6 +9,6 @@
 
   config = lib.mkIf config.hardware.services.backlight.enable {
     hardware.brillo.enable = true;
-    programs.light.enable = true;
+    hardware.acpilight.enable = true;
   };
 }
