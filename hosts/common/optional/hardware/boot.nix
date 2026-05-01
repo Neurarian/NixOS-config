@@ -11,17 +11,6 @@
   config = lib.mkIf config.hardware.bmboot.enable {
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
-
-      kernelPatches = [
-        {
-          name = "amdgpu-fix-kfd-unload-d3hot";
-          patch = pkgs.fetchpatch {
-            url = "https://lore.kernel.org/amd-gfx/20260205164254.4091912-1-mario.limonciello@amd.com/raw";
-            hash = "sha256-BIRAROGLAeK5csD4rvLfiUbcc+GyG00ysjQHJ4p5IVQ=";
-          };
-        }
-      ];
-
       supportedFilesystems = {
         btrfs = true;
         ntfs = true;
