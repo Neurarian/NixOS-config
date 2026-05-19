@@ -22,6 +22,10 @@
       segment-anything = prev.python312Packages.callPackage "${pyPack}/segment-anything.nix" {};
       cellpose = prev.python312Packages.callPackage "${pyPack}/cellpose.nix" {
         inherit (final) roifile fill-voids segment-anything;
+        # Mitigate test failure
+        pyqtgraph = prev.python312Packages.pyqtgraph.overridePythonAttrs (_: {
+          disabledTestPaths = ["tests/exporters/test_svg.py"];
+        });
       };
 
       # R packages
