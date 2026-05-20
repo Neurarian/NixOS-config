@@ -30,7 +30,7 @@ in {
           export QT_QPA_PLATFORMTHEME=qt5ct
           export GDK_BACKEND="wayland,x11"
 
-          exec start-hyprland 
+          exec start-hyprland
         '';
       };
     };
