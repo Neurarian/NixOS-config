@@ -18,8 +18,11 @@
     networkmanager.ensureProfiles.profiles.ChArian_Inet.connection.interface-name = "wlp110s0";
     # FOSS Airdrop alternative
     localsend.enable = true;
-    # Local SSH
-    services.ssh.enable = true;
+    # Wifi & local SSH
+    services = {
+      ssh.enable = true;
+      wifi.enable = true;
+    };
   };
 
   services = {
