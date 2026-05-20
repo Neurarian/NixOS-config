@@ -7,7 +7,6 @@
     ./services.nix
     ./locale.nix
     ./sops.nix
-    ./networking.nix
     ./envVars.nix
     ./nixHelper.nix
   ];
