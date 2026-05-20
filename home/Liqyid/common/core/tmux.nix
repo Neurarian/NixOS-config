@@ -2,8 +2,8 @@
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
-    terminal = "wezterm";
     historyLimit = 100000;
+    terminal = "tmux-256color";
     keyMode = "vi";
     prefix = "C-a";
     clock24 = true;
@@ -66,6 +66,8 @@
       set -g mouse on
 
       set-option -sg escape-time 10
+
+      set-option -g focus-events on
 
       set-window-option -g mode-keys vi
 
