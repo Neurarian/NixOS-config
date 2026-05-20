@@ -23,6 +23,10 @@
     defaultUser = "Liqyid";
     useWindowsDriver = true;
   };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   programs.nix-ld.enable = true;
   environment.variables = {
