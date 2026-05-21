@@ -60,30 +60,66 @@
   polkit_gnome.enable = true;
 
   wayland.windowManager.hyprland.settings = {
-    monitorv2 = {
-      output = "DP-1";
-      mode = "3440x1440@100";
-      position = "0x0";
-      scale = 1;
-      bitdepth = 10;
-      cm = "hdr";
-      sdrbrightness = 1.2;
-      sdrsaturation = 1.0;
-    };
     monitor = [
-      "DP-2,2560x1440@144,3440x0,1"
-      "HDMI-A-1,1920x1080@60,6000x0,1"
+      {
+        output = "DP-1";
+        mode = "3440x1440@100";
+        position = "0x0";
+        scale = 1;
+        bitdepth = 10;
+        cm = "hdr";
+        sdrbrightness = 1.2;
+        sdrsaturation = 1.0;
+      }
+      {
+        output = "DP-2";
+        mode = "2560x1440@144";
+        position = "3440x0";
+        scale = 1;
+      }
+      {
+        output = "HDMI-A-1";
+        mode = "1920x1080@60";
+        position = "6000x0";
+        scale = 1;
+      }
     ];
 
-    workspace = [
-      "1, monitor:DP-1"
-      "2, monitor:DP-2"
-      "3, monitor:DP-1"
-      "4, monitor:DP-1"
-      "5, monitor:DP-1"
-      "6, monitor:DP-2"
-      "7, monitor:DP-2"
-      "8, monitor:DP-2"
-    ];
+    config = {
+      workspace = [
+        {
+          id = 1;
+          monitor = "DP-1";
+        }
+        {
+          id = 2;
+          monitor = "DP-2";
+        }
+        {
+          id = 3;
+          monitor = "DP-1";
+        }
+        {
+          id = 4;
+          monitor = "DP-1";
+        }
+        {
+          id = 5;
+          monitor = "DP-1";
+        }
+        {
+          id = 6;
+          monitor = "DP-2";
+        }
+        {
+          id = 7;
+          monitor = "DP-2";
+        }
+        {
+          id = 8;
+          monitor = "DP-2";
+        }
+      ];
+    };
   };
 }

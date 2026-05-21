@@ -13,8 +13,6 @@
   config = lib.mkIf config.desktop.hypr.hyprland.enable {
     home.packages = [
       inputs.matshell.packages.${system}.default
-      # pkgs.wl-clipboard
-      # pkgs.cliphist
       pkgs.hyprcursor
       pkgs.grimblast
       pkgs.catppuccin-cursors.macchiatoDark
@@ -25,219 +23,378 @@
     wayland.windowManager.hyprland = let
       pointer = config.home.pointerCursor;
       cursorName = "catppuccin-macchiato-dark-cursors";
+      mod = "SUPER";
+
+      # Helper to reduce boilerplate for exec binds
+      exec = cmd: lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${cmd}")'';
+
+      workspaces = builtins.concatLists (
+        builtins.genList (
+          x: let
+            c = (x + 1) / 10;
+            wsKey = toString (x + 1 - (c * 10));
+            ws = toString (x + 1);
+          in [
+            {_args = ["${mod} + ${wsKey}" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = ${ws} })")];}
+            {_args = ["${mod} + SHIFT + ${wsKey}" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = ${ws} })")];}
+          ]
+        )
+        10
+      );
     in {
-      enable = true; # enable Hyprland
+      enable = true;
       package = inputs.hyprland.packages.${system}.hyprland;
       systemd.enable = true;
-      settings = {
-        source = "hyprland_colors.conf";
-        windowrule = [
-          "border_color $pinnedWindow $pinnedWindowGrad 45deg, match:pin 1"
-          "workspace 2, match:class com.github.th_ch.youtube_music"
-          "workspace 4, match:class firefox"
-          "workspace 4, match:class zen-beta"
-          "workspace 5 silent, match:class steam"
-          "workspace 6 silent, match:class discord"
-          "idle_inhibit fullscreen, match:class firefox"
-          "idle_inhibit fullscreen, match:class zen"
-        ];
-        layerrule = [
-          "blur on, match:namespace bar"
-          "blur on, match:namespace gtk4-layer-shell"
-          "xray 1, match:namespace bar" # Required for the matshell corners style to be blurred homogeneously
-          "ignore_alpha 0.2, match:namespace bar"
-          "ignore_alpha 0.2, match:namespace gtk4-layer-shell"
-        ];
-        env = [
-          "HYPRCURSOR_THEME,${cursorName}"
-          "XCURSOR_THEME,${cursorName}"
-          "HYPRCURSOR_SIZE,${toString pointer.size}"
-          "XCURSOR_SIZE,${toString pointer.size}"
-        ];
-        exec-once = [
-          # set cursor for HL itself
-          "hyprctl setcursor ${cursorName} ${toString pointer.size}"
-          # handled by matshell
-          # "wl-paste --watch cliphist store"
-          "sleep 1s && matshell wall-rand"
-          "[workspace 1 silent] wezterm"
-        ];
-        input = {
-          kb_layout = "us, de";
-          kb_options = "grp:win_space_toggle";
-          follow_mouse = 1;
-          touchpad.natural_scroll = true;
-          sensitivity = 0;
-        };
-        general = {
-          gaps_in = 5;
-          gaps_out = 20;
-          border_size = 2;
-          "col.active_border" = "$activeBorder $activeBorderGrad 45deg";
-          "col.inactive_border" = "$inactiveBorder";
-          layout = "dwindle";
-          allow_tearing = true;
-          resize_on_border = true;
-        };
-        decoration = {
-          rounding = 15;
-          active_opacity = 1.0;
-          inactive_opacity = 0.96;
-          fullscreen_opacity = 1.0;
-          shadow = {
-            enabled = true;
-            color = "0x66000000";
-            offset = "5 5";
-            scale = 1;
-            render_power = 2;
-            range = 40;
-          };
-          blur = {
-            enabled = true;
-            size = 5;
-            new_optimizations = true;
-            passes = 2;
-            brightness = 1.0;
-            contrast = 1.0;
-            noise = 0.01;
-            vibrancy = 0.2;
-            vibrancy_darkness = 0.5;
-            popups = true;
-            popups_ignorealpha = 0.2;
-          };
-        };
-        animations = {
-          enabled = true;
-          bezier = "myBezier, 0.3, 0.3, 0.1, 1.05";
-          animation = [
-            "windows, 1, 4, myBezier"
-            "windowsOut, 1, 3, default, popin 80%"
-            "border, 1, 2, default"
-            "borderangle, 1, 2, default"
-            "fade, 1, 4, default"
-            "workspaces, 1, 2, default, slide"
+      configType = "lua";
+      importantPrefixes = [
+        "$"
+        "bezier"
+        "curve"
+        "name"
+        "output"
+        "colors"
+      ];
+
+      submaps.resize = {
+        settings = {
+          bind = [
+            {_args = ["escape" (lib.generators.mkLuaInline ''hl.dsp.submap("reset")'')];}
+            {_args = ["Return" (lib.generators.mkLuaInline ''hl.dsp.submap("reset")'')];}
+            {_args = ["L" (lib.generators.mkLuaInline "hl.dsp.window.resize({ x = 40,  y = 0,   relative = true })") {repeating = true;}];}
+            {_args = ["H" (lib.generators.mkLuaInline "hl.dsp.window.resize({ x = -40, y = 0,   relative = true })") {repeating = true;}];}
+            {_args = ["K" (lib.generators.mkLuaInline "hl.dsp.window.resize({ x = 0,   y = -40, relative = true })") {repeating = true;}];}
+            {_args = ["J" (lib.generators.mkLuaInline "hl.dsp.window.resize({ x = 0,   y = 40,  relative = true })") {repeating = true;}];}
           ];
         };
-        dwindle = {
-          preserve_split = true;
+      };
+
+      settings = {
+        colors = {
+          _var = lib.generators.mkLuaInline "require('hyprland_colors')";
         };
-        gestures = {
-          workspace_swipe_invert = false;
-          workspace_swipe_forever = true;
-          workspace_swipe_cancel_ratio = 0.1;
+        mod = {_var = mod;};
+
+        # Two-argument env: hl.env("KEY", "VALUE")
+        env = [
+          {_args = ["HYPRCURSOR_THEME" cursorName];}
+          {_args = ["XCURSOR_THEME" cursorName];}
+          {_args = ["HYPRCURSOR_SIZE" (toString pointer.size)];}
+          {_args = ["XCURSOR_SIZE" (toString pointer.size)];}
+        ];
+
+        config = {
+          layer_rule = [
+            {
+              _args = [
+                {
+                  match = {namespace = "bar";};
+                  blur = true;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {namespace = "gtk4-layer-shell";};
+                  blur = true;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {namespace = "bar";};
+                  xray = 1;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {namespace = "bar";};
+                  ignore_alpha = 0.2;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {namespace = "gtk4-layer-shell";};
+                  ignore_alpha = 0.2;
+                }
+              ];
+            }
+          ];
+          window_rule = [
+            {
+              _args = [
+                {
+                  match = {pin = 1;};
+                  border_color = lib.generators.mkLuaInline ''
+                    { colors = { pinnedWindow, pinnedWindowGrad }, angle = 45 }
+                  '';
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "com.github.th_ch.youtube_music";};
+                  workspace = 2;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "firefox";};
+                  workspace = 4;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "zen-beta";};
+                  workspace = 4;
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "steam";};
+                  workspace = "5 silent";
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "discord";};
+                  workspace = "6 silent";
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "firefox";};
+                  idle_inhibit = "fullscreen";
+                }
+              ];
+            }
+            {
+              _args = [
+                {
+                  match = {class = "zen";};
+                  idle_inhibit = "fullscreen";
+                }
+              ];
+            }
+          ];
+          animations.enabled = true; # NEW — was missing entirely
+          input = {
+            kb_layout = "us, de";
+            kb_options = "grp:win_space_toggle";
+            follow_mouse = 1;
+            touchpad.natural_scroll = true;
+            sensitivity = 0;
+          };
+          general = {
+            gaps_in = 5;
+            gaps_out = 20;
+            border_size = 2;
+            "col.active_border" = lib.generators.mkLuaInline ''
+              { colors = { activeBorder, activeBorderGrad }, angle = 45 }
+            '';
+            "col.inactive_border" = lib.generators.mkLuaInline ''
+              { colors = { inactiveBorder } }
+            '';
+            layout = "dwindle";
+            allow_tearing = true;
+            resize_on_border = true;
+          };
+          decoration = {
+            rounding = 15;
+            active_opacity = 1.0;
+            inactive_opacity = 0.96;
+            fullscreen_opacity = 1.0;
+            shadow = {
+              enabled = true;
+              color = "0x66000000";
+              offset = "5 5";
+              scale = 1;
+              render_power = 2;
+              range = 40;
+            };
+            blur = {
+              enabled = true;
+              size = 5;
+              new_optimizations = true;
+              passes = 2;
+              brightness = 1.0;
+              contrast = 1.0;
+              noise = 0.01;
+              vibrancy = 0.2;
+              vibrancy_darkness = 0.5;
+              popups = true;
+              popups_ignorealpha = 0.2;
+            };
+          };
+          dwindle.preserve_split = true;
+          gestures = {
+            workspace_swipe_invert = false;
+            workspace_swipe_forever = true;
+            workspace_swipe_cancel_ratio = 0.1;
+          };
+          misc = {
+            force_default_wallpaper = 0;
+            disable_hyprland_logo = true;
+            disable_splash_rendering = false;
+            disable_autoreload = false;
+            mouse_move_enables_dpms = true;
+            key_press_enables_dpms = true;
+            background_color = lib.generators.mkLuaInline "backgroundColor";
+            vrr = 2;
+          };
+          render.direct_scanout = true;
+          xwayland.force_zero_scaling = true;
         };
-        /*
-           debug = {
-        disable_logs = false;
+
+        curve = {
+          _args = [
+            "myBezier"
+            (lib.generators.mkLuaInline "{ type = \"bezier\", points = { {0.3, 0.3}, {0.1, 1.05} } }")
+          ];
         };
-        */
-        misc = {
-          force_default_wallpaper = 0;
-          disable_hyprland_logo = true;
-          disable_splash_rendering = false;
-          disable_autoreload = false;
-          mouse_move_enables_dpms = true;
-          key_press_enables_dpms = true;
-          background_color = "$backgroundColor";
-          # will cause screen flicker if = 1
-          vrr = 2;
-        };
+
+        animation = [
+          {
+            _args = [
+              {
+                leaf = "windows";
+                enabled = true;
+                speed = 4;
+                bezier = "myBezier";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                leaf = "windowsOut";
+                enabled = true;
+                speed = 3;
+                bezier = "default";
+                style = "popin 80%";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                leaf = "border";
+                enabled = true;
+                speed = 2;
+                bezier = "default";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                leaf = "borderangle";
+                enabled = true;
+                speed = 2;
+                bezier = "default";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                leaf = "fade";
+                enabled = true;
+                speed = 4;
+                bezier = "default";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                leaf = "workspaces";
+                enabled = true;
+                speed = 2;
+                bezier = "default";
+                style = "slide";
+              }
+            ];
+          }
+        ];
         device = {
           name = "logitech-gaming-mouse-g502-keyboard";
           sensitivity = -0.5;
         };
-        xwayland.force_zero_scaling = true;
-        render.direct_scanout = true;
-        "$mod" = "SUPER";
-        # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-        bind = let
-          workspaces = builtins.concatLists (
-            builtins.genList (
-              x: let
-                wsKey = let
-                  # Integer division: c = 0 for x+1 = 1 to 9; c = 1 for x+1 = 10
-                  c = (x + 1) / 10;
-                in
-                  # 1-9 for ws 1-9 & 0 for ws 10
-                  toString (x + 1 - (c * 10));
-                ws = toString (x + 1);
-              in [
-                "$mod, ${wsKey}, workspace, ${ws}"
-                "$mod SHIFT, ${wsKey}, movetoworkspace, ${ws}"
-              ]
-            )
-            10
-          );
-        in
+        bind =
           [
-            # Hyprland
-            "ALT, space, killactive"
-            "$mod, P, pin"
-            "$mod, F, fullscreen"
-            "$mod, Q, pseudo, # dwindle"
-            "CONTROL, Space, togglefloating,"
-
-            # Software & utils
-            "$mod, Return, exec, wezterm"
-            "$mod, E, exec, wezterm --class='nvim' -e 'nvim'"
-            "$mod, A, exec, matshell picker"
-            # "mod, X, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
-            "$mod, B, exec, zen-beta"
-            "$mod, Y, exec, pear-desktop"
-            "$mod, G, exec, steam"
-            "$mod, D, exec, discord"
-            "$mod, C, exec, coolercontrol"
-            "$mod, S, exec, localsend_app"
-            "$mod SHIFT, Q, exec, matshell logout"
-            "$mod SHIFT, W, exec, matshell wall-rand"
-            "$mod SHIFT, V, exec, virsh --connect qemu:///system start win10"
-            "$mod, P, exec, grimblast --notify --freeze copysave area"
-            "$mod SHIFT, P, exec, grimblast --notify copysave active"
-            "$mod ALT, P, exec, grimblast --notify copysave screen"
-
+            # Window management
+            {_args = ["ALT + space" (lib.generators.mkLuaInline "hl.dsp.window.close()")];}
+            {_args = ["${mod} + P" (lib.generators.mkLuaInline "hl.dsp.window.pin()")];}
+            {_args = ["${mod} + F" (lib.generators.mkLuaInline "hl.dsp.window.fullscreen()")];}
+            {_args = ["${mod} + Q" (lib.generators.mkLuaInline "hl.dsp.window.pseudo()")];}
+            {_args = ["CTRL + space" (lib.generators.mkLuaInline "hl.dsp.window.float({ action = \"toggle\" })")];}
+            # Enter resize submap
+            {_args = ["${mod} + R" (lib.generators.mkLuaInline ''hl.dsp.submap("resize")'')];}
+            # Screenshots
+            {_args = ["${mod} + P" (exec "grimblast --notify --freeze copysave area")];}
+            {_args = ["${mod} + SHIFT + P" (exec "grimblast --notify copysave active")];}
+            {_args = ["${mod} + ALT + P" (exec "grimblast --notify copysave screen")];}
+            # Apps
+            {_args = ["${mod} + Return" (exec "wezterm")];}
+            {_args = ["${mod} + E" (exec "wezterm --class='nvim' -e 'nvim'")];}
+            {_args = ["${mod} + A" (exec "matshell picker")];}
+            {_args = ["${mod} + B" (exec "zen-beta")];}
+            {_args = ["${mod} + Y" (exec "pear-desktop")];}
+            {_args = ["${mod} + G" (exec "steam")];}
+            {_args = ["${mod} + D" (exec "discord")];}
+            {_args = ["${mod} + C" (exec "coolercontrol")];}
+            {_args = ["${mod} + S" (exec "localsend_app")];}
+            {_args = ["${mod} + SHIFT + Q" (exec "matshell logout")];}
+            {_args = ["${mod} + SHIFT + W" (exec "matshell wall-rand")];}
+            {_args = ["${mod} + SHIFT + V" (exec "virsh --connect qemu:///system start win10")];}
             # Move focus
-            "$mod, H, movefocus, l"
-            "$mod, L, movefocus, r"
-            "$mod, K, movefocus, u"
-            "$mod, J, movefocus, d"
-
+            {_args = ["${mod} + H" (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "left" })'')];}
+            {_args = ["${mod} + L" (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "right" })'')];}
+            {_args = ["${mod} + K" (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "up" })'')];}
+            {_args = ["${mod} + J" (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "down" })'')];}
             # Move window
-            "$mod SHIFT, H, movewindow, l"
-            "$mod SHIFT, L, movewindow, r"
-            "$mod SHIFT, K, movewindow, u"
-            "$mod SHIFT, J, movewindow, d"
-            # Scroll through existing workspaces with mainMod + scroll
-            "$mod, mouse_down, workspace, e+1"
-            "$mod, mouse_up, workspace, e-1"
-
+            {_args = ["${mod} + SHIFT + H" (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "left" })'')];}
+            {_args = ["${mod} + SHIFT + L" (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "right" })'')];}
+            {_args = ["${mod} + SHIFT + K" (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "up" })'')];}
+            {_args = ["${mod} + SHIFT + J" (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "down" })'')];}
+            # Workspace scroll
+            {_args = ["${mod} + mouse_down" (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e+1" })'')];}
+            {_args = ["${mod} + mouse_up" (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e-1" })'')];}
             # Next workspace on monitor
-            "CONTROL_ALT, right, workspace, m+1"
-            "CONTROL_ALT, left, workspace, m-1"
-
+            {_args = ["CTRL + ALT + right" (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "m+1" })'')];}
+            {_args = ["CTRL + ALT + left" (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "m-1" })'')];}
             # Mouse side buttons
-            ",mouse:275,exec,wl-copy $(wl-paste -p)" # copy selected text
-            ",mouse:276,exec,wtype -M ctrl -M shift v -m ctrl -m shift" # paste by Ctrl+Shift+v
+            {_args = ["mouse:275" (exec "wl-copy $(wl-paste -p)")];}
+            {_args = ["mouse:276" (exec "wtype -M ctrl -M shift v -m ctrl -m shift")];}
+            # Mouse drag/resize
+            {_args = ["${mod} + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") {mouse = true;}];}
+            {_args = ["${mod} + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") {mouse = true;}];}
           ]
           ++ workspaces;
-        bindm = [
-          # Move/resize windows with mainMod + LMB/RMB and dragging
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
       };
-
-      # Submaps require specific order in config
       extraConfig = ''
-        # Resize mode
-        bind=SUPER,R,submap,resize
-        submap=resize
-        binde=,L,resizeactive,40 0
-        binde=,H,resizeactive,-40 0
-        binde=,K,resizeactive,0 -40
-        binde=,J,resizeactive,0 40
-        bind=,escape,submap,reset
-        bind=,Return,submap,reset
-        submap=reset
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("hyprctl setcursor ${cursorName} ${toString pointer.size}")
+          hl.exec_cmd("sleep 1s && matshell wall-rand")
+          hl.exec_cmd("[workspace 1 silent] wezterm")
+        end)
       '';
     };
   };
