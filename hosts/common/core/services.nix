@@ -41,6 +41,8 @@
     udev.extraRules = ''
       # Arduino R4 Wifi udev rule
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2341", MODE:="0666"
+      # Neo65 keyboard udev rule for VIA
+      KERNEL=="hidraw*", ATTRS{idVendor}=="fffe", ATTRS{idProduct}=="0015", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     '';
   };
 }
