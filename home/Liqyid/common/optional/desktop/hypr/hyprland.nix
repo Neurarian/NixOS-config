@@ -18,6 +18,7 @@
       pkgs.catppuccin-cursors.macchiatoDark
       pkgs.glib
       pkgs.libnotify
+      pkgs.playerctl
     ];
 
     wayland.windowManager.hyprland = let
@@ -81,119 +82,118 @@
           {_args = ["HYPRCURSOR_SIZE" (toString pointer.size)];}
           {_args = ["XCURSOR_SIZE" (toString pointer.size)];}
         ];
-
+        layer_rule = [
+          {
+            _args = [
+              {
+                match = {namespace = "bar";};
+                blur = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {namespace = "gtk4-layer-shell";};
+                blur = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {namespace = "bar";};
+                xray = 1;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {namespace = "bar";};
+                ignore_alpha = 0.2;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {namespace = "gtk4-layer-shell";};
+                ignore_alpha = 0.2;
+              }
+            ];
+          }
+        ];
+        window_rule = [
+          {
+            _args = [
+              {
+                match = {pin = 1;};
+                border_color = lib.generators.mkLuaInline ''
+                  { colors = { pinnedWindow, pinnedWindowGrad }, angle = 45 }
+                '';
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "com.github.th_ch.youtube_music";};
+                workspace = 2;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "firefox";};
+                workspace = 4;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "zen-beta";};
+                workspace = 4;
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "steam";};
+                workspace = "5 silent";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "discord";};
+                workspace = "6 silent";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "firefox";};
+                idle_inhibit = "fullscreen";
+              }
+            ];
+          }
+          {
+            _args = [
+              {
+                match = {class = "zen";};
+                idle_inhibit = "fullscreen";
+              }
+            ];
+          }
+        ];
         config = {
-          layer_rule = [
-            {
-              _args = [
-                {
-                  match = {namespace = "bar";};
-                  blur = true;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {namespace = "gtk4-layer-shell";};
-                  blur = true;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {namespace = "bar";};
-                  xray = 1;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {namespace = "bar";};
-                  ignore_alpha = 0.2;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {namespace = "gtk4-layer-shell";};
-                  ignore_alpha = 0.2;
-                }
-              ];
-            }
-          ];
-          window_rule = [
-            {
-              _args = [
-                {
-                  match = {pin = 1;};
-                  border_color = lib.generators.mkLuaInline ''
-                    { colors = { pinnedWindow, pinnedWindowGrad }, angle = 45 }
-                  '';
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "com.github.th_ch.youtube_music";};
-                  workspace = 2;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "firefox";};
-                  workspace = 4;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "zen-beta";};
-                  workspace = 4;
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "steam";};
-                  workspace = "5 silent";
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "discord";};
-                  workspace = "6 silent";
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "firefox";};
-                  idle_inhibit = "fullscreen";
-                }
-              ];
-            }
-            {
-              _args = [
-                {
-                  match = {class = "zen";};
-                  idle_inhibit = "fullscreen";
-                }
-              ];
-            }
-          ];
-          animations.enabled = true; # NEW — was missing entirely
+          animations.enabled = true;
           input = {
             kb_layout = "us, de";
             kb_options = "grp:win_space_toggle";
@@ -386,6 +386,14 @@
             # Mouse drag/resize
             {_args = ["${mod} + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") {mouse = true;}];}
             {_args = ["${mod} + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") {mouse = true;}];}
+            # Audio controls
+            {_args = ["XF86AudioRaiseVolume" (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")];}
+            {_args = ["XF86AudioLowerVolume" (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")];}
+            {_args = ["XF86AudioMute" (exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")];}
+            {_args = ["XF86AudioPlay" (exec "playerctl play-pause")];}
+            {_args = ["XF86AudioNext" (exec "playerctl next")];}
+            {_args = ["XF86AudioPrev" (exec "playerctl previous")];}
+            {_args = ["XF86AudioStop" (exec "playerctl stop")];}
           ]
           ++ workspaces;
       };
