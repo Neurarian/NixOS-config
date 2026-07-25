@@ -394,6 +394,8 @@
             {_args = ["XF86AudioNext" (exec "playerctl next")];}
             {_args = ["XF86AudioPrev" (exec "playerctl previous")];}
             {_args = ["XF86AudioStop" (exec "playerctl stop")];}
+            {_args = ["XF86AudioForward" (exec "playerctl position 10+")];}
+            {_args = ["XF86AudioRewind" (exec "playerctl position 10-")];}
           ]
           ++ workspaces;
       };
