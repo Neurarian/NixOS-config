@@ -35,7 +35,6 @@
       resources.enable = true;
       oversteer.enable = true;
       gnome-control-center.enable = true;
-      # Music
       ytmusic.enable = true;
     };
     development = {

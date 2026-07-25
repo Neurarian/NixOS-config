@@ -848,14 +848,17 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1779387392,
-        "narHash": "sha256-1sA/b3DNxei9/wAt40nIJc7wbBZr2cS1VfgcRPbM3jI=",
-        "path": "/home/Liqyid/Documents/matshell",
-        "type": "path"
+        "lastModified": 1779390023,
+        "narHash": "sha256-oVgAMZmLiv85msuQMgtRB7mwh53ELPmoW7D7/QPe9r8=",
+        "owner": "Neurarian",
+        "repo": "matshell",
+        "rev": "3c37d3bfae2722a5abb770ce4b7ea1f58ec3ffb5",
+        "type": "github"
       },
       "original": {
-        "path": "/home/Liqyid/Documents/matshell",
-        "type": "path"
+        "owner": "Neurarian",
+        "repo": "matshell",
+        "type": "github"
       }
     },
     "matugen": {

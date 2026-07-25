@@ -9,7 +9,6 @@
   };
 
   config = lib.mkIf config.desktop.applications.discord.enable {
-    nixpkgs.config.allowUnfree = true;
     home.packages = [
       pkgs.discord
     ];
