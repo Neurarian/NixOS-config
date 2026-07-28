@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.hardware.bmboot.enable {
     boot = {
-      kernelPackages = pkgs.linuxPackages_latest;
+      kernelPackages = pkgs.linuxPackages_zen;
       supportedFilesystems = {
         btrfs = true;
         ntfs = true;
