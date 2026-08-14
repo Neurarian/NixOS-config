@@ -137,6 +137,7 @@
   };
 
   catppuccin = {
+    autoEnable = false;
     fzf.enable = true;
     starship.enable = true;
   };
