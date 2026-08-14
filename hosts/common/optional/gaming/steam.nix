@@ -30,7 +30,8 @@
           pkgs.wine-wayland
           pkgs.winetricks
         ]
-        ++ lib.optionals config.gaming.steam.ckan.enable [ pkgs.ckan
+        ++ lib.optionals config.gaming.steam.ckan.enable [
+          pkgs.ckan
         ];
       loginShellInit = ''
         [[ "$(tty)" = "dev/tty2" ]] && gs.sh
