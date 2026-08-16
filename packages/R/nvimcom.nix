@@ -6,9 +6,10 @@
   rNvim,
 }:
 rPackages.buildRPackage {
-  name = "nvimcom";
+  pname = "nvimcom";
   src = rNvim;
   sourceRoot = "source/nvimcom";
+  version = "0.1";
 
   buildInputs = [
     R
