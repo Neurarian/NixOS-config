@@ -41,6 +41,7 @@
     bluetooth.enable = true;
     # System cooling GUI
     services.coolercontrol.enable = true;
+    amdgpu.overdrive.enable = true;
   };
 
   services = {
@@ -51,6 +52,10 @@
       enable = true;
       cores = 8;
       milivolts = 30;
+    };
+    # Unvervolt 6800xt
+    lact = {
+      enable = true;
     };
   };
 
@@ -69,6 +74,7 @@
     };
     vr.enable = true;
   };
+
   # VFIO: single GPU passthrough for 6800XT
   virtualisation.libvirt = {
     enable = true;
