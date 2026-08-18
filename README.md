@@ -8,7 +8,7 @@ ______________________________________________________________________
 
 ## ⚙️ Structure
 
-Inspired by [Misterio77](https://github.com/Misterio77/nix-config), but using [flake-parts](https://github.com/hercules-ci/flake-parts).
+Inspired by [Misterio77], but using [flake-parts].
 
 - `flake.nix`: Entrypoint.
 - `hosts`: NixOS Configurations, rebuild via `nh os switch -H <hostname>` after bootstrapping.
@@ -39,7 +39,7 @@ Inspired by [Misterio77](https://github.com/Misterio77/nix-config), but using [f
 
 ## 🖥️ Compositor & GUI
 
-Uses the hyprland window management ecosystem. Uses an Astal/Ags setup inspired by [fufexan](https://github.com/fufexan/dotfiles)'s Agsv1 config. Wallpaper-based color scheme generation using [Material colors](https://m3.material.io/styles/color/the-color-system/key-colors-tones) via matugen and a custom rust cli utility to set light/dark theme and scheme based on main color HCT space. Astal, GTK, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
+Uses the hyprland window management ecosystem. Uses an Astal/Ags setup inspired by [fufexan]'s Agsv1 config. Wallpaper-based color scheme generation using [Material colors] via matugen and a custom rust cli utility to set light/dark theme and scheme based on main color HCT space. Astal, GTK, hyprland and hyprlock are dynamically themed in a wallpaper-matched light or dark theme.
 
 ### 📷 Screenshots
 
@@ -65,7 +65,7 @@ Yeah sorry, no light terminal colors. That just hurts my eyes.
 
 ## 🧑‍💻 Neovim
 
-Custom neovim based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Uses [nixCats](https://github.com/BirdeeHub/nixCats-nvim) for plugin and dependency management and [lze](https://github.com/BirdeeHub/lze) for plugin lazy-loading. Integrated with tmux. If you want to check out just this nvim distribution run:
+Custom neovim based on [kickstart.nvim]. Uses [nixCats] for plugin and dependency management and [lze] for plugin lazy-loading. Integrated with tmux. If you want to check out just this nvim distribution run:
 
 ```bash
 nix run github:Neurarian/NixOS-config#nixCats
@@ -76,23 +76,23 @@ But be aware that it ships all tools necessary for C, Rust, JS, and R developmen
 
 ### ✨ Main Features
 
-- 🐱 [nixCats-nvim](https://github.com/BirdeeHub/nixCats-nvim) as an interface for managing installation of plugins and dependencies the Nix way, all while staying with lua for configuration.
-- 🦥 Nix friendly, dead simple plugin lazy-loading with [lze](https://github.com/BirdeeHub/lze).
-- 💬 Modern and fast autocompletion with [blink.cmp](https://github.com/Saghen/blink.cmp) & [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
-- 🌎 Navigation to everywhere in the project with just a couple of keypresses using the [snacks.nvim](https://github.com/folke/snacks.nvim) picker.
-- 🦦 Nix friendly syntax highlighting of nix-embedded code with [otter.nvim](https://github.com/jmbuhr/otter.nvim) & [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
-- ♻️ Integration with git via [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) & [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
-- 🔌 Running the amazing [nixd](https://github.com/nix-community/nixd) LSP, making configuration a breeze.
-- 🐞 Integrated debugger via [nvim-dap](https://github.com/mfussenegger/nvim-dap).
-- 🎨 Harmonizing pastel aesthetics across the entire terminal via [Catppuccin](https://github.com/catppuccin/catppuccin) Dark Mocha and a pretty [snacks.nvim](https://github.com/folke/snacks.nvim) dashboard.
+- 🐱 [nixCats-nvim][nixcats] as an interface for managing installation of plugins and dependencies the Nix way, all while staying with lua for configuration.
+- 🦥 Nix friendly, dead simple plugin lazy-loading with [lze].
+- 💬 Modern and fast autocompletion with [blink.cmp] & [LuaSnip].
+- 🌎 Navigation to everywhere in the project with just a couple of keypresses using the [snacks.nvim] picker.
+- 🦦 Nix friendly syntax highlighting of nix-embedded code with [otter.nvim] & [nvim-treesitter].
+- ♻️ Integration with git via [lazygit.nvim] & [gitsigns.nvim].
+- 🔌 Running the amazing [nixd] LSP, making configuration a breeze.
+- 🐞 Integrated debugger via [nvim-dap].
+- 🎨 Harmonizing pastel aesthetics across the entire terminal via [Catppuccin] Dark Mocha and a pretty [snacks.nvim] dashboard.
 
 ## 🔒 Secret Provisioning
 
-Seamless setup for management of secrets within NixOS with [sops-nix](https://github.com/Mic92/sops-nix). Storing secrets such as wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
+Seamless setup for management of secrets within NixOS with [sops-nix]. Storing secrets such as wifi creds, github tokens, SSH keys, etc. in an age encrypted .yaml file decrypted during activation time.
 
 ## 🔌 Plug & Play VFIO GPU Passthrough
 
-Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/master/hosts/common/optional/libvirt.nix) that generates a single-file qemu hook making (single) GPU passthrough via detaching and reattaching of the respective kernel drivers on NixOS dead simple, e.g.:
+Includes a [custom NixOS module] that generates a single-file qemu hook making (single) GPU passthrough via detaching and reattaching of the respective kernel drivers on NixOS dead simple, e.g.:
 
 ```nix
 #hosts/<hostname>/default.nix
@@ -132,27 +132,27 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 <div align="center">
 
 | Type | Software |
-| ------------------------ | :---------------------------------------------------------------------------------------------:
-| **Window Manager** | [hyprland](https://github.com/hyprwm/Hyprland) |
-| **Bar** | [Astal](https://github.com/Aylur/astal) |
-| **App Launcher** | [Astal](https://github.com/Aylur/astal) |
-| **Resource Monitor** | [Mission Center](https://gitlab.com/mission-center-devs/mission-center) + [CoolerControl](https://gitlab.com/coolercontrol/coolercontrol)|
-| **File Manager** | [nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
-| **Lockscreen** | [hyprlock](https://github.com/hyprwm/hyprlock/) |
-| **Logout Menu** | [Astal](https://github.com/Aylur/astal) |
-| **Browser** | [custom hardened Firefox](https://hg.mozilla.org/mozilla-central/) + [Zen](https://github.com/zen-browser/desktop) |
-| **Media Player** | [mpd](https://github.com/MusicPlayerDaemon/MPD) + [Astal](https://github.com/Aylur/astal) + [YouTube Music](https://github.com/th-ch/youtube-music) |
-| **Gaming** | [Steam / Gamescope](https://github.com/ValveSoftware/gamescope) |
-| **Screenshot Software** | [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) |
-| **Clipboard** | [wl-clipboard](https://github.com/bugaevc/wl-clipboard) + [cliphist](https://github.com/sentriz/cliphist) |\
-| **Terminal Emulator** | [WezTerm](https://github.com/wez/wezterm) |
-| **Terminal Multiplexer** | [tmux](https://github.com/tmux/tmux) |
-| **Shell** | [zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship) |
-| **Editor** | [neovim](https://github.com/neovim/neovim) |
-| **Secret Provisioning** | [sops-nix](https://github.com/Mic92/sops-nix) |
-| **Fonts** | [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) + [FiraCode](https://github.com/tonsky/FiraCode) |
-| **Color Scheme** | [Catppuccin Mocha](https://github.com/catppuccin/nix) + [matugen](https://github.com/InioX/matugen) |
-| **Cursor** | [Catppuccin-Macchiato-Dark](https://github.com/catppuccin/cursors) |
+| --------------- | --------------- |
+| **Window Manager** | [hyprland] |
+| **Bar** | [Astal] |
+| **App Launcher** | [Astal] |
+| **Resource Monitor** | [resources] & [CoolerControl] |
+| **File Manager** | [nautilus] |
+| **Lockscreen** | [hyprlock] |
+| **Logout Menu** | [Astal] |
+| **Browser** | [custom hardened Firefox] & [Zen] |
+| **Media Player** | [mpd] & [Astal] & [Pear] |
+| **Gaming** | [Steam / Gamescope] |
+| **Screenshot Software** | [grimblast] |
+| **Clipboard** | [wl-clipboard] & [cliphist] |
+| **Terminal Emulator** | [WezTerm] |
+| **Terminal Multiplexer** | [tmux] |
+| **Shell** | [zsh] & [Starship] |
+| **Editor** | [neovim] |
+| **Secret Provisioning** | [sops-nix] |
+| **Fonts** | [Jetbrains Mono] & [FiraCode] |
+| **Color Scheme** | [Catppuccin Mocha] & [matugen] |
+| **Cursor** | [Catppuccin-Macchiato-Dark] |
 
 </div>
 
@@ -162,10 +162,9 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 <div align="center">
 
 | Type | Software |
-| --------------------------- | :---------------------------------------------------------------------------------------------:
-| **Ephemeral Root Storage** | [Impermanence](https://github.com/nix-community/impermanence) |
-| **Notes** | [Obsidian](https://obsidian.md/) |
-| **Bar & Widgets** | [Migrate to AGS v2](https://github.com/Aylur/ags) |
+| --------------- | --------------- |
+| **Ephemeral Root Storage** | [Impermanence] |
+| **Notes** | [Obsidian] |
 | **VFIO** | Does not work on Notebook Nvidia GPU yet |
 
 </div>
@@ -173,3 +172,49 @@ Includes a [custom NixOS module](https://github.com/Neurarian/NixOS-config/blob/
 </details>
 
 ______________________________________________________________________
+
+[astal]: https://github.com/Aylur/astal
+[blink.cmp]: https://github.com/Saghen/blink.cmp
+[catppuccin]: https://github.com/catppuccin/catppuccin
+[catppuccin mocha]: https://github.com/catppuccin/nix
+[catppuccin-macchiato-dark]: https://github.com/catppuccin/cursors
+[cliphist]: https://github.com/sentriz/cliphist
+[coolercontrol]: https://gitlab.com/coolercontrol/coolercontrol
+[custom hardened firefox]: https://hg.mozilla.org/mozilla-central/
+[custom nixos module]: https://github.com/Neurarian/NixOS-config/blob/master/hosts/common/optional/libvirt.nix
+[firacode]: https://github.com/tonsky/FiraCode
+[flake-parts]: https://github.com/hercules-ci/flake-parts
+[fufexan]: https://github.com/fufexan/dotfiles
+[gitsigns.nvim]: https://github.com/lewis6991/gitsigns.nvim
+[grimblast]: https://github.com/hyprwm/contrib/tree/main/grimblast
+[hyprland]: https://github.com/hyprwm/Hyprland
+[hyprlock]: https://github.com/hyprwm/hyprlock/
+[impermanence]: https://github.com/nix-community/impermanence
+[jetbrains mono]: https://www.jetbrains.com/lp/mono/
+[kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
+[lazygit.nvim]: https://github.com/kdheepak/lazygit.nvim
+[luasnip]: https://github.com/L3MON4D3/LuaSnip
+[lze]: https://github.com/BirdeeHub/lze
+[material colors]: https://m3.material.io/styles/color/the-color-system/key-colors-tones
+[matugen]: https://github.com/InioX/matugen
+[misterio77]: https://github.com/Misterio77/nix-config
+[mpd]: https://github.com/MusicPlayerDaemon/MPD
+[nautilus]: https://gitlab.gnome.org/GNOME/nautilus
+[neovim]: https://github.com/neovim/neovim
+[nixcats]: https://github.com/BirdeeHub/nixCats-nvim
+[nixd]: https://github.com/nix-community/nixd
+[nvim-dap]: https://github.com/mfussenegger/nvim-dap
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[obsidian]: https://obsidian.md/
+[otter.nvim]: https://github.com/jmbuhr/otter.nvim
+[pear]: https://github.com/-ch/youtube-music
+[resources]: https://github.com/nokyan/resources
+[snacks.nvim]: https://github.com/folke/snacks.nvim
+[sops-nix]: https://github.com/Mic92/sops-nix
+[starship]: https://github.com/starship/starship
+[steam / gamescope]: https://github.com/ValveSoftware/gamescope
+[tmux]: https://github.com/tmux/tmux
+[wezterm]: https://github.com/wez/wezterm
+[wl-clipboard]: https://github.com/bugaevc/wl-clipboard
+[zen]: https://github.com/zen-browser/desktop
+[zsh]: https://www.zsh.org/
