@@ -26,4 +26,10 @@
     pkgs.saint
     pkgs.cudatoolkit
   ];
+  desktop = {
+    applications = {
+      zotero.enable = true;
+      firefox.enable = true;
+    };
+  };
 }
