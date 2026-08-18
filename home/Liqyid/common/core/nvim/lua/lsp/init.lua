@@ -154,16 +154,6 @@ return {
   },
 
   {
-    'r_language_server',
-    for_cat = 'R',
-    lsp = {
-      cmd = { 'R', '--slave', '-e', 'languageserver::run()' },
-      filetypes = { 'r', 'rmd' },
-      root_markers = { '.git', '.Rproj' },
-    },
-  },
-
-  {
     'arduino_language_server',
     for_cat = 'arduino',
     lsp = {

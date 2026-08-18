@@ -253,4 +253,16 @@ return {
       }
     end,
   },
+  {
+    'snacks-zotero',
+    for_cat = 'ui_nav',
+    keys = {
+      {
+        '<localleader>sz',
+        '<Plug>(snacks-zotero-picker)',
+        desc = '[S]earch [Zotero] citations',
+        mode = { 'n' },
+      },
+    },
+  },
 }

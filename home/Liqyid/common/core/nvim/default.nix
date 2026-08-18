@@ -19,10 +19,24 @@
       rix
       here
       pacman
-      languageserver
       nvimcom
     ];
   };
+
+  quarto-patched = pkgs.quarto.overrideAttrs (old: {
+    postFixup =
+      (old.postFixup or "")
+      + ''
+        substituteInPlace $out/bin/quarto.js \
+        --replace-fail 'kSyntaxHighlighting = "syntax-highlighting"' 'kSyntaxHighlighting = "highlight-style"' \
+        --replace-fail '"--syntax-highlighting"' '"--highlight-style"'
+        substituteInPlace $out/share/filters/modules/jog.lua \
+        --replace-fail "elseif tp == 'pandoc TableHead' or tp == 'pandoc TableFoot' or" "elseif tp == 'pandoc TableBody' or tp == 'TableBody' then
+        element.head = jogger(element.head)
+        element.body = jogger(element.body)
+        elseif tp == 'pandoc TableHead' or tp == 'pandoc TableFoot' or"
+      '';
+  });
 in {
   imports = [
     inputs.nixCats.homeModule
@@ -81,6 +95,7 @@ in {
             pkgs.harper
             pkgs.markdownlint-cli
             pkgs.mdformat
+            quarto-patched
           ];
           rust = [
             pkgs.rust-analyzer
@@ -147,7 +162,12 @@ in {
             pkgs.vimPlugins.gitsigns-nvim
           ];
           R = [
-            pkgs.neovimPlugins.rNvim
+            (pkgs.callPackage ./r-nvim-patched.nix {
+              rNvim = inputs.plugins-rNvim;
+            })
+          ];
+          markdown = [
+            pkgs.vimPlugins.markview-nvim
           ];
           completion = {
             common = [
@@ -179,6 +199,7 @@ in {
                 rnoweb
                 yaml
                 markdown
+                markdown_inline
                 regex
               ]))
             pkgs.vimPlugins.nvim-treesitter-textobjects
@@ -191,6 +212,8 @@ in {
             pkgs.vimPlugins.fidget-nvim
             pkgs.vimPlugins.snacks-nvim
             pkgs.neovimPlugins.snacks-luasnip
+            pkgs.neovimPlugins.snacks-zotero
+            pkgs.vimPlugins.sqlite-lua
             pkgs.vimPlugins.lualine-nvim
           ];
           rust = [

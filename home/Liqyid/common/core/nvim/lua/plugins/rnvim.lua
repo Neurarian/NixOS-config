@@ -1,5 +1,5 @@
 return {
-  'rNvim',
+  'R-nvim-patched',
   for_cat = 'R',
   lazy = false,
   after = function()

@@ -110,5 +110,9 @@
       url = "github:Neurarian/snacks-luasnip.nvim";
       flake = false;
     };
+    plugins-snacks-zotero = {
+      url = "github:Chiarandini/snacks-zotero.nvim";
+      flake = false;
+    };
   };
 }

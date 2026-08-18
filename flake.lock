@@ -1109,6 +1109,22 @@
         "type": "github"
       }
     },
+    "plugins-snacks-zotero": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777610796,
+        "narHash": "sha256-FQbz2y03yaPKzQO6jYW7cEVuLlX62kSwRSmQGC1/7/4=",
+        "owner": "Chiarandini",
+        "repo": "snacks-zotero.nvim",
+        "rev": "c885d33371fa9d5d71becc6604be0df04e1edfbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Chiarandini",
+        "repo": "snacks-zotero.nvim",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1169,6 +1185,7 @@
         "plugins-cmp-r": "plugins-cmp-r",
         "plugins-rNvim": "plugins-rNvim",
         "plugins-snacks-luasnip": "plugins-snacks-luasnip",
+        "plugins-snacks-zotero": "plugins-snacks-zotero",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "sops-nix": "sops-nix",
         "systems": "systems_5",
