@@ -2,6 +2,7 @@
   inputs,
   osConfig,
   pkgs,
+  system,
   ...
 }: let
   inherit (inputs.nixCats) utils;
@@ -162,9 +163,7 @@ in {
             pkgs.vimPlugins.gitsigns-nvim
           ];
           R = [
-            (pkgs.callPackage ./r-nvim-patched.nix {
-              rNvim = inputs.plugins-rNvim;
-            })
+            inputs.plugins-rNvim.packages.${system}.default
           ];
           markdown = [
             pkgs.vimPlugins.markview-nvim

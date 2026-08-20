@@ -99,14 +99,14 @@
     };
     plugins-rNvim = {
       url = "github:R-nvim/R.nvim";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = true;
     };
     plugins-cmp-r = {
       url = "github:R-nvim/cmp-r";
       flake = false;
     };
     plugins-snacks-luasnip = {
-      # url = "path:/home/Liqyid/Documents/snacks-luasnip.nvim";
       url = "github:Neurarian/snacks-luasnip.nvim";
       flake = false;
     };
