@@ -20,7 +20,7 @@
       rix
       here
       pacman
-      nvimcom
+      inputs.plugins-rNvim.packages.${system}.nvimcom
     ];
   };
 

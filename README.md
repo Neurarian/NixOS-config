@@ -31,7 +31,6 @@ Inspired by [Misterio77], but using [flake-parts].
 - `packages`: Place for patched binaries / packages not available in nixpkgs or dedicated flakes.
   - `saint`: Patched binary to perform "Significance Analysis of INTeractome" PMID: 24513533.
   - `python/cellpose`: A generalist algorithm for cellular segmentation (CLI only, with CUDA support) PMID: 39939718.
-  - `R/nvimcom`: R package allowing nvim \<-> R communication. Used in my nvim config.
 - `devshells`: Place for project / analysis or framework specific nix shells.
 - `overlays`: Custom overlays applied to nixpkgs.
 - `lib`: Nix functions and constants used in different parts of the flake.

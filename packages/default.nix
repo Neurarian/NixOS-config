@@ -4,7 +4,6 @@
   in {
     packages = {
       inherit (pkgs) saint nixCats nixCatsStripped cellpose;
-      inherit (pkgs.rPackages) nvimcom;
     };
   };
 }

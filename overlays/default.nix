@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}: {
+{self, ...}: {
   flake.overlays.default = let
     pack = "${self}/packages/";
     pyPack = "${pack}/python/";
@@ -27,14 +23,5 @@
           disabledTestPaths = ["tests/exporters/test_svg.py"];
         });
       };
-
-      # R packages
-      rPackages =
-        prev.rPackages
-        // {
-          nvimcom = prev.callPackage "${pack}/R/nvimcom.nix" {
-            rNvim = inputs.plugins-rNvim;
-          };
-        };
     };
 }
