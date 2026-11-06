@@ -67,6 +67,9 @@
       virtualisation = {
         libvirtd = {
           enable = true;
+          onBoot = "ignore";
+          onShutdown = "shutdown";
+          shutdownTimeout = 60;
           services.netstart.enable = true; #hosts/common/optional/virshNetstart.nix
           qemu = {
             package = pkgs.qemu_kvm;
@@ -75,40 +78,18 @@
           };
           hooks.qemu = lib.mkIf hookCfg.enable {
             "gpuPassthrough" = pkgs.writers.writeBash "gpuPassthrough" ''
-              # Variables
-              GUEST_NAME="$1"
-              OPERATION="$2"
-              SUB_OPERATION="$3"
+              GUEST_NAME="$1"; OPERATION="$2"; SUB_OPERATION="$3"
 
-              # Run commands when the VM is started/stopped.
               if [ "$GUEST_NAME" == "${hookCfg.vmName}" ]; then
-                if [ "$OPERATION" == "prepare" ]; then
-                  if [ "$SUB_OPERATION" == "begin" ]; then
-                    systemctl stop greetd
-                    systemctl stop coolercontrold
-                    sleep 4
-
-                    # Detach PCI devices
-                    ${lib.concatStringsSep "\n" (map (pci: "virsh nodedev-detach ${pci}") hookCfg.pciDevices)}
-
-                    # Unload GPU module and load VFIO module
-                    modprobe -r ${hookCfg.gpuModule}
-                    modprobe ${hookCfg.vfioModule}
-                  fi
+                if [ "$OPERATION" == "prepare" ] && [ "$SUB_OPERATION" == "begin" ]; then
+                  systemctl stop greetd coolercontrold
+                  sleep 4
+                  modprobe ${hookCfg.vfioModule}
                 fi
 
-                if [ "$OPERATION" == "release" ]; then
-                  if [ "$SUB_OPERATION" == "end" ]; then
-                    # Reattach PCI devices
-                    ${lib.concatStringsSep "\n" (map (pci: "virsh nodedev-reattach ${pci}") hookCfg.pciDevices)}
-
-                    # Unload VFIO module and reload GPU module
-                    modprobe -r ${hookCfg.vfioModule}
-                    modprobe ${hookCfg.gpuModule}
-
-                    systemctl start greetd
-                    systemctl start coolercontrold
-                  fi
+                if [ "$OPERATION" == "release" ] && [ "$SUB_OPERATION" == "end" ]; then
+                  modprobe ${hookCfg.gpuModule}
+                  systemctl start greetd coolercontrold
                 fi
               fi
             '';
