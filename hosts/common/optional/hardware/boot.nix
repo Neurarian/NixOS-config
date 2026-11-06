@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.hardware.bmboot.enable {
     boot = {
-      kernelPackages = pkgs.linuxPackages_zen;
+      kernelPackages = pkgs.linuxPackages_latest;
       supportedFilesystems = {
         btrfs = true;
         ntfs = true;
@@ -26,8 +26,6 @@
       # Enable "Silent Boot"
       consoleLogLevel = 0;
       initrd = {
-        verbose = false;
-        systemd.enable = true;
         luks.devices.crypted.allowDiscards = true;
       };
       kernelParams = [

@@ -1,6 +1,8 @@
 {
   inputs,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -13,6 +15,16 @@
   ];
 
   boot = {
+    kernelPatches = [
+      {
+        # Fix amdgpu null pointer deref on VM shutdown
+        name = "amdgpu-dont-trample-pdev-drvdata";
+        patch = pkgs.fetchpatch {
+          url = "https://lore.kernel.org/amd-gfx/20240510181212.264622-24-matthew.auld@intel.com/raw";
+          hash = "sha256-kfqiDyojWeguievc+TIv9evMrzKvokn9rCIGDaPcuwc=";
+        };
+      }
+    ];
     # Scale plymouth to 2k
     plymouth.extraConfig = "DeviceScale=1";
     # Thrustmaster Force Feedback support
