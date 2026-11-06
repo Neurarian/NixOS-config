@@ -14,7 +14,6 @@
       };
       mpd-mpris = {
         enable = true;
-        mpd.useLocal = true;
       };
     };
   };

@@ -23,21 +23,6 @@
       inputs.plugins-rNvim.packages.${system}.nvimcom
     ];
   };
-
-  quarto-patched = pkgs.quarto.overrideAttrs (old: {
-    postFixup =
-      (old.postFixup or "")
-      + ''
-        substituteInPlace $out/bin/quarto.js \
-        --replace-fail 'kSyntaxHighlighting = "syntax-highlighting"' 'kSyntaxHighlighting = "highlight-style"' \
-        --replace-fail '"--syntax-highlighting"' '"--highlight-style"'
-        substituteInPlace $out/share/filters/modules/jog.lua \
-        --replace-fail "elseif tp == 'pandoc TableHead' or tp == 'pandoc TableFoot' or" "elseif tp == 'pandoc TableBody' or tp == 'TableBody' then
-        element.head = jogger(element.head)
-        element.body = jogger(element.body)
-        elseif tp == 'pandoc TableHead' or tp == 'pandoc TableFoot' or"
-      '';
-  });
 in {
   imports = [
     inputs.nixCats.homeModule
@@ -96,7 +81,7 @@ in {
             pkgs.harper
             pkgs.markdownlint-cli
             pkgs.mdformat
-            quarto-patched
+            pkgs.quarto
           ];
           rust = [
             pkgs.rust-analyzer
