@@ -17,16 +17,6 @@
           example = "win10";
           description = "The name of the VM to apply the hook to.";
         };
-        pciDevices = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [];
-          example = [
-            "pci_0000_0b_00_0"
-            "pci_0000_0b_00_1"
-            "pci_0000_0b_00_2"
-          ];
-          description = "List of PCI devices to detach/reattach for GPU passthrough";
-        };
         gpuModule = lib.mkOption {
           type = lib.types.str;
           default = "";

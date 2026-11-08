@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -93,12 +92,6 @@
     qemuHook = {
       enable = true;
       vmName = "win10";
-      pciDevices = [
-        "pci_0000_0b_00_0"
-        "pci_0000_0b_00_1"
-        "pci_0000_0b_00_2"
-        "pci_0000_0b_00_3"
-      ];
       gpuModule = "amdgpu";
       vfioModule = "vfio-pci";
     };

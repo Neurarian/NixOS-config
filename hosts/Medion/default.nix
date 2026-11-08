@@ -80,10 +80,6 @@
     qemuHook = {
       enable = true;
       vmName = "win11";
-      pciDevices = [
-        "pci_0000_01_00_0"
-        "pci_0000_01_00_1"
-      ];
       gpuModule = "nvidia";
       vfioModule = "vfio-pci";
     };

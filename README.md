@@ -107,17 +107,12 @@ Includes a [custom NixOS module] that generates a single-file qemu hook making (
     #...
   ];
   #...
-  # VFIO: single GPU passthrough for 6800XT
+  # VFIO: single GPU passthrough
   libvirt = {
     enable = true;
     qemuHook = {
       enable = true;
       vmName = "win10";
-      pciDevices = [
-        "pci_0000_0b_00_0"
-        "pci_0000_0b_00_1"
-        "pci_0000_0b_00_2"
-      ];
       gpuModule = "amdgpu";
       vfioModule = "vfio-pci";
     };
